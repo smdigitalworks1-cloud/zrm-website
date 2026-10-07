@@ -691,7 +691,8 @@ a {
 ========================= */
 
 @media (max-width: 1100px) {
-  .testimonial-grid {
+  .testimonial-grid,
+  .impact-grid {
     --per-view: 3;
   }
 }
@@ -1181,21 +1182,39 @@ a {
   background: var(--bg);
 }
 
-/* video testimonial cards */
+/* video testimonial cards – horizontal slider */
 .impact-grid {
+  --per-view: 4;
+  --gap: clamp(12px, 1.6vw, 20px);
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(12px, 1.6vw, 20px);
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - var(--gap) * (var(--per-view) - 1)) / var(--per-view));
+  gap: var(--gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* room so the hover lift isn't clipped */
+  padding: 6px 0 2px;
 }
 
+.impact-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.impact-grid > .impact-card {
+  scroll-snap-align: start;
+}
+
+/* the videos already contain the red frame, title and TBT logo,
+   so the card is just the video */
 .impact-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 12px 10px;
-  background: #850c0d;
+  display: block;
   border-radius: 14px;
+  overflow: hidden;
+  background: #6d0b0e;
   cursor: pointer;
   transition: transform .25s ease, box-shadow .25s ease;
 }
@@ -1205,29 +1224,34 @@ a {
   box-shadow: 0 20px 40px -18px rgba(255, 23, 56, 0.6);
 }
 
-.impact-top {
-  text-align: center;
-  font-size: clamp(11px, 1vw, 13px);
-  line-height: 1.35;
-  font-weight: 600;
-}
-
 .impact-media {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: 10px;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
-  /* placeholder shown until the real image is added */
-  background: linear-gradient(160deg, #3a3a40, #1b1b1f);
+  /* shown until the video's first frame loads (matches the video frame) */
+  background: linear-gradient(160deg, #7d0d10, #4a0709);
 }
 
-.impact-media img {
+/* contain: 4:5 videos fill the card, the one 9:16 video is letterboxed
+   on the same red as its frame instead of being cropped */
+.impact-media video {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  background: #6d0b0e;
+}
+
+/* playing: native controls, hide our button */
+
+.impact-card.is-playing .play-button {
+  display: none;
+}
+
+.impact-card.is-playing:hover {
+  transform: none;
 }
 
 .impact-media .play-button {
@@ -1246,10 +1270,6 @@ a {
 
 .impact-card:hover .play-button {
   transform: translate(-50%, -50%) scale(1.08);
-}
-
-.impact-logo {
-  width: 64px;
 }
 
 .impact .join-wrap {
@@ -1419,9 +1439,7 @@ a {
 
 @media (max-width: 900px) {
   .impact-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    max-width: 560px;
-    margin: 0 auto;
+    --per-view: 2;
   }
 
   .footer-main .container {
@@ -1492,12 +1510,7 @@ a {
   }
 
   .impact-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    max-width: none;
-  }
-
-  .impact-card {
-    padding: 10px 8px 8px;
+    --per-view: 3;
   }
 }
 
@@ -1627,16 +1640,7 @@ a {
   }
 
   .impact-grid {
-    gap: 8px;
-  }
-
-  .impact-card {
-    padding: 8px 6px 6px;
-    gap: 6px;
-  }
-
-  .impact-top {
-    font-size: 9.5px;
+    --gap: 8px;
   }
 
   .impact-media .play-button {
@@ -1646,10 +1650,6 @@ a {
 
   .impact-media .play-button::after {
     font-size: 38px;
-  }
-
-  .impact-logo {
-    width: 48px;
   }
 
   .faq-item summary {
@@ -2147,44 +2147,95 @@ a {
   <div class="container">
 
     <!-- VIDEO TESTIMONIALS
-         Add the 4 thumbnails to the assets folder with these names
-         (until then a dark placeholder is shown). -->
-    <div class="impact-grid">
+         Videos are 100MB+, so cards show a poster image (ZRM New LP Assets/impact)
+         and a video only streams after its Play button is clicked. -->
+    <div class="impact-grid" aria-label="Participant video testimonials">
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 1">
-        <div class="impact-top">Impact of 3 days<br>#Zerorupeemarketing</div>
         <div class="impact-media">
-          <img src="ZRM New LP Assets/impact-1.png" alt="" onerror="this.remove()">
+          <video poster="ZRM New LP Assets/impact/video-1.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6a3a77fe7249909712059c15.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
-        <img class="impact-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="TBT">
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 2">
-        <div class="impact-top">Impact of 3 days<br>#Zerorupeemarketing</div>
         <div class="impact-media">
-          <img src="ZRM New LP Assets/impact-2.png" alt="" onerror="this.remove()">
+          <video poster="ZRM New LP Assets/impact/video-2.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699022b4008498585063be69.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
-        <img class="impact-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="TBT">
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 3">
-        <div class="impact-top">Impact of 3 days<br>#Zerorupeemarketing</div>
         <div class="impact-media">
-          <img src="ZRM New LP Assets/impact-3.png" alt="" onerror="this.remove()">
+          <video poster="ZRM New LP Assets/impact/video-3.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/69902263c08665d643c777c5.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
-        <img class="impact-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="TBT">
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 4">
-        <div class="impact-top">Impact of 3 days<br>#Zerorupeemarketing</div>
         <div class="impact-media">
-          <img src="ZRM New LP Assets/impact-4.png" alt="" onerror="this.remove()">
+          <video poster="ZRM New LP Assets/impact/video-4.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020eb772de92f78f66414.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
-        <img class="impact-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="TBT">
       </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 5">
+        <div class="impact-media">
+          <video poster="ZRM New LP Assets/impact/video-5.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020bc24813c82726dc9f5.mp4" preload="none" playsinline></video>
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 6">
+        <div class="impact-media">
+          <video poster="ZRM New LP Assets/impact/video-6.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/69901eb9772de9907ef6370f.mp4" preload="none" playsinline></video>
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 7">
+        <div class="impact-media">
+          <video poster="ZRM New LP Assets/impact/video-7.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691eb00b88e1e651a0a797f7.mp4" preload="none" playsinline></video>
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 8">
+        <div class="impact-media">
+          <video poster="ZRM New LP Assets/impact/video-8.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691e9d9488e1e61903a530b5.mp4" preload="none" playsinline></video>
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 9">
+        <div class="impact-media">
+          <video poster="ZRM New LP Assets/impact/video-9.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912eaa2ee923201bed8ff6a.mp4" preload="none" playsinline></video>
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 10">
+        <div class="impact-media">
+          <video poster="ZRM New LP Assets/impact/video-10.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912ea3610d693d2dde2b679.mp4" preload="none" playsinline></video>
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 11">
+        <div class="impact-media">
+          <video poster="ZRM New LP Assets/impact/video-11.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912e9d496d06ad4d26441b1.mp4" preload="none" playsinline></video>
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="carousel-controls">
+      <button class="carousel-btn" type="button" data-impact-prev aria-label="Previous videos">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+      </button>
+      <button class="carousel-btn" type="button" data-impact-next aria-label="Next videos">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
     </div>
 
     <div class="join-wrap">
@@ -2278,7 +2329,81 @@ a {
 
 
 <script>
-document.querySelectorAll(".video-box, .participants-video, .impact-card").forEach(function (box) {
+/* Impact video slider – poster images, video streams only on Play,
+   one video plays at a time */
+(function () {
+  var grid = document.querySelector(".impact-grid");
+  if (!grid) return;
+
+  var cards = Array.prototype.slice.call(grid.querySelectorAll(".impact-card"));
+  var section = grid.parentElement;
+
+  function stop(card) {
+    var video = card.querySelector("video");
+    video.pause();
+    video.controls = false;
+    card.classList.remove("is-playing");
+  }
+
+  function play(card) {
+    cards.forEach(function (other) {
+      if (other !== card) stop(other);
+    });
+
+    var video = card.querySelector("video");
+    if (!video.getAttribute("src")) {
+      video.preload = "auto";
+      video.src = video.dataset.src;
+    }
+    video.controls = true;
+    card.classList.add("is-playing");
+    var attempt = video.play();
+    if (attempt && attempt.catch) attempt.catch(function () {});
+  }
+
+  cards.forEach(function (card) {
+    var video = card.querySelector("video");
+
+    card.addEventListener("click", function () {
+      // while playing, the native controls handle clicks
+      if (!card.classList.contains("is-playing")) play(card);
+    });
+
+    card.addEventListener("keydown", function (e) {
+      if ((e.key === "Enter" || e.key === " ") && !card.classList.contains("is-playing")) {
+        e.preventDefault();
+        play(card);
+      }
+    });
+
+    video.addEventListener("ended", function () { stop(card); });
+  });
+
+  if ("IntersectionObserver" in window) {
+    // pause a playing video once it scrolls out of view
+    var playObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting && entry.target.classList.contains("is-playing")) {
+          entry.target.querySelector("video").pause();
+        }
+      });
+    }, { threshold: 0.25 });
+    cards.forEach(function (card) { playObserver.observe(card); });
+  }
+
+  function step() {
+    return cards[1].offsetLeft - cards[0].offsetLeft;
+  }
+
+  section.querySelector("[data-impact-prev]").addEventListener("click", function () {
+    grid.scrollBy({ left: -step(), behavior: "smooth" });
+  });
+  section.querySelector("[data-impact-next]").addEventListener("click", function () {
+    grid.scrollBy({ left: step(), behavior: "smooth" });
+  });
+})();
+
+document.querySelectorAll(".video-box, .participants-video").forEach(function (box) {
   box.addEventListener("click", function () {
     console.log("Video clicked");
   });
