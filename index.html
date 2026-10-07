@@ -1,0 +1,2430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zero Ruppee Marketing Challenge</title>
+
+<link rel="preload" href="fonts/Nexa-Book.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Nexa-Bold.ttf" as="font" type="font/ttf" crossorigin>
+
+<style>
+/* =========================
+   NEXA FONT (files in /fonts)
+========================= */
+
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/Nexa-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/Nexa-Book.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/Nexa-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/Nexa-XBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/Nexa-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+:root {
+  --yellow: #e8ff00;
+  --red: #ff1738;
+  --bg: #0a0a0d;
+  --text-soft: #c9c9d1;
+  --border: rgba(255, 255, 255, 0.12);
+  --card: rgba(255, 255, 255, 0.04);
+
+  /* side padding: 16px on phones, grows to 48px on desktop */
+  --gutter: clamp(16px, 4vw, 48px);
+  --max: 1200px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  font-family: "Nexa", Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Common wrapper – gives every section the same side padding */
+.container {
+  width: 100%;
+  max-width: calc(var(--max) + var(--gutter) * 2);
+  margin: 0 auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* =========================
+   PAGE BACKGROUND
+========================= */
+
+.page {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(130, 16, 44, 0.5), transparent 70%),
+    linear-gradient(180deg, #160710 0%, var(--bg) 35%);
+}
+
+/* Soft diagonal band (from the Figma reference) */
+.page::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 900px;
+  background: linear-gradient(100deg, rgba(120, 12, 40, 0.35) 0%, rgba(40, 6, 18, 0.15) 50%, rgba(30, 60, 10, 0.3) 100%);
+  clip-path: polygon(0 40%, 100% 8%, 100% 28%, 0 75%);
+  filter: blur(30px);
+  pointer-events: none;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  position: relative;
+  z-index: 5;
+}
+
+.header .container {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: clamp(96px, 10vw, 124px);
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  position: relative;
+  z-index: 2;
+  padding-top: clamp(16px, 3vw, 32px);
+  padding-bottom: clamp(24px, 3vw, 40px);
+}
+
+.hero-head {
+  max-width: 1040px;
+  margin: 0 auto clamp(32px, 5vw, 56px);
+  text-align: center;
+}
+
+.top-label {
+  display: inline-block;
+  font-size: clamp(10px, 1.1vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  color: var(--text-soft);
+  text-transform: uppercase;
+  padding: 8px 18px;
+  border: 1px solid var(--border);
+  border-radius: 40px;
+  background: var(--card);
+  margin-bottom: clamp(16px, 2vw, 24px);
+}
+
+.hero-title {
+  font-size: clamp(28px, 4.6vw, 56px);
+  line-height: 1.18;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: clamp(14px, 1.6vw, 20px);
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.hero-subtitle {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: clamp(14px, 1.3vw, 17px);
+  line-height: 1.65;
+  color: var(--text-soft);
+}
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+}
+
+/* Video */
+.video-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 964 / 542;
+  overflow: hidden;
+  background: #111;
+  border-radius: clamp(12px, 1.4vw, 18px);
+  border: 1px solid var(--border);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 0 80px -20px rgba(255, 23, 56, 0.25);
+  cursor: pointer;
+}
+
+.video-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-button {
+  width: clamp(56px, 6vw, 80px);
+  height: clamp(56px, 6vw, 80px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.18);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.video-box:hover .play-button {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 14px rgba(255, 255, 255, 0.14);
+}
+
+.play-button::after {
+  content: "";
+  margin-left: 12%;
+  border-left: 0.32em solid #111;
+  border-top: 0.2em solid transparent;
+  border-bottom: 0.2em solid transparent;
+  font-size: clamp(56px, 6vw, 80px);
+}
+
+/* =========================
+   EVENT DETAILS
+========================= */
+
+.event-details {
+  padding: clamp(20px, 2.4vw, 32px);
+  border: 1px solid var(--border);
+  border-radius: clamp(12px, 1.4vw, 18px);
+  background: var(--card);
+  backdrop-filter: blur(6px);
+}
+
+.detail-list {
+  list-style: none;
+  display: grid;
+  gap: clamp(18px, 2vw, 24px);
+  margin-bottom: clamp(22px, 2.4vw, 30px);
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.detail-icon {
+  width: clamp(34px, 3.2vw, 42px);
+  height: clamp(34px, 3.2vw, 42px);
+  flex-shrink: 0;
+}
+
+.detail-text {
+  min-width: 0;
+  line-height: 1.4;
+}
+
+.detail-text strong {
+  display: block;
+  color: var(--yellow);
+  font-size: clamp(12px, 1.05vw, 14px);
+  font-weight: 500;
+}
+
+.detail-text span {
+  display: block;
+  color: #ffffff;
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 500;
+}
+
+/* Hero pricing CTA – dark pill; on hover it turns red and the
+   white circle slides from the left edge to the right edge */
+.cta {
+  --cta-ease: cubic-bezier(.22, 1, .36, 1);
+  --cta-circle: 46px;
+  --cta-inset: 4px;
+  --cta-gap: 14px;
+
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(var(--cta-circle) + var(--cta-inset) * 2);
+  /* room for the circle on the left; swapped to the right on hover */
+  padding-left: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
+  padding-right: var(--cta-gap);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #25282d 0%, #181b20 55%, #202329 100%);
+  color: #ffffff;
+  font-size: clamp(13px, 1.15vw, 15px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .08),
+    inset 0 -1px 0 rgba(0, 0, 0, .45),
+    0 8px 24px rgba(0, 0, 0, .25);
+  transition:
+    background 650ms var(--cta-ease),
+    box-shadow 650ms var(--cta-ease),
+    transform 650ms var(--cta-ease),
+    padding 700ms var(--cta-ease);
+}
+
+/* red layer fades in (gradients can't be transitioned directly) */
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: linear-gradient(115deg, #e9151d 0%, var(--red) 48%, #f51b24 100%);
+  opacity: 0;
+  transition: opacity 650ms var(--cta-ease);
+}
+
+.cta .arrow {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: var(--cta-inset);
+  width: var(--cta-circle);
+  height: var(--cta-circle);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+  transition:
+    left 700ms var(--cta-ease),
+    box-shadow 700ms var(--cta-ease);
+}
+
+.cta .arrow svg {
+  width: 45%;
+  height: 45%;
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.cta .cta-label {
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+  transition: letter-spacing 650ms var(--cta-ease);
+}
+
+/* light sweep */
+.cta .cta-shine {
+  position: absolute;
+  z-index: 0;
+  top: -100%;
+  left: -45%;
+  width: 28%;
+  height: 300%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+  transform: rotate(18deg) translateX(-220%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* hover only on real pointers (no sticky hover on touch);
+   keyboard focus gets the same state */
+@media (hover: hover) {
+  .cta:hover::before {
+    opacity: 1;
+  }
+
+  .cta:hover {
+    transform: scale(1.018);
+    padding-left: var(--cta-gap);
+    padding-right: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .18),
+      0 12px 34px rgba(255, 32, 40, .28),
+      0 0 28px rgba(255, 32, 40, .13);
+  }
+
+  .cta:hover .arrow {
+    left: calc(100% - var(--cta-circle) - var(--cta-inset));
+    box-shadow: 0 5px 16px rgba(0, 0, 0, .2), 0 0 18px rgba(255, 255, 255, .16);
+  }
+
+  .cta:hover .arrow svg {
+    animation: ctaArrowPush 700ms var(--cta-ease);
+  }
+
+  .cta:hover .cta-label {
+    letter-spacing: 0.07em;
+  }
+
+  .cta:hover .cta-shine {
+    opacity: 1;
+    animation: ctaShine 900ms var(--cta-ease) forwards;
+  }
+}
+
+.cta:focus-visible::before {
+  opacity: 1;
+}
+
+.cta:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  padding-left: var(--cta-gap);
+  padding-right: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
+}
+
+.cta:focus-visible .arrow {
+  left: calc(100% - var(--cta-circle) - var(--cta-inset));
+}
+
+/* touch: quick red feedback while pressed */
+@media (hover: none) {
+  .cta:active::before {
+    opacity: 1;
+    transition-duration: 150ms;
+  }
+}
+
+@keyframes ctaArrowPush {
+  0%   { transform: translateX(-2px); }
+  55%  { transform: translateX(2px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes ctaShine {
+  0%   { transform: rotate(18deg) translateX(-220%); }
+  100% { transform: rotate(18deg) translateX(520%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta,
+  .cta::before,
+  .cta .arrow,
+  .cta .cta-label {
+    transition: none;
+  }
+
+  .cta .arrow svg,
+  .cta .cta-shine {
+    animation: none !important;
+  }
+
+  .cta:hover {
+    transform: none;
+  }
+}
+
+/* =========================
+   SUCCESS STORIES
+========================= */
+
+.success {
+  position: relative;
+  z-index: 2;
+  padding: clamp(32px, 4vw, 56px) 0 clamp(48px, 6vw, 80px);
+  background:
+    linear-gradient(180deg, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
+    url("ZRM New LP Assets/13.png") center / cover no-repeat;
+}
+
+.success-title {
+  text-align: center;
+  font-size: clamp(22px, 2.8vw, 36px);
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+/* =========================
+   TESTIMONIAL GRID
+========================= */
+
+/* carousel track – shows --per-view cards and scrolls continuously (JS) */
+.testimonial-grid {
+  position: relative;
+  --per-view: 4;
+  --gap: clamp(12px, 1.6vw, 20px);
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - var(--gap) * (var(--per-view) - 1)) / var(--per-view));
+  gap: var(--gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  /* room so the hover lift isn't clipped */
+  padding: 6px 0 2px;
+  /* soft fade on both edges */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+}
+
+.testimonial-grid::-webkit-scrollbar {
+  display: none;
+}
+
+/* carousel controls */
+.carousel-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: clamp(20px, 2.4vw, 28px);
+}
+
+.carousel-btn {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+  cursor: pointer;
+  transition: background .25s ease, border-color .25s ease;
+}
+
+.carousel-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.carousel-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+.carousel-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* every card: photo on the left, text on the right */
+.testimonial {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(10px, 1.2vw, 14px);
+  padding: clamp(12px, 1.4vw, 16px) clamp(12px, 1.4vw, 16px) 0;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(10, 10, 13, 0.55);
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.testimonial:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 255, 0, 0.35);
+}
+
+.t-photo {
+  width: clamp(64px, 6.6vw, 88px);
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+.t-info {
+  min-width: 0;
+  padding-bottom: clamp(12px, 1.4vw, 16px);
+  line-height: 1.35;
+}
+
+.t-name {
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 500;
+}
+
+.t-company {
+  font-size: clamp(10px, 0.85vw, 12px);
+  color: var(--text-soft);
+  margin-bottom: 6px;
+}
+
+.t-result {
+  font-size: clamp(14px, 1.3vw, 17px);
+  line-height: 1.3;
+}
+
+.t-result strong {
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+/* =========================
+   BOTTOM PILL
+========================= */
+
+.bottom-pill {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px 20px;
+  max-width: 860px;
+  margin: clamp(32px, 4vw, 48px) auto 0;
+  padding: 14px 28px;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.1), rgba(255,255,255,.04));
+  font-size: clamp(10px, 1vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-align: center;
+}
+
+.bottom-pill .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+  .testimonial-grid {
+    --per-view: 3;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+  }
+
+  .event-details {
+    max-width: 560px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .testimonial-grid {
+    --per-view: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .header .container {
+    height: 64px;
+  }
+
+  .hero-title br {
+    display: none;
+  }
+
+  .testimonial-grid {
+    --per-view: 2;
+    --gap: 10px;
+  }
+
+  .carousel-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* mobile: photo on top, text below – same for every card */
+  .testimonial {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 12px 12px 0;
+    border-radius: 12px;
+  }
+
+  .t-photo {
+    width: 64px;
+    align-self: flex-start;
+  }
+
+  .t-info {
+    padding-bottom: 10px;
+  }
+
+  .t-name {
+    font-size: 10.5px;
+  }
+
+  .t-company {
+    font-size: 9.5px;
+    margin-bottom: 4px;
+  }
+
+  .t-result {
+    font-size: 13px;
+  }
+
+  .bottom-pill {
+    flex-direction: column;
+    border-radius: 18px;
+    letter-spacing: 0.15em;
+  }
+
+  .bottom-pill .dot {
+    display: none;
+  }
+}
+
+/* =========================
+   SECTION 2 – 3 DAYS / 3 SKILLS
+========================= */
+
+.skills {
+  position: relative;
+  padding: clamp(32px, 4vw, 56px) 0 clamp(64px, 8vw, 112px);
+  background:
+    radial-gradient(ellipse 70% 45% at 50% 55%, rgba(140, 16, 40, 0.35), transparent 70%),
+    var(--bg);
+}
+
+.skills-head {
+  text-align: center;
+  margin-bottom: clamp(28px, 3.5vw, 44px);
+}
+
+.section-title {
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 600;
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  font-size: clamp(14px, 1.3vw, 17px);
+  color: var(--text-soft);
+}
+
+/* 3 skill boxes */
+.skill-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 20px);
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.skill-box {
+  padding: clamp(16px, 1.8vw, 22px) 16px;
+  background: #1c1c1f;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.skill-box h3 {
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.skill-box p {
+  font-size: clamp(13px, 1.1vw, 14px);
+  color: #a9a9b1;
+  line-height: 1.5;
+}
+
+/* red buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--red);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 14px 28px;
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 600;
+  box-shadow: 0 12px 28px -12px rgba(255, 23, 56, 0.8);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 32px -12px rgba(255, 23, 56, 0.9);
+}
+
+.join-wrap {
+  text-align: center;
+  margin-bottom: clamp(48px, 6vw, 72px);
+}
+
+.join-wrap .btn {
+  min-width: 200px;
+}
+
+/* day cards */
+.day-list {
+  display: grid;
+  gap: clamp(20px, 2.4vw, 28px);
+}
+
+.day-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: clamp(24px, 4vw, 56px);
+  align-items: center;
+  padding: clamp(20px, 3vw, 40px);
+  background: #1c1c1f;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+}
+
+.day-title {
+  font-size: clamp(20px, 2vw, 26px);
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 8px;
+}
+
+.day-subtitle {
+  font-size: clamp(13px, 1.1vw, 15px);
+  color: #8e8e96;
+  margin-bottom: clamp(16px, 1.8vw, 22px);
+}
+
+.check-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  margin-bottom: clamp(22px, 2.4vw, 30px);
+}
+
+.check-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(14px, 1.2vw, 16px);
+}
+
+.check-list li::before {
+  content: "✓";
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: #22c55e;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.day-image {
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 881 / 520;
+  background: #111;
+}
+
+.day-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .skill-row {
+    grid-template-columns: 1fr;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .day-card {
+    grid-template-columns: 1fr;
+  }
+
+  /* image on top when stacked */
+  .day-image {
+    order: -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .day-card .btn,
+  .join-wrap .btn {
+    width: 100%;
+  }
+}
+
+/* =========================
+   SECTION 3 – TOOLS / PARTICIPANTS / WHY ATTEND
+========================= */
+
+.tools {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(32px, 4vw, 56px) 0 0;
+  background:
+    radial-gradient(circle at 0% 12%, rgba(128, 10, 25, 0.4), transparent 30%),
+    radial-gradient(circle at 100% 55%, rgba(110, 8, 25, 0.25), transparent 30%),
+    var(--bg);
+}
+
+.tools .section-title {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+/* tools grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 18px);
+}
+
+.tool-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: clamp(18px, 2vw, 26px) 10px;
+  background: #1c1c1f;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  text-align: center;
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(232, 255, 0, 0.35);
+}
+
+.tool-logo {
+  width: clamp(44px, 4.4vw, 60px);
+  height: clamp(44px, 4.4vw, 60px);
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.tool-name {
+  font-size: clamp(12px, 1.05vw, 14px);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.tools .join-wrap {
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+/* participants video */
+.participants-video {
+  position: relative;
+  aspect-ratio: 1680 / 676;
+  border-radius: clamp(12px, 1.4vw, 18px);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #111;
+  cursor: pointer;
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+}
+
+.participants-video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.participants-video:hover .play-button {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 14px rgba(255, 255, 255, 0.14);
+}
+
+.reaction-pill {
+  margin-top: clamp(20px, 2.4vw, 28px);
+}
+
+.tools .reaction-pill + .join-wrap {
+  margin-top: clamp(20px, 2.4vw, 28px);
+}
+
+/* why attend card */
+.why-card {
+  text-align: center;
+  padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 56px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 60, 80, 0.18);
+  background:
+    linear-gradient(90deg, rgba(102, 8, 21, 0.75), rgba(40, 4, 12, 0.55), rgba(105, 8, 22, 0.72)),
+    #1e0d12;
+}
+
+.why-card .section-title {
+  margin-bottom: 12px;
+}
+
+.why-lead {
+  font-size: clamp(15px, 1.5vw, 19px);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.why-text {
+  max-width: 640px;
+  margin: 0 auto clamp(22px, 2.4vw, 28px);
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.65;
+  color: #dddddd;
+}
+
+.btn-yellow {
+  background: #f2d100;
+  color: #111111;
+  border-radius: 40px;
+  box-shadow: 0 12px 28px -12px rgba(242, 209, 0, 0.7);
+}
+
+.btn-yellow:hover {
+  box-shadow: 0 18px 32px -12px rgba(242, 209, 0, 0.85);
+}
+
+/* bottom ticker – full width, seamless loop */
+.ticker-wrap {
+  margin-top: clamp(32px, 4vw, 48px);
+  padding: 14px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.ticker {
+  display: flex;
+  width: max-content;
+  animation: tickerMove 40s linear infinite;
+}
+
+.ticker-wrap:hover .ticker {
+  animation-play-state: paused;
+}
+
+.ticker-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.ticker-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  font-size: clamp(12px, 1.1vw, 14px);
+  padding: 0 clamp(16px, 2vw, 28px);
+}
+
+.ticker-item::after {
+  content: "✦";
+  color: #ffffff;
+  margin-left: clamp(16px, 2vw, 28px);
+  margin-right: calc(clamp(16px, 2vw, 28px) * -1);
+  font-size: 0.9em;
+}
+
+.ticker-item strong {
+  color: var(--yellow);
+  font-weight: 600;
+}
+
+@keyframes tickerMove {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker { animation: none; }
+}
+
+@media (max-width: 1024px) {
+  .tools-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .tools-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .participants-video {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+@media (max-width: 380px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* =========================
+   SECTION 4 – IMPACT / FAQ / FINAL CTA / FOOTER
+========================= */
+
+.impact {
+  padding: clamp(40px, 5vw, 72px) 0 clamp(56px, 7vw, 96px);
+  background: var(--bg);
+}
+
+/* video testimonial cards */
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 20px);
+}
+
+.impact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px 10px;
+  background: #850c0d;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.impact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -18px rgba(255, 23, 56, 0.6);
+}
+
+.impact-top {
+  text-align: center;
+  font-size: clamp(11px, 1vw, 13px);
+  line-height: 1.35;
+  font-weight: 600;
+}
+
+.impact-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 10px;
+  overflow: hidden;
+  /* placeholder shown until the real image is added */
+  background: linear-gradient(160deg, #3a3a40, #1b1b1f);
+}
+
+.impact-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.impact-media .play-button {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.18);
+}
+
+.impact-media .play-button::after {
+  font-size: 48px;
+}
+
+.impact-card:hover .play-button {
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.impact-logo {
+  width: 64px;
+}
+
+.impact .join-wrap {
+  margin-top: clamp(28px, 3.5vw, 40px);
+}
+
+/* FAQ */
+.faq {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq .section-title {
+  text-align: center;
+  font-weight: 500;
+  margin-bottom: clamp(24px, 3vw, 36px);
+}
+
+.red {
+  color: var(--red);
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.faq-item {
+  background: #2a2828;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 28px;
+  transition: background .2s ease, border-color .2s ease;
+}
+
+.faq-item[open] {
+  background: #302d2d;
+  border-color: rgba(255, 23, 56, 0.35);
+  border-radius: 20px;
+}
+
+.faq-item summary {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 24px;
+  font-size: clamp(14px, 1.25vw, 16px);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  flex-shrink: 0;
+  border-right: 2px solid var(--red);
+  border-bottom: 2px solid var(--red);
+  transform: rotate(45deg) translateY(-3px);
+  transition: transform .25s ease;
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(-135deg) translateY(-3px);
+}
+
+.faq-answer {
+  padding: 0 24px 18px;
+  font-size: clamp(13px, 1.15vw, 15px);
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+.faq-answer a {
+  color: var(--yellow);
+}
+
+/* final CTA */
+.final-cta {
+  margin-top: clamp(48px, 6vw, 72px);
+  text-align: center;
+  padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 56px);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 60, 80, 0.18);
+  background:
+    radial-gradient(ellipse at center, rgba(20, 5, 10, 0.6), transparent 70%),
+    url("ZRM New LP Assets/13.png") center / cover no-repeat,
+    #1e0d12;
+}
+
+.final-cta .section-title {
+  margin-bottom: 10px;
+}
+
+.final-cta .why-lead {
+  font-size: clamp(14px, 1.3vw, 17px);
+  margin-bottom: clamp(20px, 2.4vw, 26px);
+}
+
+.cta-note {
+  margin-top: 16px;
+  font-size: clamp(12px, 1.05vw, 14px);
+  color: #d0d0d0;
+}
+
+/* footer */
+.footer-main {
+  background: #24272a;
+  padding: clamp(28px, 3.5vw, 40px) 0;
+}
+
+.footer-main .container {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: clamp(20px, 3vw, 48px);
+}
+
+.footer-logo {
+  width: clamp(100px, 9vw, 124px);
+}
+
+.footer-description {
+  max-width: 560px;
+  font-size: clamp(12px, 1.05vw, 14px);
+  line-height: 1.7;
+  color: #cfcfd4;
+}
+
+.footer-contact {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  font-size: clamp(13px, 1.1vw, 14px);
+  color: #e2e2e6;
+}
+
+.footer-contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: color .2s ease;
+}
+
+.footer-contact a:hover {
+  color: var(--yellow);
+}
+
+.footer-contact svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  fill: var(--red);
+}
+
+.footer-bottom {
+  background: #df1015;
+  padding: 12px var(--gutter);
+  text-align: center;
+  font-size: clamp(12px, 1vw, 13px);
+}
+
+@media (max-width: 900px) {
+  .impact-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .footer-main .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+  }
+
+  .footer-contact {
+    justify-items: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .faq-item summary {
+    padding: 14px 18px;
+  }
+
+  .faq-answer {
+    padding: 0 18px 16px;
+  }
+
+  .final-cta .btn {
+    width: 100%;
+  }
+}
+
+/* =========================
+   FOLDABLE DEVICES
+========================= */
+
+/* Buttons never break the arrow onto its own line */
+.btn,
+.cta .cta-label {
+  white-space: nowrap;
+}
+
+/* Unfolded inner screen (Galaxy Z Fold, Pixel Fold, Surface Duo spanned …)
+   Wide enough to keep side-by-side layouts instead of the stacked phone view. */
+@media (min-width: 681px) and (max-width: 900px) {
+  .event-details {
+    max-width: none;
+  }
+
+  /* details in two columns under the video, CTA across the full width */
+  .detail-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .skill-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: none;
+  }
+
+  .skill-box {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .day-card {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .day-image {
+    order: 0;
+  }
+
+  .impact-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: none;
+  }
+
+  .impact-card {
+    padding: 10px 8px 8px;
+  }
+}
+
+/* Folded cover screen (≈ 280px – 360px wide) */
+@media (max-width: 360px) {
+  :root {
+    --gutter: 12px;
+  }
+
+  .header .container {
+    height: 56px;
+  }
+
+  .logo {
+    width: 84px;
+  }
+
+  .top-label {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    padding: 6px 12px;
+  }
+
+  .hero-title {
+    font-size: 23px;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+  }
+
+  .section-title {
+    font-size: 20px;
+  }
+
+  .section-subtitle {
+    font-size: 13px;
+  }
+
+  .event-details {
+    padding: 16px 14px;
+  }
+
+  .detail-item {
+    gap: 10px;
+  }
+
+  .detail-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .detail-text span {
+    font-size: 14px;
+  }
+
+  .cta {
+    --cta-circle: 36px;
+    --cta-gap: 10px;
+    font-size: 11.5px;
+    letter-spacing: 0;
+  }
+
+  .btn {
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+
+  .testimonial-grid {
+    --gap: 8px;
+  }
+
+  .carousel-controls {
+    gap: 10px;
+  }
+
+  .testimonial {
+    gap: 6px;
+    padding: 10px 8px 0;
+  }
+
+  .t-photo {
+    width: 56px;
+  }
+
+  .bottom-pill {
+    padding: 12px 14px;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+  }
+
+  .skill-box {
+    padding: 14px 12px;
+  }
+
+  .day-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .day-title {
+    font-size: 18px;
+  }
+
+  .check-list li {
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .check-list li::before {
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+  }
+
+  .tools-grid {
+    gap: 8px;
+  }
+
+  .tool-card {
+    padding: 14px 6px;
+    gap: 10px;
+  }
+
+  .tool-name {
+    font-size: 11px;
+  }
+
+  .impact-grid {
+    gap: 8px;
+  }
+
+  .impact-card {
+    padding: 8px 6px 6px;
+    gap: 6px;
+  }
+
+  .impact-top {
+    font-size: 9.5px;
+  }
+
+  .impact-media .play-button {
+    width: 38px;
+    height: 38px;
+  }
+
+  .impact-media .play-button::after {
+    font-size: 38px;
+  }
+
+  .impact-logo {
+    width: 48px;
+  }
+
+  .faq-item summary {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .faq-answer {
+    padding: 0 14px 14px;
+    font-size: 13px;
+  }
+
+  .why-card,
+  .final-cta {
+    padding: 28px 14px;
+  }
+
+  .footer-contact a {
+    word-break: break-all;
+  }
+}
+
+/* Very narrow cover screens (original Galaxy Fold = 280px) */
+@media (max-width: 300px) {
+  /* no room for the sliding circle – colour change + shine only */
+  .cta .arrow {
+    display: none;
+  }
+
+  .cta,
+  .cta:hover,
+  .cta:focus-visible {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .hero-title {
+    font-size: 21px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <img class="logo" src="ZRM New LP Assets/Layer 1 2.png" alt="Tamil Business Tribe">
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <main class="hero">
+    <div class="container">
+
+      <div class="hero-head">
+        <div class="top-label">3-Day Live Zero Ruppee Marketing Challenge</div>
+
+        <h1 class="hero-title">
+          Kaasu <span class="yellow">Selavu Pannama Marketing</span><br>
+          Panna Mudiyuma?
+        </h1>
+
+        <p class="hero-subtitle">
+          Learn how to attract attention, generate leads and convert them into customers using the Zero Rupee Marketing framework.
+        </p>
+      </div>
+
+      <div class="hero-content">
+
+        <!-- VIDEO -->
+        <div class="video-box" role="button" aria-label="Play video" tabindex="0">
+          <img src="ZRM New LP Assets/Rectangle 4.png" alt="Zero Rupee Marketing Challenge">
+          <div class="video-overlay">
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+        <!-- DETAILS -->
+        <div class="event-details">
+
+          <ul class="detail-list">
+            <li class="detail-item">
+              <img class="detail-icon" src="ZRM New LP Assets/calendar 1.png" alt="">
+              <div class="detail-text">
+                <strong>Webinar Live On</strong>
+                <span>February 27 2026</span>
+              </div>
+            </li>
+
+            <li class="detail-item">
+              <img class="detail-icon" src="ZRM New LP Assets/on-time 1.png" alt="">
+              <div class="detail-text">
+                <strong>Timing Starts at</strong>
+                <span>07:00 AM to 08:30 AM (Only Live)</span>
+              </div>
+            </li>
+
+            <li class="detail-item">
+              <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 1.png" alt="">
+              <div class="detail-text">
+                <strong>Replay Time Starts at</strong>
+                <span>07:00 PM to 08:30 PM</span>
+              </div>
+            </li>
+
+            <li class="detail-item">
+              <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 2.png" alt="">
+              <div class="detail-text">
+                <strong>Will be Held in</strong>
+                <span>Zoom Live Session (No Recording)</span>
+              </div>
+            </li>
+          </ul>
+
+          <a class="cta" href="#">
+            <span class="cta-label">₹499 | 3 DAYS | LIVE ON ZOOM</span>
+            <span class="arrow">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+            </span>
+            <span class="cta-shine"></span>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- SUCCESS STORIES -->
+  <section class="success">
+    <div class="container">
+
+      <h2 class="success-title">
+        Success Stories of <span class="yellow">TBT’s Mentorship Program.</span>
+      </h2>
+
+      <div class="testimonial-grid" aria-roledescription="carousel" aria-label="Success stories" tabindex="0">
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/maxlin.png" alt="Maxlin Deena" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Maxlin Deena, Founder</p>
+            <p class="t-company">Alna Apparels, Villupuram</p>
+            <p class="t-result"><strong>₹25 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/rajesh.png" alt="Dr. Rajesh Kanna" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Dr. Rajesh Kanna, Founder</p>
+            <p class="t-company">Friends Physio, Coimbatore</p>
+            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/nisha.png" alt="Nisha" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Nisha, Founder</p>
+            <p class="t-company">The Needles &amp; Thread, Madurai</p>
+            <p class="t-result"><strong>₹30 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/sharanya.png" alt="Sharanya" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Sharanya, Founder</p>
+            <p class="t-company">Vishara Skincare, Chennai</p>
+            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>18 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/anusha.png" alt="Anusha" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Anusha, Founder</p>
+            <p class="t-company">Glorious Minds, Chennai</p>
+            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/rajkamal.png" alt="Rajkamal" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Rajkamal, Founder</p>
+            <p class="t-company">Skillx Nation, Madurai</p>
+            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/hari.png" alt="Hari Karthik" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Hari Karthik, Founder</p>
+            <p class="t-company">Madrassi Weaves, Salem</p>
+            <p class="t-result"><strong>₹50 Lakhs</strong> in<br>just <strong>18 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/muthu.png" alt="Muthu Kishore" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Muthu Kishore, Founder</p>
+            <p class="t-company">Passive Way Store, Coimbatore</p>
+            <p class="t-result"><strong>4X Revenue</strong> in<br>just <strong>8 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/oviya.png" alt="Oviya" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Oviya, Founder</p>
+            <p class="t-company">Oviya’s Meraki, Chennai</p>
+            <p class="t-result"><strong>₹20 Lakhs</strong> in<br>just <strong>9 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/sharon.png" alt="Sharon" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Sharon, Founder</p>
+            <p class="t-company">Dan Ella, Chennai</p>
+            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/navaneeth.png" alt="Navaneeth Krishnan" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Navaneeth Krishnan, Founder</p>
+            <p class="t-company">Flying Hornbill, Chennai</p>
+            <p class="t-result"><strong>₹12 Lakhs</strong> in<br>just <strong>8 months!</strong></p>
+          </div>
+        </div>
+        <div class="testimonial">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/annamalai.png" alt="Annamalai" loading="lazy">
+          <div class="t-info">
+            <p class="t-name">Annamalai, Founder</p>
+            <p class="t-company">Dream Zone, Chennai</p>
+            <p class="t-result"><strong>₹15 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous stories">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+        </button>
+        <button class="carousel-btn" type="button" data-carousel-next aria-label="Next stories">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+
+      <div class="bottom-pill">
+        <span>50,000+ ENTREPRENEURS</span>
+        <span class="dot"></span>
+        <span>LIVE TRAINING</span>
+        <span class="dot"></span>
+        <span>PRACTICAL IMPLEMENTATION</span>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+
+<!-- SECTION 2 – 3 DAYS / 3 SKILLS -->
+<section class="skills">
+  <div class="container">
+
+    <div class="skills-head">
+      <h2 class="section-title">3 Days. 3 Skills. <span class="yellow">One Growth System.</span></h2>
+      <p class="section-subtitle">Learn the skills. Implement them. Build your marketing system.</p>
+    </div>
+
+    <div class="skill-row">
+      <div class="skill-box">
+        <h3><span class="yellow">Day 1</span> – Content Creation</h3>
+        <p>Create content that gets attention.</p>
+      </div>
+
+      <div class="skill-box">
+        <h3><span class="yellow">Day 2</span> – Generate Revenue</h3>
+        <p>Turn attention into leads and customers.</p>
+      </div>
+
+      <div class="skill-box">
+        <h3><span class="yellow">Day 3</span> – Scale Your Business</h3>
+        <p>Build systems that help you grow.</p>
+      </div>
+    </div>
+
+    <div class="join-wrap">
+      <a class="btn" href="#">Join Now →</a>
+    </div>
+
+    <div class="day-list">
+
+      <!-- DAY 1 -->
+      <article class="day-card">
+        <div class="day-content">
+          <h3 class="day-title">
+            <span class="yellow">Day 1</span> – Social Media la Video Panna Yosichikute Irukingala..?
+          </h3>
+          <p class="day-subtitle">Learn from Day 1 of ZRM</p>
+
+          <ul class="check-list">
+            <li>AI Video Making</li>
+            <li>100 Days Content Ideas using AI</li>
+            <li>AI Speed Video Editing</li>
+            <li>100 Social Media Posts using AI</li>
+            <li>Super Human Activation</li>
+          </ul>
+
+          <a class="btn" href="#">Start Creating Content →</a>
+        </div>
+
+        <div class="day-image">
+          <img src="ZRM New LP Assets/Mask group.png" alt="Day 1 – Content creation" loading="lazy">
+        </div>
+      </article>
+
+      <!-- DAY 2 -->
+      <article class="day-card">
+        <div class="day-content">
+          <h3 class="day-title">
+            <span class="yellow">Day 2</span> – Build Your Money Making Machine While Sleeping
+          </h3>
+          <p class="day-subtitle">Learn from Day 2 of ZRM</p>
+
+          <ul class="check-list">
+            <li>Lead &amp; Sales Funnels</li>
+            <li>Ecommerce Funnels (Product)</li>
+            <li>Live Commerce Funnels (Product)</li>
+            <li>Appointment Funnel (Service)</li>
+            <li>1-On-1 Funnel (Coaching)</li>
+            <li>1-to-Many Funnel (Coaching)</li>
+          </ul>
+
+          <a class="btn" href="#">Start Generating Money →</a>
+        </div>
+
+        <div class="day-image">
+          <img src="ZRM New LP Assets/Mask group-1.png" alt="Day 2 – Sales funnels" loading="lazy">
+        </div>
+      </article>
+
+      <!-- DAY 3 -->
+      <article class="day-card">
+        <div class="day-content">
+          <h3 class="day-title">
+            <span class="yellow">Day 3</span> – Scale Your Business
+          </h3>
+          <p class="day-subtitle">Learn from Day 3 of ZRM</p>
+
+          <ul class="check-list">
+            <li>Mindset</li>
+            <li>Lateral Thinking</li>
+            <li>Guerrilla Marketing</li>
+            <li>Unit Economics</li>
+            <li>Pricing Strategy</li>
+          </ul>
+
+          <a class="btn" href="#">Ready to Scale →</a>
+        </div>
+
+        <div class="day-image">
+          <img src="ZRM New LP Assets/Rectangle 67.png" alt="Day 3 – Empty stall to 100's of cameras" loading="lazy">
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SECTION 3 – TOOLS / PARTICIPANTS / WHY ATTEND -->
+<section class="tools" id="tools">
+  <div class="container">
+
+    <!-- TOOLS -->
+    <h2 class="section-title">Tools You’ll Get Introduced to in <span class="yellow">ZRM Workshop</span></h2>
+
+    <div class="tools-grid">
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 84.png" alt="" loading="lazy">
+        <div class="tool-name">Answer the Public</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 76.png" alt="" loading="lazy">
+        <div class="tool-name">Canva</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 83.png" alt="" loading="lazy">
+        <div class="tool-name">Unit Economics</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 77.png" alt="" loading="lazy">
+        <div class="tool-name">ChatGPT</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 78.png" alt="" loading="lazy">
+        <div class="tool-name">VN Editor</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 80.png" alt="" loading="lazy">
+        <div class="tool-name">Notebook LM</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 74.png" alt="" loading="lazy">
+        <div class="tool-name">Gemini</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 73.png" alt="" loading="lazy">
+        <div class="tool-name">Storybeat Edit</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 79.png" alt="" loading="lazy">
+        <div class="tool-name">InShot</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 81.png" alt="" loading="lazy">
+        <div class="tool-name">HeyGen</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 82.png" alt="" loading="lazy">
+        <div class="tool-name">Meta Edits</div>
+      </div>
+      <div class="tool-card">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 75.png" alt="" loading="lazy">
+        <div class="tool-name">Capcut</div>
+      </div>
+    </div>
+
+    <div class="join-wrap">
+      <a class="btn" href="#">Join Now →</a>
+    </div>
+
+    <!-- PARTICIPANTS -->
+    <h2 class="section-title">Listen to What <span class="yellow">Our Participants</span> are Saying</h2>
+
+    <div class="participants-video" role="button" aria-label="Play participants video" tabindex="0">
+      <img src="ZRM New LP Assets/Rectangle 85.png" alt="Our participants on WhatsApp" loading="lazy">
+      <div class="video-overlay">
+        <div class="play-button"></div>
+      </div>
+    </div>
+
+    <div class="bottom-pill reaction-pill">
+      <span>REAL REACTIONS</span>
+      <span class="dot"></span>
+      <span>REAL CONVERSATIONS</span>
+      <span class="dot"></span>
+      <span>REAL-TIME IMPLEMENTATION</span>
+    </div>
+
+    <div class="join-wrap">
+      <a class="btn" href="#">Join Now →</a>
+    </div>
+
+    <!-- WHY ATTEND -->
+    <div class="why-card">
+      <h2 class="section-title">Why Attend <span class="yellow">ZRM Live?</span></h2>
+      <p class="why-lead">You won’t just learn marketing. You’ll create it for your business – live.</p>
+      <p class="why-text">
+        During the workshop, you’ll create content, build your marketing system and implement
+        strategies designed to generate leads and revenue.
+      </p>
+      <a class="btn btn-yellow" href="#">Start Your ZRM Journey →</a>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM TICKER (content repeated twice for a seamless loop) -->
+  <div class="ticker-wrap">
+    <div class="ticker">
+      <div class="ticker-group">
+        <span class="ticker-item">Madrasi Weaves, Salem – <strong>₹1 Crore</strong></span>
+        <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai – <strong>₹50 Lakhs</strong></span>
+        <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram – <strong>₹30 Lakhs</strong></span>
+        <span class="ticker-item">CoachX – <strong>50,000+ Entrepreneurs</strong></span>
+      </div>
+      <div class="ticker-group" aria-hidden="true">
+        <span class="ticker-item">Madrasi Weaves, Salem – <strong>₹1 Crore</strong></span>
+        <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai – <strong>₹50 Lakhs</strong></span>
+        <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram – <strong>₹30 Lakhs</strong></span>
+        <span class="ticker-item">CoachX – <strong>50,000+ Entrepreneurs</strong></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 4 – IMPACT / FAQ / FINAL CTA -->
+<section class="impact">
+  <div class="container">
+
+    <!-- VIDEO TESTIMONIALS
+         Add the 4 thumbnails to the assets folder with these names
+         (until then a dark placeholder is shown). -->
+    <div class="impact-grid">
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 1">
+        <div class="impact-top">Impact of 3 days<br>#Zerorupeemarketing</div>
+        <div class="impact-media">
+          <img src="ZRM New LP Assets/impact-1.png" alt="" onerror="this.remove()">
+          <div class="play-button"></div>
+        </div>
+        <img class="impact-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="TBT">
+      </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 2">
+        <div class="impact-top">Impact of 3 days<br>#Zerorupeemarketing</div>
+        <div class="impact-media">
+          <img src="ZRM New LP Assets/impact-2.png" alt="" onerror="this.remove()">
+          <div class="play-button"></div>
+        </div>
+        <img class="impact-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="TBT">
+      </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 3">
+        <div class="impact-top">Impact of 3 days<br>#Zerorupeemarketing</div>
+        <div class="impact-media">
+          <img src="ZRM New LP Assets/impact-3.png" alt="" onerror="this.remove()">
+          <div class="play-button"></div>
+        </div>
+        <img class="impact-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="TBT">
+      </div>
+
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 4">
+        <div class="impact-top">Impact of 3 days<br>#Zerorupeemarketing</div>
+        <div class="impact-media">
+          <img src="ZRM New LP Assets/impact-4.png" alt="" onerror="this.remove()">
+          <div class="play-button"></div>
+        </div>
+        <img class="impact-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="TBT">
+      </div>
+    </div>
+
+    <div class="join-wrap">
+      <a class="btn" href="#">Join Now →</a>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+      <h2 class="section-title">Frequently Asked <span class="red">Questions</span> (FAQs)</h2>
+
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>01. What are the timings for the workshop?</summary>
+          <p class="faq-answer">The live session runs from 07:00 AM to 08:30 AM. A replay is available from 07:00 PM to 08:30 PM on the same day.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>02. How long is the session?</summary>
+          <p class="faq-answer">Each session is 1.5 hours, held live on Zoom for 3 days.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>03. Will I get a recording of the session?</summary>
+          <p class="faq-answer">No. There are no recordings – only one replay (07:00 PM to 08:30 PM) on the same day.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>04. Is this suitable for small business owners?</summary>
+          <p class="faq-answer">Yes. The Zero Rupee Marketing framework is built for entrepreneurs and small business owners who want to grow without a big marketing budget.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>05. I’m running a small business. Is it a right course for me?</summary>
+          <p class="faq-answer">Yes. You’ll create content, build your marketing system and implement strategies for your own business – live, during the workshop.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>06. Is there any refund available?</summary>
+          <p class="faq-answer">For refund-related queries, please contact our helpdesk at <a href="mailto:helpdesk@tamilbusinesstribe.com">helpdesk@tamilbusinesstribe.com</a>.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>07. I made the payment but didn’t get any email/whatsapp</summary>
+          <p class="faq-answer">Please reach us at <a href="tel:+918103434946">+91 81034 34946</a> or <a href="mailto:helpdesk@tamilbusinesstribe.com">helpdesk@tamilbusinesstribe.com</a> with your payment details and we’ll help you right away.</p>
+        </details>
+      </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="final-cta">
+      <h2 class="section-title">3 Days. <span class="yellow">One Marketing System.</span></h2>
+      <p class="why-lead">Only Live Practical Implementation. No Recordings. – with the ZRM community</p>
+      <a class="btn btn-yellow" href="#">Start Your ZRM Journey →</a>
+      <p class="cta-note">No Recordings. Only One Replay. Just Live Implementation.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-main">
+    <div class="container">
+      <img class="footer-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="Tamil Business Tribe">
+
+      <p class="footer-description">
+        We help entrepreneurs build strong brands, set up proven systems, and scale digitally with clarity,
+        confidence &amp; consistency. Learn, execute, and grow your business step-by-step with real support.
+      </p>
+
+      <ul class="footer-contact">
+        <li>
+          <a href="tel:+918015139542">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z"/></svg>
+            +91 80151 39542
+          </a>
+        </li>
+        <li>
+          <a href="mailto:helpdesk@tamilbusinesstribe.com">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            helpdesk@tamilbusinesstribe.com
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">Copyright © 2026 by Tamil Business Tribe</div>
+</footer>
+
+
+<script>
+document.querySelectorAll(".video-box, .participants-video, .impact-card").forEach(function (box) {
+  box.addEventListener("click", function () {
+    console.log("Video clicked");
+  });
+});
+
+/* Success stories carousel – continuous auto scroll */
+(function () {
+  var track = document.querySelector(".testimonial-grid");
+  if (!track) return;
+
+  var section = track.parentElement;
+  var prevBtn = section.querySelector("[data-carousel-prev]");
+  var nextBtn = section.querySelector("[data-carousel-next]");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var SPEED = 40;            // pixels per second
+  var NUDGE_TIME = 450;      // ms for the arrow-button slide
+
+  // duplicate the cards once so the loop has no visible end
+  var originals = Array.prototype.slice.call(track.children);
+  originals.forEach(function (card) {
+    var copy = card.cloneNode(true);
+    copy.setAttribute("aria-hidden", "true");
+    copy.querySelectorAll("img").forEach(function (img) { img.alt = ""; });
+    track.appendChild(copy);
+  });
+
+  var pos = 0;
+  var lastTime = null;
+  var hoverPause = false;
+  var touchPause = false;
+  var focusPause = false;
+  var nudging = false;
+  var visible = true;
+  var touchTimer;
+
+  // width of one full set of cards
+  function loopWidth() {
+    return track.children[originals.length].offsetLeft - track.children[0].offsetLeft;
+  }
+
+  function step() {
+    return track.children[1].offsetLeft - track.children[0].offsetLeft;
+  }
+
+  function wrap(x) {
+    var w = loopWidth();
+    if (w <= 0) return x;
+    x = x % w;
+    return x < 0 ? x + w : x;
+  }
+
+  function running() {
+    return !reduceMotion && !hoverPause && !touchPause && !focusPause &&
+           !nudging && visible && !document.hidden;
+  }
+
+  function tick(time) {
+    if (lastTime === null) lastTime = time;
+    var dt = Math.min((time - lastTime) / 1000, 0.1);
+    lastTime = time;
+
+    if (running()) {
+      pos = wrap(pos + SPEED * dt);
+      track.scrollLeft = pos;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // slide one card left/right with easing, then continue auto scroll
+  function nudge(dir) {
+    if (nudging) return;
+    nudging = true;
+
+    var w = loopWidth();
+    var from = track.scrollLeft;
+    if (dir < 0 && from - step() < 0) from += w;   // wrap backwards
+    track.scrollLeft = from;
+
+    var to = from + dir * step();
+    var start = null;
+
+    function frame(time) {
+      if (start === null) start = time;
+      var p = Math.min((time - start) / NUDGE_TIME, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      track.scrollLeft = from + (to - from) * eased;
+
+      if (p < 1) {
+        requestAnimationFrame(frame);
+      } else {
+        pos = wrap(to);
+        track.scrollLeft = pos;
+        nudging = false;
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  prevBtn.addEventListener("click", function () { nudge(-1); });
+  nextBtn.addEventListener("click", function () { nudge(1); });
+
+  track.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") { e.preventDefault(); nudge(1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); nudge(-1); }
+  });
+
+  // manual swipe: follow the user and keep the loop seamless
+  track.addEventListener("scroll", function () {
+    if (running() || nudging) return;
+    var w = loopWidth();
+    if (track.scrollLeft >= w) track.scrollLeft -= w;
+    pos = track.scrollLeft;
+  }, { passive: true });
+
+  // pause while the visitor is interacting
+  track.addEventListener("mouseenter", function () { hoverPause = true; });
+  track.addEventListener("mouseleave", function () { hoverPause = false; pos = track.scrollLeft; });
+  track.addEventListener("focusin", function () { focusPause = true; });
+  track.addEventListener("focusout", function () { focusPause = false; });
+  track.addEventListener("touchstart", function () {
+    clearTimeout(touchTimer);
+    touchPause = true;
+  }, { passive: true });
+  track.addEventListener("touchend", function () {
+    touchTimer = setTimeout(function () {
+      pos = track.scrollLeft;
+      touchPause = false;
+    }, 2000);
+  }, { passive: true });
+
+  // only move while the section is on screen
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+    }).observe(track);
+  }
+
+  // card widths change with screen size
+  window.addEventListener("resize", function () {
+    pos = wrap(track.scrollLeft);
+    track.scrollLeft = pos;
+  });
+
+  requestAnimationFrame(tick);
+})();
+</script>
+
+</body>
+</html>
