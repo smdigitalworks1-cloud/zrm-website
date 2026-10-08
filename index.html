@@ -9,6 +9,18 @@
 <link rel="preload" href="fonts/Nexa-Book.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="fonts/Nexa-Bold.ttf" as="font" type="font/ttf" crossorigin>
 
+<!-- Scroll / parallax layer: styles in motion.css, GSAP animations in motion.js -->
+<script>
+  // Hide hero intro elements until motion.js animates them in.
+  // Skipped for reduced motion; removed after 2.5s if scripts fail to load.
+  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.documentElement.classList.add("motion-ready");
+    setTimeout(function () {
+      if (!window.__zrmMotion) document.documentElement.classList.remove("motion-ready");
+    }, 2500);
+  }
+</script>
+
 <style>
 /* =========================
    NEXA FONT (files in /fonts)
@@ -130,16 +142,22 @@ a {
     linear-gradient(180deg, #160710 0%, var(--bg) 35%);
 }
 
-/* Soft diagonal band (from the Figma reference) */
-.page::before {
-  content: "";
+/* Soft diagonal band (from the Figma reference).
+   A real element (not ::before) so the parallax can move it:
+   .hero-atmos moves on scroll, the band inside follows the mouse. */
+.hero-atmos {
   position: absolute;
   inset: 0 0 auto 0;
   height: 900px;
+  pointer-events: none;
+}
+
+.hero-atmos-band {
+  position: absolute;
+  inset: 0;
   background: linear-gradient(100deg, rgba(120, 12, 40, 0.35) 0%, rgba(40, 6, 18, 0.15) 50%, rgba(30, 60, 10, 0.3) 100%);
   clip-path: polygon(0 40%, 100% 8%, 100% 28%, 0 75%);
   filter: blur(30px);
-  pointer-events: none;
 }
 
 /* =========================
@@ -1359,10 +1377,22 @@ a {
   padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 56px);
   border-radius: 18px;
   border: 1px solid rgba(255, 60, 80, 0.18);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: #1e0d12;
+}
+
+/* curtain background on its own layer so it can drift on scroll;
+   taller than the card so the movement never shows an empty edge */
+.final-cta-bg {
+  position: absolute;
+  inset: -12% 0;
+  z-index: -1;
   background:
     radial-gradient(ellipse at center, rgba(20, 5, 10, 0.6), transparent 70%),
-    url("ZRM New LP Assets/13.png") center / cover no-repeat,
-    #1e0d12;
+    url("ZRM New LP Assets/13.png") center / cover no-repeat;
+  pointer-events: none;
 }
 
 .final-cta .section-title {
@@ -1691,11 +1721,14 @@ a {
   }
 }
 </style>
+<link rel="stylesheet" href="motion.css">
 </head>
 
 <body>
 
 <div class="page">
+
+  <div class="hero-atmos" aria-hidden="true"><div class="hero-atmos-band"></div></div>
 
   <!-- HEADER -->
   <header class="header">
@@ -1941,7 +1974,7 @@ a {
     </div>
 
     <div class="join-wrap">
-      <a class="btn" href="payment.html">Join Now →</a>
+      <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
     <div class="day-list">
@@ -1962,7 +1995,7 @@ a {
             <li>Super Human Activation</li>
           </ul>
 
-          <a class="btn" href="payment.html">Start Creating Content →</a>
+          <a class="btn" href="payment.html">Start Creating Content <span class="btn-arrow" aria-hidden="true">→</span></a>
         </div>
 
         <div class="day-image">
@@ -1987,7 +2020,7 @@ a {
             <li>1-to-Many Funnel (Coaching)</li>
           </ul>
 
-          <a class="btn" href="payment.html">Start Generating Money →</a>
+          <a class="btn" href="payment.html">Start Generating Money <span class="btn-arrow" aria-hidden="true">→</span></a>
         </div>
 
         <div class="day-image">
@@ -2011,7 +2044,7 @@ a {
             <li>Pricing Strategy</li>
           </ul>
 
-          <a class="btn" href="payment.html">Ready to Scale →</a>
+          <a class="btn" href="payment.html">Ready to Scale <span class="btn-arrow" aria-hidden="true">→</span></a>
         </div>
 
         <div class="day-image">
@@ -2084,7 +2117,7 @@ a {
     </div>
 
     <div class="join-wrap">
-      <a class="btn" href="payment.html">Join Now →</a>
+      <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
     <!-- PARTICIPANTS -->
@@ -2106,7 +2139,7 @@ a {
     </div>
 
     <div class="join-wrap">
-      <a class="btn" href="payment.html">Join Now →</a>
+      <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
     <!-- WHY ATTEND -->
@@ -2117,7 +2150,7 @@ a {
         During the workshop, you’ll create content, build your marketing system and implement
         strategies designed to generate leads and revenue.
       </p>
-      <a class="btn btn-yellow" href="payment.html">Start Your ZRM Journey →</a>
+      <a class="btn btn-yellow" href="payment.html">Start Your ZRM Journey <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
   </div>
@@ -2225,7 +2258,7 @@ a {
     </div>
 
     <div class="join-wrap">
-      <a class="btn" href="payment.html">Join Now →</a>
+      <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
     <!-- FAQ -->
@@ -2272,9 +2305,10 @@ a {
 
     <!-- FINAL CTA -->
     <div class="final-cta">
+      <div class="final-cta-bg" aria-hidden="true"></div>
       <h2 class="section-title">3 Days. <span class="yellow">One Marketing System.</span></h2>
       <p class="why-lead">Only Live Practical Implementation. No Recordings. – with the ZRM community</p>
-      <a class="btn btn-yellow" href="payment.html">Start Your ZRM Journey →</a>
+      <a class="btn btn-yellow" href="payment.html">Start Your ZRM Journey <span class="btn-arrow" aria-hidden="true">→</span></a>
       <p class="cta-note">No Recordings. Only One Replay. Just Live Implementation.</p>
     </div>
 
@@ -2539,6 +2573,11 @@ document.querySelectorAll(".video-box, .participants-video").forEach(function (b
 })();
 </script>
 
+<!-- GSAP + ScrollTrigger (cdnjs), Lenis smooth scroll (jsDelivr) and the motion layer -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="motion.js" defer></script>
 <script src="zrm-values.js" defer></script>
 </body>
 </html>
