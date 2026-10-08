@@ -1,0 +1,298 @@
+/* =========================================================
+   ZRM AMBIENT BACKGROUND SYSTEM
+   Background-only layers, built by ambient.js and moved on
+   scroll / mouse by motion.js. Every layer sits BEHIND the
+   section content (z-index -1 inside an isolated section) and
+   never takes pointer events.
+
+   Layer model per section:
+     1 base        – the section's own existing background
+     2 .amb-orb     – large soft radial gradients (no blur filter)
+     3 .amb-orb     – secondary ambient glow, different speed
+     4 .amb-dots / .amb-grain – particles / static grain
+     5 .amb-mouse   – scroll / mouse reactive light (desktop)
+========================================================= */
+
+/* sections that host ambient layers get their own stacking context,
+   so z-index:-1 children paint above the section background but
+   below its content */
+.skills,
+.tools,
+.why-card,
+.ticker-wrap,
+.faq {
+  isolation: isolate;
+}
+
+.why-card,
+.ticker-wrap,
+.faq {
+  position: relative;
+}
+
+.why-card {
+  overflow: hidden;
+}
+
+.amb {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* hero glow may spill below the hero; .page clips it sideways */
+.amb-hero {
+  overflow: visible;
+}
+
+/* a parallax layer – motion.js moves it on scroll (data-speed) */
+.amb-layer {
+  position: absolute;
+  inset: -15% 0;
+}
+
+/* soft orb: a radial gradient, no filter → cheap to composite */
+.amb-orb {
+  position: absolute;
+  width: var(--w, var(--s));
+  height: var(--h, var(--s));
+  margin-left: calc(var(--w, var(--s)) / -2);
+  margin-top: calc(var(--h, var(--s)) / -2);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--c), transparent);
+  will-change: transform;
+}
+
+.amb-x      { animation: amb-x var(--t, 50s) ease-in-out infinite alternate; }
+.amb-y      { animation: amb-y var(--t, 60s) ease-in-out infinite alternate; }
+.amb-breath { animation: amb-breath var(--t, 22s) ease-in-out infinite; }
+
+@keyframes amb-x {
+  from { transform: translate3d(-8%, 0, 0); }
+  to   { transform: translate3d(8%, 0, 0); }
+}
+
+@keyframes amb-y {
+  from { transform: translate3d(0, -8%, 0); }
+  to   { transform: translate3d(0, 8%, 0); }
+}
+
+@keyframes amb-breath {
+  0%, 100% { transform: scale(.92); opacity: .75; }
+  50%      { transform: scale(1.06); opacity: 1; }
+}
+
+/* floating ambient particles */
+.amb-dots {
+  position: absolute;
+  inset: 0;
+}
+
+.amb-dot {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--sz);
+  height: var(--sz);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .55);
+  opacity: 0;
+  animation: amb-float var(--d) linear var(--delay) infinite;
+}
+
+.amb-dot.is-warm {
+  background: rgba(232, 255, 0, .6);
+}
+
+@keyframes amb-float {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  20%  { opacity: .5; }
+  80%  { opacity: .25; }
+  100% { transform: translate3d(12px, -90px, 0); opacity: 0; }
+}
+
+/* very subtle static film grain */
+.amb-grain {
+  position: absolute;
+  inset: 0;
+  opacity: .055;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* hero: light that drifts toward the cursor (desktop, motion.js) */
+.amb-mouse {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 560px;
+  height: 560px;
+  margin: -280px 0 0 -280px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 60, 90, .14), transparent);
+  opacity: 0;
+  will-change: transform;
+}
+
+/* 50,000+ ENTREPRENEURS – expanding light (scaled by motion.js) */
+.amb-pulse {
+  position: absolute;
+  left: 50%;
+  bottom: 4%;
+  width: min(1100px, 140vw);
+  height: 420px;
+  margin-left: calc(min(1100px, 140vw) / -2);
+  border-radius: 50%;
+  background:
+    radial-gradient(closest-side, rgba(232, 255, 0, .10), transparent 70%),
+    radial-gradient(closest-side, rgba(255, 23, 56, .14), transparent);
+  opacity: .6;
+  transform-origin: 50% 50%;
+  will-change: transform, opacity;
+}
+
+/* 3-day moods – one per day, cross-faded by motion.js.
+   Gradients repeat every ~viewport height so a glow is always
+   visible while the day stage is pinned. */
+.amb-mood {
+  position: absolute;
+  inset: 0;
+  background-repeat: repeat-y;
+  background-size: 100% 110vh;
+  opacity: 0;
+}
+
+.amb-mood-1 {
+  opacity: 1;
+  background-image:
+    radial-gradient(ellipse 45% 35% at 18% 45%, rgba(255, 23, 56, .16), transparent 70%),
+    radial-gradient(ellipse 35% 30% at 85% 65%, rgba(150, 14, 40, .18), transparent 70%);
+}
+
+.amb-mood-2 {
+  background-image:
+    radial-gradient(ellipse 45% 35% at 80% 40%, rgba(232, 180, 0, .11), transparent 70%),
+    radial-gradient(ellipse 40% 32% at 20% 70%, rgba(255, 23, 56, .12), transparent 70%);
+}
+
+.amb-mood-3 {
+  background-image:
+    radial-gradient(ellipse 60% 45% at 50% 50%, rgba(170, 14, 44, .22), transparent 72%),
+    radial-gradient(ellipse 30% 25% at 88% 25%, rgba(232, 255, 0, .07), transparent 70%);
+}
+
+/* tools – slow ambient shapes */
+.amb-shape {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  height: var(--h);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, .05);
+  background: linear-gradient(135deg, rgba(255, 255, 255, .035), rgba(255, 255, 255, 0));
+  transform: rotate(var(--r));
+  animation: amb-shape var(--t) ease-in-out infinite alternate;
+}
+
+@keyframes amb-shape {
+  from { transform: translate3d(-40px, 0, 0) rotate(var(--r)); }
+  to   { transform: translate3d(40px, -12px, 0) rotate(var(--r)); }
+}
+
+/* participants – glow behind the screenshot + a slow light
+   travelling around its edge */
+@property --amb-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.pv-wrap {
+  position: relative;
+  isolation: isolate;
+}
+
+.pv-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -10% -6%;
+  z-index: -1;
+  background: radial-gradient(closest-side, rgba(255, 23, 56, .24), transparent);
+  pointer-events: none;
+}
+
+.pv-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  z-index: -1;
+  border-radius: clamp(14px, 1.6vw, 20px);
+  background: conic-gradient(from var(--amb-angle),
+    transparent 0deg, transparent 250deg,
+    rgba(232, 255, 0, .45) 300deg, rgba(255, 23, 56, .5) 330deg, transparent 360deg);
+  filter: blur(10px);
+  opacity: .7;
+  pointer-events: none;
+  animation: amb-spin 14s linear infinite;
+}
+
+@keyframes amb-spin {
+  to { --amb-angle: 360deg; }
+}
+
+/* final CTA – gentle light sweep */
+.amb-sweep {
+  position: absolute;
+  top: -20%;
+  bottom: -20%;
+  left: -30%;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .07), transparent);
+  transform: skewX(-18deg);
+  animation: amb-sweep 9s ease-in-out infinite;
+}
+
+@keyframes amb-sweep {
+  0%, 55% { transform: skewX(-18deg) translateX(0); }
+  100%    { transform: skewX(-18deg) translateX(500%); }
+}
+
+/* off-screen sections pause their animations (battery) */
+.amb-paused,
+.amb-paused *,
+.pv-wrap.amb-paused::after {
+  animation-play-state: paused !important;
+}
+
+/* ---------- mobile: lighter ---------- */
+@media (max-width: 767px) {
+  .amb-grain {
+    mix-blend-mode: normal;
+    opacity: .03;
+  }
+
+  .pv-wrap::after {
+    animation: none;
+  }
+
+  .amb-mouse {
+    display: none;
+  }
+}
+
+/* ---------- reduced motion: static gradients only ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .amb *,
+  .pv-wrap::after {
+    animation: none !important;
+  }
+
+  .amb-dots,
+  .amb-sweep,
+  .amb-mouse {
+    display: none;
+  }
+}

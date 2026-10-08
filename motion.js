@@ -167,14 +167,26 @@
       };
     }).filter(Boolean);
 
+    // ambient light that lazily drifts toward the cursor (background only)
+    var glow = hero.querySelector(".amb-mouse");
+    var glowX = glow && gsap.quickTo(glow, "x", { duration: 1.6, ease: "power2.out" });
+    var glowY = glow && gsap.quickTo(glow, "y", { duration: 1.6, ease: "power2.out" });
+
     function move(e) {
       var nx = (e.clientX / window.innerWidth - 0.5) * 2;   // -1 … 1
       var ny = (e.clientY / window.innerHeight - 0.5) * 2;
       layers.forEach(function (l) { l.x(nx * l.ax); l.y(ny * l.ay); });
+      if (glow) {
+        var r = hero.getBoundingClientRect();
+        glowX(e.clientX - r.left);
+        glowY(e.clientY - r.top);
+        gsap.to(glow, { opacity: 1, duration: 0.8, overwrite: "auto" });
+      }
     }
 
     function leave() {
       layers.forEach(function (l) { l.x(0); l.y(0); });
+      if (glow) gsap.to(glow, { opacity: 0, duration: 1.2, overwrite: "auto" });
     }
 
     hero.addEventListener("mousemove", move);
@@ -182,7 +194,33 @@
     return function () {
       hero.removeEventListener("mousemove", move);
       hero.removeEventListener("mouseleave", leave);
+      if (glow) gsap.set(glow, { clearProps: "all" });
     };
+  }
+
+  /* ================= AMBIENT BACKGROUND – scroll drift ================= */
+  // every .amb-layer drifts at its own speed while its section passes,
+  // so the background slowly moves behind the (still) content
+  function ambientScroll(k) {
+    all(".amb-layer[data-speed]").forEach(function (layer) {
+      var host = layer.closest(".amb").parentNode;
+      var y = parseFloat(layer.dataset.speed) * k;
+      var x = parseFloat(layer.dataset.xspeed || 0) * k;
+      gsap.fromTo(layer, { yPercent: -y, xPercent: -x }, {
+        yPercent: y, xPercent: x, ease: "none",
+        scrollTrigger: { trigger: host, start: "top bottom", end: "bottom top", scrub: true }
+      });
+    });
+  }
+
+  // 3-day moods: fade to one day's background
+  function moods() {
+    return all(".amb-mood");
+  }
+
+  function setMood(index) {
+    var m = moods();
+    if (m.length) gsap.to(m, { opacity: function (i) { return i === index ? 1 : 0; }, duration: 1.2, ease: "power2.inOut", overwrite: true });
   }
 
   /* ================= MAGNETIC CTAs (desktop) ================= */
@@ -266,7 +304,9 @@
         .fromTo(pill, { scale: 0.75, opacity: 0 }, { scale: 1, opacity: 1, duration: 1 }, 0)
         .fromTo(pill, { backgroundColor: "rgba(232, 255, 0, 0)", borderColor: "rgba(255, 255, 255, 0.12)" },
           { backgroundColor: "rgba(232, 255, 0, 0.07)", borderColor: "rgba(232, 255, 0, 0.35)", duration: 1 }, 0)
-        .fromTo(".success", { "--proof-glow": 0 }, { "--proof-glow": 1, duration: 1 }, 0);
+        .fromTo(".success", { "--proof-glow": 0 }, { "--proof-glow": 1, duration: 1 }, 0)
+        // expanding light behind it
+        .fromTo(".amb-pulse", { scale: 0.55, opacity: 0 }, { scale: 1.25, opacity: 1, duration: 1 }, 0);
     }
   }
 
@@ -323,6 +363,9 @@
       .from(cards[0].querySelector(".day-content"), { x: 40, opacity: 0, duration: 0.9, clearProps: "opacity,transform" })
       .from(cards[0].querySelector(".day-image img"), { scale: 1.08, duration: 1.2, clearProps: "transform" }, 0);
 
+    var moodLayers = moods();
+    gsap.set(moodLayers, { opacity: function (i) { return i === 0 ? 1 : 0; } });
+
     var steps = cards.length - 1;
     var tl = gsap.timeline({ defaults: { ease: "power2.inOut" } });
     tl.to({}, { duration: 0.4 }); // let Day 1 sit first
@@ -346,6 +389,9 @@
           { scale: 1, duration: 1.4, ease: EASE }, at + 0.15)
         .to(bar, { x: i * 120, duration: 1 }, at)
         .to(".skills", { "--glow-x": (30 + i * 20) + "%", duration: 1 }, at)
+        // background mood cross-fades Day i → Day i+1 (no sudden change)
+        .to(moodLayers[i - 1] || {}, { opacity: 0, duration: 1.2 }, at)
+        .to(moodLayers[i] || {}, { opacity: 1, duration: 1.2 }, at)
         .to({}, { duration: 0.4 }); // hold
     }
 
@@ -383,6 +429,7 @@
       cards.forEach(function (c) { c.removeAttribute("aria-hidden"); });
       gsap.set(cards, { clearProps: "all" });
       gsap.set(".skills", { "--glow-x": "50%" });
+      gsap.set(moods(), { clearProps: "opacity" });
     };
   }
 
@@ -392,6 +439,11 @@
       reveal([card], { y: 50 * Math.max(k, 0.5), duration: 0.9 });
       var box = card.querySelector(".day-image");
       clipReveal(box, i % 2 ? "right" : "left", box && box.querySelector("img"));
+      // the background mood follows the day card in the middle of the screen
+      ScrollTrigger.create({
+        trigger: card, start: "top 60%", end: "bottom 60%",
+        onToggle: function (self) { if (self.isActive) setMood(i); }
+      });
     });
   }
 
@@ -609,6 +661,7 @@
     if (premiumPointer) cleanups.push(smoothScroll());
 
     heroScroll(k);
+    ambientScroll(k);
     if (premiumPointer) {
       cleanups.push(heroMouse());
       cleanups.push(magnetic());
