@@ -1,0 +1,494 @@
+/* =========================================================
+   ZRM MOTION LAYER
+   Loaded after the page's inline styles. Only presentation /
+   interaction rules live here – content stays in index.html.
+   Scroll animations themselves are in motion.js (GSAP + Lenis).
+========================================================= */
+
+:root {
+  --ease-premium: cubic-bezier(.22, 1, .36, 1);
+}
+
+/* ---------------------------------------------------------
+   SMOOTH SCROLL (Lenis, desktop only – see motion.js)
+--------------------------------------------------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------
+   HERO INTRO – hidden until motion.js plays the entrance
+   (class is only set when motion is allowed; see <head>)
+--------------------------------------------------------- */
+.motion-ready .hero-atmos,
+.motion-ready .hero .top-label,
+.motion-ready .hero-title,
+.motion-ready .hero-subtitle,
+.motion-ready .hero .video-box,
+.motion-ready .hero .event-details {
+  opacity: 0;
+}
+
+/* word-by-word reveal: each word slides up inside its own mask */
+.w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* keep descenders (g, y, p) inside the mask */
+  padding-bottom: .1em;
+  margin-bottom: -.1em;
+}
+
+.wi {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ---------------------------------------------------------
+   HERO – full viewport on desktop, layered depth
+--------------------------------------------------------- */
+@media (min-width: 1024px) {
+  .hero {
+    min-height: calc(100vh - 80px);
+    min-height: calc(100svh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero > .container {
+    width: 100%;
+  }
+}
+
+.hero-head {
+  transform-origin: 50% 0;
+}
+
+.hero-atmos {
+  transform-origin: 50% 30%;
+}
+
+/* ---------------------------------------------------------
+   CTA + BUTTONS – magnetic pull (--mx/--my from motion.js),
+   lift, highlight sweep, arrow nudge, tactile press
+--------------------------------------------------------- */
+.cta,
+.btn {
+  translate: var(--mx, 0px) var(--my, 0px);
+}
+
+.cta .cta-label {
+  translate: var(--ix, 0px) 0;
+}
+
+.cta {
+  transition:
+    background 400ms var(--cta-ease),
+    box-shadow 400ms var(--cta-ease),
+    transform 350ms var(--cta-ease),
+    padding 450ms var(--cta-ease);
+}
+
+.cta::before {
+  transition: opacity 400ms var(--cta-ease);
+}
+
+.cta .arrow {
+  transition:
+    left 450ms var(--cta-ease),
+    box-shadow 400ms var(--cta-ease);
+}
+
+.btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  transition:
+    transform 320ms var(--ease-premium),
+    box-shadow 320ms var(--ease-premium);
+}
+
+/* highlight that sweeps across on hover (behind the label) */
+.btn::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .28), transparent);
+  transform: skewX(-20deg) translateX(0);
+  transition: transform 650ms var(--ease-premium);
+  pointer-events: none;
+}
+
+.btn .btn-arrow {
+  display: inline-block;
+  translate: var(--ix, 0px) 0;
+  transition: transform 320ms var(--ease-premium);
+}
+
+@media (hover: hover) {
+  .cta:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow:
+      0 18px 36px -12px rgba(255, 23, 56, .95),
+      0 0 24px rgba(255, 23, 56, .22);
+  }
+
+  .btn-yellow:hover {
+    box-shadow:
+      0 18px 36px -12px rgba(242, 209, 0, .85),
+      0 0 24px rgba(242, 209, 0, .2);
+  }
+
+  .btn:hover::after {
+    transform: skewX(-20deg) translateX(420%);
+  }
+
+  .btn:hover .btn-arrow {
+    transform: translateX(4px);
+  }
+}
+
+/* press: quick squeeze, springs back on release */
+.cta:active,
+.btn:active {
+  transform: scale(.97);
+  transition-duration: 120ms;
+}
+
+.btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   SUCCESS STORIES – lift, photo zoom, figures can scale
+--------------------------------------------------------- */
+.testimonial {
+  transition: transform .35s var(--ease-premium), border-color .25s ease, box-shadow .35s ease;
+}
+
+@media (hover: hover) {
+  .testimonial:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 40px -22px rgba(0, 0, 0, .9);
+  }
+
+  .testimonial:hover .t-photo {
+    transform: scale(1.04);
+  }
+}
+
+.t-result strong {
+  display: inline-block;
+  transform-origin: 0 70%;
+}
+
+.t-photo {
+  transform-origin: 50% 100%;
+  transition: transform 400ms var(--ease-premium);
+}
+
+/* ---------------------------------------------------------
+   SCALE MOMENT – "50,000+ ENTREPRENEURS" pill becomes a
+   large typography beat; --proof-glow (motion.js) lights the
+   section behind it.
+--------------------------------------------------------- */
+.success::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(ellipse 55% 35% at 50% 88%, rgba(232, 255, 0, .07), transparent 70%);
+  opacity: var(--proof-glow, 0);
+  pointer-events: none;
+}
+
+.success .bottom-pill {
+  transform-origin: 50% 50%;
+}
+
+@media (min-width: 768px) {
+  .success .bottom-pill {
+    max-width: 1140px;
+    padding: 20px 36px;
+    font-size: clamp(12px, 1.1vw, 16px);
+    font-weight: 700;
+  }
+
+  .success .bottom-pill span {
+    white-space: nowrap;
+  }
+}
+
+/* ---------------------------------------------------------
+   PROOF MARQUEE – slower, calmer movement
+--------------------------------------------------------- */
+.ticker {
+  animation-duration: 60s;
+}
+
+/* ---------------------------------------------------------
+   STORY MOMENT – the "3 Days. 3 Skills." statement
+--------------------------------------------------------- */
+@media (min-width: 768px) {
+  .skills-head .section-title {
+    font-size: clamp(32px, 4.8vw, 64px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+}
+
+.skills-head .section-title {
+  transform-origin: 50% 60%;
+}
+
+/* ---------------------------------------------------------
+   3-DAY PROGRAM – presentation stage (desktop, motion.js)
+   All three day cards share one grid cell; scrolling swaps
+   them while the stage is pinned.
+--------------------------------------------------------- */
+.skills {
+  --glow-x: 50%;
+  background:
+    radial-gradient(ellipse 70% 45% at var(--glow-x) 55%, rgba(140, 16, 40, 0.35), transparent 70%),
+    var(--bg);
+}
+
+.day-list.is-stage {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 24px;
+}
+
+.day-list.is-stage > .day-card {
+  grid-area: 2 / 1;
+}
+
+.day-stage-nav {
+  position: relative;
+  grid-area: 1 / 1;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 120px);
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .04);
+}
+
+.day-stage-nav button {
+  position: relative;
+  z-index: 1;
+  padding: 10px 0;
+  border: 0;
+  background: none;
+  color: var(--text-soft);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: color .3s ease;
+}
+
+.day-stage-nav button[aria-selected="true"] {
+  color: #0a0a0d;
+}
+
+.day-stage-nav button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: -4px;
+  border-radius: 999px;
+}
+
+/* the yellow pill slides under the active day */
+.day-stage-bar {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: 120px;
+  border-radius: 999px;
+  background: var(--yellow);
+}
+
+.day-list.is-stage .day-card {
+  transform-origin: 50% 50%;
+  border-color: rgba(232, 255, 0, .25);
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, .8);
+}
+
+/* ---------------------------------------------------------
+   TOOLS – "tool orbit": --drift (desktop rows, sideways) and
+   --orbit (every card, vertical) come from motion.js. They use
+   `translate`, so the hover lift (`transform`) still composes.
+--------------------------------------------------------- */
+.tool-card {
+  translate: var(--drift, 0px) var(--orbit, 0px);
+}
+
+.tool-logo {
+  transition: transform 350ms var(--ease-premium);
+}
+
+@media (hover: hover) {
+  .tool-card:hover .tool-logo {
+    transform: scale(1.05);
+  }
+}
+
+/* ---------------------------------------------------------
+   VIDEO TESTIMONIALS – editorial cards, very subtle tilt
+   (--float is driven by motion.js on scroll)
+--------------------------------------------------------- */
+@media (min-width: 768px) {
+  .impact-grid {
+    padding: 14px 4px 12px;
+  }
+
+  .impact-card {
+    --tilt: 0deg;
+    transform: rotate(var(--tilt));
+    translate: 0 var(--float, 0px);
+    transition: transform .35s var(--ease-premium), box-shadow .35s ease;
+  }
+
+  .impact-card:nth-child(3n + 1) { --tilt: -0.5deg; }
+  .impact-card:nth-child(3n)     { --tilt: 0.5deg; }
+
+  .impact-card:hover {
+    transform: translateY(-6px) rotate(0deg);
+    box-shadow: 0 24px 44px -20px rgba(255, 23, 56, .45);
+  }
+
+  .impact-card.is-playing,
+  .impact-card.is-playing:hover {
+    transform: none;
+  }
+}
+
+.impact-media video {
+  transition: transform .5s var(--ease-premium);
+}
+
+@media (hover: hover) {
+  .impact-card:not(.is-playing):hover .impact-media video {
+    transform: scale(1.03);
+  }
+}
+
+.impact-card:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
+
+/* ---------------------------------------------------------
+   FAQ – smooth open/close (height animated in motion.js)
+--------------------------------------------------------- */
+.faq-item {
+  overflow: hidden;
+}
+
+.faq-item.is-closing summary::after {
+  transform: rotate(45deg) translateY(-3px);
+}
+
+.faq-item summary:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: -2px;
+  border-radius: 28px;
+}
+
+/* ---------------------------------------------------------
+   FINAL CTA – the strongest section
+--------------------------------------------------------- */
+@media (min-width: 768px) {
+  .final-cta {
+    padding: clamp(56px, 8vw, 112px) clamp(32px, 5vw, 72px);
+  }
+}
+
+.final-cta .section-title {
+  font-size: clamp(26px, 5vw, 60px);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.final-cta .why-lead {
+  font-size: clamp(14px, 1.5vw, 19px);
+}
+
+.final-cta-bg {
+  transform-origin: 50% 50%;
+}
+
+/* ---------------------------------------------------------
+   LINKS – animated underline
+--------------------------------------------------------- */
+.faq-answer a,
+.footer-contact a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 300ms var(--ease-premium), color .2s ease;
+}
+
+.faq-answer a:hover,
+.faq-answer a:focus-visible,
+.footer-contact a:hover,
+.footer-contact a:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* ---------------------------------------------------------
+   REDUCED MOTION – no transforms on hover/press either
+--------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .btn,
+  .btn::after,
+  .btn .btn-arrow,
+  .testimonial,
+  .t-photo,
+  .tool-logo,
+  .impact-card,
+  .impact-media video {
+    transition: none;
+  }
+
+  .btn:hover,
+  .btn:active,
+  .cta:active,
+  .btn:hover .btn-arrow,
+  .testimonial:hover,
+  .testimonial:hover .t-photo,
+  .tool-card:hover .tool-logo,
+  .impact-card:hover .impact-media video {
+    transform: none;
+  }
+
+  .btn:hover::after {
+    transform: skewX(-20deg) translateX(0);
+  }
+}
