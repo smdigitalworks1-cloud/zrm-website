@@ -232,6 +232,28 @@ a {
   line-height: 1.5;
 }
 
+.hero-sub.received {
+  margin-top: 10px;
+  font-size: clamp(14px, 1.8vw, 16px);
+}
+
+.home-link {
+  display: table;
+  margin: 20px auto 0;
+  padding: 12px 26px;
+  border: 1px solid #ffffff;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background .2s ease, color .2s ease;
+}
+
+.home-link:hover,
+.home-link:focus-visible {
+  background: #ffffff;
+  color: #0a0a0d;
+}
+
 /* FAQ */
 .faq {
   margin-top: 56px;
@@ -318,7 +340,7 @@ a {
 <body>
 
   <main class="wrap">
-    <a href="index.html"><img class="logo" src="ZRM New LP Assets/Layer 1 2.png" alt="Tamil Business Tribe"></a>
+    <a href="/"><img class="logo" src="ZRM New LP Assets/Layer 1 2.png" alt="Tamil Business Tribe"></a>
 
     <!-- HERO -->
     <section class="hero">
@@ -326,6 +348,9 @@ a {
       <p class="hero-sub">
         You’ve <strong class="yellow">successfully reserved your spot</strong> for
         <strong>Zero Rupee Marketing Challenge – 3-Day LIVE Online Program!</strong>
+      </p>
+      <p class="hero-sub received">
+        Your payment and registration details have been received. We will contact you with the next steps.
       </p>
 
       <div class="event-pill">
@@ -359,6 +384,7 @@ a {
     </section>
 
     <p class="see-you">🔥 See You LIVE on <span class="yellow" data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span>. Get ready to learn, grow, and take your business to the next level! 🎤</p>
+    <a class="home-link" href="/">← Back to Home</a>
 
     <!-- FAQ -->
     <section class="faq">
