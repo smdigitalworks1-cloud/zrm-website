@@ -189,116 +189,6 @@ h1 {
   box-shadow: 0 16px 32px -12px rgba(255, 23, 56, 0.9);
 }
 
-/* <button> version of the same pill */
-button.pay-btn {
-  border: 0;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-.pay-btn[disabled] {
-  opacity: .7;
-  cursor: wait;
-  transform: none;
-}
-
-.pay-btn:focus-visible,
-.retry-btn:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 3px;
-}
-
-/* payment status (failed / cancelled / verifying) */
-.status {
-  margin-top: 16px;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, .05);
-  font-size: 14px;
-  line-height: 1.5;
-  text-align: center;
-}
-
-.status.is-error {
-  border-color: rgba(255, 23, 56, .5);
-  background: rgba(255, 23, 56, .1);
-}
-
-.status.is-ok {
-  border-color: rgba(34, 197, 94, .5);
-  background: rgba(34, 197, 94, .1);
-}
-
-.retry-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 22px;
-  border: 1px solid #ffffff;
-  border-radius: 999px;
-  background: transparent;
-  color: #ffffff;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.retry-btn:hover {
-  background: #ffffff;
-  color: #0a0a0d;
-}
-
-/* contact details – passed to Razorpay so checkout opens straight on UPI QR */
-.contact {
-  display: grid;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-
-.contact[hidden] {
-  display: none;
-}
-
-.contact-field label {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.contact-field input {
-  width: 100%;
-  padding: 13px 14px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: rgba(0, 0, 0, .35);
-  color: #ffffff;
-  font-family: inherit;
-  font-size: 16px; /* no iOS zoom */
-  transition: border-color .2s ease;
-}
-
-.contact-field input:focus {
-  outline: none;
-  border-color: var(--yellow);
-}
-
-.contact-field.has-error input {
-  border-color: var(--red);
-}
-
-.contact-field .error {
-  display: none;
-  margin-top: 5px;
-  color: #ff6b7d;
-  font-size: 13px;
-}
-
-.contact-field.has-error .error {
-  display: block;
-}
-
 .secure {
   margin-top: 16px;
   text-align: center;
@@ -323,11 +213,11 @@ button.pay-btn {
 <body>
 
   <header class="header">
-    <a href="/"><img class="logo" src="ZRM New LP Assets/Layer 1 2.png" alt="Tamil Business Tribe"></a>
+    <a href="index.html"><img class="logo" src="ZRM New LP Assets/Layer 1 2.png" alt="Tamil Business Tribe"></a>
   </header>
 
   <main class="checkout">
-    <a class="back" href="/">← Back</a>
+    <a class="back" href="index.html">← Back</a>
 
     <div class="card">
       <div class="top-label">3-Day Live Zero Ruppee Marketing Challenge</div>
@@ -347,29 +237,10 @@ button.pay-btn {
         <strong>₹499</strong>
       </div>
 
-      <!-- RAZORPAY CHECKOUT
-           Order is created and the payment verified on the server
-           (api/payment/order.js, api/payment/verify.js). Only a verified
-           payment opens /form. -->
-      <div class="contact" id="contact">
-        <div class="contact-field" data-field="mobile">
-          <label for="pay-mobile">Mobile Number *</label>
-          <input id="pay-mobile" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="15" placeholder="10-digit mobile number" required>
-          <p class="error" id="pay-mobile-error">Please enter a valid 10-digit mobile number.</p>
-        </div>
-        <div class="contact-field" data-field="email">
-          <label for="pay-email">Email *</label>
-          <input id="pay-email" type="email" autocomplete="email" maxlength="120" placeholder="you@example.com" required>
-          <p class="error" id="pay-email-error">Please enter a valid email address.</p>
-        </div>
-      </div>
-
-      <button type="button" class="pay-btn" id="pay-btn">Pay ₹499 &amp; Reserve My Seat →</button>
-
-      <div class="status" id="pay-status" role="status" aria-live="polite" hidden>
-        <p id="pay-message"></p>
-        <button type="button" class="retry-btn" id="pay-retry" hidden>Try Again</button>
-      </div>
+      <!-- GHL PAYMENT LINK (product 6ac69b479e41b0dd9ea93cec)
+           Checkout runs on GHL with Razorpay; payment events reach GHL via
+           the Razorpay webhook https://backend.leadconnectorhq.com/razorpay/webhook -->
+      <a class="pay-btn" href="https://payment.tbtmart.com/payment-link/6ac69ccac0e70c7fefb731b8">Pay ₹499 &amp; Reserve My Seat →</a>
 
       <p class="secure">🔒 100% secure payment via Razorpay – UPI, Cards, Netbanking &amp; Wallets</p>
     </div>
@@ -381,193 +252,5 @@ button.pay-btn {
   </main>
 
 <script src="zrm-values.js" defer></script>
-<script>
-/*
-  Payment flow: order (server) → Razorpay checkout → verify (server) → /form.
-  Closing or failing the checkout never opens the form.
-*/
-(function () {
-  var payBtn = document.getElementById("pay-btn");
-  var box = document.getElementById("pay-status");
-  var msg = document.getElementById("pay-message");
-  var retry = document.getElementById("pay-retry");
-  var PAY_LABEL = payBtn.innerHTML;
-  var retryAction = null;   // what "Try Again" does (new payment / verify again)
-  var checkoutLoading = null;
-
-  function show(text, kind, retryLabel, action) {
-    box.hidden = false;
-    box.className = "status" + (kind ? " is-" + kind : "");
-    msg.textContent = text;
-    retryAction = action || null;
-    retry.hidden = !action;
-    retry.textContent = retryLabel || "Try Again";
-  }
-
-  function busy(on, label) {
-    payBtn.disabled = on;
-    payBtn.innerHTML = on ? label : PAY_LABEL;
-  }
-
-  function post(url, data) {
-    return fetch(url, {
-      method: "POST",
-      credentials: "same-origin",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data || {})
-    }).then(function (res) {
-      return res.json().catch(function () { return {}; }).then(function (json) {
-        json.httpOk = res.ok;
-        return json;
-      });
-    });
-  }
-
-  function loadCheckout() {
-    if (window.Razorpay) return Promise.resolve();
-    if (checkoutLoading) return checkoutLoading;
-    checkoutLoading = new Promise(function (resolve, reject) {
-      var s = document.createElement("script");
-      s.src = "https://checkout.razorpay.com/v1/checkout.js";
-      s.onload = resolve;
-      s.onerror = function () { checkoutLoading = null; reject(new Error("checkout")); };
-      document.head.appendChild(s);
-    });
-    return checkoutLoading;
-  }
-
-  function goTo(path) {
-    window.location.replace(path); // replace: Back won't return to a finished payment
-  }
-
-  function verify(response) {
-    busy(true, "Verifying payment…");
-    show("Payment received. Verifying with the bank – please don't close this page…", "");
-    post("/api/payment/verify", response).then(function (r) {
-      if (r.ok) {
-        show("Payment verified ✔ Taking you to the registration form…", "ok");
-        goTo(r.next || "/form");
-        return;
-      }
-      busy(false);
-      if (r.code === "verify_failed") {
-        // payment may be fine – let the user re-check without paying again
-        show(r.error, "error", "Verify again", function () { verify(response); });
-      } else {
-        show(r.error || "Payment could not be verified. Please try again.", "error", "Try Again", startPayment);
-      }
-    }).catch(function () {
-      busy(false);
-      show("Network problem while verifying your payment. If money was deducted it is safe – tap “Verify again”.",
-        "error", "Verify again", function () { verify(response); });
-    });
-  }
-
-  // mobile + email are handed to Razorpay (prefill) so checkout skips its
-  // "Contact details" step and shows the UPI QR straight away
-  var contactBox = document.getElementById("contact");
-  var mobileInput = document.getElementById("pay-mobile");
-  var emailInput = document.getElementById("pay-email");
-
-  function contactError(input, bad) {
-    input.closest(".contact-field").classList.toggle("has-error", bad);
-    input.setAttribute("aria-invalid", bad ? "true" : "false");
-    if (bad) input.setAttribute("aria-describedby", input.id + "-error");
-  }
-
-  function readContact() {
-    var mobile = mobileInput.value.replace(/[\s-]/g, "").replace(/^(\+91|91|0)(?=\d{10}$)/, "");
-    var email = emailInput.value.trim();
-    var mobileBad = !/^[6-9]\d{9}$/.test(mobile);
-    var emailBad = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
-    contactError(mobileInput, mobileBad);
-    contactError(emailInput, emailBad);
-    if (mobileBad) { mobileInput.focus(); return null; }
-    if (emailBad) { emailInput.focus(); return null; }
-    // remembered for this tab only, to pre-fill the registration form
-    try { sessionStorage.setItem("zrm_contact", JSON.stringify({ mobile: mobile, email: email })); } catch (e) {}
-    return { mobile: mobile, email: email };
-  }
-
-  [mobileInput, emailInput].forEach(function (input) {
-    input.addEventListener("input", function () {
-      if (input.closest(".contact-field").classList.contains("has-error")) readContact();
-    });
-  });
-
-  try {
-    var saved = JSON.parse(sessionStorage.getItem("zrm_contact") || "null");
-    if (saved) { mobileInput.value = saved.mobile || ""; emailInput.value = saved.email || ""; }
-  } catch (e) {}
-
-  function startPayment() {
-    var contact = readContact();
-    if (!contact) return;
-
-    box.hidden = true;
-    busy(true, "Opening secure payment…");
-
-    Promise.all([post("/api/payment/order"), loadCheckout()]).then(function (results) {
-      var order = results[0];
-      if (order.alreadyPaid) { goTo(order.next || "/form"); return; }
-      if (!order.ok) {
-        busy(false);
-        show(order.error || "We couldn't start the payment. Please try again.", "error", "Try Again", startPayment);
-        return;
-      }
-
-      var failed = false;
-      var rzp = new window.Razorpay({
-        key: order.keyId,
-        order_id: order.orderId,
-        amount: order.amount,
-        currency: order.currency,
-        name: order.name,
-        description: order.description,
-        image: window.location.origin + "/ZRM%20New%20LP%20Assets/Layer%201%202.png",
-        prefill: { contact: contact.mobile, email: contact.email },
-        theme: { color: "#ff1738" },
-        handler: verify,
-        modal: {
-          ondismiss: function () {
-            busy(false);
-            if (failed) return; // failure message already shown
-            show("Payment cancelled. Your seat is not reserved yet.", "error", "Try Again", startPayment);
-          }
-        }
-      });
-
-      rzp.on("payment.failed", function (resp) {
-        failed = true;
-        busy(false);
-        var reason = resp && resp.error && resp.error.description;
-        show("Payment failed" + (reason ? " – " + reason : "") + ". Please try again.", "error", "Try Again", startPayment);
-      });
-
-      rzp.open();
-    }).catch(function () {
-      busy(false);
-      show("Couldn't reach the payment service. Check your internet connection and try again.", "error", "Try Again", startPayment);
-    });
-  }
-
-  retry.addEventListener("click", function () { if (retryAction) retryAction(); });
-  payBtn.addEventListener("click", startPayment);
-
-  // already paid in this browser (e.g. came back with the Back button) → no second payment
-  fetch("/api/session", { credentials: "same-origin" })
-    .then(function (r) { return r.json(); })
-    .then(function (s) {
-      if (!s.paid) return;
-      var next = s.registered ? "/thank-you" : "/form";
-      payBtn.innerHTML = s.registered ? "Registration complete – View details →" : "Payment verified – Continue to registration →";
-      payBtn.removeEventListener("click", startPayment);
-      payBtn.addEventListener("click", function () { goTo(next); });
-      contactBox.hidden = true; // nothing more to pay
-      show("Your payment of ₹" + (s.amount / 100) + " is already verified (Payment ID " + s.paymentId + ").", "ok");
-    })
-    .catch(function () {});
-})();
-</script>
 </body>
 </html>
