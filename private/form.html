@@ -413,6 +413,15 @@ h1 {
       });
   });
 
+  // mobile + email typed on the payment page (same tab) – saves retyping
+  try {
+    var contact = JSON.parse(sessionStorage.getItem("zrm_contact") || "null");
+    if (contact) {
+      if (!form.elements.mobile.value) form.elements.mobile.value = contact.mobile || "";
+      if (!form.elements.email.value) form.elements.email.value = contact.email || "";
+    }
+  } catch (e) {}
+
   // payment reference (from the verified, signed session)
   fetch("/api/session", { credentials: "same-origin" })
     .then(function (r) { return r.json(); })
