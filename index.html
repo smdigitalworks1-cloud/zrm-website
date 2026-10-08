@@ -2187,40 +2187,26 @@ a {
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 6">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-6.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/69901eb9772de9907ef6370f.mp4" preload="none" playsinline></video>
+          <video poster="ZRM New LP Assets/impact/video-7.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691eb00b88e1e651a0a797f7.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 7">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-7.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691eb00b88e1e651a0a797f7.mp4" preload="none" playsinline></video>
+          <video poster="ZRM New LP Assets/impact/video-9.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912eaa2ee923201bed8ff6a.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 8">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-8.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691e9d9488e1e61903a530b5.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 9">
-        <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-9.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912eaa2ee923201bed8ff6a.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 10">
-        <div class="impact-media">
           <video poster="ZRM New LP Assets/impact/video-10.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912ea3610d693d2dde2b679.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 11">
+      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 9">
         <div class="impact-media">
           <video poster="ZRM New LP Assets/impact/video-11.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912e9d496d06ad4d26441b1.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
@@ -2335,7 +2321,9 @@ a {
   var grid = document.querySelector(".impact-grid");
   if (!grid) return;
 
-  var cards = Array.prototype.slice.call(grid.querySelectorAll(".impact-card"));
+  // only cards that actually contain a video
+  var cards = Array.prototype.slice.call(grid.querySelectorAll(".impact-card"))
+    .filter(function (card) { return card.querySelector("video"); });
   var section = grid.parentElement;
 
   function stop(card) {
