@@ -1,2 +1,8 @@
 # Figma reference screenshots (not part of the site)
 section *.png
+
+# local secrets
+.env
+.env.local
+.env.*.local
+.vercel

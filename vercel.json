@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/private/:path*", "destination": "/payment", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/form", "destination": "/api/page?p=form" },
+    { "source": "/thank-you", "destination": "/api/page?p=thank-you" }
+  ],
+  "functions": {
+    "api/page.js": { "includeFiles": "private/**" }
+  }
+}
