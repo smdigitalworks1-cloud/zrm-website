@@ -1,2 +1,5 @@
 # Figma reference screenshots (not part of the site)
 section *.png
+
+# Server-only GHL credentials
+zrm-config.php
