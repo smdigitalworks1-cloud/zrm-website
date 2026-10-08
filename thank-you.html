@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Thank You – Zero Ruppee Marketing Challenge</title>
+
+<link rel="preload" href="fonts/Nexa-Book.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Nexa-Bold.ttf" as="font" type="font/ttf" crossorigin>
+
+<style>
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/Nexa-Book.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/Nexa-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("fonts/Nexa-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --yellow: #e8ff00;
+  --red: #ff1738;
+  --bg: #0a0a0d;
+  --text-soft: #c9c9d1;
+  --border: rgba(255, 255, 255, 0.12);
+  --card: rgba(255, 255, 255, 0.04);
+  --gutter: clamp(16px, 4vw, 48px);
+}
+
+html,
+body {
+  min-height: 100%;
+  font-family: "Nexa", Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(130, 16, 44, 0.5), transparent 70%),
+    linear-gradient(180deg, #160710 0%, var(--bg) 35%);
+  background-color: var(--bg);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.wrap {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 48px;
+}
+
+.logo {
+  width: clamp(140px, 16vw, 190px);
+  margin: 0 auto 32px;
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.red {
+  color: var(--red);
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(26px, 4.4vw, 42px);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.hero-sub {
+  font-size: clamp(15px, 2vw, 19px);
+  line-height: 1.5;
+  color: var(--text-soft);
+}
+
+.hero-sub strong {
+  color: #ffffff;
+}
+
+.event-pill {
+  margin: 28px auto 0;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.45);
+  font-size: clamp(14px, 1.8vw, 17px);
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* MAIN CARD */
+.card {
+  margin-top: 32px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: clamp(20px, 4vw, 40px);
+}
+
+.card h2 {
+  font-size: clamp(22px, 3.4vw, 32px);
+  font-weight: 900;
+  line-height: 1.25;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.points {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.points li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+.points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.points strong {
+  color: #ffffff;
+}
+
+.form-title {
+  font-size: clamp(18px, 2.6vw, 24px);
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* GHL FORM – white panel so the embedded form reads like the reference */
+.form-box {
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+.form-box iframe {
+  display: block;
+  width: 100%;
+  min-height: 600px;
+  border: none;
+}
+
+.wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  background: #25d366;
+  color: #0a0a0d;
+  border-radius: 10px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: transform .2s ease;
+}
+
+.wa-btn:hover {
+  transform: translateY(-2px);
+}
+
+.wa-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.see-you {
+  margin-top: 32px;
+  text-align: center;
+  font-size: clamp(16px, 2.2vw, 20px);
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+/* FAQ */
+.faq {
+  margin-top: 56px;
+}
+
+.faq-label {
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: .12em;
+  color: var(--text-soft);
+  margin-bottom: 8px;
+}
+
+.faq h2 {
+  text-align: center;
+  font-size: clamp(24px, 3.6vw, 34px);
+  font-weight: 900;
+  margin-bottom: 24px;
+}
+
+.faq details {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  margin-bottom: 12px;
+}
+
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 18px 48px 18px 20px;
+  position: relative;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  color: var(--yellow);
+}
+
+.faq details[open] summary::after {
+  content: "–";
+}
+
+.faq details p {
+  padding: 0 20px 18px;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.faq details a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid var(--border);
+  margin-top: 56px;
+  padding: 32px var(--gutter);
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.footer p {
+  max-width: 880px;
+  margin: 0 auto 12px;
+}
+</style>
+</head>
+<body>
+
+  <main class="wrap">
+    <a href="index.html"><img class="logo" src="ZRM New LP Assets/Layer 1 2.png" alt="Tamil Business Tribe"></a>
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1>🎉 Thank You for Registering! Welcome to The <span class="red">Zero Rupee</span> Marketing Challenge!</h1>
+      <p class="hero-sub">
+        You’ve <strong class="yellow">successfully reserved your spot</strong> for
+        <strong>Zero Rupee Marketing Challenge – 3-Day LIVE Online Program!</strong>
+      </p>
+
+      <div class="event-pill">
+        🔥 📍 Event Starts on <span class="yellow" data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span>,
+        at <span class="yellow" data-cv="02_zrm_online_time">07:00 AM to 08:30 AM</span> 💡<br>
+        🔁 Replay: <span class="yellow" data-cv="zrm_replay">07:00 PM to 08:30 PM</span>
+      </div>
+    </section>
+
+    <!-- NEXT STEPS + FORM -->
+    <section class="card">
+      <h2>You Have Secured Your Spot in the <span class="yellow">3-Day ONLINE</span> Zero Rupee Marketing Challenge on <span class="yellow" data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span></h2>
+
+      <ul class="points">
+        <li><strong>Mark Your Calendar</strong> – Get ready for a game-changing event!</li>
+        <li><strong>Join Our Exclusive WhatsApp Community</strong> – Stay updated, receive important notifications, and connect with fellow participants!</li>
+      </ul>
+
+      <p class="form-title">Fill out this quick form to join our <span class="yellow">WhatsApp Group</span></p>
+
+      <!-- GHL SURVEY EMBED (aER89Aw4YfOgX9XrQUjT); form_embed.js resizes the iframe -->
+      <div class="form-box">
+        <iframe src="https://payment.tbtmart.com/widget/survey/aER89Aw4YfOgX9XrQUjT" style="border:none;width:100%;" scrolling="no" id="aER89Aw4YfOgX9XrQUjT" title="survey" data-cookie-consent="true" data-cookie-consent-provider="auto"></iframe>
+      </div>
+      <script src="https://payment.tbtmart.com/js/form_embed.js"></script>
+
+      <a class="wa-btn" data-cv-href="zrm_group_link" href="https://chat.whatsapp.com/Infyusibnlv2fQCTiLHs7p" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2c.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></svg>
+        Join WhatsApp Group
+      </a>
+    </section>
+
+    <p class="see-you">🔥 See You LIVE on <span class="yellow" data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span>. Get ready to learn, grow, and take your business to the next level! 🎤</p>
+
+    <!-- FAQ -->
+    <section class="faq">
+      <p class="faq-label">GOT QUESTIONS?</p>
+      <h2>Frequently Asked <span class="yellow">Questions</span></h2>
+
+      <details>
+        <summary>When is the event happening?</summary>
+        <p>📅 Date: <span data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span><br>⏰ Time: <span data-cv="02_zrm_online_time">07:00 AM to 08:30 AM</span><br>🔁 Replay: <span data-cv="zrm_replay">07:00 PM to 08:30 PM</span></p>
+      </details>
+
+      <details>
+        <summary>What is The Zero Rupee Marketing Challenge?</summary>
+        <p>It’s a 3-Day LIVE Online Challenge where you will learn Zero Rupee Marketing strategies to generate leads and grow your business without spending on ads.</p>
+      </details>
+
+      <details>
+        <summary>Will I get recordings of the event?</summary>
+        <p>No, this is a LIVE-ONLY event. You must attend live to get all the insights and bonuses!</p>
+      </details>
+
+      <details>
+        <summary>What if I have more questions?</summary>
+        <p>Feel free to reach out to our support team at <a href="tel:+918015139542">80151 39542</a> for any queries. We’re here to help!</p>
+      </details>
+
+      <details>
+        <summary>Is there any refund available?</summary>
+        <p>No, there is no refund available.</p>
+      </details>
+
+      <details>
+        <summary>I made the payment but didn’t get any email/WhatsApp</summary>
+        <p>Please contact <a href="tel:+918015139542">80151 39542</a> and our support team will get back to you within 24 hours.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© TamilBusinessTribe 2026</p>
+    <p>This site is not a part of the Facebook website or Facebook Inc. Additionally, this site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+    <p>As stipulated by law, we can not and do not make any guarantees about your ability to get results or earn any money with our ideas, information, tools or strategies. We just want to help you by giving great content, direction and strategies that worked well for us and our students and that we believe can move you forward.</p>
+  </footer>
+
+<script src="zrm-values.js" defer></script>
+</body>
+</html>
