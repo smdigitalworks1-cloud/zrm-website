@@ -266,6 +266,24 @@ a {
   object-fit: cover;
 }
 
+/* main video – replaces the image once Play is pressed */
+.video-box video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.video-box.is-playing {
+  cursor: default;
+}
+
+.video-box.is-playing .video-overlay {
+  display: none;
+}
+
 .video-overlay {
   position: absolute;
   inset: 0;
@@ -1775,7 +1793,7 @@ a {
       <div class="hero-content">
 
         <!-- VIDEO -->
-        <div class="video-box" role="button" aria-label="Play video" tabindex="0">
+        <div class="video-box" role="button" aria-label="Play video" tabindex="0" data-video="ZRM%20New%20LP%20Assets/Zrm%20main%20video.mp4">
           <img src="ZRM New LP Assets/Rectangle 4.webp" srcset="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp 480w, ZRM%20New%20LP%20Assets/Rectangle%204.webp 964w" sizes="(max-width: 900px) calc(100vw - 32px), 680px" width="964" height="542" fetchpriority="high" alt="Zero Rupee Marketing Challenge">
           <div class="video-overlay">
             <div class="play-button"></div>
@@ -2537,11 +2555,35 @@ document.querySelectorAll("video[data-poster]").forEach(function (v) {
   });
 })();
 
-document.querySelectorAll(".video-box").forEach(function (box) {
-  box.addEventListener("click", function () {
-    console.log("Video clicked");
+/* Hero – main video plays (with sound) in place of the image on Play;
+   nothing downloads until then */
+(function () {
+  var box = document.querySelector(".hero .video-box[data-video]");
+  if (!box) return;
+
+  function play() {
+    if (box.classList.contains("is-playing")) return;
+    var video = document.createElement("video");
+    video.src = box.getAttribute("data-video");
+    video.controls = true;
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    box.appendChild(video);
+    box.classList.add("is-playing");
+    box.removeAttribute("role");
+    box.removeAttribute("tabindex");
+    var p = video.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  box.addEventListener("click", play);
+  box.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      play();
+    }
   });
-});
+})();
 
 /* Success stories carousel – continuous auto scroll */
 (function () {
