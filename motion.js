@@ -375,7 +375,7 @@
     // Day 1 enters as the stage arrives: content from the right, image settles
     gsap.timeline({ defaults: { ease: EASE }, scrollTrigger: { trigger: list, start: "top 75%", once: true } })
       .from(cards[0].querySelector(".day-content"), { x: 40, opacity: 0, duration: 0.9, clearProps: "opacity,transform" })
-      .from(cards[0].querySelector(".day-image img"), { scale: 1.08, duration: 1.2, clearProps: "transform" }, 0);
+      .from(cards[0].querySelector(".day-image img, .day-image video"), { scale: 1.08, duration: 1.2, clearProps: "transform" }, 0);
 
     var moodLayers = moods();
     gsap.set(moodLayers, { opacity: function (i) { return i === 0 ? 1 : 0; } });
@@ -399,7 +399,7 @@
         // image changes through an editorial mask, alternating direction
         .fromTo(next.querySelector(".day-image"), { clipPath: mask },
           { clipPath: "inset(0% 0% 0% 0%)", duration: 1.1, ease: "power3.inOut" }, at + 0.15)
-        .fromTo(next.querySelector(".day-image img"), { scale: last ? 1.15 : 1.08 },
+        .fromTo(next.querySelector(".day-image img, .day-image video"), { scale: last ? 1.15 : 1.08 },
           { scale: 1, duration: 1.4, ease: EASE }, at + 0.15)
         .to(bar, { x: i * 120, duration: 1 }, at)
         .to(".skills", { "--glow-x": (30 + i * 20) + "%", duration: 1 }, at)
@@ -452,7 +452,7 @@
     all(".day-card").forEach(function (card, i) {
       reveal([card], { y: 50 * Math.max(k, 0.5), duration: 0.9 });
       var box = card.querySelector(".day-image");
-      clipReveal(box, i % 2 ? "right" : "left", box && box.querySelector("img"));
+      clipReveal(box, i % 2 ? "right" : "left", box && box.querySelector("img, video"));
       // the background mood follows the day card in the middle of the screen
       later(function () {
         ScrollTrigger.create({
