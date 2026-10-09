@@ -177,6 +177,11 @@ body {
   transform: translateY(-2px);
 }
 
+/* until the GHL group link has loaded the button has no href */
+.whatsapp-link:not([href]) {
+  cursor: pointer;
+}
+
 .whatsapp-link:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 3px;
@@ -196,6 +201,19 @@ body {
   width: 30px;
   height: 30px;
   object-fit: contain;
+}
+
+/* shown only if the GHL group link is missing or invalid */
+.link-error {
+  max-width: 520px;
+  margin-top: 14px;
+  color: #ffd2d5;
+  font-size: clamp(13px, 1.1vw, 15px);
+  line-height: 1.6;
+}
+
+.link-error a {
+  color: #ffffff;
 }
 
 .supporting-note {
@@ -356,15 +374,24 @@ body {
         Now join the official ZRM WhatsApp group to receive everything you need for the live workshop.
       </p>
 
-      <!-- group link comes live from GHL (zrm_group_link) via zrm-values.js -->
+      <!-- href = GHL custom value {{custom_values.zrm_group_link}}, loaded
+           server-side by /api/zrm-values and set by zrm-values.js (https only).
+           No hardcoded link: if the value is missing the error below is shown. -->
       <a class="whatsapp-link" data-cv-href="zrm_group_link"
-         href="https://chat.whatsapp.com/Infyusibnlv2fQCTiLHs7p"
+         role="link" tabindex="0" aria-describedby="link-error"
          target="_blank" rel="noopener noreferrer">
         <span class="whatsapp-icon">
           <img src="/ZRM%20New%20LP%20Assets/whatsapp%201.png" alt="">
         </span>
         <span>JOIN THE ZRM WHATSAPP GROUP</span>
       </a>
+
+      <p class="link-error" id="link-error" role="alert" hidden>
+        The WhatsApp group link isn’t available right now. Please call
+        <a href="tel:+918015139542">+91 80151 39542</a> or email
+        <a href="mailto:helpdesk@tamilbusinesstribe.com">helpdesk@tamilbusinesstribe.com</a>
+        and we’ll add you to the group.
+      </p>
 
       <p class="supporting-note">
         Your workshop link, important updates, reminders and announcements will be shared here.
@@ -400,6 +427,40 @@ body {
 
   </div>
 
+<script>
+  // WhatsApp button: never navigates without a valid GHL link
+  (function () {
+    var link = document.querySelector(".whatsapp-link");
+    var error = document.getElementById("link-error");
+    var loaded = false;
+
+    function ready() {
+      return link.hasAttribute("href");
+    }
+
+    function guard(e) {
+      if (ready()) return;
+      e.preventDefault();
+      if (loaded) error.hidden = false;
+    }
+
+    link.addEventListener("click", guard);
+    link.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && !ready()) guard(e);
+    });
+
+    document.addEventListener("zrm-values", function () {
+      loaded = true;
+      if (ready()) {
+        link.removeAttribute("role");
+        link.removeAttribute("tabindex");
+        link.removeAttribute("aria-describedby");
+      } else {
+        error.hidden = false;
+      }
+    });
+  })();
+</script>
 <script src="/zrm-values.js" defer></script>
 </body>
 </html>
