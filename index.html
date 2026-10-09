@@ -1865,6 +1865,41 @@
         transition: none;
       }
     }
+  
+    /* =========================
+   MOBILE: one spacing scale for every section
+   24px section padding (48px between sections), 48px between big blocks,
+   24px title → content, 20px for arrows / pills under content
+========================= */
+    @media (max-width: 767px) {
+      .success,
+      .skills,
+      .tools,
+      .impact {
+        padding-top: 24px;
+        padding-bottom: 24px;
+      }
+
+      .success-title,
+      .skills-head {
+        margin-bottom: 24px;
+      }
+
+      .success .bottom-pill {
+        margin-top: 20px;
+      }
+
+      /* the hidden middle CTAs used to give these blocks their space */
+      .tools .join-wrap[data-mid-cta] + *,
+      .impact .join-wrap[data-mid-cta] + * {
+        margin-top: 48px;
+      }
+
+      .ticker-wrap,
+      .final-cta {
+        margin-top: 48px;
+      }
+    }
   </style>
   <link rel="stylesheet" href="motion.css">
   <link rel="stylesheet" href="ambient.css">
