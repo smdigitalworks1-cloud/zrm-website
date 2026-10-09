@@ -365,6 +365,9 @@ html.lenis body {
 @media (min-width: 768px) {
   .impact-grid {
     padding: 14px 4px 12px;
+    /* snap points match the padding, so the browser doesn't snap-scroll the
+       slider on load (that counted as a scroll and stopped LCP recording) */
+    scroll-padding-inline: 4px;
   }
 
   .impact-card {
