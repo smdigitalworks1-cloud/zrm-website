@@ -2486,31 +2486,53 @@ document.querySelectorAll("video[data-poster]").forEach(function (v) {
   }, { rootMargin: "200px 0px" }).observe(video);
 })();
 
-/* Participants section – Day 4 video plays in place of the screenshot */
+/* Participants section – Day 4 video autoplays (muted, looping) while the
+   section is on screen; controls let the viewer unmute. Nothing downloads
+   until the section comes near the screen. */
 (function () {
   var box = document.querySelector(".participants-video[data-video]");
   if (!box) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var video = null;
+  var userPaused = false;
 
-  function play() {
-    if (box.classList.contains("is-playing")) return;
-    var video = document.createElement("video");
-    video.src = box.getAttribute("data-video");
-    video.controls = true;
-    video.playsInline = true;
-    video.setAttribute("playsinline", "");
-    box.appendChild(video);
-    box.classList.add("is-playing");
-    box.removeAttribute("role");
-    box.removeAttribute("tabindex");
+  function start(fromClick) {
+    if (!video) {
+      video = document.createElement("video");
+      video.src = box.getAttribute("data-video");
+      video.muted = true;
+      video.loop = true;
+      video.controls = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.addEventListener("pause", function () { if (inView) userPaused = true; });
+      video.addEventListener("play", function () { userPaused = false; });
+      box.appendChild(video);
+      box.classList.add("is-playing");
+      box.removeAttribute("role");
+      box.removeAttribute("tabindex");
+    }
+    if (userPaused && !fromClick) return;
     var p = video.play();
     if (p && p.catch) p.catch(function () {});
   }
 
-  box.addEventListener("click", play);
+  var inView = false;
+  if (!reduce && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      inView = entries[0].isIntersecting;
+      if (inView) start(false);
+      else if (video && !video.paused) { inView = false; video.pause(); }
+    }, { threshold: 0.25 }).observe(box);
+  }
+
+  // reduced motion (or no observer): plays on click / Enter / Space as before
+  box.addEventListener("click", function () { if (!video) start(true); });
   box.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" || e.key === " ") {
+    if (!video && (e.key === "Enter" || e.key === " ")) {
       e.preventDefault();
-      play();
+      start(true);
     }
   });
 })();
