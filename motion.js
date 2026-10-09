@@ -117,9 +117,8 @@
     tl.set(".hero-title", { opacity: 1 })
       // 1 · atmosphere
       .fromTo(".hero-atmos", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power2.out" }, 0)
-      // 2 · main visual unmasks left → right
-      .fromTo(".hero .video-box", { opacity: 1, clipPath: "inset(0% 100% 0% 0% round 14px)" },
-        { clipPath: "inset(0% 0% 0% 0% round 14px)", duration: 1.0, ease: "power4.inOut", clearProps: "clipPath" }, 0.1)
+      // 2 · main visual is visible from the first paint (it is the LCP image);
+      //     it settles from a slight zoom
       .fromTo(".hero .video-box img", { scale: 1.08 }, { scale: 1.03, duration: 1.3 }, 0.1)
       // 3 · heading, word by word inside masks
       .fromTo(".hero .top-label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 }, 0.15)
