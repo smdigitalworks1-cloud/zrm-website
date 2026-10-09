@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+
+<title>Complete Your Registration – Zero Ruppee Marketing Challenge</title>
+
+<link rel="preload" href="/fonts/Nexa-Book.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="/fonts/Nexa-Bold.ttf" as="font" type="font/ttf" crossorigin>
+
+<style>
+@font-face {
+  font-family: "Nexa";
+  src: url("/fonts/Nexa-Book.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/fonts/Nexa-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("/fonts/Nexa-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --yellow: #e8ff00;
+  --red: #ff1738;
+  --bg: #0a0a0d;
+  --text-soft: #c9c9d1;
+  --border: rgba(255, 255, 255, 0.12);
+  --card: rgba(255, 255, 255, 0.04);
+  --gutter: clamp(16px, 4vw, 48px);
+}
+
+html,
+body {
+  min-height: 100%;
+  font-family: "Nexa", Arial, Helvetica, sans-serif;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(130, 16, 44, 0.5), transparent 70%),
+    linear-gradient(180deg, #160710 0%, var(--bg) 35%);
+  background-color: var(--bg);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.header {
+  padding: 24px var(--gutter);
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: clamp(140px, 16vw, 190px);
+}
+
+.wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 8px var(--gutter) 64px;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: clamp(20px, 3vw, 32px);
+}
+
+.intro h1 {
+  font-size: clamp(26px, 4.6vw, 40px);
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.yellow {
+  color: var(--yellow);
+}
+
+.intro p {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: clamp(14px, 1.6vw, 17px);
+  line-height: 1.6;
+  color: var(--text-soft);
+}
+
+/* white panel so the hosted survey reads as intended; the embed script
+   sets the iframe height, so the panel just grows with it */
+.form-box {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+.form-box iframe {
+  display: block;
+  width: 100%;
+  min-height: 420px;
+  border: none;
+}
+
+/* shown until the survey has loaded, or if it fails */
+.form-status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  background: #ffffff;
+  color: #3a3a40;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.form-status[hidden] {
+  display: none;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #e3e3e8;
+  border-top-color: var(--red);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.form-status a {
+  color: var(--red);
+  font-weight: 700;
+}
+
+.help {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-soft);
+  line-height: 1.6;
+}
+
+.help a {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+  .wrap {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .form-box {
+    border-radius: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}
+</style>
+</head>
+<body>
+
+  <header class="header">
+    <a href="/"><img class="logo" src="/ZRM%20New%20LP%20Assets/Layer%201%202.png" alt="Tamil Business Tribe"></a>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <h1>Complete Your <span class="yellow">Registration</span></h1>
+      <p>Thank you for joining the Zero Rupee Marketing Challenge. Please complete this form to continue your registration.</p>
+    </section>
+
+    <!-- TBTMart / GHL survey (FqOaML6jtt0yhUdyiI4H). form_embed.js sizes the iframe. -->
+    <div class="form-box">
+      <iframe
+        src="https://payment.tbtmart.com/widget/survey/FqOaML6jtt0yhUdyiI4H"
+        style="border:none;width:100%;"
+        scrolling="no"
+        id="FqOaML6jtt0yhUdyiI4H"
+        title="survey"
+        data-cookie-consent="true"
+        data-cookie-consent-provider="auto">
+      </iframe>
+
+      <div class="form-status" id="form-status" role="status" aria-live="polite">
+        <span class="spinner" aria-hidden="true"></span>
+        <span>Loading registration form…</span>
+      </div>
+    </div>
+
+    <p class="help">
+      Facing any issue with the form? Call <a href="tel:+918015139542">+91 80151 39542</a><br>
+      or email <a href="mailto:helpdesk@tamilbusinesstribe.com">helpdesk@tamilbusinesstribe.com</a>
+    </p>
+  </main>
+
+<script>
+  // loading / error state around the hosted survey
+  (function () {
+    var frame = document.getElementById("FqOaML6jtt0yhUdyiI4H");
+    var status = document.getElementById("form-status");
+    var loaded = false;
+
+    frame.addEventListener("load", function () {
+      loaded = true;
+      status.hidden = true;
+    });
+
+    setTimeout(function () {
+      if (loaded) return;
+      status.innerHTML = "<span>The registration form is taking longer than usual to load.</span>" +
+        "<span><a href=\"\">Reload this page</a> or contact us using the details below.</span>";
+    }, 15000);
+  })();
+</script>
+<script src="https://payment.tbtmart.com/js/form_embed.js"></script>
+</body>
+</html>
