@@ -36,21 +36,36 @@
     else window.scrollTo({ top: y, behavior: reduceMotion ? "auto" : "smooth" });
   }
 
+  // Creating a ScrollTrigger measures the page (layout). During setup each
+  // trigger is queued as its own small task (see runSteps) instead of all
+  // of them running in one long main-thread task. Order is preserved.
+  var stepQueue = null;
+  function later(fn) {
+    if (stepQueue) stepQueue.push(fn);
+    else fn();
+  }
+
   // one-shot reveal when an element scrolls into view
   function reveal(targets, vars, trigger, start) {
-    var list = typeof targets === "string" ? all(targets) : targets;
-    if (!list.length) return;
-    vars.opacity = 0;
-    vars.ease = vars.ease || EASE;
-    vars.duration = vars.duration || 0.8;
-    vars.clearProps = vars.clearProps || "opacity,transform";
-    vars.scrollTrigger = { trigger: trigger || list[0], start: start || "top 85%", once: true };
-    gsap.from(list, vars);
+    later(function () {
+      var list = typeof targets === "string" ? all(targets) : targets;
+      if (!list.length) return;
+      vars.opacity = 0;
+      vars.ease = vars.ease || EASE;
+      vars.duration = vars.duration || 0.8;
+      vars.clearProps = vars.clearProps || "opacity,transform";
+      vars.scrollTrigger = { trigger: trigger || list[0], start: start || "top 85%", once: true };
+      gsap.from(list, vars);
+    });
   }
 
   // masked image reveal; dir = "left" | "right" | "bottom"
   function clipReveal(box, dir, img, start) {
     if (!box) return;
+    later(function () { clipRevealNow(box, dir, img, start); });
+  }
+
+  function clipRevealNow(box, dir, img, start) {
     var from = {
       left: "inset(0% 100% 0% 0%)",
       right: "inset(0% 0% 0% 100%)",
@@ -202,7 +217,7 @@
   // every .amb-layer drifts at its own speed while its section passes,
   // so the background slowly moves behind the (still) content
   function ambientScroll(k) {
-    all(".amb-layer[data-speed]").forEach(function (layer) {
+    all(".amb-layer[data-speed]").forEach(function (layer) { later(function () {
       var host = layer.closest(".amb").parentNode;
       var y = parseFloat(layer.dataset.speed) * k;
       var x = parseFloat(layer.dataset.xspeed || 0) * k;
@@ -210,7 +225,7 @@
         yPercent: y, xPercent: x, ease: "none",
         scrollTrigger: { trigger: host, start: "top bottom", end: "bottom top", scrub: true }
       });
-    });
+    }); });
   }
 
   // 3-day moods: fade to one day's background
@@ -440,9 +455,11 @@
       var box = card.querySelector(".day-image");
       clipReveal(box, i % 2 ? "right" : "left", box && box.querySelector("img"));
       // the background mood follows the day card in the middle of the screen
-      ScrollTrigger.create({
-        trigger: card, start: "top 60%", end: "bottom 60%",
-        onToggle: function (self) { if (self.isActive) setMood(i); }
+      later(function () {
+        ScrollTrigger.create({
+          trigger: card, start: "top 60%", end: "bottom 60%",
+          onToggle: function (self) { if (self.isActive) setMood(i); }
+        });
       });
     });
   }
@@ -460,13 +477,13 @@
 
     // "tool orbit": every card drifts vertically at its own pace (via --orbit)
     var orbit = [20, -15, 10];
-    cards.forEach(function (card, i) {
+    cards.forEach(function (card, i) { later(function () {
       var v = orbit[i % orbit.length] * Math.max(k, 0.5);
       gsap.fromTo(card, { "--orbit": -v + "px" }, {
         "--orbit": v + "px", ease: "none",
         scrollTrigger: { trigger: grid, start: "top bottom", end: "bottom top", scrub: true }
       });
-    });
+    }); });
 
     // desktop horizontal story: while the page scrolls down, the two rows
     // travel sideways (limited to the free space beside the grid)
@@ -528,24 +545,24 @@
     }, ".impact-grid");
 
     // posters unmask bottom → top
-    cards.forEach(function (card, i) {
+    cards.forEach(function (card, i) { later(function () {
       var media = card.querySelector(".impact-media");
       gsap.fromTo(media, { clipPath: "inset(100% 0% 0% 0%)" }, {
         clipPath: "inset(0% 0% 0% 0%)", duration: 1, delay: i * 0.08, ease: "power4.inOut",
         clearProps: "clipPath",
         scrollTrigger: { trigger: ".impact-grid", start: "top 85%", once: true }
       });
-    });
+    }); });
 
     if (k < 0.5) return; // no floating on phones
 
-    cards.forEach(function (card, i) {
+    cards.forEach(function (card, i) { later(function () {
       var amount = (10 + (i % 3) * 8) * k;
       gsap.fromTo(card, { "--float": amount + "px" }, {
         "--float": -amount + "px", ease: "none",
         scrollTrigger: { trigger: ".impact-grid", start: "top bottom", end: "bottom top", scrub: true }
       });
-    });
+    }); });
   }
 
   /* ================= FAQ ================= */
@@ -643,8 +660,26 @@
     return;
   }
 
-  heroEntrance();
+  // cinematic entrance only where the page was hidden for it (desktop + mouse);
+  // phones / tablets show the hero immediately for a fast first paint
+  if (root.classList.contains("motion-ready")) heroEntrance();
+  else showHero();
   window.__zrmMotion = true;
+
+  // run each setup step in its own task, so building ~100 scroll triggers
+  // never blocks the main thread in one long task
+  function runSteps(ctx, steps, isAlive, done) {
+    var queue = steps.slice();
+    (function next() {
+      if (!isAlive()) { queue = []; return; }
+      if (!queue.length) { if (done) done(); return; }
+      var added = [];
+      stepQueue = added;
+      try { ctx.add(queue.shift()); } finally { stepQueue = null; }
+      queue = added.concat(queue); // queued triggers run next, in page order
+      setTimeout(next, 0);
+    })();
+  }
 
   var mm = gsap.matchMedia();
   mm.add({
@@ -657,29 +692,27 @@
     var k = c.desktop ? 1 : c.tablet ? 0.6 : 0.35; // parallax intensity
     var premiumPointer = c.desktop && c.finePointer;
     var cleanups = [];
+    var alive = true;
 
-    if (premiumPointer) cleanups.push(smoothScroll());
-
-    heroScroll(k);
-    if (premiumPointer) {
-      cleanups.push(heroMouse());
-      cleanups.push(magnetic());
-    }
-    successStories(k);
-    storyMoment(k);
-    if (c.desktop) cleanups.push(dayStage());
-    else dayCardsSimple(k);
-    tools(c.desktop, k);
-    videoTestimonials(k);
-    faqReveal();
-    finalCta(k);
-    // background drift last: its triggers sit below the pinned 3-day stage,
-    // so they must be created after it to get correct positions
-    ambientScroll(k);
-    // re-measure + evaluate every trigger once the whole setup exists
-    requestAnimationFrame(function () { ScrollTrigger.refresh(); });
+    // steps run in page order; ambientScroll stays last because its triggers
+    // sit below the pinned 3-day stage
+    runSteps(ctx, [
+      function () { if (premiumPointer) cleanups.push(smoothScroll()); heroScroll(k); },
+      function () { if (premiumPointer) { cleanups.push(heroMouse()); cleanups.push(magnetic()); } },
+      function () { successStories(k); },
+      function () { storyMoment(k); },
+      function () { if (c.desktop) cleanups.push(dayStage()); else dayCardsSimple(k); },
+      function () { tools(c.desktop, k); },
+      function () { videoTestimonials(k); },
+      function () { faqReveal(); finalCta(k); },
+      function () { ambientScroll(k); }
+    ], function () { return alive; }, function () {
+      // re-measure + evaluate every trigger once the whole setup exists
+      ScrollTrigger.refresh();
+    });
 
     return function () {
+      alive = false;
       cleanups.forEach(function (fn) { if (fn) fn(); });
     };
   });
