@@ -580,7 +580,8 @@
     .success {
       position: relative;
       z-index: 2;
-      padding: clamp(32px, 4vw, 56px) 0 clamp(48px, 6vw, 80px);
+      /* same space above the title and below the last row */
+      padding: clamp(40px, 5vw, 68px) 0;
       background:
         linear-gradient(180deg, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
         url("ZRM New LP Assets/13.webp") center / cover no-repeat;
