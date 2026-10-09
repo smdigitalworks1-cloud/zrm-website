@@ -1,2779 +1,2869 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zero Rupee Marketing Challenge</title>
-<meta name="description" content="Kaasu Selavu Pannama Marketing Panna Mudiyuma? Learn how to attract attention, generate leads and convert them into customers using the Zero Rupee Marketing framework – 3-Day Live Zero Ruppee Marketing Challenge.">
-<link rel="icon" href="data:,">
+  <title>Zero Rupee Marketing Challenge</title>
+  <meta name="description"
+    content="Kaasu Selavu Pannama Marketing Panna Mudiyuma? Learn how to attract attention, generate leads and convert them into customers using the Zero Rupee Marketing framework – 3-Day Live Zero Ruppee Marketing Challenge.">
+  <link rel="icon" href="data:,">
 
-<link rel="preload" href="fonts/Nexa-Book.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="fonts/Nexa-Bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp" as="image" type="image/webp" imagesrcset="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp 480w, ZRM%20New%20LP%20Assets/Rectangle%204.webp 964w" imagesizes="(max-width: 900px) calc(100vw - 32px), 680px" fetchpriority="high">
+  <link rel="preload" href="fonts/Nexa-Book.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/Nexa-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp" as="image" type="image/webp"
+    imagesrcset="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp 480w, ZRM%20New%20LP%20Assets/Rectangle%204.webp 964w"
+    imagesizes="(max-width: 900px) calc(100vw - 32px), 680px" fetchpriority="high">
 
-<!-- Scroll / parallax layer: styles in motion.css, GSAP animations in motion.js -->
-<script>
-  // Hide hero intro elements until motion.js animates them in – desktop with a
-  // mouse only (phones show the hero straight away: faster first paint / LCP).
-  // Skipped for reduced motion; removed after 2.5s if scripts fail to load.
-  if (window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches) {
-    document.documentElement.classList.add("motion-ready");
-    setTimeout(function () {
-      if (!window.__zrmMotion) document.documentElement.classList.remove("motion-ready");
-    }, 2500);
-  }
-</script>
+  <!-- Scroll / parallax layer: styles in motion.css, GSAP animations in motion.js -->
+  <script>
+    // Hide hero intro elements until motion.js animates them in – desktop with a
+    // mouse only (phones show the hero straight away: faster first paint / LCP).
+    // Skipped for reduced motion; removed after 2.5s if scripts fail to load.
+    if (window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches) {
+      document.documentElement.classList.add("motion-ready");
+      setTimeout(function () {
+        if (!window.__zrmMotion) document.documentElement.classList.remove("motion-ready");
+      }, 2500);
+    }
+  </script>
 
-<style>
-/* =========================
+  <style>
+    /* =========================
    NEXA FONT (files in /fonts)
 ========================= */
 
-@font-face {
-  font-family: "Nexa";
-  src: url("fonts/Nexa-Light.woff2") format("woff2"), url("fonts/Nexa-Light.ttf") format("truetype");
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
+    @font-face {
+      font-family: "Nexa";
+      src: url("fonts/Nexa-Light.woff2") format("woff2"), url("fonts/Nexa-Light.ttf") format("truetype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
 
-@font-face {
-  font-family: "Nexa";
-  src: url("fonts/Nexa-Book.woff2") format("woff2"), url("fonts/Nexa-Book.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
+    @font-face {
+      font-family: "Nexa";
+      src: url("fonts/Nexa-Book.woff2") format("woff2"), url("fonts/Nexa-Book.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
 
-@font-face {
-  font-family: "Nexa";
-  src: url("fonts/Nexa-Bold.woff2") format("woff2"), url("fonts/Nexa-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+    @font-face {
+      font-family: "Nexa";
+      src: url("fonts/Nexa-Bold.woff2") format("woff2"), url("fonts/Nexa-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
 
-@font-face {
-  font-family: "Nexa";
-  src: url("fonts/Nexa-XBold.woff2") format("woff2"), url("fonts/Nexa-XBold.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
+    @font-face {
+      font-family: "Nexa";
+      src: url("fonts/Nexa-XBold.woff2") format("woff2"), url("fonts/Nexa-XBold.ttf") format("truetype");
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
 
-@font-face {
-  font-family: "Nexa";
-  src: url("fonts/Nexa-Heavy.woff2") format("woff2"), url("fonts/Nexa-Heavy.ttf") format("truetype");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
+    @font-face {
+      font-family: "Nexa";
+      src: url("fonts/Nexa-Heavy.woff2") format("woff2"), url("fonts/Nexa-Heavy.ttf") format("truetype");
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-button,
-input,
-select,
-textarea {
-  font: inherit;
-}
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
 
-:root {
-  --yellow: #e8ff00;
-  --red: #ff1738;
-  --bg: #0a0a0d;
-  --text-soft: #c9c9d1;
-  --border: rgba(255, 255, 255, 0.12);
-  --card: rgba(255, 255, 255, 0.04);
+    :root {
+      --yellow: #e8ff00;
+      --red: #ff1738;
+      --bg: #0a0a0d;
+      --text-soft: #c9c9d1;
+      --border: rgba(255, 255, 255, 0.12);
+      --card: rgba(255, 255, 255, 0.04);
 
-  /* side padding: 16px on phones, grows to 48px on desktop */
-  --gutter: clamp(16px, 4vw, 48px);
-  --max: 1200px;
-}
+      /* side padding: 16px on phones, grows to 48px on desktop */
+      --gutter: clamp(16px, 4vw, 48px);
+      --max: 1200px;
+    }
 
-html {
-  scroll-behavior: smooth;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-html,
-body {
-  width: 100%;
-  min-height: 100%;
-  font-family: "Nexa", Arial, Helvetica, sans-serif;
-  background: var(--bg);
-  color: #ffffff;
-  -webkit-font-smoothing: antialiased;
-}
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      font-family: "Nexa", Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
 
-body {
-  overflow-x: hidden;
-}
+    body {
+      overflow-x: hidden;
+    }
 
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* Common wrapper – gives every section the same side padding */
-.container {
-  width: 100%;
-  max-width: calc(var(--max) + var(--gutter) * 2);
-  margin: 0 auto;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);
-}
+    /* Common wrapper – gives every section the same side padding */
+    .container {
+      width: 100%;
+      max-width: calc(var(--max) + var(--gutter) * 2);
+      margin: 0 auto;
+      padding-left: var(--gutter);
+      padding-right: var(--gutter);
+    }
 
-/* =========================
+    /* =========================
    PAGE BACKGROUND
 ========================= */
 
-.page {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse 60% 40% at 50% 0%, rgba(130, 16, 44, 0.5), transparent 70%),
-    linear-gradient(180deg, #160710 0%, var(--bg) 35%);
-}
+    .page {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse 60% 40% at 50% 0%, rgba(130, 16, 44, 0.5), transparent 70%),
+        linear-gradient(180deg, #160710 0%, var(--bg) 35%);
+    }
 
-/* Soft diagonal band (from the Figma reference).
+    /* Soft diagonal band (from the Figma reference).
    A real element (not ::before) so the parallax can move it:
    .hero-atmos moves on scroll, the band inside follows the mouse. */
-.hero-atmos {
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 900px;
-  pointer-events: none;
-}
+    .hero-atmos {
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 900px;
+      pointer-events: none;
+    }
 
-.hero-atmos-band {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(100deg, rgba(120, 12, 40, 0.35) 0%, rgba(40, 6, 18, 0.15) 50%, rgba(30, 60, 10, 0.3) 100%);
-  clip-path: polygon(0 40%, 100% 8%, 100% 28%, 0 75%);
-  filter: blur(30px);
-}
+    .hero-atmos-band {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(100deg, rgba(120, 12, 40, 0.35) 0%, rgba(40, 6, 18, 0.15) 50%, rgba(30, 60, 10, 0.3) 100%);
+      clip-path: polygon(0 40%, 100% 8%, 100% 28%, 0 75%);
+      filter: blur(30px);
+    }
 
-/* =========================
+    /* =========================
    HEADER
 ========================= */
 
-.header {
-  position: relative;
-  z-index: 5;
-}
+    .header {
+      position: relative;
+      z-index: 5;
+    }
 
-.header .container {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
+    .header .container {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.logo {
-  width: clamp(96px, 10vw, 124px);
-}
+    .logo {
+      width: clamp(96px, 10vw, 124px);
+    }
 
 
-/* =========================
+    /* =========================
    HERO
 ========================= */
 
-.hero {
-  position: relative;
-  z-index: 2;
-  padding-top: clamp(6px, 1vw, 12px);
-  padding-bottom: clamp(24px, 3vw, 40px);
-}
+    .hero {
+      position: relative;
+      z-index: 2;
+      padding-top: clamp(6px, 1vw, 12px);
+      padding-bottom: clamp(24px, 3vw, 40px);
+    }
 
-.hero-head {
-  max-width: 1040px;
-  margin: 0 auto clamp(32px, 5vw, 56px);
-  text-align: center;
-}
+    .hero-head {
+      max-width: 1040px;
+      margin: 0 auto clamp(32px, 5vw, 56px);
+      text-align: center;
+    }
 
-.top-label {
-  display: inline-block;
-  font-size: clamp(10px, 1.1vw, 13px);
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  color: var(--text-soft);
-  text-transform: uppercase;
-  padding: 8px 18px;
-  border: 1px solid var(--border);
-  border-radius: 40px;
-  background: var(--card);
-  margin-bottom: clamp(16px, 2vw, 24px);
-}
+    .top-label {
+      display: inline-block;
+      font-size: clamp(10px, 1.1vw, 13px);
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border: 1px solid var(--border);
+      border-radius: 40px;
+      background: var(--card);
+      margin-bottom: clamp(16px, 2vw, 24px);
+    }
 
-.hero-title {
-  font-size: clamp(28px, 4.6vw, 56px);
-  line-height: 1.18;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-bottom: clamp(14px, 1.6vw, 20px);
-}
+    .hero-title {
+      font-size: clamp(28px, 4.6vw, 56px);
+      line-height: 1.18;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: clamp(14px, 1.6vw, 20px);
+    }
 
-.yellow {
-  color: var(--yellow);
-}
+    .yellow {
+      color: var(--yellow);
+    }
 
-.hero-subtitle {
-  max-width: 640px;
-  margin: 0 auto;
-  font-size: clamp(14px, 1.3vw, 17px);
-  line-height: 1.65;
-  color: var(--text-soft);
-}
+    .hero-subtitle {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: clamp(14px, 1.3vw, 17px);
+      line-height: 1.65;
+      color: var(--text-soft);
+    }
 
-/* =========================
+    /* =========================
    HERO CONTENT
 ========================= */
 
-.hero-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-  gap: clamp(28px, 4vw, 56px);
-  align-items: center;
-}
+    .hero-content {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+      gap: clamp(28px, 4vw, 56px);
+      align-items: center;
+    }
 
-/* Video */
-.video-box {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 964 / 542;
-  overflow: hidden;
-  background: #111;
-  border-radius: clamp(12px, 1.4vw, 18px);
-  border: 1px solid var(--border);
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 0 80px -20px rgba(255, 23, 56, 0.25);
-  cursor: pointer;
-}
+    /* Video */
+    .video-box {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 964 / 542;
+      overflow: hidden;
+      background: #111;
+      border-radius: clamp(12px, 1.4vw, 18px);
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 0 80px -20px rgba(255, 23, 56, 0.25);
+      cursor: pointer;
+    }
 
-.video-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .video-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-/* main video – replaces the image once Play is pressed */
-.video-box video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #000;
-}
+    /* main video – replaces the image once Play is pressed */
+    .video-box video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
 
-.video-box.is-playing {
-  cursor: default;
-}
+    .video-box.is-playing {
+      cursor: default;
+    }
 
-.video-box.is-playing .video-overlay {
-  display: none;
-}
+    .video-box.is-playing .video-overlay {
+      display: none;
+    }
 
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.play-button {
-  width: clamp(56px, 6vw, 80px);
-  height: clamp(56px, 6vw, 80px);
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.96);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.18);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
+    .play-button {
+      width: clamp(56px, 6vw, 80px);
+      height: clamp(56px, 6vw, 80px);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.18);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
 
-.video-box:hover .play-button {
-  transform: scale(1.08);
-  box-shadow: 0 0 0 14px rgba(255, 255, 255, 0.14);
-}
+    .video-box:hover .play-button {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 14px rgba(255, 255, 255, 0.14);
+    }
 
-.play-button::after {
-  content: "";
-  margin-left: 12%;
-  border-left: 0.32em solid #111;
-  border-top: 0.2em solid transparent;
-  border-bottom: 0.2em solid transparent;
-  font-size: clamp(56px, 6vw, 80px);
-}
+    .play-button::after {
+      content: "";
+      margin-left: 12%;
+      border-left: 0.32em solid #111;
+      border-top: 0.2em solid transparent;
+      border-bottom: 0.2em solid transparent;
+      font-size: clamp(56px, 6vw, 80px);
+    }
 
-/* =========================
+    /* =========================
    EVENT DETAILS
 ========================= */
 
-.event-details {
-  padding: clamp(20px, 2.4vw, 32px);
-  border: 1px solid var(--border);
-  border-radius: clamp(12px, 1.4vw, 18px);
-  background: var(--card);
-  backdrop-filter: blur(6px);
-}
+    .event-details {
+      padding: clamp(20px, 2.4vw, 32px);
+      border: 1px solid var(--border);
+      border-radius: clamp(12px, 1.4vw, 18px);
+      background: var(--card);
+      backdrop-filter: blur(6px);
+    }
 
-.detail-list {
-  list-style: none;
-  display: grid;
-  gap: clamp(18px, 2vw, 24px);
-  margin-bottom: clamp(22px, 2.4vw, 30px);
-}
+    .detail-list {
+      list-style: none;
+      display: grid;
+      gap: clamp(18px, 2vw, 24px);
+      margin-bottom: clamp(22px, 2.4vw, 30px);
+    }
 
-.detail-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+    .detail-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
 
-.detail-icon {
-  width: clamp(34px, 3.2vw, 42px);
-  height: clamp(34px, 3.2vw, 42px);
-  flex-shrink: 0;
-}
+    .detail-icon {
+      width: clamp(34px, 3.2vw, 42px);
+      height: clamp(34px, 3.2vw, 42px);
+      flex-shrink: 0;
+    }
 
-.detail-text {
-  min-width: 0;
-  line-height: 1.4;
-}
+    .detail-text {
+      min-width: 0;
+      line-height: 1.4;
+    }
 
-.detail-text strong {
-  display: block;
-  color: var(--yellow);
-  font-size: clamp(12px, 1.05vw, 14px);
-  font-weight: 500;
-}
+    .detail-text strong {
+      display: block;
+      color: var(--yellow);
+      font-size: clamp(12px, 1.05vw, 14px);
+      font-weight: 500;
+    }
 
-.detail-text span {
-  display: block;
-  color: #ffffff;
-  font-size: clamp(15px, 1.4vw, 18px);
-  font-weight: 500;
-}
+    .detail-text span {
+      display: block;
+      color: #ffffff;
+      font-size: clamp(15px, 1.4vw, 18px);
+      font-weight: 500;
+    }
 
-/* Hero pricing CTA – dark pill; on hover it turns red and the
+    /* Hero pricing CTA – dark pill; on hover it turns red and the
    white circle slides from the left edge to the right edge */
-.cta {
-  --cta-ease: cubic-bezier(.22, 1, .36, 1);
-  --cta-circle: 46px;
-  --cta-inset: 4px;
-  --cta-gap: 14px;
+    .cta {
+      --cta-ease: cubic-bezier(.22, 1, .36, 1);
+      --cta-circle: 46px;
+      --cta-inset: 4px;
+      --cta-gap: 14px;
 
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: calc(var(--cta-circle) + var(--cta-inset) * 2);
-  /* room for the circle on the left; swapped to the right on hover */
-  padding-left: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
-  padding-right: var(--cta-gap);
-  border-radius: 999px;
-  background: linear-gradient(135deg, #25282d 0%, #181b20 55%, #202329 100%);
-  color: #ffffff;
-  font-size: clamp(13px, 1.15vw, 15px);
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .08),
-    inset 0 -1px 0 rgba(0, 0, 0, .45),
-    0 8px 24px rgba(0, 0, 0, .25);
-  transition:
-    background 650ms var(--cta-ease),
-    box-shadow 650ms var(--cta-ease),
-    transform 650ms var(--cta-ease),
-    padding 700ms var(--cta-ease);
-}
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: calc(var(--cta-circle) + var(--cta-inset) * 2);
+      /* room for the circle on the left; swapped to the right on hover */
+      padding-left: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
+      padding-right: var(--cta-gap);
+      border-radius: 999px;
+      background: linear-gradient(135deg, #25282d 0%, #181b20 55%, #202329 100%);
+      color: #ffffff;
+      font-size: clamp(13px, 1.15vw, 15px);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .08),
+        inset 0 -1px 0 rgba(0, 0, 0, .45),
+        0 8px 24px rgba(0, 0, 0, .25);
+      transition:
+        background 650ms var(--cta-ease),
+        box-shadow 650ms var(--cta-ease),
+        transform 650ms var(--cta-ease),
+        padding 700ms var(--cta-ease);
+    }
 
-/* red layer fades in (gradients can't be transitioned directly) */
-.cta::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  border-radius: inherit;
-  background: linear-gradient(115deg, #e9151d 0%, var(--red) 48%, #f51b24 100%);
-  opacity: 0;
-  transition: opacity 650ms var(--cta-ease);
-}
+    /* red layer fades in (gradients can't be transitioned directly) */
+    .cta::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(115deg, #e9151d 0%, var(--red) 48%, #f51b24 100%);
+      opacity: 0;
+      transition: opacity 650ms var(--cta-ease);
+    }
 
-.cta .arrow {
-  position: absolute;
-  z-index: 2;
-  top: 50%;
-  left: var(--cta-inset);
-  width: var(--cta-circle);
-  height: var(--cta-circle);
-  transform: translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
-  transition:
-    left 700ms var(--cta-ease),
-    box-shadow 700ms var(--cta-ease);
-}
+    .cta .arrow {
+      position: absolute;
+      z-index: 2;
+      top: 50%;
+      left: var(--cta-inset);
+      width: var(--cta-circle);
+      height: var(--cta-circle);
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+      transition:
+        left 700ms var(--cta-ease),
+        box-shadow 700ms var(--cta-ease);
+    }
 
-.cta .arrow svg {
-  width: 45%;
-  height: 45%;
-  fill: none;
-  stroke: var(--red);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
+    .cta .arrow svg {
+      width: 45%;
+      height: 45%;
+      fill: none;
+      stroke: var(--red);
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
-.cta .cta-label {
-  position: relative;
-  z-index: 1;
-  line-height: 1;
-  transition: letter-spacing 650ms var(--cta-ease);
-}
+    .cta .cta-label {
+      position: relative;
+      z-index: 1;
+      line-height: 1;
+      transition: letter-spacing 650ms var(--cta-ease);
+    }
 
-/* light sweep */
-.cta .cta-shine {
-  position: absolute;
-  z-index: 0;
-  top: -100%;
-  left: -45%;
-  width: 28%;
-  height: 300%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
-  transform: rotate(18deg) translateX(-220%);
-  opacity: 0;
-  pointer-events: none;
-}
+    /* light sweep */
+    .cta .cta-shine {
+      position: absolute;
+      z-index: 0;
+      top: -100%;
+      left: -45%;
+      width: 28%;
+      height: 300%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      transform: rotate(18deg) translateX(-220%);
+      opacity: 0;
+      pointer-events: none;
+    }
 
-/* hover only on real pointers (no sticky hover on touch);
+    /* hover only on real pointers (no sticky hover on touch);
    keyboard focus gets the same state */
-@media (hover: hover) {
-  .cta:hover::before {
-    opacity: 1;
-  }
+    @media (hover: hover) {
+      .cta:hover::before {
+        opacity: 1;
+      }
 
-  .cta:hover {
-    transform: scale(1.018);
-    padding-left: var(--cta-gap);
-    padding-right: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, .18),
-      0 12px 34px rgba(255, 32, 40, .28),
-      0 0 28px rgba(255, 32, 40, .13);
-  }
+      .cta:hover {
+        transform: scale(1.018);
+        padding-left: var(--cta-gap);
+        padding-right: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, .18),
+          0 12px 34px rgba(255, 32, 40, .28),
+          0 0 28px rgba(255, 32, 40, .13);
+      }
 
-  .cta:hover .arrow {
-    left: calc(100% - var(--cta-circle) - var(--cta-inset));
-    box-shadow: 0 5px 16px rgba(0, 0, 0, .2), 0 0 18px rgba(255, 255, 255, .16);
-  }
+      .cta:hover .arrow {
+        left: calc(100% - var(--cta-circle) - var(--cta-inset));
+        box-shadow: 0 5px 16px rgba(0, 0, 0, .2), 0 0 18px rgba(255, 255, 255, .16);
+      }
 
-  .cta:hover .arrow svg {
-    animation: ctaArrowPush 700ms var(--cta-ease);
-  }
+      .cta:hover .arrow svg {
+        animation: ctaArrowPush 700ms var(--cta-ease);
+      }
 
-  .cta:hover .cta-label {
-    letter-spacing: 0.07em;
-  }
+      .cta:hover .cta-label {
+        letter-spacing: 0.07em;
+      }
 
-  .cta:hover .cta-shine {
-    opacity: 1;
-    animation: ctaShine 900ms var(--cta-ease) forwards;
-  }
-}
+      .cta:hover .cta-shine {
+        opacity: 1;
+        animation: ctaShine 900ms var(--cta-ease) forwards;
+      }
+    }
 
-.cta:focus-visible::before {
-  opacity: 1;
-}
+    .cta:focus-visible::before {
+      opacity: 1;
+    }
 
-.cta:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 3px;
-  padding-left: var(--cta-gap);
-  padding-right: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
-}
+    .cta:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
+      padding-left: var(--cta-gap);
+      padding-right: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
+    }
 
-.cta:focus-visible .arrow {
-  left: calc(100% - var(--cta-circle) - var(--cta-inset));
-}
+    .cta:focus-visible .arrow {
+      left: calc(100% - var(--cta-circle) - var(--cta-inset));
+    }
 
-/* touch: quick red feedback while pressed */
-@media (hover: none) {
-  .cta:active::before {
-    opacity: 1;
-    transition-duration: 150ms;
-  }
-}
+    /* touch: quick red feedback while pressed */
+    @media (hover: none) {
+      .cta:active::before {
+        opacity: 1;
+        transition-duration: 150ms;
+      }
+    }
 
-@keyframes ctaArrowPush {
-  0%   { transform: translateX(-2px); }
-  55%  { transform: translateX(2px); }
-  100% { transform: translateX(0); }
-}
+    @keyframes ctaArrowPush {
+      0% {
+        transform: translateX(-2px);
+      }
 
-@keyframes ctaShine {
-  0%   { transform: rotate(18deg) translateX(-220%); }
-  100% { transform: rotate(18deg) translateX(520%); }
-}
+      55% {
+        transform: translateX(2px);
+      }
 
-@media (prefers-reduced-motion: reduce) {
-  .cta,
-  .cta::before,
-  .cta .arrow,
-  .cta .cta-label {
-    transition: none;
-  }
+      100% {
+        transform: translateX(0);
+      }
+    }
 
-  .cta .arrow svg,
-  .cta .cta-shine {
-    animation: none !important;
-  }
+    @keyframes ctaShine {
+      0% {
+        transform: rotate(18deg) translateX(-220%);
+      }
 
-  .cta:hover {
-    transform: none;
-  }
-}
+      100% {
+        transform: rotate(18deg) translateX(520%);
+      }
+    }
 
-/* =========================
+    @media (prefers-reduced-motion: reduce) {
+
+      .cta,
+      .cta::before,
+      .cta .arrow,
+      .cta .cta-label {
+        transition: none;
+      }
+
+      .cta .arrow svg,
+      .cta .cta-shine {
+        animation: none !important;
+      }
+
+      .cta:hover {
+        transform: none;
+      }
+    }
+
+    /* =========================
    SUCCESS STORIES
 ========================= */
 
-.success {
-  position: relative;
-  z-index: 2;
-  padding: clamp(32px, 4vw, 56px) 0 clamp(48px, 6vw, 80px);
-  background:
-    linear-gradient(180deg, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
-    url("ZRM New LP Assets/13.webp") center / cover no-repeat;
-}
+    .success {
+      position: relative;
+      z-index: 2;
+      padding: clamp(32px, 4vw, 56px) 0 clamp(48px, 6vw, 80px);
+      background:
+        linear-gradient(180deg, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
+        url("ZRM New LP Assets/13.webp") center / cover no-repeat;
+    }
 
-.success-title {
-  text-align: center;
-  font-size: clamp(22px, 2.8vw, 36px);
-  font-weight: 600;
-  line-height: 1.3;
-  margin-bottom: clamp(28px, 4vw, 48px);
-}
+    .success-title {
+      text-align: center;
+      font-size: clamp(22px, 2.8vw, 36px);
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: clamp(28px, 4vw, 48px);
+    }
 
-/* =========================
+    /* =========================
    TESTIMONIAL GRID
 ========================= */
 
-/* carousel track – shows --per-view cards and scrolls continuously (JS) */
-.testimonial-grid {
-  position: relative;
-  --per-view: 4;
-  --gap: clamp(12px, 1.6vw, 20px);
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - var(--gap) * (var(--per-view) - 1)) / var(--per-view));
-  gap: var(--gap);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scrollbar-width: none;
-  /* room so the hover lift isn't clipped */
-  padding: 6px 0 2px;
-  /* soft fade on both edges */
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-}
+    /* carousel track – shows --per-view cards and scrolls continuously (JS) */
+    .testimonial-grid {
+      position: relative;
+      --per-view: 4;
+      --gap: clamp(12px, 1.6vw, 20px);
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - var(--gap) * (var(--per-view) - 1)) / var(--per-view));
+      gap: var(--gap);
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+      /* room so the hover lift isn't clipped */
+      padding: 6px 0 2px;
+      /* soft fade on both edges */
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    }
 
-.testimonial-grid::-webkit-scrollbar {
-  display: none;
-}
+    .testimonial-grid::-webkit-scrollbar {
+      display: none;
+    }
 
-/* carousel controls */
-.carousel-controls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: clamp(20px, 2.4vw, 28px);
-}
+    /* carousel controls */
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: clamp(20px, 2.4vw, 28px);
+    }
 
-.carousel-btn {
-  width: 42px;
-  height: 42px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
-  cursor: pointer;
-  transition: background .25s ease, border-color .25s ease;
-}
+    .carousel-btn {
+      width: 42px;
+      height: 42px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      cursor: pointer;
+      transition: background .25s ease, border-color .25s ease;
+    }
 
-.carousel-btn svg {
-  width: 18px;
-  height: 18px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
+    .carousel-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
 
-.carousel-btn:hover {
-  background: var(--red);
-  border-color: var(--red);
-}
+    .carousel-btn:hover {
+      background: var(--red);
+      border-color: var(--red);
+    }
 
-.carousel-btn:focus-visible {
-  outline: 2px solid #ffffff;
-  outline-offset: 3px;
-}
+    .carousel-btn:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
+    }
 
-/* every card: photo on the left, text on the right */
-.testimonial {
-  display: flex;
-  align-items: flex-end;
-  gap: clamp(10px, 1.2vw, 14px);
-  padding: clamp(12px, 1.4vw, 16px) clamp(12px, 1.4vw, 16px) 0;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  background: rgba(10, 10, 13, 0.55);
-  overflow: hidden;
-  transition: transform .25s ease, border-color .25s ease;
-}
+    /* every card: photo on the left, text on the right */
+    .testimonial {
+      display: flex;
+      align-items: flex-end;
+      gap: clamp(10px, 1.2vw, 14px);
+      padding: clamp(12px, 1.4vw, 16px) clamp(12px, 1.4vw, 16px) 0;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(10, 10, 13, 0.55);
+      overflow: hidden;
+      transition: transform .25s ease, border-color .25s ease;
+    }
 
-.testimonial:hover {
-  transform: translateY(-4px);
-  border-color: rgba(232, 255, 0, 0.35);
-}
+    .testimonial:hover {
+      transform: translateY(-4px);
+      border-color: rgba(232, 255, 0, 0.35);
+    }
 
-.t-photo {
-  width: clamp(64px, 6.6vw, 88px);
-  flex-shrink: 0;
-  align-self: flex-end;
-}
+    .t-photo {
+      width: clamp(64px, 6.6vw, 88px);
+      flex-shrink: 0;
+      align-self: flex-end;
+    }
 
-.t-info {
-  min-width: 0;
-  padding-bottom: clamp(12px, 1.4vw, 16px);
-  line-height: 1.35;
-}
+    .t-info {
+      min-width: 0;
+      padding-bottom: clamp(12px, 1.4vw, 16px);
+      line-height: 1.35;
+    }
 
-.t-name {
-  font-size: clamp(11px, 0.95vw, 13px);
-  font-weight: 500;
-}
+    .t-name {
+      font-size: clamp(11px, 0.95vw, 13px);
+      font-weight: 500;
+    }
 
-.t-company {
-  font-size: clamp(10px, 0.85vw, 12px);
-  color: var(--text-soft);
-  margin-bottom: 6px;
-}
+    .t-company {
+      font-size: clamp(10px, 0.85vw, 12px);
+      color: var(--text-soft);
+      margin-bottom: 6px;
+    }
 
-.t-result {
-  font-size: clamp(14px, 1.3vw, 17px);
-  line-height: 1.3;
-}
+    .t-result {
+      font-size: clamp(14px, 1.3vw, 17px);
+      line-height: 1.3;
+    }
 
-.t-result strong {
-  color: var(--yellow);
-  font-weight: 700;
-}
+    .t-result strong {
+      color: var(--yellow);
+      font-weight: 700;
+    }
 
-/* =========================
+    /* =========================
    BOTTOM PILL
 ========================= */
 
-.bottom-pill {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 8px 20px;
-  max-width: 860px;
-  margin: clamp(32px, 4vw, 48px) auto 0;
-  padding: 14px 28px;
-  border: 1px solid var(--border);
-  border-radius: 50px;
-  background: linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.1), rgba(255,255,255,.04));
-  font-size: clamp(10px, 1vw, 13px);
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-align: center;
-}
+    .bottom-pill {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 8px 20px;
+      max-width: 860px;
+      margin: clamp(32px, 4vw, 48px) auto 0;
+      padding: 14px 28px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .1), rgba(255, 255, 255, .04));
+      font-size: clamp(10px, 1vw, 13px);
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-align: center;
+    }
 
-.bottom-pill .dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--yellow);
-}
+    .bottom-pill .dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--yellow);
+    }
 
-/* =========================
+    /* =========================
    RESPONSIVE
 ========================= */
 
-@media (max-width: 1100px) {
-  .testimonial-grid,
-  .impact-grid {
-    --per-view: 3;
-  }
-}
+    @media (max-width: 1100px) {
 
-@media (max-width: 900px) {
-  .hero-content {
-    grid-template-columns: 1fr;
-  }
+      .testimonial-grid,
+      .impact-grid {
+        --per-view: 3;
+      }
+    }
 
-  .event-details {
-    max-width: 560px;
-    width: 100%;
-    margin: 0 auto;
-  }
+    @media (max-width: 900px) {
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
 
-  .testimonial-grid {
-    --per-view: 2;
-  }
-}
+      .event-details {
+        max-width: 560px;
+        width: 100%;
+        margin: 0 auto;
+      }
 
-@media (max-width: 560px) {
-  .header .container {
-    height: 64px;
-  }
+      .testimonial-grid {
+        --per-view: 2;
+      }
+    }
 
-  .hero-title br {
-    display: none;
-  }
+    @media (max-width: 560px) {
+      .header .container {
+        height: 64px;
+      }
 
-  .testimonial-grid {
-    --per-view: 2;
-    --gap: 10px;
-  }
+      .hero-title br {
+        display: none;
+      }
 
-  .carousel-btn {
-    width: 38px;
-    height: 38px;
-  }
+      .testimonial-grid {
+        --per-view: 2;
+        --gap: 10px;
+      }
 
-  /* mobile: photo on top, text below – same for every card */
-  .testimonial {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 12px 12px 0;
-    border-radius: 12px;
-  }
+      .carousel-btn {
+        width: 38px;
+        height: 38px;
+      }
 
-  .t-photo {
-    width: 64px;
-    align-self: flex-start;
-  }
+      /* mobile: photo on top, text below – same for every card */
+      .testimonial {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 12px 12px 0;
+        border-radius: 12px;
+      }
 
-  .t-info {
-    padding-bottom: 10px;
-  }
+      .t-photo {
+        width: 64px;
+        align-self: flex-start;
+      }
 
-  .t-name {
-    font-size: 10.5px;
-  }
+      .t-info {
+        padding-bottom: 10px;
+      }
 
-  .t-company {
-    font-size: 9.5px;
-    margin-bottom: 4px;
-  }
+      .t-name {
+        font-size: 10.5px;
+      }
 
-  .t-result {
-    font-size: 13px;
-  }
+      .t-company {
+        font-size: 9.5px;
+        margin-bottom: 4px;
+      }
 
-  .bottom-pill {
-    flex-direction: column;
-    border-radius: 18px;
-    letter-spacing: 0.15em;
-  }
+      .t-result {
+        font-size: 13px;
+      }
 
-  .bottom-pill .dot {
-    display: none;
-  }
-}
+      .bottom-pill {
+        flex-direction: column;
+        border-radius: 18px;
+        letter-spacing: 0.15em;
+      }
 
-/* =========================
+      .bottom-pill .dot {
+        display: none;
+      }
+    }
+
+    /* =========================
    SECTION 2 – 3 DAYS / 3 SKILLS
 ========================= */
 
-.skills {
-  position: relative;
-  padding: clamp(32px, 4vw, 56px) 0 clamp(64px, 8vw, 112px);
-  background:
-    radial-gradient(ellipse 70% 45% at 50% 55%, rgba(140, 16, 40, 0.35), transparent 70%),
-    var(--bg);
-}
+    .skills {
+      position: relative;
+      padding: clamp(32px, 4vw, 56px) 0 clamp(64px, 8vw, 112px);
+      background:
+        radial-gradient(ellipse 70% 45% at 50% 55%, rgba(140, 16, 40, 0.35), transparent 70%),
+        var(--bg);
+    }
 
-.skills-head {
-  text-align: center;
-  margin-bottom: clamp(28px, 3.5vw, 44px);
-}
+    .skills-head {
+      text-align: center;
+      margin-bottom: clamp(28px, 3.5vw, 44px);
+    }
 
-.section-title {
-  font-size: clamp(24px, 3vw, 40px);
-  font-weight: 600;
-  line-height: 1.25;
-  margin-bottom: 10px;
-}
+    .section-title {
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 600;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
 
-.section-subtitle {
-  font-size: clamp(14px, 1.3vw, 17px);
-  color: var(--text-soft);
-}
+    .section-subtitle {
+      font-size: clamp(14px, 1.3vw, 17px);
+      color: var(--text-soft);
+    }
 
-/* 3 skill boxes */
-.skill-row {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(12px, 1.6vw, 20px);
-  margin-bottom: clamp(24px, 3vw, 36px);
-}
+    /* 3 skill boxes */
+    .skill-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(12px, 1.6vw, 20px);
+      margin-bottom: clamp(24px, 3vw, 36px);
+    }
 
-.skill-box {
-  padding: clamp(16px, 1.8vw, 22px) 16px;
-  background: #1c1c1f;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  text-align: center;
-}
+    .skill-box {
+      padding: clamp(16px, 1.8vw, 22px) 16px;
+      background: #1c1c1f;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+    }
 
-.skill-box h3 {
-  font-size: clamp(15px, 1.4vw, 18px);
-  font-weight: 600;
-  margin-bottom: 6px;
-}
+    .skill-box h3 {
+      font-size: clamp(15px, 1.4vw, 18px);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
 
-.skill-box p {
-  font-size: clamp(13px, 1.1vw, 14px);
-  color: #a9a9b1;
-  line-height: 1.5;
-}
+    .skill-box p {
+      font-size: clamp(13px, 1.1vw, 14px);
+      color: #a9a9b1;
+      line-height: 1.5;
+    }
 
-/* red buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--red);
-  color: #ffffff;
-  border-radius: 10px;
-  padding: 14px 28px;
-  font-size: clamp(13px, 1.1vw, 15px);
-  font-weight: 600;
-  box-shadow: 0 12px 28px -12px rgba(255, 23, 56, 0.8);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
+    /* red buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: var(--red);
+      color: #ffffff;
+      border-radius: 10px;
+      padding: 14px 28px;
+      font-size: clamp(13px, 1.1vw, 15px);
+      font-weight: 600;
+      box-shadow: 0 12px 28px -12px rgba(255, 23, 56, 0.8);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
 
-.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 32px -12px rgba(255, 23, 56, 0.9);
-}
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 32px -12px rgba(255, 23, 56, 0.9);
+    }
 
-.join-wrap {
-  text-align: center;
-  margin-bottom: clamp(48px, 6vw, 72px);
-}
+    .join-wrap {
+      text-align: center;
+      margin-bottom: clamp(48px, 6vw, 72px);
+    }
 
-.join-wrap .btn {
-  min-width: 200px;
-}
+    .join-wrap .btn {
+      min-width: 200px;
+    }
 
-/* day cards */
-.day-list {
-  display: grid;
-  gap: clamp(20px, 2.4vw, 28px);
-}
+    /* day cards */
+    .day-list {
+      display: grid;
+      gap: clamp(20px, 2.4vw, 28px);
+    }
 
-.day-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
-  gap: clamp(24px, 4vw, 56px);
-  align-items: center;
-  padding: clamp(20px, 3vw, 40px);
-  background: #1c1c1f;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-}
+    .day-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: clamp(24px, 4vw, 56px);
+      align-items: center;
+      padding: clamp(20px, 3vw, 40px);
+      background: #1c1c1f;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
 
-.day-title {
-  font-size: clamp(20px, 2vw, 26px);
-  font-weight: 600;
-  line-height: 1.35;
-  margin-bottom: 8px;
-}
+    .day-title {
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 600;
+      line-height: 1.35;
+      margin-bottom: 8px;
+    }
 
-.day-subtitle {
-  font-size: clamp(13px, 1.1vw, 15px);
-  color: #8e8e96;
-  margin-bottom: clamp(16px, 1.8vw, 22px);
-}
+    .day-subtitle {
+      font-size: clamp(13px, 1.1vw, 15px);
+      color: #8e8e96;
+      margin-bottom: clamp(16px, 1.8vw, 22px);
+    }
 
-.check-list {
-  list-style: none;
-  display: grid;
-  gap: 10px;
-  margin-bottom: clamp(22px, 2.4vw, 30px);
-}
+    .check-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: clamp(22px, 2.4vw, 30px);
+    }
 
-.check-list li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: clamp(14px, 1.2vw, 16px);
-}
+    .check-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: clamp(14px, 1.2vw, 16px);
+    }
 
-.check-list li::before {
-  content: "✓";
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  background: #22c55e;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: 700;
-}
+    .check-list li::before {
+      content: "✓";
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      background: #22c55e;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+    }
 
-.day-image {
-  border-radius: 14px;
-  overflow: hidden;
-  aspect-ratio: 881 / 520;
-  background: #111;
-}
+    .day-image {
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 881 / 520;
+      background: #111;
+    }
 
-.day-image img,
-.day-image video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .day-image img,
+    .day-image video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-@media (max-width: 900px) {
-  .skill-row {
-    grid-template-columns: 1fr;
-    max-width: 520px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    @media (max-width: 900px) {
+      .skill-row {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-  .day-card {
-    grid-template-columns: 1fr;
-  }
+      .day-card {
+        grid-template-columns: 1fr;
+      }
 
-  /* image on top when stacked */
-  .day-image {
-    order: -1;
-  }
-}
+      /* image on top when stacked */
+      .day-image {
+        order: -1;
+      }
+    }
 
-@media (max-width: 560px) {
-  .day-card .btn,
-  .join-wrap .btn {
-    width: 100%;
-  }
-}
+    @media (max-width: 560px) {
 
-/* =========================
+      .day-card .btn,
+      .join-wrap .btn {
+        width: 100%;
+      }
+    }
+
+    /* =========================
    SECTION 3 – TOOLS / PARTICIPANTS / WHY ATTEND
 ========================= */
 
-.tools {
-  position: relative;
-  overflow: hidden;
-  padding: clamp(32px, 4vw, 56px) 0 0;
-  background:
-    radial-gradient(circle at 0% 12%, rgba(128, 10, 25, 0.4), transparent 30%),
-    radial-gradient(circle at 100% 55%, rgba(110, 8, 25, 0.25), transparent 30%),
-    var(--bg);
-}
+    .tools {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(32px, 4vw, 56px) 0 0;
+      background:
+        radial-gradient(circle at 0% 12%, rgba(128, 10, 25, 0.4), transparent 30%),
+        radial-gradient(circle at 100% 55%, rgba(110, 8, 25, 0.25), transparent 30%),
+        var(--bg);
+    }
 
-.tools .section-title {
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: clamp(24px, 3vw, 36px);
-}
+    .tools .section-title {
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: clamp(24px, 3vw, 36px);
+    }
 
-/* tools grid */
-.tools-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: clamp(10px, 1.4vw, 18px);
-}
+    /* tools grid */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: clamp(10px, 1.4vw, 18px);
+    }
 
-.tool-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
-  padding: clamp(18px, 2vw, 26px) 10px;
-  background: #1c1c1f;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  text-align: center;
-  transition: transform .25s ease, border-color .25s ease;
-}
+    .tool-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: clamp(18px, 2vw, 26px) 10px;
+      background: #1c1c1f;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+      transition: transform .25s ease, border-color .25s ease;
+    }
 
-.tool-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(232, 255, 0, 0.35);
-}
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(232, 255, 0, 0.35);
+    }
 
-.tool-logo {
-  width: clamp(44px, 4.4vw, 60px);
-  height: clamp(44px, 4.4vw, 60px);
-  border-radius: 12px;
-  object-fit: contain;
-}
+    .tool-logo {
+      width: clamp(44px, 4.4vw, 60px);
+      height: clamp(44px, 4.4vw, 60px);
+      border-radius: 12px;
+      object-fit: contain;
+    }
 
-.tool-name {
-  font-size: clamp(12px, 1.05vw, 14px);
-  font-weight: 500;
-  line-height: 1.35;
-}
+    .tool-name {
+      font-size: clamp(12px, 1.05vw, 14px);
+      font-weight: 500;
+      line-height: 1.35;
+    }
 
-.tools .join-wrap {
-  margin-top: clamp(24px, 3vw, 36px);
-}
+    .tools .join-wrap {
+      margin-top: clamp(24px, 3vw, 36px);
+    }
 
-/* participants video */
-.participants-video {
-  position: relative;
-  aspect-ratio: 1680 / 676;
-  border-radius: clamp(12px, 1.4vw, 18px);
-  overflow: hidden;
-  border: 1px solid var(--border);
-  background: #111;
-  cursor: pointer;
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
-}
+    /* participants video */
+    .participants-video {
+      position: relative;
+      aspect-ratio: 1680 / 676;
+      border-radius: clamp(12px, 1.4vw, 18px);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #111;
+      cursor: pointer;
+      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    }
 
-.participants-video img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .participants-video img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-.participants-video video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #000;
-}
+    .participants-video video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #000;
+    }
 
-.participants-video.is-playing {
-  cursor: default;
-}
+    .participants-video.is-playing {
+      cursor: default;
+    }
 
-.participants-video.is-playing .video-overlay {
-  display: none;
-}
+    .participants-video.is-playing .video-overlay {
+      display: none;
+    }
 
-.participants-video:hover .play-button {
-  transform: scale(1.08);
-  box-shadow: 0 0 0 14px rgba(255, 255, 255, 0.14);
-}
+    .participants-video:hover .play-button {
+      transform: scale(1.08);
+      box-shadow: 0 0 0 14px rgba(255, 255, 255, 0.14);
+    }
 
-.reaction-pill {
-  margin-top: clamp(20px, 2.4vw, 28px);
-}
+    .reaction-pill {
+      margin-top: clamp(20px, 2.4vw, 28px);
+    }
 
-.tools .reaction-pill + .join-wrap {
-  margin-top: clamp(20px, 2.4vw, 28px);
-}
+    .tools .reaction-pill+.join-wrap {
+      margin-top: clamp(20px, 2.4vw, 28px);
+    }
 
-/* why attend card */
-.why-card {
-  text-align: center;
-  padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 56px);
-  border-radius: 18px;
-  border: 1px solid rgba(255, 60, 80, 0.18);
-  background:
-    linear-gradient(90deg, rgba(102, 8, 21, 0.75), rgba(40, 4, 12, 0.55), rgba(105, 8, 22, 0.72)),
-    #1e0d12;
-}
+    /* why attend card */
+    .why-card {
+      text-align: center;
+      padding: clamp(32px, 5vw, 64px) clamp(20px, 4vw, 56px);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 60, 80, 0.18);
+      background:
+        linear-gradient(90deg, rgba(102, 8, 21, 0.75), rgba(40, 4, 12, 0.55), rgba(105, 8, 22, 0.72)),
+        #1e0d12;
+    }
 
-.why-card .section-title {
-  margin-bottom: 12px;
-}
+    .why-card .section-title {
+      margin-bottom: 12px;
+    }
 
-.why-lead {
-  font-size: clamp(15px, 1.5vw, 19px);
-  font-weight: 600;
-  margin-bottom: 12px;
-}
+    .why-lead {
+      font-size: clamp(15px, 1.5vw, 19px);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
 
-.why-text {
-  max-width: 640px;
-  margin: 0 auto clamp(22px, 2.4vw, 28px);
-  font-size: clamp(13px, 1.15vw, 15px);
-  line-height: 1.65;
-  color: #dddddd;
-}
+    .why-text {
+      max-width: 640px;
+      margin: 0 auto clamp(22px, 2.4vw, 28px);
+      font-size: clamp(13px, 1.15vw, 15px);
+      line-height: 1.65;
+      color: #dddddd;
+    }
 
-.btn-yellow {
-  background: #f2d100;
-  color: #111111;
-  border-radius: 40px;
-  box-shadow: 0 12px 28px -12px rgba(242, 209, 0, 0.7);
-}
+    .btn-yellow {
+      background: #f2d100;
+      color: #111111;
+      border-radius: 40px;
+      box-shadow: 0 12px 28px -12px rgba(242, 209, 0, 0.7);
+    }
 
-.btn-yellow:hover {
-  box-shadow: 0 18px 32px -12px rgba(242, 209, 0, 0.85);
-}
+    .btn-yellow:hover {
+      box-shadow: 0 18px 32px -12px rgba(242, 209, 0, 0.85);
+    }
 
-/* bottom ticker – full width, seamless loop */
-.ticker-wrap {
-  margin-top: clamp(32px, 4vw, 48px);
-  padding: 14px 0;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.02);
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
-}
+    /* bottom ticker – full width, seamless loop */
+    .ticker-wrap {
+      margin-top: clamp(32px, 4vw, 48px);
+      padding: 14px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    }
 
-.ticker {
-  display: flex;
-  width: max-content;
-  animation: tickerMove 40s linear infinite;
-}
+    .ticker {
+      display: flex;
+      width: max-content;
+      animation: tickerMove 40s linear infinite;
+    }
 
-.ticker-wrap:hover .ticker {
-  animation-play-state: paused;
-}
+    .ticker-wrap:hover .ticker {
+      animation-play-state: paused;
+    }
 
-.ticker-group {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
+    .ticker-group {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
 
-.ticker-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-  font-size: clamp(12px, 1.1vw, 14px);
-  padding: 0 clamp(16px, 2vw, 28px);
-}
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      font-size: clamp(12px, 1.1vw, 14px);
+      padding: 0 clamp(16px, 2vw, 28px);
+    }
 
-.ticker-item::after {
-  content: "✦";
-  color: #ffffff;
-  margin-left: clamp(16px, 2vw, 28px);
-  margin-right: calc(clamp(16px, 2vw, 28px) * -1);
-  font-size: 0.9em;
-}
+    .ticker-item::after {
+      content: "✦";
+      color: #ffffff;
+      margin-left: clamp(16px, 2vw, 28px);
+      margin-right: calc(clamp(16px, 2vw, 28px) * -1);
+      font-size: 0.9em;
+    }
 
-.ticker-item strong {
-  color: var(--yellow);
-  font-weight: 600;
-}
+    .ticker-item strong {
+      color: var(--yellow);
+      font-weight: 600;
+    }
 
-@keyframes tickerMove {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
+    @keyframes tickerMove {
+      from {
+        transform: translateX(0);
+      }
 
-@media (prefers-reduced-motion: reduce) {
-  .ticker { animation: none; }
-}
+      to {
+        transform: translateX(-50%);
+      }
+    }
 
-@media (max-width: 1024px) {
-  .tools-grid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
+    @media (prefers-reduced-motion: reduce) {
+      .ticker {
+        animation: none;
+      }
+    }
 
-@media (max-width: 640px) {
-  .tools-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
+    @media (max-width: 1024px) {
+      .tools-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
 
-  .participants-video {
-    aspect-ratio: 16 / 10;
-  }
-}
+    @media (max-width: 640px) {
+      .tools-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
 
-@media (max-width: 380px) {
-  .tools-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
+      .participants-video {
+        aspect-ratio: 16 / 10;
+      }
+    }
 
-/* =========================
+    @media (max-width: 380px) {
+      .tools-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    /* =========================
    SECTION 4 – IMPACT / FAQ / FINAL CTA / FOOTER
 ========================= */
 
-.impact {
-  padding: clamp(40px, 5vw, 72px) 0 clamp(56px, 7vw, 96px);
-  background: var(--bg);
-}
+    .impact {
+      padding: clamp(40px, 5vw, 72px) 0 clamp(56px, 7vw, 96px);
+      background: var(--bg);
+    }
 
-/* video testimonial cards – horizontal slider */
-.impact-grid {
-  --per-view: 4;
-  --gap: clamp(12px, 1.6vw, 20px);
-  position: relative;
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: calc((100% - var(--gap) * (var(--per-view) - 1)) / var(--per-view));
-  gap: var(--gap);
-  overflow-x: auto;
-  overscroll-behavior-x: contain;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-  /* room so the hover lift isn't clipped */
-  padding: 6px 0 2px;
-}
+    /* video testimonial cards – horizontal slider */
+    .impact-grid {
+      --per-view: 4;
+      --gap: clamp(12px, 1.6vw, 20px);
+      position: relative;
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: calc((100% - var(--gap) * (var(--per-view) - 1)) / var(--per-view));
+      gap: var(--gap);
+      overflow-x: auto;
+      overscroll-behavior-x: contain;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      /* room so the hover lift isn't clipped */
+      padding: 6px 0 2px;
+    }
 
-.impact-grid::-webkit-scrollbar {
-  display: none;
-}
+    .impact-grid::-webkit-scrollbar {
+      display: none;
+    }
 
-.impact-grid > .impact-card {
-  scroll-snap-align: start;
-}
+    .impact-grid>.impact-card {
+      scroll-snap-align: start;
+    }
 
-/* the videos already contain the red frame, title and TBT logo,
+    /* the videos already contain the red frame, title and TBT logo,
    so the card is just the video */
-.impact-card {
-  display: block;
-  border-radius: 14px;
-  overflow: hidden;
-  background: #6d0b0e;
-  cursor: pointer;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
+    .impact-card {
+      display: block;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #6d0b0e;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
 
-.impact-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px -18px rgba(255, 23, 56, 0.6);
-}
+    .impact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -18px rgba(255, 23, 56, 0.6);
+    }
 
-.impact-media {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  /* shown until the video's first frame loads (matches the video frame) */
-  background: linear-gradient(160deg, #7d0d10, #4a0709);
-}
+    .impact-media {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      /* shown until the video's first frame loads (matches the video frame) */
+      background: linear-gradient(160deg, #7d0d10, #4a0709);
+    }
 
-/* contain: 4:5 videos fill the card, the one 9:16 video is letterboxed
+    /* contain: 4:5 videos fill the card, the one 9:16 video is letterboxed
    on the same red as its frame instead of being cropped */
-.impact-media video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  background: #6d0b0e;
-}
+    .impact-media video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #6d0b0e;
+    }
 
-/* playing: native controls, hide our button */
+    /* playing: native controls, hide our button */
 
-.impact-card.is-playing .play-button {
-  display: none;
-}
+    .impact-card.is-playing .play-button {
+      display: none;
+    }
 
-.impact-card.is-playing:hover {
-  transform: none;
-}
+    .impact-card.is-playing:hover {
+      transform: none;
+    }
 
-.impact-media .play-button {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 48px;
-  height: 48px;
-  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.18);
-}
+    .impact-media .play-button {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px;
+      height: 48px;
+      box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.18);
+    }
 
-.impact-media .play-button::after {
-  font-size: 48px;
-}
+    .impact-media .play-button::after {
+      font-size: 48px;
+    }
 
-.impact-card:hover .play-button {
-  transform: translate(-50%, -50%) scale(1.08);
-}
+    .impact-card:hover .play-button {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
 
-.impact .join-wrap {
-  margin-top: clamp(28px, 3.5vw, 40px);
-}
+    .impact .join-wrap {
+      margin-top: clamp(28px, 3.5vw, 40px);
+    }
 
-/* FAQ */
-.faq {
-  max-width: 900px;
-  margin: 0 auto;
-}
+    /* FAQ */
+    .faq {
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-.faq .section-title {
-  text-align: center;
-  font-weight: 500;
-  margin-bottom: clamp(24px, 3vw, 36px);
-}
+    .faq .section-title {
+      text-align: center;
+      font-weight: 500;
+      margin-bottom: clamp(24px, 3vw, 36px);
+    }
 
-.red {
-  color: var(--red);
-}
+    .red {
+      color: var(--red);
+    }
 
-.faq-list {
-  display: grid;
-  gap: 12px;
-}
+    .faq-list {
+      display: grid;
+      gap: 12px;
+    }
 
-.faq-item {
-  background: #2a2828;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 28px;
-  transition: background .2s ease, border-color .2s ease;
-}
+    .faq-item {
+      background: #2a2828;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 28px;
+      transition: background .2s ease, border-color .2s ease;
+    }
 
-.faq-item[open] {
-  background: #302d2d;
-  border-color: rgba(255, 23, 56, 0.35);
-  border-radius: 20px;
-}
+    .faq-item[open] {
+      background: #302d2d;
+      border-color: rgba(255, 23, 56, 0.35);
+      border-radius: 20px;
+    }
 
-.faq-item summary {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 16px 24px;
-  font-size: clamp(14px, 1.25vw, 16px);
-  font-weight: 500;
-  cursor: pointer;
-}
+    .faq-item summary {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 24px;
+      font-size: clamp(14px, 1.25vw, 16px);
+      font-weight: 500;
+      cursor: pointer;
+    }
 
-.faq-item summary::-webkit-details-marker {
-  display: none;
-}
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
 
-.faq-item summary::after {
-  content: "";
-  width: 9px;
-  height: 9px;
-  flex-shrink: 0;
-  border-right: 2px solid var(--red);
-  border-bottom: 2px solid var(--red);
-  transform: rotate(45deg) translateY(-3px);
-  transition: transform .25s ease;
-}
+    .faq-item summary::after {
+      content: "";
+      width: 9px;
+      height: 9px;
+      flex-shrink: 0;
+      border-right: 2px solid var(--red);
+      border-bottom: 2px solid var(--red);
+      transform: rotate(45deg) translateY(-3px);
+      transition: transform .25s ease;
+    }
 
-.faq-item[open] summary::after {
-  transform: rotate(-135deg) translateY(-3px);
-}
+    .faq-item[open] summary::after {
+      transform: rotate(-135deg) translateY(-3px);
+    }
 
-.faq-answer {
-  padding: 0 24px 18px;
-  font-size: clamp(13px, 1.15vw, 15px);
-  line-height: 1.7;
-  color: var(--text-soft);
-}
+    .faq-answer {
+      padding: 0 24px 18px;
+      font-size: clamp(13px, 1.15vw, 15px);
+      line-height: 1.7;
+      color: var(--text-soft);
+    }
 
-.faq-answer a {
-  color: var(--yellow);
-}
+    .faq-answer a {
+      color: var(--yellow);
+    }
 
-/* final CTA */
-.final-cta {
-  margin-top: clamp(48px, 6vw, 72px);
-  text-align: center;
-  padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 56px);
-  border-radius: 18px;
-  border: 1px solid rgba(255, 60, 80, 0.18);
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  background: #1e0d12;
-}
+    /* final CTA */
+    .final-cta {
+      margin-top: clamp(48px, 6vw, 72px);
+      text-align: center;
+      padding: clamp(36px, 5vw, 64px) clamp(20px, 4vw, 56px);
+      border-radius: 18px;
+      border: 1px solid rgba(255, 60, 80, 0.18);
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: #1e0d12;
+    }
 
-/* curtain background on its own layer so it can drift on scroll;
+    /* curtain background on its own layer so it can drift on scroll;
    taller than the card so the movement never shows an empty edge */
-.final-cta-bg {
-  position: absolute;
-  inset: -12% 0;
-  z-index: -1;
-  background:
-    radial-gradient(ellipse at center, rgba(20, 5, 10, 0.6), transparent 70%),
-    url("ZRM New LP Assets/13.webp") center / cover no-repeat;
-  pointer-events: none;
-}
+    .final-cta-bg {
+      position: absolute;
+      inset: -12% 0;
+      z-index: -1;
+      background:
+        radial-gradient(ellipse at center, rgba(20, 5, 10, 0.6), transparent 70%),
+        url("ZRM New LP Assets/13.webp") center / cover no-repeat;
+      pointer-events: none;
+    }
 
-.final-cta .section-title {
-  margin-bottom: 10px;
-}
+    .final-cta .section-title {
+      margin-bottom: 10px;
+    }
 
-.final-cta .why-lead {
-  font-size: clamp(14px, 1.3vw, 17px);
-  margin-bottom: clamp(20px, 2.4vw, 26px);
-}
+    .final-cta .why-lead {
+      font-size: clamp(14px, 1.3vw, 17px);
+      margin-bottom: clamp(20px, 2.4vw, 26px);
+    }
 
-.cta-note {
-  margin-top: 16px;
-  font-size: clamp(12px, 1.05vw, 14px);
-  color: #d0d0d0;
-}
+    .cta-note {
+      margin-top: 16px;
+      font-size: clamp(12px, 1.05vw, 14px);
+      color: #d0d0d0;
+    }
 
-/* footer */
-.footer-bottom {
-  background: #df1015;
-  padding: 12px var(--gutter);
-  text-align: center;
-  font-size: clamp(12px, 1vw, 13px);
-}
+    /* footer */
+    .footer-bottom {
+      background: #df1015;
+      padding: 12px var(--gutter);
+      text-align: center;
+      font-size: clamp(12px, 1vw, 13px);
+    }
 
-@media (max-width: 900px) {
-  .impact-grid {
-    --per-view: 2;
-  }
-}
+    @media (max-width: 900px) {
+      .impact-grid {
+        --per-view: 2;
+      }
+    }
 
-@media (max-width: 560px) {
-  .faq-item summary {
-    padding: 14px 18px;
-  }
+    @media (max-width: 560px) {
+      .faq-item summary {
+        padding: 14px 18px;
+      }
 
-  .faq-answer {
-    padding: 0 18px 16px;
-  }
+      .faq-answer {
+        padding: 0 18px 16px;
+      }
 
-  .final-cta .btn {
-    width: 100%;
-  }
-}
+      .final-cta .btn {
+        width: 100%;
+      }
+    }
 
-/* =========================
+    /* =========================
    FOLDABLE DEVICES
 ========================= */
 
-/* Buttons never break the arrow onto its own line */
-.btn,
-.cta .cta-label {
-  white-space: nowrap;
-}
+    /* Buttons never break the arrow onto its own line */
+    .btn,
+    .cta .cta-label {
+      white-space: nowrap;
+    }
 
-/* Unfolded inner screen (Galaxy Z Fold, Pixel Fold, Surface Duo spanned …)
+    /* Unfolded inner screen (Galaxy Z Fold, Pixel Fold, Surface Duo spanned …)
    Wide enough to keep side-by-side layouts instead of the stacked phone view. */
-@media (min-width: 681px) and (max-width: 900px) {
-  .event-details {
-    max-width: none;
-  }
+    @media (min-width: 681px) and (max-width: 900px) {
+      .event-details {
+        max-width: none;
+      }
 
-  /* details in two columns under the video, CTA across the full width */
-  .detail-list {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+      /* details in two columns under the video, CTA across the full width */
+      .detail-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
 
-  .skill-row {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    max-width: none;
-  }
+      .skill-row {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        max-width: none;
+      }
 
-  .skill-box {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
+      .skill-box {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
 
-  .day-card {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: 24px;
-    padding: 24px;
-  }
+      .day-card {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 24px;
+        padding: 24px;
+      }
 
-  .day-image {
-    order: 0;
-  }
+      .day-image {
+        order: 0;
+      }
 
-  .impact-grid {
-    --per-view: 3;
-  }
-}
+      .impact-grid {
+        --per-view: 3;
+      }
+    }
 
-/* Folded cover screen (≈ 280px – 360px wide) */
-@media (max-width: 360px) {
-  :root {
-    --gutter: 12px;
-  }
+    /* Folded cover screen (≈ 280px – 360px wide) */
+    @media (max-width: 360px) {
+      :root {
+        --gutter: 12px;
+      }
 
-  .header .container {
-    height: 56px;
-  }
+      .header .container {
+        height: 56px;
+      }
 
-  .logo {
-    width: 84px;
-  }
+      .logo {
+        width: 84px;
+      }
 
-  .top-label {
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    padding: 6px 12px;
-  }
+      .top-label {
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        padding: 6px 12px;
+      }
 
-  .hero-title {
-    font-size: 23px;
-  }
+      .hero-title {
+        font-size: 23px;
+      }
 
-  .hero-subtitle {
-    font-size: 13px;
-  }
+      .hero-subtitle {
+        font-size: 13px;
+      }
 
-  .section-title {
-    font-size: 20px;
-  }
+      .section-title {
+        font-size: 20px;
+      }
 
-  .section-subtitle {
-    font-size: 13px;
-  }
+      .section-subtitle {
+        font-size: 13px;
+      }
 
-  .event-details {
-    padding: 16px 14px;
-  }
+      .event-details {
+        padding: 16px 14px;
+      }
 
-  .detail-item {
-    gap: 10px;
-  }
+      .detail-item {
+        gap: 10px;
+      }
 
-  .detail-icon {
-    width: 30px;
-    height: 30px;
-  }
+      .detail-icon {
+        width: 30px;
+        height: 30px;
+      }
 
-  .detail-text span {
-    font-size: 14px;
-  }
+      .detail-text span {
+        font-size: 14px;
+      }
 
-  .cta {
-    --cta-circle: 36px;
-    --cta-gap: 10px;
-    font-size: 11.5px;
-    letter-spacing: 0;
-  }
+      .cta {
+        --cta-circle: 36px;
+        --cta-gap: 10px;
+        font-size: 11.5px;
+        letter-spacing: 0;
+      }
 
-  .btn {
-    padding: 12px 16px;
-    font-size: 13px;
-  }
+      .btn {
+        padding: 12px 16px;
+        font-size: 13px;
+      }
 
-  .testimonial-grid {
-    --gap: 8px;
-  }
+      .testimonial-grid {
+        --gap: 8px;
+      }
 
-  .carousel-controls {
-    gap: 10px;
-  }
+      .carousel-controls {
+        gap: 10px;
+      }
 
-  .testimonial {
-    gap: 6px;
-    padding: 10px 8px 0;
-  }
+      .testimonial {
+        gap: 6px;
+        padding: 10px 8px 0;
+      }
 
-  .t-photo {
-    width: 56px;
-  }
+      .t-photo {
+        width: 56px;
+      }
 
-  .bottom-pill {
-    padding: 12px 14px;
-    font-size: 9px;
-    letter-spacing: 0.1em;
-  }
+      .bottom-pill {
+        padding: 12px 14px;
+        font-size: 9px;
+        letter-spacing: 0.1em;
+      }
 
-  .skill-box {
-    padding: 14px 12px;
-  }
+      .skill-box {
+        padding: 14px 12px;
+      }
 
-  .day-card {
-    padding: 14px;
-    border-radius: 14px;
-  }
+      .day-card {
+        padding: 14px;
+        border-radius: 14px;
+      }
 
-  .day-title {
-    font-size: 18px;
-  }
+      .day-title {
+        font-size: 18px;
+      }
 
-  .check-list li {
-    font-size: 13px;
-    gap: 8px;
-  }
+      .check-list li {
+        font-size: 13px;
+        gap: 8px;
+      }
 
-  .check-list li::before {
-    width: 18px;
-    height: 18px;
-    font-size: 11px;
-  }
+      .check-list li::before {
+        width: 18px;
+        height: 18px;
+        font-size: 11px;
+      }
 
-  .tools-grid {
-    gap: 8px;
-  }
+      .tools-grid {
+        gap: 8px;
+      }
 
-  .tool-card {
-    padding: 14px 6px;
-    gap: 10px;
-  }
+      .tool-card {
+        padding: 14px 6px;
+        gap: 10px;
+      }
 
-  .tool-name {
-    font-size: 11px;
-  }
+      .tool-name {
+        font-size: 11px;
+      }
 
-  .impact-grid {
-    --gap: 8px;
-  }
+      .impact-grid {
+        --gap: 8px;
+      }
 
-  .impact-media .play-button {
-    width: 38px;
-    height: 38px;
-  }
+      .impact-media .play-button {
+        width: 38px;
+        height: 38px;
+      }
 
-  .impact-media .play-button::after {
-    font-size: 38px;
-  }
+      .impact-media .play-button::after {
+        font-size: 38px;
+      }
 
-  .faq-item summary {
-    padding: 12px 14px;
-    font-size: 13px;
-  }
+      .faq-item summary {
+        padding: 12px 14px;
+        font-size: 13px;
+      }
 
-  .faq-answer {
-    padding: 0 14px 14px;
-    font-size: 13px;
-  }
+      .faq-answer {
+        padding: 0 14px 14px;
+        font-size: 13px;
+      }
 
-  .why-card,
-  .final-cta {
-    padding: 28px 14px;
-  }
-}
+      .why-card,
+      .final-cta {
+        padding: 28px 14px;
+      }
+    }
 
-/* Very narrow cover screens (original Galaxy Fold = 280px) */
-@media (max-width: 300px) {
-  /* no room for the sliding circle – colour change + shine only */
-  .cta .arrow {
-    display: none;
-  }
+    /* Very narrow cover screens (original Galaxy Fold = 280px) */
+    @media (max-width: 300px) {
 
-  .cta,
-  .cta:hover,
-  .cta:focus-visible {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
+      /* no room for the sliding circle – colour change + shine only */
+      .cta .arrow {
+        display: none;
+      }
 
-  .hero-title {
-    font-size: 21px;
-  }
-}
-/* =========================
+      .cta,
+      .cta:hover,
+      .cta:focus-visible {
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+
+      .hero-title {
+        font-size: 21px;
+      }
+    }
+
+    /* =========================
    MOBILE: no header logo, middle CTAs hidden, sticky CTA after the hero
 ========================= */
 
-.sticky-cta {
-  display: none;
-}
+    .sticky-cta {
+      display: none;
+    }
 
-@media (max-width: 767px) {
-  /* the header only holds the logo – hide it so no empty space is left */
-  .header {
-    display: none;
-  }
+    @media (max-width: 767px) {
 
-  /* CTAs between the hero and the final section (the sticky CTA covers them) */
-  [data-mid-cta] {
-    display: none !important;
-  }
+      /* the header only holds the logo – hide it so no empty space is left */
+      .header {
+        display: none;
+      }
 
-  /* no button under the list any more → no extra gap at the card bottom */
-  .day-card .check-list {
-    margin-bottom: 0;
-  }
+      /* CTAs between the hero and the final section (the sticky CTA covers them) */
+      [data-mid-cta] {
+        display: none !important;
+      }
 
-  .sticky-cta {
-    display: block;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 50;
-    padding: 18px 16px calc(12px + env(safe-area-inset-bottom));
-    background: linear-gradient(180deg, rgba(10, 10, 13, 0), rgba(10, 10, 13, .92) 45%);
-    transform: translateY(110%);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform .35s cubic-bezier(.22, 1, .36, 1), opacity .25s ease;
-  }
+      /* no button under the list any more → no extra gap at the card bottom */
+      .day-card .check-list {
+        margin-bottom: 0;
+      }
 
-  .sticky-cta.is-visible {
-    transform: none;
-    opacity: 1;
-    pointer-events: auto;
-  }
+      .sticky-cta {
+        display: block;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 50;
+        padding: 18px 16px calc(12px + env(safe-area-inset-bottom));
+        background: linear-gradient(180deg, rgba(10, 10, 13, 0), rgba(10, 10, 13, .92) 45%);
+        transform: translateY(110%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform .35s cubic-bezier(.22, 1, .36, 1), opacity .25s ease;
+      }
 
-  .sticky-cta .btn {
-    width: 100%;
-    white-space: nowrap;
-  }
-}
+      .sticky-cta.is-visible {
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+      }
 
-@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
-  .sticky-cta {
-    transition: none;
-  }
-}
-</style>
-<link rel="stylesheet" href="motion.css">
-<link rel="stylesheet" href="ambient.css">
+      .sticky-cta .btn {
+        width: 100%;
+        white-space: nowrap;
+      }
+    }
+
+    @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+      .sticky-cta {
+        transition: none;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="motion.css">
+  <link rel="stylesheet" href="ambient.css">
 </head>
 
 <body>
 
-<div class="page">
+  <div class="page">
 
-  <div class="hero-atmos" aria-hidden="true"><div class="hero-atmos-band"></div></div>
-
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container">
-      <img class="logo" src="ZRM New LP Assets/Layer 1 2.webp" alt="Tamil Business Tribe">
+    <div class="hero-atmos" aria-hidden="true">
+      <div class="hero-atmos-band"></div>
     </div>
-  </header>
+
+    <!-- HEADER -->
+    <header class="header">
+      <div class="container">
+        <img class="logo" src="ZRM New LP Assets/Layer 1 2.webp" alt="Tamil Business Tribe">
+      </div>
+    </header>
 
 
-  <!-- HERO -->
-  <main class="hero">
+    <!-- HERO -->
+    <main class="hero">
+      <div class="container">
+
+        <div class="hero-head">
+          <div class="top-label">3-Day Live Zero Ruppee Marketing Challenge</div>
+
+          <h1 class="hero-title">
+            Kaasu <span class="yellow">Selavu Pannama Marketing</span><br>
+            Panna Mudiyuma?
+          </h1>
+
+          <p class="hero-subtitle">
+            Learn how to attract attention, generate leads and convert them into customers using the Zero Rupee
+            Marketing framework.
+          </p>
+        </div>
+
+        <div class="hero-content">
+
+          <!-- VIDEO -->
+          <div class="video-box" role="button" aria-label="Play video" tabindex="0"
+            data-video="ZRM%20New%20LP%20Assets/Zrm%20main%20video.mp4">
+            <img src="ZRM New LP Assets/Rectangle 4.webp"
+              srcset="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp 480w, ZRM%20New%20LP%20Assets/Rectangle%204.webp 964w"
+              sizes="(max-width: 900px) calc(100vw - 32px), 680px" width="964" height="542" fetchpriority="high"
+              alt="Zero Rupee Marketing Challenge">
+            <div class="video-overlay">
+              <div class="play-button"></div>
+            </div>
+          </div>
+
+          <!-- DETAILS -->
+          <div class="event-details">
+
+            <ul class="detail-list">
+              <li class="detail-item">
+                <img class="detail-icon" src="ZRM New LP Assets/calendar 1.webp" alt="">
+                <div class="detail-text">
+                  <strong>Zoom Live Call</strong>
+                  <span data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span>
+                </div>
+              </li>
+
+              <li class="detail-item">
+                <img class="detail-icon" src="ZRM New LP Assets/on-time 1.webp" alt="">
+                <div class="detail-text">
+                  <strong>Timing Starts at</strong>
+                  <span><time data-cv="02_zrm_online_time">07:00 AM to 08:30 AM</time> (Only Live)</span>
+                </div>
+              </li>
+
+              <li class="detail-item">
+                <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 1.webp" alt="">
+                <div class="detail-text">
+                  <strong>Replay Time Starts at</strong>
+                  <span data-cv="zrm_replay">07:00 PM to 08:30 PM</span>
+                </div>
+              </li>
+
+              <li class="detail-item">
+                <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 2.webp" alt="">
+                <div class="detail-text">
+                  <strong>Will be Held in</strong>
+                  <span>Zoom Live Session (No Recording)</span>
+                </div>
+              </li>
+            </ul>
+
+            <a class="cta" href="payment.html">
+              <span class="cta-label">₹499 | 3 DAYS | LIVE ON ZOOM</span>
+              <span class="arrow">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 12h14" />
+                  <path d="M13 6l6 6-6 6" />
+                </svg>
+              </span>
+              <span class="cta-shine"></span>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+
+    <!-- SUCCESS STORIES -->
+    <section class="success">
+      <div class="container">
+
+        <h2 class="success-title">
+          Success Stories of <span class="yellow">TBT’s Mentorship Program.</span>
+        </h2>
+
+        <div class="testimonial-grid" aria-roledescription="carousel" aria-label="Success stories" tabindex="0">
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/maxlin.webp" alt="Maxlin Deena" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Maxlin Deena, Founder</p>
+              <p class="t-company">Alna Apparels, Villupuram</p>
+              <p class="t-result"><strong>₹25 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/rajesh.webp" alt="Dr. Rajesh Kanna" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Dr. Rajesh Kanna, Founder</p>
+              <p class="t-company">Friends Physio, Coimbatore</p>
+              <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/nisha.webp" alt="Nisha" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Nisha, Founder</p>
+              <p class="t-company">The Needles &amp; Thread, Madurai</p>
+              <p class="t-result"><strong>₹30 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/sharanya.webp" alt="Sharanya" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Sharanya, Founder</p>
+              <p class="t-company">Vishara Skincare, Chennai</p>
+              <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>18 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/anusha.webp" alt="Anusha" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Anusha, Founder</p>
+              <p class="t-company">Glorious Minds, Chennai</p>
+              <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/rajkamal.webp" alt="Rajkamal" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Rajkamal, Founder</p>
+              <p class="t-company">Skillx Nation, Madurai</p>
+              <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/hari.webp" alt="Hari Karthik" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Hari Karthik, Founder</p>
+              <p class="t-company">Madrassi Weaves, Salem</p>
+              <p class="t-result"><strong>₹50 Lakhs</strong> in<br>just <strong>18 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/muthu.webp" alt="Muthu Kishore" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Muthu Kishore, Founder</p>
+              <p class="t-company">Passive Way Store, Coimbatore</p>
+              <p class="t-result"><strong>4X Revenue</strong> in<br>just <strong>8 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/oviya.webp" alt="Oviya" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Oviya, Founder</p>
+              <p class="t-company">Oviya’s Meraki, Chennai</p>
+              <p class="t-result"><strong>₹20 Lakhs</strong> in<br>just <strong>9 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/sharon.webp" alt="Sharon" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Sharon, Founder</p>
+              <p class="t-company">Dan Ella, Chennai</p>
+              <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/navaneeth.webp" alt="Navaneeth Krishnan"
+              loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Navaneeth Krishnan, Founder</p>
+              <p class="t-company">Flying Hornbill, Chennai</p>
+              <p class="t-result"><strong>₹12 Lakhs</strong> in<br>just <strong>8 months!</strong></p>
+            </div>
+          </div>
+          <div class="testimonial">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/annamalai.webp" alt="Annamalai" loading="lazy">
+            <div class="t-info">
+              <p class="t-name">Annamalai, Founder</p>
+              <p class="t-company">Dream Zone, Chennai</p>
+              <p class="t-result"><strong>₹15 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-controls">
+          <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous stories">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+          </button>
+          <button class="carousel-btn" type="button" data-carousel-next aria-label="Next stories">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="bottom-pill">
+          <span>50,000+ ENTREPRENEURS</span>
+          <span class="dot"></span>
+          <span>LIVE TRAINING</span>
+          <span class="dot"></span>
+          <span>PRACTICAL IMPLEMENTATION</span>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+
+  <!-- SECTION 2 – 3 DAYS / 3 SKILLS -->
+  <section class="skills">
     <div class="container">
 
-      <div class="hero-head">
-        <div class="top-label">3-Day Live Zero Ruppee Marketing Challenge</div>
-
-        <h1 class="hero-title">
-          Kaasu <span class="yellow">Selavu Pannama Marketing</span><br>
-          Panna Mudiyuma?
-        </h1>
-
-        <p class="hero-subtitle">
-          Learn how to attract attention, generate leads and convert them into customers using the Zero Rupee Marketing framework.
-        </p>
+      <div class="skills-head">
+        <h2 class="section-title">3 Days. 3 Skills. <span class="yellow">One Growth System.</span></h2>
+        <p class="section-subtitle">Learn the skills. Implement them. Build your marketing system.</p>
       </div>
 
-      <div class="hero-content">
-
-        <!-- VIDEO -->
-        <div class="video-box" role="button" aria-label="Play video" tabindex="0" data-video="ZRM%20New%20LP%20Assets/Zrm%20main%20video.mp4">
-          <img src="ZRM New LP Assets/Rectangle 4.webp" srcset="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp 480w, ZRM%20New%20LP%20Assets/Rectangle%204.webp 964w" sizes="(max-width: 900px) calc(100vw - 32px), 680px" width="964" height="542" fetchpriority="high" alt="Zero Rupee Marketing Challenge">
-          <div class="video-overlay">
-            <div class="play-button"></div>
-          </div>
+      <div class="skill-row">
+        <div class="skill-box">
+          <h3><span class="yellow">Day 1</span> – Content Creation</h3>
+          <p>Create content that gets attention.</p>
         </div>
 
-        <!-- DETAILS -->
-        <div class="event-details">
+        <div class="skill-box">
+          <h3><span class="yellow">Day 2</span> – Generate Revenue</h3>
+          <p>Turn attention into leads and customers.</p>
+        </div>
 
-          <ul class="detail-list">
-            <li class="detail-item">
-              <img class="detail-icon" src="ZRM New LP Assets/calendar 1.webp" alt="">
-              <div class="detail-text">
-                <strong>Zoom Live Call</strong>
-                <span data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span>
-              </div>
-            </li>
-
-            <li class="detail-item">
-              <img class="detail-icon" src="ZRM New LP Assets/on-time 1.webp" alt="">
-              <div class="detail-text">
-                <strong>Timing Starts at</strong>
-                <span><time data-cv="02_zrm_online_time">07:00 AM to 08:30 AM</time> (Only Live)</span>
-              </div>
-            </li>
-
-            <li class="detail-item">
-              <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 1.webp" alt="">
-              <div class="detail-text">
-                <strong>Replay Time Starts at</strong>
-                <span data-cv="zrm_replay">07:00 PM to 08:30 PM</span>
-              </div>
-            </li>
-
-            <li class="detail-item">
-              <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 2.webp" alt="">
-              <div class="detail-text">
-                <strong>Will be Held in</strong>
-                <span>Zoom Live Session (No Recording)</span>
-              </div>
-            </li>
-          </ul>
-
-          <a class="cta" href="payment.html">
-            <span class="cta-label">₹499 | 3 DAYS | LIVE ON ZOOM</span>
-            <span class="arrow">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-            </span>
-            <span class="cta-shine"></span>
-          </a>
-
+        <div class="skill-box">
+          <h3><span class="yellow">Day 3</span> – Scale Your Business</h3>
+          <p>Build systems that help you grow.</p>
         </div>
       </div>
 
-    </div>
-  </main>
-
-
-  <!-- SUCCESS STORIES -->
-  <section class="success">
-    <div class="container">
-
-      <h2 class="success-title">
-        Success Stories of <span class="yellow">TBT’s Mentorship Program.</span>
-      </h2>
-
-      <div class="testimonial-grid" aria-roledescription="carousel" aria-label="Success stories" tabindex="0">
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/maxlin.webp" alt="Maxlin Deena" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Maxlin Deena, Founder</p>
-            <p class="t-company">Alna Apparels, Villupuram</p>
-            <p class="t-result"><strong>₹25 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/rajesh.webp" alt="Dr. Rajesh Kanna" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Dr. Rajesh Kanna, Founder</p>
-            <p class="t-company">Friends Physio, Coimbatore</p>
-            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/nisha.webp" alt="Nisha" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Nisha, Founder</p>
-            <p class="t-company">The Needles &amp; Thread, Madurai</p>
-            <p class="t-result"><strong>₹30 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/sharanya.webp" alt="Sharanya" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Sharanya, Founder</p>
-            <p class="t-company">Vishara Skincare, Chennai</p>
-            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>18 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/anusha.webp" alt="Anusha" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Anusha, Founder</p>
-            <p class="t-company">Glorious Minds, Chennai</p>
-            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/rajkamal.webp" alt="Rajkamal" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Rajkamal, Founder</p>
-            <p class="t-company">Skillx Nation, Madurai</p>
-            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/hari.webp" alt="Hari Karthik" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Hari Karthik, Founder</p>
-            <p class="t-company">Madrassi Weaves, Salem</p>
-            <p class="t-result"><strong>₹50 Lakhs</strong> in<br>just <strong>18 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/muthu.webp" alt="Muthu Kishore" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Muthu Kishore, Founder</p>
-            <p class="t-company">Passive Way Store, Coimbatore</p>
-            <p class="t-result"><strong>4X Revenue</strong> in<br>just <strong>8 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/oviya.webp" alt="Oviya" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Oviya, Founder</p>
-            <p class="t-company">Oviya’s Meraki, Chennai</p>
-            <p class="t-result"><strong>₹20 Lakhs</strong> in<br>just <strong>9 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/sharon.webp" alt="Sharon" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Sharon, Founder</p>
-            <p class="t-company">Dan Ella, Chennai</p>
-            <p class="t-result"><strong>₹10 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/navaneeth.webp" alt="Navaneeth Krishnan" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Navaneeth Krishnan, Founder</p>
-            <p class="t-company">Flying Hornbill, Chennai</p>
-            <p class="t-result"><strong>₹12 Lakhs</strong> in<br>just <strong>8 months!</strong></p>
-          </div>
-        </div>
-        <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/annamalai.webp" alt="Annamalai" loading="lazy">
-          <div class="t-info">
-            <p class="t-name">Annamalai, Founder</p>
-            <p class="t-company">Dream Zone, Chennai</p>
-            <p class="t-result"><strong>₹15 Lakhs</strong> in<br>just <strong>12 months!</strong></p>
-          </div>
-        </div>
+      <div class="join-wrap" data-mid-cta>
+        <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
       </div>
 
-      <div class="carousel-controls">
-        <button class="carousel-btn" type="button" data-carousel-prev aria-label="Previous stories">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
-        </button>
-        <button class="carousel-btn" type="button" data-carousel-next aria-label="Next stories">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-      </div>
+      <div class="day-list">
 
-      <div class="bottom-pill">
-        <span>50,000+ ENTREPRENEURS</span>
-        <span class="dot"></span>
-        <span>LIVE TRAINING</span>
-        <span class="dot"></span>
-        <span>PRACTICAL IMPLEMENTATION</span>
+        <!-- DAY 1 -->
+        <article class="day-card">
+          <div class="day-content">
+            <h3 class="day-title">
+              <span class="yellow">Day 1</span> – Social Media la Video Panna Yosichikute Irukingala..?
+            </h3>
+            <p class="day-subtitle">Learn from Day 1 of ZRM</p>
+
+            <ul class="check-list">
+              <li>AI Video Making</li>
+              <li>100 Days Content Ideas using AI</li>
+              <li>AI Speed Video Editing</li>
+              <li>100 Social Media Posts using AI</li>
+              <li>Super Human Activation</li>
+            </ul>
+
+            <a class="btn" href="payment.html" data-mid-cta>Start Creating Content <span class="btn-arrow"
+                aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="day-image">
+            <!-- Day 1 video: muted loop, only downloads/plays while the card is near the screen -->
+            <video data-src="ZRM%20New%20LP%20Assets/Day%201.mp4" poster="ZRM%20New%20LP%20Assets/Mask%20group.webp"
+              muted loop playsinline preload="none" aria-label="Day 1 – Content creation"></video>
+          </div>
+        </article>
+
+        <!-- DAY 2 -->
+        <article class="day-card">
+          <div class="day-content">
+            <h3 class="day-title">
+              <span class="yellow">Day 2</span> – Build Your Money Making Machine While Sleeping
+            </h3>
+            <p class="day-subtitle">Learn from Day 2 of ZRM</p>
+
+            <ul class="check-list">
+              <li>Lead &amp; Sales Funnels</li>
+              <li>Ecommerce Funnels (Product)</li>
+              <li>Live Commerce Funnels (Product)</li>
+              <li>Appointment Funnel (Service)</li>
+              <li>1-On-1 Funnel (Coaching)</li>
+              <li>1-to-Many Funnel (Coaching)</li>
+            </ul>
+
+            <a class="btn" href="payment.html" data-mid-cta>Start Generating Money <span class="btn-arrow"
+                aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="day-image">
+            <img src="ZRM New LP Assets/Mask group-1.webp"
+              srcset="ZRM%20New%20LP%20Assets/Mask%20group-1-480w.webp 480w, ZRM%20New%20LP%20Assets/Mask%20group-1.webp 881w"
+              sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 2 – Sales funnels" loading="lazy">
+          </div>
+        </article>
+
+        <!-- DAY 3 -->
+        <article class="day-card">
+          <div class="day-content">
+            <h3 class="day-title">
+              <span class="yellow">Day 3</span> – Scale Your Business
+            </h3>
+            <p class="day-subtitle">Learn from Day 3 of ZRM</p>
+
+            <ul class="check-list">
+              <li>Mindset</li>
+              <li>Lateral Thinking</li>
+              <li>Guerrilla Marketing</li>
+              <li>Unit Economics</li>
+              <li>Pricing Strategy</li>
+            </ul>
+
+            <a class="btn" href="payment.html" data-mid-cta>Ready to Scale <span class="btn-arrow"
+                aria-hidden="true">→</span></a>
+          </div>
+
+          <div class="day-image">
+            <img src="ZRM New LP Assets/Rectangle 67.webp"
+              srcset="ZRM%20New%20LP%20Assets/Rectangle%2067-480w.webp 480w, ZRM%20New%20LP%20Assets/Rectangle%2067.webp 881w"
+              sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 3 – Empty stall to 100's of cameras"
+              loading="lazy">
+          </div>
+        </article>
+
       </div>
 
     </div>
   </section>
 
-</div>
 
+  <!-- SECTION 3 – TOOLS / PARTICIPANTS / WHY ATTEND -->
+  <section class="tools" id="tools">
+    <div class="container">
 
-<!-- SECTION 2 – 3 DAYS / 3 SKILLS -->
-<section class="skills">
-  <div class="container">
+      <!-- TOOLS -->
+      <h2 class="section-title">Tools You’ll Get Introduced to in <span class="yellow">ZRM Workshop</span></h2>
 
-    <div class="skills-head">
-      <h2 class="section-title">3 Days. 3 Skills. <span class="yellow">One Growth System.</span></h2>
-      <p class="section-subtitle">Learn the skills. Implement them. Build your marketing system.</p>
-    </div>
-
-    <div class="skill-row">
-      <div class="skill-box">
-        <h3><span class="yellow">Day 1</span> – Content Creation</h3>
-        <p>Create content that gets attention.</p>
-      </div>
-
-      <div class="skill-box">
-        <h3><span class="yellow">Day 2</span> – Generate Revenue</h3>
-        <p>Turn attention into leads and customers.</p>
-      </div>
-
-      <div class="skill-box">
-        <h3><span class="yellow">Day 3</span> – Scale Your Business</h3>
-        <p>Build systems that help you grow.</p>
-      </div>
-    </div>
-
-    <div class="join-wrap" data-mid-cta>
-      <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
-    </div>
-
-    <div class="day-list">
-
-      <!-- DAY 1 -->
-      <article class="day-card">
-        <div class="day-content">
-          <h3 class="day-title">
-            <span class="yellow">Day 1</span> – Social Media la Video Panna Yosichikute Irukingala..?
-          </h3>
-          <p class="day-subtitle">Learn from Day 1 of ZRM</p>
-
-          <ul class="check-list">
-            <li>AI Video Making</li>
-            <li>100 Days Content Ideas using AI</li>
-            <li>AI Speed Video Editing</li>
-            <li>100 Social Media Posts using AI</li>
-            <li>Super Human Activation</li>
-          </ul>
-
-          <a class="btn" href="payment.html" data-mid-cta>Start Creating Content <span class="btn-arrow" aria-hidden="true">→</span></a>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 84.webp" alt="" loading="lazy">
+          <div class="tool-name">Answer the Public</div>
         </div>
-
-        <div class="day-image">
-          <!-- Day 1 video: muted loop, only downloads/plays while the card is near the screen -->
-          <video data-src="ZRM%20New%20LP%20Assets/Day%201.mp4" poster="ZRM%20New%20LP%20Assets/Mask%20group.webp" muted loop playsinline preload="none" aria-label="Day 1 – Content creation"></video>
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 76.webp" alt="" loading="lazy">
+          <div class="tool-name">Canva</div>
         </div>
-      </article>
-
-      <!-- DAY 2 -->
-      <article class="day-card">
-        <div class="day-content">
-          <h3 class="day-title">
-            <span class="yellow">Day 2</span> – Build Your Money Making Machine While Sleeping
-          </h3>
-          <p class="day-subtitle">Learn from Day 2 of ZRM</p>
-
-          <ul class="check-list">
-            <li>Lead &amp; Sales Funnels</li>
-            <li>Ecommerce Funnels (Product)</li>
-            <li>Live Commerce Funnels (Product)</li>
-            <li>Appointment Funnel (Service)</li>
-            <li>1-On-1 Funnel (Coaching)</li>
-            <li>1-to-Many Funnel (Coaching)</li>
-          </ul>
-
-          <a class="btn" href="payment.html" data-mid-cta>Start Generating Money <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 83.webp" alt="" loading="lazy">
+          <div class="tool-name">Unit Economics</div>
         </div>
-
-        <div class="day-image">
-          <img src="ZRM New LP Assets/Mask group-1.webp" srcset="ZRM%20New%20LP%20Assets/Mask%20group-1-480w.webp 480w, ZRM%20New%20LP%20Assets/Mask%20group-1.webp 881w" sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 2 – Sales funnels" loading="lazy">
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 77.webp" alt="" loading="lazy">
+          <div class="tool-name">ChatGPT</div>
         </div>
-      </article>
-
-      <!-- DAY 3 -->
-      <article class="day-card">
-        <div class="day-content">
-          <h3 class="day-title">
-            <span class="yellow">Day 3</span> – Scale Your Business
-          </h3>
-          <p class="day-subtitle">Learn from Day 3 of ZRM</p>
-
-          <ul class="check-list">
-            <li>Mindset</li>
-            <li>Lateral Thinking</li>
-            <li>Guerrilla Marketing</li>
-            <li>Unit Economics</li>
-            <li>Pricing Strategy</li>
-          </ul>
-
-          <a class="btn" href="payment.html" data-mid-cta>Ready to Scale <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 78.webp" alt="" loading="lazy">
+          <div class="tool-name">VN Editor</div>
         </div>
-
-        <div class="day-image">
-          <img src="ZRM New LP Assets/Rectangle 67.webp" srcset="ZRM%20New%20LP%20Assets/Rectangle%2067-480w.webp 480w, ZRM%20New%20LP%20Assets/Rectangle%2067.webp 881w" sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 3 – Empty stall to 100's of cameras" loading="lazy">
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 80.webp" alt="" loading="lazy">
+          <div class="tool-name">Notebook LM</div>
         </div>
-      </article>
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 74.webp" alt="" loading="lazy">
+          <div class="tool-name">Gemini</div>
+        </div>
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 73.webp" alt="" loading="lazy">
+          <div class="tool-name">Storybeat Edit</div>
+        </div>
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 79.webp" alt="" loading="lazy">
+          <div class="tool-name">InShot</div>
+        </div>
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 81.webp" alt="" loading="lazy">
+          <div class="tool-name">HeyGen</div>
+        </div>
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 82.webp" alt="" loading="lazy">
+          <div class="tool-name">Meta Edits</div>
+        </div>
+        <div class="tool-card">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 75.webp" alt="" loading="lazy">
+          <div class="tool-name">Capcut</div>
+        </div>
+      </div>
+
+      <div class="join-wrap" data-mid-cta>
+        <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <!-- PARTICIPANTS -->
+      <h2 class="section-title">Listen to What <span class="yellow">Our Participants</span> are Saying</h2>
+
+      <div class="participants-video" role="button" aria-label="Play Day 4 video" tabindex="0"
+        data-video="ZRM%20New%20LP%20Assets/Day%204%20full%20video.mp4">
+        <img src="ZRM New LP Assets/Rectangle 85.webp"
+          srcset="ZRM%20New%20LP%20Assets/Rectangle%2085-800w.webp 800w, ZRM%20New%20LP%20Assets/Rectangle%2085.webp 1680w"
+          sizes="(max-width: 1240px) calc(100vw - 32px), 1200px" alt="Our participants on WhatsApp" loading="lazy">
+        <div class="video-overlay">
+          <div class="play-button"></div>
+        </div>
+      </div>
+
+      <div class="bottom-pill reaction-pill">
+        <span>REAL REACTIONS</span>
+        <span class="dot"></span>
+        <span>REAL CONVERSATIONS</span>
+        <span class="dot"></span>
+        <span>REAL-TIME IMPLEMENTATION</span>
+      </div>
+
+      <div class="join-wrap" data-mid-cta>
+        <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <!-- WHY ATTEND -->
+      <div class="why-card">
+        <h2 class="section-title">Why Attend <span class="yellow">ZRM Live?</span></h2>
+        <p class="why-lead">You won’t just learn marketing. You’ll create it for your business – live.</p>
+        <p class="why-text">
+          During the workshop, you’ll create content, build your marketing system and implement
+          strategies designed to generate leads and revenue.
+        </p>
+        <a class="btn btn-yellow" href="payment.html" data-mid-cta>Start Your ZRM Journey <span class="btn-arrow"
+            aria-hidden="true">→</span></a>
+      </div>
 
     </div>
 
-  </div>
-</section>
-
-
-<!-- SECTION 3 – TOOLS / PARTICIPANTS / WHY ATTEND -->
-<section class="tools" id="tools">
-  <div class="container">
-
-    <!-- TOOLS -->
-    <h2 class="section-title">Tools You’ll Get Introduced to in <span class="yellow">ZRM Workshop</span></h2>
-
-    <div class="tools-grid">
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 84.webp" alt="" loading="lazy">
-        <div class="tool-name">Answer the Public</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 76.webp" alt="" loading="lazy">
-        <div class="tool-name">Canva</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 83.webp" alt="" loading="lazy">
-        <div class="tool-name">Unit Economics</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 77.webp" alt="" loading="lazy">
-        <div class="tool-name">ChatGPT</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 78.webp" alt="" loading="lazy">
-        <div class="tool-name">VN Editor</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 80.webp" alt="" loading="lazy">
-        <div class="tool-name">Notebook LM</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 74.webp" alt="" loading="lazy">
-        <div class="tool-name">Gemini</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 73.webp" alt="" loading="lazy">
-        <div class="tool-name">Storybeat Edit</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 79.webp" alt="" loading="lazy">
-        <div class="tool-name">InShot</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 81.webp" alt="" loading="lazy">
-        <div class="tool-name">HeyGen</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 82.webp" alt="" loading="lazy">
-        <div class="tool-name">Meta Edits</div>
-      </div>
-      <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 75.webp" alt="" loading="lazy">
-        <div class="tool-name">Capcut</div>
+    <!-- BOTTOM TICKER (content repeated twice for a seamless loop) -->
+    <div class="ticker-wrap">
+      <div class="ticker">
+        <div class="ticker-group">
+          <span class="ticker-item">Madrasi Weaves, Salem – <strong>₹1 Crore</strong></span>
+          <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai – <strong>₹50 Lakhs</strong></span>
+          <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram – <strong>₹30 Lakhs</strong></span>
+          <span class="ticker-item">CoachX – <strong>50,000+ Entrepreneurs</strong></span>
+        </div>
+        <div class="ticker-group" aria-hidden="true">
+          <span class="ticker-item">Madrasi Weaves, Salem – <strong>₹1 Crore</strong></span>
+          <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai – <strong>₹50 Lakhs</strong></span>
+          <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram – <strong>₹30 Lakhs</strong></span>
+          <span class="ticker-item">CoachX – <strong>50,000+ Entrepreneurs</strong></span>
+        </div>
       </div>
     </div>
-
-    <div class="join-wrap" data-mid-cta>
-      <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
-    </div>
-
-    <!-- PARTICIPANTS -->
-    <h2 class="section-title">Listen to What <span class="yellow">Our Participants</span> are Saying</h2>
-
-    <div class="participants-video" role="button" aria-label="Play Day 4 video" tabindex="0" data-video="ZRM%20New%20LP%20Assets/Day%204%20full%20video.mp4">
-      <img src="ZRM New LP Assets/Rectangle 85.webp" srcset="ZRM%20New%20LP%20Assets/Rectangle%2085-800w.webp 800w, ZRM%20New%20LP%20Assets/Rectangle%2085.webp 1680w" sizes="(max-width: 1240px) calc(100vw - 32px), 1200px" alt="Our participants on WhatsApp" loading="lazy">
-      <div class="video-overlay">
-        <div class="play-button"></div>
-      </div>
-    </div>
-
-    <div class="bottom-pill reaction-pill">
-      <span>REAL REACTIONS</span>
-      <span class="dot"></span>
-      <span>REAL CONVERSATIONS</span>
-      <span class="dot"></span>
-      <span>REAL-TIME IMPLEMENTATION</span>
-    </div>
-
-    <div class="join-wrap" data-mid-cta>
-      <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
-    </div>
-
-    <!-- WHY ATTEND -->
-    <div class="why-card">
-      <h2 class="section-title">Why Attend <span class="yellow">ZRM Live?</span></h2>
-      <p class="why-lead">You won’t just learn marketing. You’ll create it for your business – live.</p>
-      <p class="why-text">
-        During the workshop, you’ll create content, build your marketing system and implement
-        strategies designed to generate leads and revenue.
-      </p>
-      <a class="btn btn-yellow" href="payment.html" data-mid-cta>Start Your ZRM Journey <span class="btn-arrow" aria-hidden="true">→</span></a>
-    </div>
-
-  </div>
-
-  <!-- BOTTOM TICKER (content repeated twice for a seamless loop) -->
-  <div class="ticker-wrap">
-    <div class="ticker">
-      <div class="ticker-group">
-        <span class="ticker-item">Madrasi Weaves, Salem – <strong>₹1 Crore</strong></span>
-        <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai – <strong>₹50 Lakhs</strong></span>
-        <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram – <strong>₹30 Lakhs</strong></span>
-        <span class="ticker-item">CoachX – <strong>50,000+ Entrepreneurs</strong></span>
-      </div>
-      <div class="ticker-group" aria-hidden="true">
-        <span class="ticker-item">Madrasi Weaves, Salem – <strong>₹1 Crore</strong></span>
-        <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai – <strong>₹50 Lakhs</strong></span>
-        <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram – <strong>₹30 Lakhs</strong></span>
-        <span class="ticker-item">CoachX – <strong>50,000+ Entrepreneurs</strong></span>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- SECTION 4 – IMPACT / FAQ / FINAL CTA -->
-<section class="impact">
-  <div class="container">
+  <!-- SECTION 4 – IMPACT / FAQ / FINAL CTA -->
+  <section class="impact">
+    <div class="container">
 
-    <!-- VIDEO TESTIMONIALS
+      <!-- VIDEO TESTIMONIALS
          Videos are 100MB+, so cards show a poster image (ZRM New LP Assets/impact)
          and a video only streams after its Play button is clicked. -->
-    <div class="impact-grid" aria-label="Participant video testimonials">
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 1">
-        <div class="impact-media">
-          <video data-poster="ZRM New LP Assets/impact/video-1.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6a3a77fe7249909712059c15.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
+      <div class="impact-grid" aria-label="Participant video testimonials">
+        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 1">
+          <div class="impact-media">
+            <video data-poster="ZRM New LP Assets/impact/video-1.webp"
+              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6a3a77fe7249909712059c15.mp4"
+              preload="none" playsinline></video>
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 2">
+          <div class="impact-media">
+            <video data-poster="ZRM New LP Assets/impact/video-2.webp"
+              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699022b4008498585063be69.mp4"
+              preload="none" playsinline></video>
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 3">
+          <div class="impact-media">
+            <video data-poster="ZRM New LP Assets/impact/video-3.webp"
+              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/69902263c08665d643c777c5.mp4"
+              preload="none" playsinline></video>
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 4">
+          <div class="impact-media">
+            <video data-poster="ZRM New LP Assets/impact/video-4.webp"
+              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020eb772de92f78f66414.mp4"
+              preload="none" playsinline></video>
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 5">
+          <div class="impact-media">
+            <video data-poster="ZRM New LP Assets/impact/video-5.webp"
+              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020bc24813c82726dc9f5.mp4"
+              preload="none" playsinline></video>
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 6">
+          <div class="impact-media">
+            <video data-poster="ZRM New LP Assets/impact/video-7.webp"
+              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691eb00b88e1e651a0a797f7.mp4"
+              preload="none" playsinline></video>
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 7">
+          <div class="impact-media">
+            <video data-poster="ZRM New LP Assets/impact/video-9.webp"
+              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912eaa2ee923201bed8ff6a.mp4"
+              preload="none" playsinline></video>
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 8">
+          <div class="impact-media">
+            <video data-poster="ZRM New LP Assets/impact/video-10.webp"
+              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912ea3610d693d2dde2b679.mp4"
+              preload="none" playsinline></video>
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 9">
+          <div class="impact-media">
+            <video data-poster="ZRM New LP Assets/impact/video-11.webp"
+              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912e9d496d06ad4d26441b1.mp4"
+              preload="none" playsinline></video>
+            <div class="play-button"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="carousel-controls">
+        <button class="carousel-btn" type="button" data-impact-prev aria-label="Previous videos">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" />
+          </svg>
+        </button>
+        <button class="carousel-btn" type="button" data-impact-next aria-label="Next videos">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="join-wrap" data-mid-cta>
+        <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq">
+        <h2 class="section-title">Frequently Asked <span class="red">Questions</span> (FAQs)</h2>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>01. What are the timings for the workshop?</summary>
+            <p class="faq-answer">The workshop runs live on <span data-cv="zrm_online_date">OCT 16 2026 – OCT 18
+                2026</span>, from <span data-cv="02_zrm_online_time">07:00 AM to 08:30 AM</span>. A replay is available
+              from <span data-cv="zrm_replay">07:00 PM to 08:30 PM</span> on the same day.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>02. How long is the session?</summary>
+            <p class="faq-answer">Each session is 1.5 hours, held live on Zoom for 3 days.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>03. Will I get a recording of the session?</summary>
+            <p class="faq-answer">No. There are no recordings – only one replay (<span data-cv="zrm_replay"></span>) on
+              the same day.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>04. Is this suitable for small business owners?</summary>
+            <p class="faq-answer">Yes. The Zero Rupee Marketing framework is built for entrepreneurs and small business
+              owners who want to grow without a big marketing budget.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>05. I’m running a small business. Is it a right course for me?</summary>
+            <p class="faq-answer">Yes. You’ll create content, build your marketing system and implement strategies for
+              your own business – live, during the workshop.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>06. Is there any refund available?</summary>
+            <p class="faq-answer">No, there is no refund available.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>07. I made the payment but didn’t get any email/whatsapp</summary>
+            <p class="faq-answer">Please reach us at <a href="tel:+918015139542">+91 80151 39542</a> or <a
+                href="mailto:helpdesk@tamilbusinesstribe.com">helpdesk@tamilbusinesstribe.com</a> with your payment
+              details and we’ll help you right away.</p>
+          </details>
         </div>
       </div>
 
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 2">
-        <div class="impact-media">
-          <video data-poster="ZRM New LP Assets/impact/video-2.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699022b4008498585063be69.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 3">
-        <div class="impact-media">
-          <video data-poster="ZRM New LP Assets/impact/video-3.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/69902263c08665d643c777c5.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 4">
-        <div class="impact-media">
-          <video data-poster="ZRM New LP Assets/impact/video-4.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020eb772de92f78f66414.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 5">
-        <div class="impact-media">
-          <video data-poster="ZRM New LP Assets/impact/video-5.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020bc24813c82726dc9f5.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 6">
-        <div class="impact-media">
-          <video data-poster="ZRM New LP Assets/impact/video-7.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691eb00b88e1e651a0a797f7.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 7">
-        <div class="impact-media">
-          <video data-poster="ZRM New LP Assets/impact/video-9.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912eaa2ee923201bed8ff6a.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 8">
-        <div class="impact-media">
-          <video data-poster="ZRM New LP Assets/impact/video-10.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912ea3610d693d2dde2b679.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
-      </div>
-
-      <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 9">
-        <div class="impact-media">
-          <video data-poster="ZRM New LP Assets/impact/video-11.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912e9d496d06ad4d26441b1.mp4" preload="none" playsinline></video>
-          <div class="play-button"></div>
-        </div>
+      <!-- FINAL CTA -->
+      <div class="final-cta">
+        <div class="final-cta-bg" aria-hidden="true"></div>
+        <h2 class="section-title">3 Days. <span class="yellow">One Marketing System.</span></h2>
+        <p class="why-lead">Only Live Practical Implementation. No Recordings. – with the ZRM community</p>
+        <a class="btn btn-yellow" href="payment.html">Start Your ZRM Journey <span class="btn-arrow"
+            aria-hidden="true">→</span></a>
+        <p class="cta-note">No Recordings. Only One Replay. Just Live Implementation.</p>
       </div>
 
     </div>
-
-    <div class="carousel-controls">
-      <button class="carousel-btn" type="button" data-impact-prev aria-label="Previous videos">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
-      </button>
-      <button class="carousel-btn" type="button" data-impact-next aria-label="Next videos">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
-    </div>
-
-    <div class="join-wrap" data-mid-cta>
-      <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
-    </div>
-
-    <!-- FAQ -->
-    <div class="faq">
-      <h2 class="section-title">Frequently Asked <span class="red">Questions</span> (FAQs)</h2>
-
-      <div class="faq-list">
-        <details class="faq-item">
-          <summary>01. What are the timings for the workshop?</summary>
-          <p class="faq-answer">The workshop runs live on <span data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span>, from <span data-cv="02_zrm_online_time">07:00 AM to 08:30 AM</span>. A replay is available from <span data-cv="zrm_replay">07:00 PM to 08:30 PM</span> on the same day.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>02. How long is the session?</summary>
-          <p class="faq-answer">Each session is 1.5 hours, held live on Zoom for 3 days.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>03. Will I get a recording of the session?</summary>
-          <p class="faq-answer">No. There are no recordings – only one replay (<span data-cv="zrm_replay"></span>) on the same day.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>04. Is this suitable for small business owners?</summary>
-          <p class="faq-answer">Yes. The Zero Rupee Marketing framework is built for entrepreneurs and small business owners who want to grow without a big marketing budget.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>05. I’m running a small business. Is it a right course for me?</summary>
-          <p class="faq-answer">Yes. You’ll create content, build your marketing system and implement strategies for your own business – live, during the workshop.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>06. Is there any refund available?</summary>
-          <p class="faq-answer">No, there is no refund available.</p>
-        </details>
-
-        <details class="faq-item">
-          <summary>07. I made the payment but didn’t get any email/whatsapp</summary>
-          <p class="faq-answer">Please reach us at <a href="tel:+918015139542">+91 80151 39542</a> or <a href="mailto:helpdesk@tamilbusinesstribe.com">helpdesk@tamilbusinesstribe.com</a> with your payment details and we’ll help you right away.</p>
-        </details>
-      </div>
-    </div>
-
-    <!-- FINAL CTA -->
-    <div class="final-cta">
-      <div class="final-cta-bg" aria-hidden="true"></div>
-      <h2 class="section-title">3 Days. <span class="yellow">One Marketing System.</span></h2>
-      <p class="why-lead">Only Live Practical Implementation. No Recordings. – with the ZRM community</p>
-      <a class="btn btn-yellow" href="payment.html">Start Your ZRM Journey <span class="btn-arrow" aria-hidden="true">→</span></a>
-      <p class="cta-note">No Recordings. Only One Replay. Just Live Implementation.</p>
-    </div>
-
-  </div>
-</section>
+  </section>
 
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-bottom">Copyright © 2026 by Tamil Business Tribe</div>
-</footer>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-bottom">Copyright © 2026 by Tamil Business Tribe</div>
+  </footer>
 
-<!-- Mobile sticky CTA: same label + destination as the hero CTA; shown only
+  <!-- Mobile sticky CTA: same label + destination as the hero CTA; shown only
      after the hero has scrolled away and hidden again at the final CTA -->
-<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
-  <a class="btn" href="payment.html" tabindex="-1">₹499 | 3 DAYS | LIVE ON ZOOM <span class="btn-arrow" aria-hidden="true">→</span></a>
-</div>
-<script>
-(function () {
-  var bar = document.getElementById("sticky-cta");
-  var link = bar.querySelector("a");
-  var hero = document.querySelector(".hero");
-  var finalCta = document.querySelector(".final-cta");
-  var mobile = window.matchMedia("(max-width: 767px)");
-  var heroVisible = true, finalVisible = false;
+  <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <a class="btn" href="payment.html" tabindex="-1">₹499 | 3 DAYS | LIVE ON ZOOM <span class="btn-arrow"
+        aria-hidden="true">→</span></a>
+  </div>
+  <script>
+    (function () {
+      var bar = document.getElementById("sticky-cta");
+      var link = bar.querySelector("a");
+      var hero = document.querySelector(".hero");
+      var finalCta = document.querySelector(".final-cta");
+      var mobile = window.matchMedia("(max-width: 767px)");
+      var heroVisible = true, finalVisible = false;
 
-  function update() {
-    var show = mobile.matches && !heroVisible && !finalVisible;
-    bar.classList.toggle("is-visible", show);
-    bar.setAttribute("aria-hidden", show ? "false" : "true");
-    link.tabIndex = show ? 0 : -1;
-  }
-
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.target === hero) heroVisible = e.isIntersecting;
-        else finalVisible = e.isIntersecting;
-      });
-      update();
-    }).observe(hero);
-    if (finalCta) {
-      new IntersectionObserver(function (entries) {
-        finalVisible = entries[0].isIntersecting;
-        update();
-      }).observe(finalCta);
-    }
-  }
-
-  if (mobile.addEventListener) mobile.addEventListener("change", update);
-  update();
-})();
-</script>
-
-
-<script>
-/* Page widgets, started after the first paint (see loader below). */
-window.__zrmInit = function () {
-
-// video posters are only fetched now, not during the initial page load
-document.querySelectorAll("video[data-poster]").forEach(function (v) {
-  v.setAttribute("poster", v.getAttribute("data-poster"));
-});
-
-/* Impact video slider – poster images, video streams only on Play,
-   one video plays at a time */
-(function () {
-  var grid = document.querySelector(".impact-grid");
-  if (!grid) return;
-
-  // only cards that actually contain a video
-  var cards = Array.prototype.slice.call(grid.querySelectorAll(".impact-card"))
-    .filter(function (card) { return card.querySelector("video"); });
-  var section = grid.parentElement;
-
-  function stop(card) {
-    var video = card.querySelector("video");
-    video.pause();
-    video.controls = false;
-    card.classList.remove("is-playing");
-  }
-
-  function play(card) {
-    cards.forEach(function (other) {
-      if (other !== card) stop(other);
-    });
-
-    var video = card.querySelector("video");
-    if (!video.getAttribute("src")) {
-      video.preload = "auto";
-      video.src = video.dataset.src;
-    }
-    video.controls = true;
-    card.classList.add("is-playing");
-    var attempt = video.play();
-    if (attempt && attempt.catch) attempt.catch(function () {});
-  }
-
-  cards.forEach(function (card) {
-    var video = card.querySelector("video");
-
-    card.addEventListener("click", function () {
-      // while playing, the native controls handle clicks
-      if (!card.classList.contains("is-playing")) play(card);
-    });
-
-    card.addEventListener("keydown", function (e) {
-      if ((e.key === "Enter" || e.key === " ") && !card.classList.contains("is-playing")) {
-        e.preventDefault();
-        play(card);
+      function update() {
+        var show = mobile.matches && !heroVisible && !finalVisible;
+        bar.classList.toggle("is-visible", show);
+        bar.setAttribute("aria-hidden", show ? "false" : "true");
+        link.tabIndex = show ? 0 : -1;
       }
-    });
 
-    video.addEventListener("ended", function () { stop(card); });
-  });
-
-  if ("IntersectionObserver" in window) {
-    // pause a playing video once it scrolls out of view
-    var playObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting && entry.target.classList.contains("is-playing")) {
-          entry.target.querySelector("video").pause();
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.target === hero) heroVisible = e.isIntersecting;
+            else finalVisible = e.isIntersecting;
+          });
+          update();
+        }).observe(hero);
+        if (finalCta) {
+          new IntersectionObserver(function (entries) {
+            finalVisible = entries[0].isIntersecting;
+            update();
+          }).observe(finalCta);
         }
-      });
-    }, { threshold: 0.25 });
-    cards.forEach(function (card) { playObserver.observe(card); });
-  }
-
-  function step() {
-    return cards[1].offsetLeft - cards[0].offsetLeft;
-  }
-
-  section.querySelector("[data-impact-prev]").addEventListener("click", function () {
-    grid.scrollBy({ left: -step(), behavior: "smooth" });
-  });
-  section.querySelector("[data-impact-next]").addEventListener("click", function () {
-    grid.scrollBy({ left: step(), behavior: "smooth" });
-  });
-})();
-
-/* Day 1 card – looping video, loaded and played only while it is in view */
-(function () {
-  var video = document.querySelector(".day-image video[data-src]");
-  if (!video) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // poster only
-
-  function play() {
-    if (!video.src) video.src = video.getAttribute("data-src");
-    var p = video.play();
-    if (p && p.catch) p.catch(function () {});
-  }
-
-  if (!("IntersectionObserver" in window)) { play(); return; }
-  new IntersectionObserver(function (entries) {
-    if (entries[0].isIntersecting) play();
-    else if (video.src) video.pause();
-  }, { rootMargin: "200px 0px" }).observe(video);
-})();
-
-/* Participants section – Day 4 video autoplays (muted, looping) while the
-   section is on screen; controls let the viewer unmute. Nothing downloads
-   until the section comes near the screen. */
-(function () {
-  var box = document.querySelector(".participants-video[data-video]");
-  if (!box) return;
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var video = null;
-  var userPaused = false;
-
-  function start(fromClick) {
-    if (!video) {
-      video = document.createElement("video");
-      video.src = box.getAttribute("data-video");
-      video.muted = true;
-      video.loop = true;
-      video.controls = true;
-      video.playsInline = true;
-      video.setAttribute("muted", "");
-      video.setAttribute("playsinline", "");
-      video.addEventListener("pause", function () { if (inView) userPaused = true; });
-      video.addEventListener("play", function () { userPaused = false; });
-      box.appendChild(video);
-      box.classList.add("is-playing");
-      box.removeAttribute("role");
-      box.removeAttribute("tabindex");
-    }
-    if (userPaused && !fromClick) return;
-    var p = video.play();
-    if (p && p.catch) p.catch(function () {});
-  }
-
-  var inView = false;
-  if (!reduce && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      inView = entries[0].isIntersecting;
-      if (inView) start(false);
-      else if (video && !video.paused) { inView = false; video.pause(); }
-    }, { threshold: 0.25 }).observe(box);
-  }
-
-  // reduced motion (or no observer): plays on click / Enter / Space as before
-  box.addEventListener("click", function () { if (!video) start(true); });
-  box.addEventListener("keydown", function (e) {
-    if (!video && (e.key === "Enter" || e.key === " ")) {
-      e.preventDefault();
-      start(true);
-    }
-  });
-})();
-
-/* Hero – main video plays (with sound) in place of the image on Play;
-   nothing downloads until then */
-(function () {
-  var box = document.querySelector(".hero .video-box[data-video]");
-  if (!box) return;
-
-  function play() {
-    if (box.classList.contains("is-playing")) return;
-    var video = document.createElement("video");
-    video.src = box.getAttribute("data-video");
-    video.controls = true;
-    // no ⋮ menu: remove download, speed, cast and picture-in-picture items
-    video.setAttribute("controlslist", "nodownload noplaybackrate noremoteplayback");
-    video.disablePictureInPicture = true;
-    video.setAttribute("disablepictureinpicture", "");
-    video.playsInline = true;
-    video.setAttribute("playsinline", "");
-    box.appendChild(video);
-    box.classList.add("is-playing");
-    box.removeAttribute("role");
-    box.removeAttribute("tabindex");
-    var p = video.play();
-    if (p && p.catch) p.catch(function () {});
-  }
-
-  box.addEventListener("click", play);
-  box.addEventListener("keydown", function (e) {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      play();
-    }
-  });
-})();
-
-/* Success stories carousel – continuous auto scroll */
-(function () {
-  var track = document.querySelector(".testimonial-grid");
-  if (!track) return;
-
-  var section = track.parentElement;
-  var prevBtn = section.querySelector("[data-carousel-prev]");
-  var nextBtn = section.querySelector("[data-carousel-next]");
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var SPEED = 40;            // pixels per second
-  var NUDGE_TIME = 450;      // ms for the arrow-button slide
-
-  // duplicate the cards once so the loop has no visible end
-  var originals = Array.prototype.slice.call(track.children);
-  originals.forEach(function (card) {
-    var copy = card.cloneNode(true);
-    copy.setAttribute("aria-hidden", "true");
-    copy.querySelectorAll("img").forEach(function (img) { img.alt = ""; });
-    track.appendChild(copy);
-  });
-
-  var pos = 0;
-  var lastTime = null;
-  var hoverPause = false;
-  var touchPause = false;
-  var focusPause = false;
-  var nudging = false;
-  var visible = true;
-  var touchTimer;
-
-  // width of one full set of cards
-  function loopWidth() {
-    return track.children[originals.length].offsetLeft - track.children[0].offsetLeft;
-  }
-
-  function step() {
-    return track.children[1].offsetLeft - track.children[0].offsetLeft;
-  }
-
-  function wrap(x) {
-    var w = loopWidth();
-    if (w <= 0) return x;
-    x = x % w;
-    return x < 0 ? x + w : x;
-  }
-
-  function running() {
-    return !reduceMotion && !hoverPause && !touchPause && !focusPause &&
-           !nudging && visible && !document.hidden;
-  }
-
-  function tick(time) {
-    if (lastTime === null) lastTime = time;
-    var dt = Math.min((time - lastTime) / 1000, 0.1);
-    lastTime = time;
-
-    if (running()) {
-      pos = wrap(pos + SPEED * dt);
-      track.scrollLeft = pos;
-    }
-    requestAnimationFrame(tick);
-  }
-
-  // slide one card left/right with easing, then continue auto scroll
-  function nudge(dir) {
-    if (nudging) return;
-    nudging = true;
-
-    var w = loopWidth();
-    var from = track.scrollLeft;
-    if (dir < 0 && from - step() < 0) from += w;   // wrap backwards
-    track.scrollLeft = from;
-
-    var to = from + dir * step();
-    var start = null;
-
-    function frame(time) {
-      if (start === null) start = time;
-      var p = Math.min((time - start) / NUDGE_TIME, 1);
-      var eased = 1 - Math.pow(1 - p, 3);
-      track.scrollLeft = from + (to - from) * eased;
-
-      if (p < 1) {
-        requestAnimationFrame(frame);
-      } else {
-        pos = wrap(to);
-        track.scrollLeft = pos;
-        nudging = false;
       }
-    }
-    requestAnimationFrame(frame);
-  }
 
-  prevBtn.addEventListener("click", function () { nudge(-1); });
-  nextBtn.addEventListener("click", function () { nudge(1); });
+      if (mobile.addEventListener) mobile.addEventListener("change", update);
+      update();
+    })();
+  </script>
 
-  track.addEventListener("keydown", function (e) {
-    if (e.key === "ArrowRight") { e.preventDefault(); nudge(1); }
-    if (e.key === "ArrowLeft") { e.preventDefault(); nudge(-1); }
-  });
 
-  // manual swipe: follow the user and keep the loop seamless
-  track.addEventListener("scroll", function () {
-    if (running() || nudging) return;
-    var w = loopWidth();
-    if (track.scrollLeft >= w) track.scrollLeft -= w;
-    pos = track.scrollLeft;
-  }, { passive: true });
+  <script>
+    /* Page widgets, started after the first paint (see loader below). */
+    window.__zrmInit = function () {
 
-  // pause while the visitor is interacting
-  track.addEventListener("mouseenter", function () { hoverPause = true; });
-  track.addEventListener("mouseleave", function () { hoverPause = false; pos = track.scrollLeft; });
-  track.addEventListener("focusin", function () { focusPause = true; });
-  track.addEventListener("focusout", function () { focusPause = false; });
-  track.addEventListener("touchstart", function () {
-    clearTimeout(touchTimer);
-    touchPause = true;
-  }, { passive: true });
-  track.addEventListener("touchend", function () {
-    touchTimer = setTimeout(function () {
-      pos = track.scrollLeft;
-      touchPause = false;
-    }, 2000);
-  }, { passive: true });
+      // video posters are only fetched now, not during the initial page load
+      document.querySelectorAll("video[data-poster]").forEach(function (v) {
+        v.setAttribute("poster", v.getAttribute("data-poster"));
+      });
 
-  // only move while the section is on screen
-  if ("IntersectionObserver" in window) {
-    new IntersectionObserver(function (entries) {
-      visible = entries[0].isIntersecting;
-    }).observe(track);
-  }
+      /* Impact video slider – poster images, video streams only on Play,
+         one video plays at a time */
+      (function () {
+        var grid = document.querySelector(".impact-grid");
+        if (!grid) return;
 
-  // card widths change with screen size
-  window.addEventListener("resize", function () {
-    pos = wrap(track.scrollLeft);
-    track.scrollLeft = pos;
-  });
+        // only cards that actually contain a video
+        var cards = Array.prototype.slice.call(grid.querySelectorAll(".impact-card"))
+          .filter(function (card) { return card.querySelector("video"); });
+        var section = grid.parentElement;
 
-  requestAnimationFrame(tick);
-})();
-};
-</script>
+        function stop(card) {
+          var video = card.querySelector("video");
+          video.pause();
+          video.controls = false;
+          card.classList.remove("is-playing");
+        }
 
-<script src="zrm-values.js" defer></script>
+        function play(card) {
+          cards.forEach(function (other) {
+            if (other !== card) stop(other);
+          });
 
-<!-- Enhancements load after the first paint so they never delay the page:
+          var video = card.querySelector("video");
+          if (!video.getAttribute("src")) {
+            video.preload = "auto";
+            video.src = video.dataset.src;
+          }
+          video.controls = true;
+          card.classList.add("is-playing");
+          var attempt = video.play();
+          if (attempt && attempt.catch) attempt.catch(function () { });
+        }
+
+        cards.forEach(function (card) {
+          var video = card.querySelector("video");
+
+          card.addEventListener("click", function () {
+            // while playing, the native controls handle clicks
+            if (!card.classList.contains("is-playing")) play(card);
+          });
+
+          card.addEventListener("keydown", function (e) {
+            if ((e.key === "Enter" || e.key === " ") && !card.classList.contains("is-playing")) {
+              e.preventDefault();
+              play(card);
+            }
+          });
+
+          video.addEventListener("ended", function () { stop(card); });
+        });
+
+        if ("IntersectionObserver" in window) {
+          // pause a playing video once it scrolls out of view
+          var playObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting && entry.target.classList.contains("is-playing")) {
+                entry.target.querySelector("video").pause();
+              }
+            });
+          }, { threshold: 0.25 });
+          cards.forEach(function (card) { playObserver.observe(card); });
+        }
+
+        function step() {
+          return cards[1].offsetLeft - cards[0].offsetLeft;
+        }
+
+        section.querySelector("[data-impact-prev]").addEventListener("click", function () {
+          grid.scrollBy({ left: -step(), behavior: "smooth" });
+        });
+        section.querySelector("[data-impact-next]").addEventListener("click", function () {
+          grid.scrollBy({ left: step(), behavior: "smooth" });
+        });
+      })();
+
+      /* Day 1 card – looping video, loaded and played only while it is in view */
+      (function () {
+        var video = document.querySelector(".day-image video[data-src]");
+        if (!video) return;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // poster only
+
+        function play() {
+          if (!video.src) video.src = video.getAttribute("data-src");
+          var p = video.play();
+          if (p && p.catch) p.catch(function () { });
+        }
+
+        if (!("IntersectionObserver" in window)) { play(); return; }
+        new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) play();
+          else if (video.src) video.pause();
+        }, { rootMargin: "200px 0px" }).observe(video);
+      })();
+
+      /* Participants section – Day 4 video autoplays (muted, looping) while the
+         section is on screen; controls let the viewer unmute. Nothing downloads
+         until the section comes near the screen. */
+      (function () {
+        var box = document.querySelector(".participants-video[data-video]");
+        if (!box) return;
+        var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var video = null;
+        var userPaused = false;
+
+        function start(fromClick) {
+          if (!video) {
+            video = document.createElement("video");
+            video.src = box.getAttribute("data-video");
+            video.muted = true;
+            video.loop = true;
+            video.controls = true;
+            video.playsInline = true;
+            video.setAttribute("muted", "");
+            video.setAttribute("playsinline", "");
+            video.addEventListener("pause", function () { if (inView) userPaused = true; });
+            video.addEventListener("play", function () { userPaused = false; });
+            box.appendChild(video);
+            box.classList.add("is-playing");
+            box.removeAttribute("role");
+            box.removeAttribute("tabindex");
+          }
+          if (userPaused && !fromClick) return;
+          var p = video.play();
+          if (p && p.catch) p.catch(function () { });
+        }
+
+        var inView = false;
+        if (!reduce && "IntersectionObserver" in window) {
+          new IntersectionObserver(function (entries) {
+            inView = entries[0].isIntersecting;
+            if (inView) start(false);
+            else if (video && !video.paused) { inView = false; video.pause(); }
+          }, { threshold: 0.25 }).observe(box);
+        }
+
+        // reduced motion (or no observer): plays on click / Enter / Space as before
+        box.addEventListener("click", function () { if (!video) start(true); });
+        box.addEventListener("keydown", function (e) {
+          if (!video && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            start(true);
+          }
+        });
+      })();
+
+      /* Hero – main video plays (with sound) in place of the image on Play;
+         nothing downloads until then */
+      (function () {
+        var box = document.querySelector(".hero .video-box[data-video]");
+        if (!box) return;
+
+        function play() {
+          if (box.classList.contains("is-playing")) return;
+          var video = document.createElement("video");
+          video.src = box.getAttribute("data-video");
+          video.controls = true;
+          // no ⋮ menu: remove download, speed, cast and picture-in-picture items
+          video.setAttribute("controlslist", "nodownload noplaybackrate noremoteplayback");
+          video.disablePictureInPicture = true;
+          video.setAttribute("disablepictureinpicture", "");
+          video.playsInline = true;
+          video.setAttribute("playsinline", "");
+          box.appendChild(video);
+          box.classList.add("is-playing");
+          box.removeAttribute("role");
+          box.removeAttribute("tabindex");
+          var p = video.play();
+          if (p && p.catch) p.catch(function () { });
+        }
+
+        box.addEventListener("click", play);
+        box.addEventListener("keydown", function (e) {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            play();
+          }
+        });
+      })();
+
+      /* Success stories carousel – continuous auto scroll */
+      (function () {
+        var track = document.querySelector(".testimonial-grid");
+        if (!track) return;
+
+        var section = track.parentElement;
+        var prevBtn = section.querySelector("[data-carousel-prev]");
+        var nextBtn = section.querySelector("[data-carousel-next]");
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var SPEED = 40;            // pixels per second
+        var NUDGE_TIME = 450;      // ms for the arrow-button slide
+
+        // duplicate the cards once so the loop has no visible end
+        var originals = Array.prototype.slice.call(track.children);
+        originals.forEach(function (card) {
+          var copy = card.cloneNode(true);
+          copy.setAttribute("aria-hidden", "true");
+          copy.querySelectorAll("img").forEach(function (img) { img.alt = ""; });
+          track.appendChild(copy);
+        });
+
+        var pos = 0;
+        var lastTime = null;
+        var hoverPause = false;
+        var touchPause = false;
+        var focusPause = false;
+        var nudging = false;
+        var visible = true;
+        var touchTimer;
+
+        // width of one full set of cards
+        function loopWidth() {
+          return track.children[originals.length].offsetLeft - track.children[0].offsetLeft;
+        }
+
+        function step() {
+          return track.children[1].offsetLeft - track.children[0].offsetLeft;
+        }
+
+        function wrap(x) {
+          var w = loopWidth();
+          if (w <= 0) return x;
+          x = x % w;
+          return x < 0 ? x + w : x;
+        }
+
+        function running() {
+          return !reduceMotion && !hoverPause && !touchPause && !focusPause &&
+            !nudging && visible && !document.hidden;
+        }
+
+        function tick(time) {
+          if (lastTime === null) lastTime = time;
+          var dt = Math.min((time - lastTime) / 1000, 0.1);
+          lastTime = time;
+
+          if (running()) {
+            pos = wrap(pos + SPEED * dt);
+            track.scrollLeft = pos;
+          }
+          requestAnimationFrame(tick);
+        }
+
+        // slide one card left/right with easing, then continue auto scroll
+        function nudge(dir) {
+          if (nudging) return;
+          nudging = true;
+
+          var w = loopWidth();
+          var from = track.scrollLeft;
+          if (dir < 0 && from - step() < 0) from += w;   // wrap backwards
+          track.scrollLeft = from;
+
+          var to = from + dir * step();
+          var start = null;
+
+          function frame(time) {
+            if (start === null) start = time;
+            var p = Math.min((time - start) / NUDGE_TIME, 1);
+            var eased = 1 - Math.pow(1 - p, 3);
+            track.scrollLeft = from + (to - from) * eased;
+
+            if (p < 1) {
+              requestAnimationFrame(frame);
+            } else {
+              pos = wrap(to);
+              track.scrollLeft = pos;
+              nudging = false;
+            }
+          }
+          requestAnimationFrame(frame);
+        }
+
+        prevBtn.addEventListener("click", function () { nudge(-1); });
+        nextBtn.addEventListener("click", function () { nudge(1); });
+
+        track.addEventListener("keydown", function (e) {
+          if (e.key === "ArrowRight") { e.preventDefault(); nudge(1); }
+          if (e.key === "ArrowLeft") { e.preventDefault(); nudge(-1); }
+        });
+
+        // manual swipe: follow the user and keep the loop seamless
+        track.addEventListener("scroll", function () {
+          if (running() || nudging) return;
+          var w = loopWidth();
+          if (track.scrollLeft >= w) track.scrollLeft -= w;
+          pos = track.scrollLeft;
+        }, { passive: true });
+
+        // pause while the visitor is interacting
+        track.addEventListener("mouseenter", function () { hoverPause = true; });
+        track.addEventListener("mouseleave", function () { hoverPause = false; pos = track.scrollLeft; });
+        track.addEventListener("focusin", function () { focusPause = true; });
+        track.addEventListener("focusout", function () { focusPause = false; });
+        track.addEventListener("touchstart", function () {
+          clearTimeout(touchTimer);
+          touchPause = true;
+        }, { passive: true });
+        track.addEventListener("touchend", function () {
+          touchTimer = setTimeout(function () {
+            pos = track.scrollLeft;
+            touchPause = false;
+          }, 2000);
+        }, { passive: true });
+
+        // only move while the section is on screen
+        if ("IntersectionObserver" in window) {
+          new IntersectionObserver(function (entries) {
+            visible = entries[0].isIntersecting;
+          }).observe(track);
+        }
+
+        // card widths change with screen size
+        window.addEventListener("resize", function () {
+          pos = wrap(track.scrollLeft);
+          track.scrollLeft = pos;
+        });
+
+        requestAnimationFrame(tick);
+      })();
+    };
+  </script>
+
+  <script src="zrm-values.js" defer></script>
+
+  <!-- Enhancements load after the first paint so they never delay the page:
      page widgets (sliders, carousel, video posters) and the motion layer
      (ambient background, GSAP + ScrollTrigger, Lenis – self-hosted in /vendor).
      Desktop with a mouse loads them straight away for the hero entrance. -->
-<script>
-(function () {
-  var started = false;
-  function run() {
-    if (started) return;
-    started = true;
-    if (window.__zrmInit) window.__zrmInit();
-    ["ambient.js", "vendor/gsap.min.js", "vendor/ScrollTrigger.min.js", "vendor/lenis.min.js", "motion.js"].forEach(function (src) {
-      var s = document.createElement("script");
-      s.src = src;
-      s.async = false; // keep execution order
-      document.body.appendChild(s);
-    });
-  }
-  // after the next two frames (the first paint has happened), when idle
-  function idle() {
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 1500 });
-        else setTimeout(run, 200);
-      });
-    });
-  }
+  <script>
+    (function () {
+      var started = false;
+      function run() {
+        if (started) return;
+        started = true;
+        if (window.__zrmInit) window.__zrmInit();
+        ["ambient.js", "vendor/gsap.min.js", "vendor/ScrollTrigger.min.js", "vendor/lenis.min.js", "motion.js"].forEach(function (src) {
+          var s = document.createElement("script");
+          s.src = src;
+          s.async = false; // keep execution order
+          document.body.appendChild(s);
+        });
+      }
+      // after the next two frames (the first paint has happened), when idle
+      function idle() {
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 1500 });
+            else setTimeout(run, 200);
+          });
+        });
+      }
 
-  if (document.documentElement.classList.contains("motion-ready")) {
-    // hero is hidden for its entrance → start as soon as the DOM is parsed
-    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
-    else run();
-  } else if (document.readyState === "complete") {
-    idle();
-  } else {
-    window.addEventListener("load", idle);
-  }
-  // safety: never wait more than 4s
-  setTimeout(run, 4000);
-})();
-</script>
+      if (document.documentElement.classList.contains("motion-ready")) {
+        // hero is hidden for its entrance → start as soon as the DOM is parsed
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+        else run();
+      } else if (document.readyState === "complete") {
+        idle();
+      } else {
+        window.addEventListener("load", idle);
+      }
+      // safety: never wait more than 4s
+      setTimeout(run, 4000);
+    })();
+  </script>
 </body>
+
 </html>
