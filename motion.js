@@ -661,7 +661,6 @@
     if (premiumPointer) cleanups.push(smoothScroll());
 
     heroScroll(k);
-    ambientScroll(k);
     if (premiumPointer) {
       cleanups.push(heroMouse());
       cleanups.push(magnetic());
@@ -674,6 +673,11 @@
     videoTestimonials(k);
     faqReveal();
     finalCta(k);
+    // background drift last: its triggers sit below the pinned 3-day stage,
+    // so they must be created after it to get correct positions
+    ambientScroll(k);
+    // re-measure + evaluate every trigger once the whole setup exists
+    requestAnimationFrame(function () { ScrollTrigger.refresh(); });
 
     return function () {
       cleanups.forEach(function (fn) { if (fn) fn(); });
