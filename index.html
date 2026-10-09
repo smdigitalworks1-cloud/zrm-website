@@ -1661,6 +1661,62 @@ a {
     font-size: 21px;
   }
 }
+/* =========================
+   MOBILE: no header logo, middle CTAs hidden, sticky CTA after the hero
+========================= */
+
+.sticky-cta {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  /* the header only holds the logo – hide it so no empty space is left */
+  .header {
+    display: none;
+  }
+
+  /* CTAs between the hero and the final section (the sticky CTA covers them) */
+  [data-mid-cta] {
+    display: none !important;
+  }
+
+  /* no button under the list any more → no extra gap at the card bottom */
+  .day-card .check-list {
+    margin-bottom: 0;
+  }
+
+  .sticky-cta {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    padding: 18px 16px calc(12px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg, rgba(10, 10, 13, 0), rgba(10, 10, 13, .92) 45%);
+    transform: translateY(110%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .35s cubic-bezier(.22, 1, .36, 1), opacity .25s ease;
+  }
+
+  .sticky-cta.is-visible {
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sticky-cta .btn {
+    width: 100%;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+  .sticky-cta {
+    transition: none;
+  }
+}
 </style>
 <link rel="stylesheet" href="motion.css">
 <link rel="stylesheet" href="ambient.css">
@@ -1915,7 +1971,7 @@ a {
       </div>
     </div>
 
-    <div class="join-wrap">
+    <div class="join-wrap" data-mid-cta>
       <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
@@ -1937,7 +1993,7 @@ a {
             <li>Super Human Activation</li>
           </ul>
 
-          <a class="btn" href="payment.html">Start Creating Content <span class="btn-arrow" aria-hidden="true">→</span></a>
+          <a class="btn" href="payment.html" data-mid-cta>Start Creating Content <span class="btn-arrow" aria-hidden="true">→</span></a>
         </div>
 
         <div class="day-image">
@@ -1962,7 +2018,7 @@ a {
             <li>1-to-Many Funnel (Coaching)</li>
           </ul>
 
-          <a class="btn" href="payment.html">Start Generating Money <span class="btn-arrow" aria-hidden="true">→</span></a>
+          <a class="btn" href="payment.html" data-mid-cta>Start Generating Money <span class="btn-arrow" aria-hidden="true">→</span></a>
         </div>
 
         <div class="day-image">
@@ -1986,7 +2042,7 @@ a {
             <li>Pricing Strategy</li>
           </ul>
 
-          <a class="btn" href="payment.html">Ready to Scale <span class="btn-arrow" aria-hidden="true">→</span></a>
+          <a class="btn" href="payment.html" data-mid-cta>Ready to Scale <span class="btn-arrow" aria-hidden="true">→</span></a>
         </div>
 
         <div class="day-image">
@@ -2058,7 +2114,7 @@ a {
       </div>
     </div>
 
-    <div class="join-wrap">
+    <div class="join-wrap" data-mid-cta>
       <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
@@ -2080,7 +2136,7 @@ a {
       <span>REAL-TIME IMPLEMENTATION</span>
     </div>
 
-    <div class="join-wrap">
+    <div class="join-wrap" data-mid-cta>
       <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
@@ -2092,7 +2148,7 @@ a {
         During the workshop, you’ll create content, build your marketing system and implement
         strategies designed to generate leads and revenue.
       </p>
-      <a class="btn btn-yellow" href="payment.html">Start Your ZRM Journey <span class="btn-arrow" aria-hidden="true">→</span></a>
+      <a class="btn btn-yellow" href="payment.html" data-mid-cta>Start Your ZRM Journey <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
   </div>
@@ -2199,7 +2255,7 @@ a {
       </button>
     </div>
 
-    <div class="join-wrap">
+    <div class="join-wrap" data-mid-cta>
       <a class="btn" href="payment.html">Join Now <span class="btn-arrow" aria-hidden="true">→</span></a>
     </div>
 
@@ -2262,6 +2318,48 @@ a {
 <footer class="footer">
   <div class="footer-bottom">Copyright © 2026 by Tamil Business Tribe</div>
 </footer>
+
+<!-- Mobile sticky CTA: same label + destination as the hero CTA; shown only
+     after the hero has scrolled away and hidden again at the final CTA -->
+<div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+  <a class="btn" href="payment.html" tabindex="-1">₹499 | 3 DAYS | LIVE ON ZOOM <span class="btn-arrow" aria-hidden="true">→</span></a>
+</div>
+<script>
+(function () {
+  var bar = document.getElementById("sticky-cta");
+  var link = bar.querySelector("a");
+  var hero = document.querySelector(".hero");
+  var finalCta = document.querySelector(".final-cta");
+  var mobile = window.matchMedia("(max-width: 767px)");
+  var heroVisible = true, finalVisible = false;
+
+  function update() {
+    var show = mobile.matches && !heroVisible && !finalVisible;
+    bar.classList.toggle("is-visible", show);
+    bar.setAttribute("aria-hidden", show ? "false" : "true");
+    link.tabIndex = show ? 0 : -1;
+  }
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.target === hero) heroVisible = e.isIntersecting;
+        else finalVisible = e.isIntersecting;
+      });
+      update();
+    }).observe(hero);
+    if (finalCta) {
+      new IntersectionObserver(function (entries) {
+        finalVisible = entries[0].isIntersecting;
+        update();
+      }).observe(finalCta);
+    }
+  }
+
+  if (mobile.addEventListener) mobile.addEventListener("change", update);
+  update();
+})();
+</script>
 
 
 <script>
