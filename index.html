@@ -994,6 +994,85 @@
       object-fit: cover;
     }
 
+    /* Day 2 gallery – horizontal scroll-snap slides, whole diagram visible */
+    .day-gallery {
+      position: relative;
+      background: #fff;
+    }
+
+    .day-slides {
+      display: flex;
+      height: 100%;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+    }
+
+    .day-slides::-webkit-scrollbar {
+      display: none;
+    }
+
+    .day-slide {
+      flex: 0 0 100%;
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding-bottom: 22px;
+      scroll-snap-align: start;
+      background: #fff;
+    }
+
+    .day-gallery .day-slide img {
+      flex: 1 1 auto;
+      height: 0;
+      min-height: 0;
+      object-fit: contain;
+    }
+
+    .day-slide-title {
+      padding: clamp(8px, 1.2vw, 14px) 12px 0;
+      color: #111;
+      font-size: clamp(15px, 1.7vw, 22px);
+      font-weight: 700;
+      line-height: 1.25;
+      text-align: center;
+    }
+
+    .day-dots {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .day-dots button {
+      width: 22px;
+      height: 20px;
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
+    }
+
+    .day-dots button::after {
+      content: "";
+      display: block;
+      width: 8px;
+      height: 8px;
+      margin: auto;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, .22);
+      transition: background .2s ease, transform .2s ease;
+    }
+
+    .day-dots button.is-active::after {
+      background: var(--red);
+      transform: scale(1.2);
+    }
+
     @media (max-width: 900px) {
       .skill-row {
         grid-template-columns: 1fr;
@@ -2107,10 +2186,27 @@
                 aria-hidden="true">→</span></a>
           </div>
 
-          <div class="day-image">
-            <img src="ZRM New LP Assets/Mask group-1.webp"
-              srcset="ZRM%20New%20LP%20Assets/Mask%20group-1-480w.webp 480w, ZRM%20New%20LP%20Assets/Mask%20group-1.webp 881w"
-              sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 2 – Sales funnels" loading="lazy">
+          <!-- Day 2 – three funnel examples, swipe / dots to change -->
+          <div class="day-image day-gallery">
+            <div class="day-slides" aria-label="Day 2 funnel examples" tabindex="0">
+              <figure class="day-slide">
+                <figcaption class="day-slide-title">Sales funnel of skincare</figcaption>
+                <img src="ZRM%20New%20LP%20Assets/day%202%20img%201-1120.webp"
+                    srcset="ZRM%20New%20LP%20Assets/day%202%20img%201-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%201-1120.webp 1120w"
+                    sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Sales funnel of skincare" loading="lazy">
+              </figure>
+              <figure class="day-slide">
+                <img src="ZRM%20New%20LP%20Assets/day%202%20img%202-1120.webp"
+                    srcset="ZRM%20New%20LP%20Assets/day%202%20img%202-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%202-1120.webp 1120w"
+                    sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Live shopping commerce funnel" loading="lazy">
+              </figure>
+              <figure class="day-slide">
+                <img src="ZRM%20New%20LP%20Assets/day%202%20img%203-1120.webp"
+                    srcset="ZRM%20New%20LP%20Assets/day%202%20img%203-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%203-1120.webp 1120w"
+                    sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="High ticket funnel" loading="lazy">
+              </figure>
+            </div>
+            <div class="day-dots"></div>
           </div>
         </article>
 
@@ -2571,6 +2667,42 @@
         });
         section.querySelector("[data-impact-next]").addEventListener("click", function () {
           grid.scrollBy({ left: step(), behavior: "smooth" });
+        });
+      })();
+
+      /* Day 2 gallery – dots follow the swipe position and jump to a slide */
+      (function () {
+        document.querySelectorAll(".day-gallery").forEach(function (gallery) {
+          var track = gallery.querySelector(".day-slides");
+          var dotsBox = gallery.querySelector(".day-dots");
+          var slides = track.children;
+          var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          var dots = [];
+
+          Array.prototype.forEach.call(slides, function (slide, i) {
+            var dot = document.createElement("button");
+            dot.type = "button";
+            dot.setAttribute("aria-label", "Show image " + (i + 1));
+            dot.addEventListener("click", function () {
+              track.scrollTo({ left: i * track.clientWidth, behavior: reduce ? "auto" : "smooth" });
+            });
+            dotsBox.appendChild(dot);
+            dots.push(dot);
+          });
+
+          var current = -1;
+          function update() {
+            var i = Math.round(track.scrollLeft / Math.max(track.clientWidth, 1));
+            if (i === current) return;
+            current = i;
+            dots.forEach(function (d, n) {
+              d.classList.toggle("is-active", n === i);
+              d.setAttribute("aria-current", n === i ? "true" : "false");
+            });
+          }
+
+          track.addEventListener("scroll", update, { passive: true });
+          update();
         });
       })();
 
