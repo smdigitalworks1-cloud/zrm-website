@@ -60,71 +60,17 @@ html.lenis body {
 /* ---------------------------------------------------------
    HERO – full viewport on desktop, layered depth
 --------------------------------------------------------- */
-/* Desktop / laptop: header + hero fill exactly the first viewport.
-   Spacing and type scale with the viewport HEIGHT (vh), and the hero
-   container narrows on short screens so the image keeps its full
-   proportions (no crop) while the image + Zoom card still fit. */
 @media (min-width: 1024px) {
-  :root {
-    --header-h: clamp(56px, 8.5vh, 80px);
-  }
-
-  .header .container {
-    height: var(--header-h);
-  }
-
   .hero {
-    min-height: calc(100vh - var(--header-h));
-    min-height: calc(100svh - var(--header-h));
+    min-height: calc(100vh - 80px);
+    min-height: calc(100svh - 80px);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: clamp(8px, 2.2vh, 32px);
-    padding-bottom: clamp(16px, 3.4vh, 44px);
   }
 
   .hero > .container {
     width: 100%;
-    /* 1200px wide on tall screens, narrower when the window is short */
-    max-width: min(calc(var(--max) + var(--gutter) * 2), calc(150vh - 32px));
-  }
-
-  .hero-head {
-    max-width: 1200px;
-    margin-bottom: clamp(18px, 4.2vh, 56px);
-  }
-
-  .hero .top-label {
-    margin-bottom: clamp(10px, 2vh, 24px);
-  }
-
-  .hero-title {
-    font-size: clamp(30px, min(4.6vw, 6.2vh), 66px);
-    margin-bottom: clamp(8px, 1.6vh, 20px);
-  }
-
-  .hero-subtitle {
-    font-size: clamp(14px, min(1.3vw, 2vh), 18px);
-    line-height: 1.55;
-  }
-
-  .hero-content {
-    gap: clamp(24px, 3.2vw, 56px);
-  }
-
-  /* compact Zoom details card */
-  .hero .event-details {
-    padding: clamp(16px, 3vh, 32px) clamp(18px, 2vw, 32px);
-  }
-
-  .hero .detail-list {
-    gap: clamp(10px, 2.2vh, 24px);
-    margin-bottom: clamp(14px, 2.8vh, 30px);
-  }
-
-  .hero .detail-icon {
-    width: clamp(30px, 4.4vh, 42px);
-    height: clamp(30px, 4.4vh, 42px);
   }
 }
 
