@@ -949,7 +949,9 @@ a {
   background: #111;
 }
 
-.day-image img {
+.day-image img,
+.day-image video {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2014,7 +2016,8 @@ a {
         </div>
 
         <div class="day-image">
-          <img src="ZRM New LP Assets/Mask group.webp" srcset="ZRM%20New%20LP%20Assets/Mask%20group-480w.webp 480w, ZRM%20New%20LP%20Assets/Mask%20group.webp 881w" sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 1 – Content creation" loading="lazy">
+          <!-- Day 1 video: muted loop, only downloads/plays while the card is near the screen -->
+          <video data-src="ZRM%20New%20LP%20Assets/Day%201.mp4" poster="ZRM%20New%20LP%20Assets/Mask%20group.webp" muted loop playsinline preload="none" aria-label="Day 1 – Content creation"></video>
         </div>
       </article>
 
@@ -2462,6 +2465,25 @@ document.querySelectorAll("video[data-poster]").forEach(function (v) {
   section.querySelector("[data-impact-next]").addEventListener("click", function () {
     grid.scrollBy({ left: step(), behavior: "smooth" });
   });
+})();
+
+/* Day 1 card – looping video, loaded and played only while it is in view */
+(function () {
+  var video = document.querySelector(".day-image video[data-src]");
+  if (!video) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // poster only
+
+  function play() {
+    if (!video.src) video.src = video.getAttribute("data-src");
+    var p = video.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  if (!("IntersectionObserver" in window)) { play(); return; }
+  new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting) play();
+    else if (video.src) video.pause();
+  }, { rootMargin: "200px 0px" }).observe(video);
 })();
 
 /* Participants section – Day 4 video plays in place of the screenshot */
