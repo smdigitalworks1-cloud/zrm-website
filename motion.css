@@ -446,8 +446,7 @@ html.lenis body {
 /* ---------------------------------------------------------
    LINKS – animated underline
 --------------------------------------------------------- */
-.faq-answer a,
-.footer-contact a {
+.faq-answer a {
   background-image: linear-gradient(currentColor, currentColor);
   background-size: 0% 1px;
   background-position: 0 100%;
@@ -456,9 +455,7 @@ html.lenis body {
 }
 
 .faq-answer a:hover,
-.faq-answer a:focus-visible,
-.footer-contact a:hover,
-.footer-contact a:focus-visible {
+.faq-answer a:focus-visible {
   background-size: 100% 1px;
 }
 
