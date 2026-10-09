@@ -1428,10 +1428,14 @@ a {
 }
 
 .footer-description {
-  max-width: 720px;
-  font-size: clamp(12px, 1.05vw, 14px);
-  line-height: 1.7;
+  /* right side of the footer, opposite the logo */
+  justify-self: end;
+  max-width: 680px;
+  text-align: right;
+  font-size: clamp(13px, 1.05vw, 14px);
+  line-height: 1.75;
   color: #cfcfd4;
+  text-wrap: pretty;
 }
 
 .footer-contact {
@@ -1476,6 +1480,11 @@ a {
     grid-template-columns: 1fr;
     text-align: center;
     justify-items: center;
+  }
+
+  .footer-description {
+    justify-self: center;
+    text-align: center;
   }
 
   .footer-contact {
