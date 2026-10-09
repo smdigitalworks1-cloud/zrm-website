@@ -5,15 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Zero Ruppee Marketing Challenge</title>
+<meta name="description" content="Kaasu Selavu Pannama Marketing Panna Mudiyuma? Learn how to attract attention, generate leads and convert them into customers using the Zero Rupee Marketing framework – 3-Day Live Zero Ruppee Marketing Challenge.">
+<link rel="icon" href="data:,">
 
-<link rel="preload" href="fonts/Nexa-Book.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="preload" href="fonts/Nexa-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/Nexa-Book.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/Nexa-Bold.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="ZRM New LP Assets/Rectangle 4-480w.webp" as="image" type="image/webp" imagesrcset="ZRM New LP Assets/Rectangle 4-480w.webp 480w, ZRM New LP Assets/Rectangle 4.webp 964w" imagesizes="(max-width: 900px) calc(100vw - 32px), 680px" fetchpriority="high">
 
 <!-- Scroll / parallax layer: styles in motion.css, GSAP animations in motion.js -->
 <script>
-  // Hide hero intro elements until motion.js animates them in.
+  // Hide hero intro elements until motion.js animates them in – desktop with a
+  // mouse only (phones show the hero straight away: faster first paint / LCP).
   // Skipped for reduced motion; removed after 2.5s if scripts fail to load.
-  if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if (window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches) {
     document.documentElement.classList.add("motion-ready");
     setTimeout(function () {
       if (!window.__zrmMotion) document.documentElement.classList.remove("motion-ready");
@@ -28,7 +32,7 @@
 
 @font-face {
   font-family: "Nexa";
-  src: url("fonts/Nexa-Light.ttf") format("truetype");
+  src: url("fonts/Nexa-Light.woff2") format("woff2"), url("fonts/Nexa-Light.ttf") format("truetype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -36,7 +40,7 @@
 
 @font-face {
   font-family: "Nexa";
-  src: url("fonts/Nexa-Book.ttf") format("truetype");
+  src: url("fonts/Nexa-Book.woff2") format("woff2"), url("fonts/Nexa-Book.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -44,7 +48,7 @@
 
 @font-face {
   font-family: "Nexa";
-  src: url("fonts/Nexa-Bold.ttf") format("truetype");
+  src: url("fonts/Nexa-Bold.woff2") format("woff2"), url("fonts/Nexa-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -52,7 +56,7 @@
 
 @font-face {
   font-family: "Nexa";
-  src: url("fonts/Nexa-XBold.ttf") format("truetype");
+  src: url("fonts/Nexa-XBold.woff2") format("woff2"), url("fonts/Nexa-XBold.ttf") format("truetype");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -60,7 +64,7 @@
 
 @font-face {
   font-family: "Nexa";
-  src: url("fonts/Nexa-Heavy.ttf") format("truetype");
+  src: url("fonts/Nexa-Heavy.woff2") format("woff2"), url("fonts/Nexa-Heavy.ttf") format("truetype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -542,7 +546,7 @@ a {
   padding: clamp(32px, 4vw, 56px) 0 clamp(48px, 6vw, 80px);
   background:
     linear-gradient(180deg, var(--bg) 0%, transparent 18%, transparent 82%, var(--bg) 100%),
-    url("ZRM New LP Assets/13.png") center / cover no-repeat;
+    url("ZRM New LP Assets/13.webp") center / cover no-repeat;
 }
 
 .success-title {
@@ -1391,7 +1395,7 @@ a {
   z-index: -1;
   background:
     radial-gradient(ellipse at center, rgba(20, 5, 10, 0.6), transparent 70%),
-    url("ZRM New LP Assets/13.png") center / cover no-repeat;
+    url("ZRM New LP Assets/13.webp") center / cover no-repeat;
   pointer-events: none;
 }
 
@@ -1671,7 +1675,7 @@ a {
   <!-- HEADER -->
   <header class="header">
     <div class="container">
-      <img class="logo" src="ZRM New LP Assets/Layer 1 2.png" alt="Tamil Business Tribe">
+      <img class="logo" src="ZRM New LP Assets/Layer 1 2.webp" alt="Tamil Business Tribe">
     </div>
   </header>
 
@@ -1697,7 +1701,7 @@ a {
 
         <!-- VIDEO -->
         <div class="video-box" role="button" aria-label="Play video" tabindex="0">
-          <img src="ZRM New LP Assets/Rectangle 4.png" alt="Zero Rupee Marketing Challenge">
+          <img src="ZRM New LP Assets/Rectangle 4.webp" srcset="ZRM New LP Assets/Rectangle 4-480w.webp 480w, ZRM New LP Assets/Rectangle 4.webp 964w" sizes="(max-width: 900px) calc(100vw - 32px), 680px" width="964" height="542" fetchpriority="high" alt="Zero Rupee Marketing Challenge">
           <div class="video-overlay">
             <div class="play-button"></div>
           </div>
@@ -1708,7 +1712,7 @@ a {
 
           <ul class="detail-list">
             <li class="detail-item">
-              <img class="detail-icon" src="ZRM New LP Assets/calendar 1.png" alt="">
+              <img class="detail-icon" src="ZRM New LP Assets/calendar 1.webp" alt="">
               <div class="detail-text">
                 <strong>Zoom Live Call</strong>
                 <span data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span>
@@ -1716,7 +1720,7 @@ a {
             </li>
 
             <li class="detail-item">
-              <img class="detail-icon" src="ZRM New LP Assets/on-time 1.png" alt="">
+              <img class="detail-icon" src="ZRM New LP Assets/on-time 1.webp" alt="">
               <div class="detail-text">
                 <strong>Timing Starts at</strong>
                 <span><time data-cv="02_zrm_online_time">07:00 AM to 08:30 AM</time> (Only Live)</span>
@@ -1724,7 +1728,7 @@ a {
             </li>
 
             <li class="detail-item">
-              <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 1.png" alt="">
+              <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 1.webp" alt="">
               <div class="detail-text">
                 <strong>Replay Time Starts at</strong>
                 <span data-cv="zrm_replay">07:00 PM to 08:30 PM</span>
@@ -1732,7 +1736,7 @@ a {
             </li>
 
             <li class="detail-item">
-              <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 2.png" alt="">
+              <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 2.webp" alt="">
               <div class="detail-text">
                 <strong>Will be Held in</strong>
                 <span>Zoom Live Session (No Recording)</span>
@@ -1765,7 +1769,7 @@ a {
 
       <div class="testimonial-grid" aria-roledescription="carousel" aria-label="Success stories" tabindex="0">
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/maxlin.png" alt="Maxlin Deena" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/maxlin.webp" alt="Maxlin Deena" loading="lazy">
           <div class="t-info">
             <p class="t-name">Maxlin Deena, Founder</p>
             <p class="t-company">Alna Apparels, Villupuram</p>
@@ -1773,7 +1777,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/rajesh.png" alt="Dr. Rajesh Kanna" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/rajesh.webp" alt="Dr. Rajesh Kanna" loading="lazy">
           <div class="t-info">
             <p class="t-name">Dr. Rajesh Kanna, Founder</p>
             <p class="t-company">Friends Physio, Coimbatore</p>
@@ -1781,7 +1785,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/nisha.png" alt="Nisha" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/nisha.webp" alt="Nisha" loading="lazy">
           <div class="t-info">
             <p class="t-name">Nisha, Founder</p>
             <p class="t-company">The Needles &amp; Thread, Madurai</p>
@@ -1789,7 +1793,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/sharanya.png" alt="Sharanya" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/sharanya.webp" alt="Sharanya" loading="lazy">
           <div class="t-info">
             <p class="t-name">Sharanya, Founder</p>
             <p class="t-company">Vishara Skincare, Chennai</p>
@@ -1797,7 +1801,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/anusha.png" alt="Anusha" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/anusha.webp" alt="Anusha" loading="lazy">
           <div class="t-info">
             <p class="t-name">Anusha, Founder</p>
             <p class="t-company">Glorious Minds, Chennai</p>
@@ -1805,7 +1809,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/rajkamal.png" alt="Rajkamal" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/rajkamal.webp" alt="Rajkamal" loading="lazy">
           <div class="t-info">
             <p class="t-name">Rajkamal, Founder</p>
             <p class="t-company">Skillx Nation, Madurai</p>
@@ -1813,7 +1817,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/hari.png" alt="Hari Karthik" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/hari.webp" alt="Hari Karthik" loading="lazy">
           <div class="t-info">
             <p class="t-name">Hari Karthik, Founder</p>
             <p class="t-company">Madrassi Weaves, Salem</p>
@@ -1821,7 +1825,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/muthu.png" alt="Muthu Kishore" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/muthu.webp" alt="Muthu Kishore" loading="lazy">
           <div class="t-info">
             <p class="t-name">Muthu Kishore, Founder</p>
             <p class="t-company">Passive Way Store, Coimbatore</p>
@@ -1829,7 +1833,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/oviya.png" alt="Oviya" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/oviya.webp" alt="Oviya" loading="lazy">
           <div class="t-info">
             <p class="t-name">Oviya, Founder</p>
             <p class="t-company">Oviya’s Meraki, Chennai</p>
@@ -1837,7 +1841,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/sharon.png" alt="Sharon" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/sharon.webp" alt="Sharon" loading="lazy">
           <div class="t-info">
             <p class="t-name">Sharon, Founder</p>
             <p class="t-company">Dan Ella, Chennai</p>
@@ -1845,7 +1849,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/navaneeth.png" alt="Navaneeth Krishnan" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/navaneeth.webp" alt="Navaneeth Krishnan" loading="lazy">
           <div class="t-info">
             <p class="t-name">Navaneeth Krishnan, Founder</p>
             <p class="t-company">Flying Hornbill, Chennai</p>
@@ -1853,7 +1857,7 @@ a {
           </div>
         </div>
         <div class="testimonial">
-          <img class="t-photo" src="ZRM New LP Assets/testimonials/annamalai.png" alt="Annamalai" loading="lazy">
+          <img class="t-photo" src="ZRM New LP Assets/testimonials/annamalai.webp" alt="Annamalai" loading="lazy">
           <div class="t-info">
             <p class="t-name">Annamalai, Founder</p>
             <p class="t-company">Dream Zone, Chennai</p>
@@ -1937,7 +1941,7 @@ a {
         </div>
 
         <div class="day-image">
-          <img src="ZRM New LP Assets/Mask group.png" alt="Day 1 – Content creation" loading="lazy">
+          <img src="ZRM New LP Assets/Mask group.webp" srcset="ZRM New LP Assets/Mask group-480w.webp 480w, ZRM New LP Assets/Mask group.webp 881w" sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 1 – Content creation" loading="lazy">
         </div>
       </article>
 
@@ -1962,7 +1966,7 @@ a {
         </div>
 
         <div class="day-image">
-          <img src="ZRM New LP Assets/Mask group-1.png" alt="Day 2 – Sales funnels" loading="lazy">
+          <img src="ZRM New LP Assets/Mask group-1.webp" srcset="ZRM New LP Assets/Mask group-1-480w.webp 480w, ZRM New LP Assets/Mask group-1.webp 881w" sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 2 – Sales funnels" loading="lazy">
         </div>
       </article>
 
@@ -1986,7 +1990,7 @@ a {
         </div>
 
         <div class="day-image">
-          <img src="ZRM New LP Assets/Rectangle 67.png" alt="Day 3 – Empty stall to 100's of cameras" loading="lazy">
+          <img src="ZRM New LP Assets/Rectangle 67.webp" srcset="ZRM New LP Assets/Rectangle 67-480w.webp 480w, ZRM New LP Assets/Rectangle 67.webp 881w" sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 3 – Empty stall to 100's of cameras" loading="lazy">
         </div>
       </article>
 
@@ -2005,51 +2009,51 @@ a {
 
     <div class="tools-grid">
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 84.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 84.webp" alt="" loading="lazy">
         <div class="tool-name">Answer the Public</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 76.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 76.webp" alt="" loading="lazy">
         <div class="tool-name">Canva</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 83.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 83.webp" alt="" loading="lazy">
         <div class="tool-name">Unit Economics</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 77.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 77.webp" alt="" loading="lazy">
         <div class="tool-name">ChatGPT</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 78.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 78.webp" alt="" loading="lazy">
         <div class="tool-name">VN Editor</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 80.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 80.webp" alt="" loading="lazy">
         <div class="tool-name">Notebook LM</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 74.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 74.webp" alt="" loading="lazy">
         <div class="tool-name">Gemini</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 73.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 73.webp" alt="" loading="lazy">
         <div class="tool-name">Storybeat Edit</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 79.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 79.webp" alt="" loading="lazy">
         <div class="tool-name">InShot</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 81.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 81.webp" alt="" loading="lazy">
         <div class="tool-name">HeyGen</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 82.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 82.webp" alt="" loading="lazy">
         <div class="tool-name">Meta Edits</div>
       </div>
       <div class="tool-card">
-        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 75.png" alt="" loading="lazy">
+        <img class="tool-logo" src="ZRM New LP Assets/Rectangle 75.webp" alt="" loading="lazy">
         <div class="tool-name">Capcut</div>
       </div>
     </div>
@@ -2062,7 +2066,7 @@ a {
     <h2 class="section-title">Listen to What <span class="yellow">Our Participants</span> are Saying</h2>
 
     <div class="participants-video" role="button" aria-label="Play participants video" tabindex="0">
-      <img src="ZRM New LP Assets/Rectangle 85.png" alt="Our participants on WhatsApp" loading="lazy">
+      <img src="ZRM New LP Assets/Rectangle 85.webp" srcset="ZRM New LP Assets/Rectangle 85-800w.webp 800w, ZRM New LP Assets/Rectangle 85.webp 1680w" sizes="(max-width: 1240px) calc(100vw - 32px), 1200px" alt="Our participants on WhatsApp" loading="lazy">
       <div class="video-overlay">
         <div class="play-button"></div>
       </div>
@@ -2123,63 +2127,63 @@ a {
     <div class="impact-grid" aria-label="Participant video testimonials">
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 1">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-1.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6a3a77fe7249909712059c15.mp4" preload="none" playsinline></video>
+          <video data-poster="ZRM New LP Assets/impact/video-1.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6a3a77fe7249909712059c15.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 2">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-2.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699022b4008498585063be69.mp4" preload="none" playsinline></video>
+          <video data-poster="ZRM New LP Assets/impact/video-2.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699022b4008498585063be69.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 3">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-3.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/69902263c08665d643c777c5.mp4" preload="none" playsinline></video>
+          <video data-poster="ZRM New LP Assets/impact/video-3.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/69902263c08665d643c777c5.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 4">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-4.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020eb772de92f78f66414.mp4" preload="none" playsinline></video>
+          <video data-poster="ZRM New LP Assets/impact/video-4.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020eb772de92f78f66414.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 5">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-5.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020bc24813c82726dc9f5.mp4" preload="none" playsinline></video>
+          <video data-poster="ZRM New LP Assets/impact/video-5.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020bc24813c82726dc9f5.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 6">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-7.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691eb00b88e1e651a0a797f7.mp4" preload="none" playsinline></video>
+          <video data-poster="ZRM New LP Assets/impact/video-7.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691eb00b88e1e651a0a797f7.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 7">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-9.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912eaa2ee923201bed8ff6a.mp4" preload="none" playsinline></video>
+          <video data-poster="ZRM New LP Assets/impact/video-9.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912eaa2ee923201bed8ff6a.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 8">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-10.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912ea3610d693d2dde2b679.mp4" preload="none" playsinline></video>
+          <video data-poster="ZRM New LP Assets/impact/video-10.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912ea3610d693d2dde2b679.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
 
       <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 9">
         <div class="impact-media">
-          <video poster="ZRM New LP Assets/impact/video-11.jpg" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912e9d496d06ad4d26441b1.mp4" preload="none" playsinline></video>
+          <video data-poster="ZRM New LP Assets/impact/video-11.webp" data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912e9d496d06ad4d26441b1.mp4" preload="none" playsinline></video>
           <div class="play-button"></div>
         </div>
       </div>
@@ -2261,6 +2265,14 @@ a {
 
 
 <script>
+/* Page widgets, started after the first paint (see loader below). */
+window.__zrmInit = function () {
+
+// video posters are only fetched now, not during the initial page load
+document.querySelectorAll("video[data-poster]").forEach(function (v) {
+  v.setAttribute("poster", v.getAttribute("data-poster"));
+});
+
 /* Impact video slider – poster images, video streams only on Play,
    one video plays at a time */
 (function () {
@@ -2483,14 +2495,51 @@ document.querySelectorAll(".video-box, .participants-video").forEach(function (b
 
   requestAnimationFrame(tick);
 })();
+};
 </script>
 
-<!-- GSAP + ScrollTrigger (cdnjs), Lenis smooth scroll (jsDelivr) and the motion layer -->
-<script src="ambient.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
-<script src="motion.js" defer></script>
 <script src="zrm-values.js" defer></script>
+
+<!-- Enhancements load after the first paint so they never delay the page:
+     page widgets (sliders, carousel, video posters) and the motion layer
+     (ambient background, GSAP + ScrollTrigger, Lenis – self-hosted in /vendor).
+     Desktop with a mouse loads them straight away for the hero entrance. -->
+<script>
+(function () {
+  var started = false;
+  function run() {
+    if (started) return;
+    started = true;
+    if (window.__zrmInit) window.__zrmInit();
+    ["ambient.js", "vendor/gsap.min.js", "vendor/ScrollTrigger.min.js", "vendor/lenis.min.js", "motion.js"].forEach(function (src) {
+      var s = document.createElement("script");
+      s.src = src;
+      s.async = false; // keep execution order
+      document.body.appendChild(s);
+    });
+  }
+  // after the next two frames (the first paint has happened), when idle
+  function idle() {
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 1500 });
+        else setTimeout(run, 200);
+      });
+    });
+  }
+
+  if (document.documentElement.classList.contains("motion-ready")) {
+    // hero is hidden for its entrance → start as soon as the DOM is parsed
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+    else run();
+  } else if (document.readyState === "complete") {
+    idle();
+  } else {
+    window.addEventListener("load", idle);
+  }
+  // safety: never wait more than 4s
+  setTimeout(run, 4000);
+})();
+</script>
 </body>
 </html>
