@@ -2566,6 +2566,10 @@ document.querySelectorAll("video[data-poster]").forEach(function (v) {
     var video = document.createElement("video");
     video.src = box.getAttribute("data-video");
     video.controls = true;
+    // no ⋮ menu: remove download, speed, cast and picture-in-picture items
+    video.setAttribute("controlslist", "nodownload noplaybackrate noremoteplayback");
+    video.disablePictureInPicture = true;
+    video.setAttribute("disablepictureinpicture", "");
     video.playsInline = true;
     video.setAttribute("playsinline", "");
     box.appendChild(video);
