@@ -1411,59 +1411,6 @@ a {
 }
 
 /* footer */
-.footer-main {
-  background: #24272a;
-  padding: clamp(28px, 3.5vw, 40px) 0;
-}
-
-.footer-main .container {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(20px, 3vw, 48px);
-}
-
-.footer-logo {
-  width: clamp(100px, 9vw, 124px);
-}
-
-.footer-description {
-  /* right side of the footer, opposite the logo */
-  justify-self: end;
-  max-width: 680px;
-  text-align: right;
-  font-size: clamp(13px, 1.05vw, 14px);
-  line-height: 1.75;
-  color: #cfcfd4;
-  text-wrap: pretty;
-}
-
-.footer-contact {
-  list-style: none;
-  display: grid;
-  gap: 10px;
-  font-size: clamp(13px, 1.1vw, 14px);
-  color: #e2e2e6;
-}
-
-.footer-contact a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  transition: color .2s ease;
-}
-
-.footer-contact a:hover {
-  color: var(--yellow);
-}
-
-.footer-contact svg {
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  fill: var(--red);
-}
-
 .footer-bottom {
   background: #df1015;
   padding: 12px var(--gutter);
@@ -1474,21 +1421,6 @@ a {
 @media (max-width: 900px) {
   .impact-grid {
     --per-view: 2;
-  }
-
-  .footer-main .container {
-    grid-template-columns: 1fr;
-    text-align: center;
-    justify-items: center;
-  }
-
-  .footer-description {
-    justify-self: center;
-    text-align: center;
-  }
-
-  .footer-contact {
-    justify-items: center;
   }
 }
 
@@ -1704,10 +1636,6 @@ a {
   .why-card,
   .final-cta {
     padding: 28px 14px;
-  }
-
-  .footer-contact a {
-    word-break: break-all;
   }
 }
 
@@ -2328,17 +2256,6 @@ a {
 
 <!-- FOOTER -->
 <footer class="footer">
-  <div class="footer-main">
-    <div class="container">
-      <img class="footer-logo" src="ZRM New LP Assets/Layer 1 2.png" alt="Tamil Business Tribe">
-
-      <p class="footer-description">
-        We help entrepreneurs build strong brands, set up proven systems, and scale digitally with clarity,
-        confidence &amp; consistency. Learn, execute, and grow your business step-by-step with real support.
-      </p>
-    </div>
-  </div>
-
   <div class="footer-bottom">Copyright © 2026 by Tamil Business Tribe</div>
 </footer>
 
