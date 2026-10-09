@@ -1061,6 +1061,23 @@ a {
   object-fit: cover;
 }
 
+.participants-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+}
+
+.participants-video.is-playing {
+  cursor: default;
+}
+
+.participants-video.is-playing .video-overlay {
+  display: none;
+}
+
 .participants-video:hover .play-button {
   transform: scale(1.08);
   box-shadow: 0 0 0 14px rgba(255, 255, 255, 0.14);
@@ -2121,7 +2138,7 @@ a {
     <!-- PARTICIPANTS -->
     <h2 class="section-title">Listen to What <span class="yellow">Our Participants</span> are Saying</h2>
 
-    <div class="participants-video" role="button" aria-label="Play participants video" tabindex="0">
+    <div class="participants-video" role="button" aria-label="Play Day 1 video" tabindex="0" data-video="ZRM%20New%20LP%20Assets/Day%201.mp4">
       <img src="ZRM New LP Assets/Rectangle 85.webp" srcset="ZRM%20New%20LP%20Assets/Rectangle%2085-800w.webp 800w, ZRM%20New%20LP%20Assets/Rectangle%2085.webp 1680w" sizes="(max-width: 1240px) calc(100vw - 32px), 1200px" alt="Our participants on WhatsApp" loading="lazy">
       <div class="video-overlay">
         <div class="play-button"></div>
@@ -2447,7 +2464,36 @@ document.querySelectorAll("video[data-poster]").forEach(function (v) {
   });
 })();
 
-document.querySelectorAll(".video-box, .participants-video").forEach(function (box) {
+/* Participants section – Day 1 video plays in place of the screenshot */
+(function () {
+  var box = document.querySelector(".participants-video[data-video]");
+  if (!box) return;
+
+  function play() {
+    if (box.classList.contains("is-playing")) return;
+    var video = document.createElement("video");
+    video.src = box.getAttribute("data-video");
+    video.controls = true;
+    video.playsInline = true;
+    video.setAttribute("playsinline", "");
+    box.appendChild(video);
+    box.classList.add("is-playing");
+    box.removeAttribute("role");
+    box.removeAttribute("tabindex");
+    var p = video.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  box.addEventListener("click", play);
+  box.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      play();
+    }
+  });
+})();
+
+document.querySelectorAll(".video-box").forEach(function (box) {
   box.addEventListener("click", function () {
     console.log("Video clicked");
   });
