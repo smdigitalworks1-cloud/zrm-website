@@ -3313,14 +3313,32 @@
           document.body.appendChild(s);
         });
       }
-      // after the next two frames (the first paint has happened), when idle
+      // once the first content (hero) has actually been painted, when idle –
+      // two animation frames alone can fire before the first contentful paint
+      function whenIdle() {
+        if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 1500 });
+        else setTimeout(run, 200);
+      }
       function idle() {
-        requestAnimationFrame(function () {
-          requestAnimationFrame(function () {
-            if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 1500 });
-            else setTimeout(run, 200);
+        var painted = false;
+        try {
+          painted = performance.getEntriesByName("first-contentful-paint").length > 0;
+        } catch (e) { painted = true; }
+        if (painted || !("PerformanceObserver" in window)) {
+          requestAnimationFrame(function () { requestAnimationFrame(whenIdle); });
+          return;
+        }
+        try {
+          var po = new PerformanceObserver(function (list) {
+            if (list.getEntriesByName("first-contentful-paint").length) {
+              po.disconnect();
+              requestAnimationFrame(function () { requestAnimationFrame(whenIdle); });
+            }
           });
-        });
+          po.observe({ type: "paint", buffered: true });
+        } catch (e) {
+          requestAnimationFrame(function () { requestAnimationFrame(whenIdle); });
+        }
       }
 
       if (document.documentElement.classList.contains("motion-ready")) {
