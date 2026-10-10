@@ -1,0 +1,10 @@
+# robots.txt for https://zerorupeemarketing.com/
+User-agent: *
+Allow: /
+Disallow: /payment.html
+Disallow: /thank-you.html
+Disallow: /api/
+Disallow: /zrm-values.php
+
+# Sitemaps
+Sitemap: https://zerorupeemarketing.com/sitemap.xml

@@ -1,11 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KHBJZ23Z');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Meta Pixel Code + Conversions API -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1452662180104631');
+
+var zrmEventId = 'zrm_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+fbq('track', 'PageView', {}, { eventID: zrmEventId });
+fbq('track', 'Lead', {}, { eventID: 'lead_' + zrmEventId });
+
+if (window.fetch) {
+  fetch('/api/meta-capi', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      event_name: 'PageView',
+      event_id: zrmEventId,
+      event_source_url: window.location.href
+    }),
+    keepalive: true
+  }).catch(function() {});
+
+  fetch('/api/meta-capi', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      event_name: 'Lead',
+      event_id: 'lead_' + zrmEventId,
+      event_source_url: window.location.href
+    }),
+    keepalive: true
+  }).catch(function() {});
+}
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1452662180104631&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex">
 
-<title>Complete Your Registration – Zero Ruppee Marketing Challenge</title>
+<title>Complete Your Registration - Zero Ruppee Marketing Challenge</title>
 
 <link rel="preload" href="/fonts/Nexa-Book.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="preload" href="/fonts/Nexa-Bold.ttf" as="font" type="font/ttf" crossorigin>
@@ -201,6 +254,10 @@ img {
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHBJZ23Z"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
   <header class="header">
     <a href="/"><img class="logo" src="/ZRM%20New%20LP%20Assets/Layer%201%202.png" alt="Tamil Business Tribe"></a>

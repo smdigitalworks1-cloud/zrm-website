@@ -1,0 +1,31 @@
+# Hostinger (Apache/LiteSpeed) config – Vercel ignores this file and uses vercel.json.
+
+# Force UTF-8 encoding across all files to prevent character corruption (e.g. â€“)
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .php .json
+
+RewriteEngine On
+
+# /api/zrm-values → zrm-values.php (server-only file; the GHL token lives in
+# zrm-config.php next to it, which is never served)
+RewriteRule ^api/zrm-values/?$ zrm-values.php [L,QSA]
+
+# /api/meta-capi → meta-capi.php (Meta Conversions API handler)
+RewriteRule ^api/meta-capi/?$ meta-capi.php [L,QSA]
+
+# the Node files in api/ are for Vercel only – don't serve their source here
+RewriteRule ^api/[^/]+\.js$ - [F,L]
+
+# secrets, cache and backups stay private
+<FilesMatch "^(zrm-config\.php|meta-config\.php|\.zrm-cache\.json|\.ht.*)$">
+  Require all denied
+</FilesMatch>
+RewriteRule ^_backup[^/]*(/|$) - [F,L]
+Options -Indexes
+
+# same cache headers as vercel.json
+<IfModule mod_headers.c>
+  <FilesMatch "\.(webp|png|jpg|jpeg|svg|woff2|ttf)$">
+    Header set Cache-Control "public, max-age=2592000, stale-while-revalidate=86400"
+  </FilesMatch>
+</IfModule>
