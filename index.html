@@ -2,47 +2,66 @@
 <html lang="en">
 
 <head>
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-KHBJZ23Z');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Meta Pixel Code + Conversions API -->
+  <!-- Google Tag Manager + Meta Pixel + Conversions API
+       Same tags / IDs / events as before, but the third-party scripts are only
+       downloaded on the visitor's first interaction (scroll, wheel, tap, click,
+       key press or mouse move), so they don't slow the first paint.
+       fbq() calls made before that are queued and sent once Pixel loads. -->
   <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+    window.dataLayer = window.dataLayer || [];
+
+    // Meta Pixel stub (queue only – fbevents.js is loaded later)
+    !function (f) {
+      if (f.fbq) return; var n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+    }(window);
     fbq('init', '1452662180104631');
 
     var zrmEventId = 'zrm_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
     fbq('track', 'PageView', {}, { eventID: zrmEventId });
 
-    if (window.fetch) {
-      fetch('/api/meta-capi', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          event_name: 'PageView',
-          event_id: zrmEventId,
-          event_source_url: window.location.href
-        }),
-        keepalive: true
-      }).catch(function () { });
-    }
+    (function () {
+      var events = ["scroll", "wheel", "pointerdown", "touchstart", "keydown", "mousemove"];
+      var loaded = false;
+
+      function addScript(src) {
+        var s = document.createElement("script");
+        s.async = true;
+        s.src = src;
+        document.head.appendChild(s);
+      }
+
+      function loadTracking() {
+        if (loaded) return;
+        loaded = true;
+        events.forEach(function (e) { window.removeEventListener(e, loadTracking, { passive: true }); });
+
+        // Google Tag Manager (GA4 + Clarity are configured inside GTM)
+        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        addScript("https://www.googletagmanager.com/gtm.js?id=GTM-KHBJZ23Z");
+
+        // Meta Pixel library – sends the queued init + PageView
+        addScript("https://connect.facebook.net/en_US/fbevents.js");
+
+        // Conversions API (server side, same event id for deduplication)
+        if (window.fetch) {
+          fetch('/api/meta-capi', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              event_name: 'PageView',
+              event_id: zrmEventId,
+              event_source_url: window.location.href
+            }),
+            keepalive: true
+          }).catch(function () { });
+        }
+      }
+
+      events.forEach(function (e) { window.addEventListener(e, loadTracking, { passive: true }); });
+    })();
   </script>
   <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1452662180104631&ev=PageView&noscript=1" /></noscript>
@@ -3276,19 +3295,64 @@
 
   <script src="zrm-values.js" defer></script>
 
-  <script src="ambient.js" defer></script>
-  <script src="vendor/gsap.min.js" defer></script>
-  <script src="vendor/ScrollTrigger.min.js" defer></script>
-  <script src="vendor/lenis.min.js" defer></script>
-  <script src="motion.js" defer></script>
+  <!-- Enhancements load after the first paint so they never delay the page:
+     page widgets (sliders, carousel, video posters) and the motion layer
+     (ambient background, GSAP + ScrollTrigger, Lenis – self-hosted in /vendor).
+     Desktop with a mouse loads them straight away for the hero entrance. -->
   <script>
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", function () {
+    (function () {
+      var started = false;
+      function run() {
+        if (started) return;
+        started = true;
         if (window.__zrmInit) window.__zrmInit();
-      });
-    } else {
-      if (window.__zrmInit) window.__zrmInit();
-    }
+        ["ambient.js", "vendor/gsap.min.js", "vendor/ScrollTrigger.min.js", "vendor/lenis.min.js", "motion.js"].forEach(function (src) {
+          var s = document.createElement("script");
+          s.src = src;
+          s.async = false; // keep execution order
+          document.body.appendChild(s);
+        });
+      }
+      // once the first content (hero) has actually been painted, when idle –
+      // two animation frames alone can fire before the first contentful paint
+      function whenIdle() {
+        if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 1500 });
+        else setTimeout(run, 200);
+      }
+      function idle() {
+        var painted = false;
+        try {
+          painted = performance.getEntriesByName("first-contentful-paint").length > 0;
+        } catch (e) { painted = true; }
+        if (painted || !("PerformanceObserver" in window)) {
+          requestAnimationFrame(function () { requestAnimationFrame(whenIdle); });
+          return;
+        }
+        try {
+          var po = new PerformanceObserver(function (list) {
+            if (list.getEntriesByName("first-contentful-paint").length) {
+              po.disconnect();
+              requestAnimationFrame(function () { requestAnimationFrame(whenIdle); });
+            }
+          });
+          po.observe({ type: "paint", buffered: true });
+        } catch (e) {
+          requestAnimationFrame(function () { requestAnimationFrame(whenIdle); });
+        }
+      }
+
+      if (document.documentElement.classList.contains("motion-ready")) {
+        // desktop hero entrance → start as soon as the DOM is parsed
+        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+        else run();
+      } else if (document.readyState === "complete") {
+        idle();
+      } else {
+        window.addEventListener("load", idle);
+      }
+      // safety: never wait more than 4s
+      setTimeout(run, 4000);
+    })();
   </script>
 </body>
 
