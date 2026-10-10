@@ -2133,34 +2133,40 @@
     }
   
     /* =========================
-   VIDEO TESTIMONIALS: prev / next arrows beside the cards (left / right),
-   vertically centred on them. Only where the side gutter has room for a
-   button without covering a card; narrower screens keep them centred below.
+   VIDEO TESTIMONIALS: prev / next arrows on the left and right of the
+   cards, vertically centred on them, on every screen size (no arrow row
+   below the cards any more)
 ========================= */
     .impact-carousel {
       position: relative;
     }
 
-    @media (min-width: 1360px) {
-      .impact-carousel {
-        /* keeps the space the arrow row used (28px gap + 42px button),
-           so the section height does not change */
-        padding-bottom: 70px;
-      }
+    .impact-carousel .carousel-controls {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0;
+      margin: 0;
+      padding: 0 8px;
+      pointer-events: none;
+    }
 
+    .impact-carousel .carousel-btn {
+      position: relative;
+      flex-shrink: 0;
+      pointer-events: auto;
+    }
+
+    /* wide screens: enough room beside the cards, so the arrows sit
+       outside them (16px from the first / last card) */
+    @media (min-width: 1360px) {
       .impact-carousel .carousel-controls {
-        position: absolute;
-        top: 0;
-        bottom: 70px;
         left: -58px;
         right: -58px;
-        margin: 0;
-        justify-content: space-between;
-        pointer-events: none;
-      }
-
-      .impact-carousel .carousel-btn {
-        pointer-events: auto;
+        padding: 0;
       }
     }
   </style>
