@@ -1928,6 +1928,38 @@
     .success .carousel-btn {
       pointer-events: auto;
     }
+  
+    /* =========================
+   VIDEO TESTIMONIALS: prev / next arrows beside the cards (left / right),
+   vertically centred on them. Only where the side gutter has room for a
+   button without covering a card; narrower screens keep them centred below.
+========================= */
+    .impact-carousel {
+      position: relative;
+    }
+
+    @media (min-width: 1360px) {
+      .impact-carousel {
+        /* keeps the space the arrow row used (28px gap + 42px button),
+           so the section height does not change */
+        padding-bottom: 70px;
+      }
+
+      .impact-carousel .carousel-controls {
+        position: absolute;
+        top: 0;
+        bottom: 70px;
+        left: -58px;
+        right: -58px;
+        margin: 0;
+        justify-content: space-between;
+        pointer-events: none;
+      }
+
+      .impact-carousel .carousel-btn {
+        pointer-events: auto;
+      }
+    }
   </style>
   <link rel="stylesheet" href="motion.css">
   <link rel="stylesheet" href="ambient.css">
@@ -2437,6 +2469,8 @@
       <!-- VIDEO TESTIMONIALS
          Videos are 100MB+, so cards show a poster image (ZRM New LP Assets/impact)
          and a video only streams after its Play button is clicked. -->
+      <!-- wraps the video slider + its arrows so the arrows can sit beside the cards -->
+      <div class="impact-carousel">
       <div class="impact-grid" aria-label="Participant video testimonials">
         <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 1">
           <div class="impact-media">
@@ -2532,6 +2566,7 @@
             <path d="M9 6l6 6-6 6" />
           </svg>
         </button>
+      </div>
       </div>
 
       <div class="join-wrap" data-mid-cta>
