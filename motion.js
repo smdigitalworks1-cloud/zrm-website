@@ -111,41 +111,44 @@
 
   /* ================= HERO – cinematic entrance (once) ================= */
   function heroEntrance() {
-    var titleWords = splitWords(document.querySelector(".hero-title"));
-    var tl = gsap.timeline({ defaults: { ease: EASE } });
+    var titleEl = document.querySelector(".hero-title");
+    if (!titleEl) { showHero(); return; }
+    var titleWords = splitWords(titleEl);
+    var tl = gsap.timeline({
+      defaults: { ease: EASE },
+      onComplete: function () {
+        gsap.set([titleWords, ".hero-title", ".hero-subtitle"], { clearProps: "transform,opacity" });
+      }
+    });
 
-    tl.set(".hero-title", { opacity: 1 })
-      // 1 · atmosphere
-      .fromTo(".hero-atmos", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power2.out" }, 0)
-      // 2 · main visual is visible from the first paint (it is the LCP image);
-      //     it settles from a slight zoom
-      .fromTo(".hero .video-box img", { scale: 1.08 }, { scale: 1.03, duration: 1.3 }, 0.1)
-      // 3 · heading, word by word inside masks
-      .fromTo(".hero .top-label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 }, 0.15)
-      .fromTo(titleWords, { yPercent: 110 }, { yPercent: 0, duration: 0.75, stagger: 0.045 }, 0.2)
+    tl.fromTo(".hero-atmos", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power2.out" }, 0)
+      // 2 · main visual is visible from the first paint; subtle settle
+      .fromTo(".hero .video-box img", { scale: 1.05 }, { scale: 1, duration: 1.1, ease: "power2.out" }, 0.05)
+      // 3 · heading, word by word smooth fade & float up
+      .fromTo(".hero .top-label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 }, 0.1)
+      .fromTo(titleWords, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.65, stagger: 0.035, ease: "power2.out" }, 0.15)
       // 4 · supporting text
-      .fromTo(".hero-subtitle", { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.7 }, 0.5);
+      .fromTo(".hero-subtitle", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6 }, 0.35);
 
-    // 5 · the ₹499 card emerges like a floating card, CTA last.
-    //     Below the fold (phones) it waits until it scrolls into view.
+    // 5 · the ₹499 card emerges smoothly
     var card = document.querySelector(".hero .event-details");
     if (card) {
       var cardTl = gsap.timeline({ defaults: { ease: EASE } });
-      cardTl.fromTo(card, { opacity: 0, y: 30, scale: 0.94 }, { opacity: 1, y: 0, scale: 1, duration: 0.8 })
-        .fromTo(".hero .detail-icon", { scale: 0.7, opacity: 0 },
-          { scale: 1, opacity: 1, duration: 0.5, stagger: 0.06, ease: "back.out(2)", clearProps: "opacity,transform" }, 0.15)
-        .fromTo(".hero .cta", { opacity: 0, y: 20, scale: 0.96 },
-          { opacity: 1, y: 0, scale: 1, duration: 0.55, clearProps: "opacity,transform" }, 0.3);
+      cardTl.fromTo(card, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.7 })
+        .fromTo(".hero .detail-icon", { scale: 0.8, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.45, stagger: 0.05, ease: "back.out(1.7)", clearProps: "opacity,transform" }, 0.1)
+        .fromTo(".hero .cta", { opacity: 0, y: 15 },
+          { opacity: 1, y: 0, duration: 0.5, clearProps: "opacity,transform" }, 0.25);
 
       if (card.getBoundingClientRect().top < window.innerHeight * 0.9) {
-        tl.add(cardTl, 0.6);
+        tl.add(cardTl, 0.45);
       } else {
-        cardTl.pause(); // start values already applied
+        cardTl.pause();
         ScrollTrigger.create({ trigger: card, start: "top 88%", once: true, onEnter: function () { cardTl.play(); } });
       }
     }
 
-    showHero(); // starting values are applied, the CSS hide can go
+    showHero();
   }
 
   /* ================= HERO – 4-layer scroll depth + hand-off ================= */
@@ -640,7 +643,7 @@
     lenis.on("scroll", ScrollTrigger.update);
     var tick = function (time) { lenis.raf(time * 1000); };
     gsap.ticker.add(tick);
-    gsap.ticker.lagSmoothing(0);
+    gsap.ticker.lagSmoothing(500, 33);
 
     return function () {
       gsap.ticker.remove(tick);
@@ -659,10 +662,12 @@
     return;
   }
 
-  // cinematic entrance only where the page was hidden for it (desktop + mouse);
-  // phones / tablets show the hero immediately for a fast first paint
-  if (root.classList.contains("motion-ready")) heroEntrance();
-  else showHero();
+  // cinematic entrance only when at top of page; if user is already scrolled on reload, show immediately
+  if (root.classList.contains("motion-ready") && window.scrollY < 80) {
+    heroEntrance();
+  } else {
+    showHero();
+  }
   window.__zrmMotion = true;
 
   // run each setup step in its own task, so building ~100 scroll triggers
@@ -693,22 +698,25 @@
     var cleanups = [];
     var alive = true;
 
-    // steps run in page order; ambientScroll stays last because its triggers
-    // sit below the pinned 3-day stage
-    runSteps(ctx, [
-      function () { if (premiumPointer) cleanups.push(smoothScroll()); heroScroll(k); },
-      function () { if (premiumPointer) { cleanups.push(heroMouse()); cleanups.push(magnetic()); } },
-      function () { successStories(k); },
-      function () { storyMoment(k); },
-      function () { if (c.desktop) cleanups.push(dayStage()); else dayCardsSimple(k); },
-      function () { tools(c.desktop, k); },
-      function () { videoTestimonials(k); },
-      function () { faqReveal(); finalCta(k); },
-      function () { ambientScroll(k); }
-    ], function () { return alive; }, function () {
-      // re-measure + evaluate every trigger once the whole setup exists
-      ScrollTrigger.refresh();
-    });
+    // Give hero entrance a brief moment so initial animation frames are completely unhindered
+    var setupDelay = (root.classList.contains("motion-ready") && window.scrollY < 80) ? 350 : 0;
+
+    setTimeout(function () {
+      runSteps(ctx, [
+        function () { if (premiumPointer) cleanups.push(smoothScroll()); heroScroll(k); },
+        function () { if (premiumPointer) { cleanups.push(heroMouse()); cleanups.push(magnetic()); } },
+        function () { successStories(k); },
+        function () { storyMoment(k); },
+        function () { if (c.desktop) cleanups.push(dayStage()); else dayCardsSimple(k); },
+        function () { tools(c.desktop, k); },
+        function () { videoTestimonials(k); },
+        function () { faqReveal(); finalCta(k); },
+        function () { ambientScroll(k); }
+      ], function () { return alive; }, function () {
+        // re-measure + evaluate every trigger once the whole setup exists
+        ScrollTrigger.refresh();
+      });
+    }, setupDelay);
 
     return function () {
       alive = false;

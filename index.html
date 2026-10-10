@@ -2,30 +2,238 @@
 <html lang="en">
 
 <head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KHBJZ23Z');</script>
+  <!-- End Google Tag Manager -->
+
+  <!-- Meta Pixel Code + Conversions API -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1452662180104631');
+
+    var zrmEventId = 'zrm_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+    fbq('track', 'PageView', {}, { eventID: zrmEventId });
+
+    if (window.fetch) {
+      fetch('/api/meta-capi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event_name: 'PageView',
+          event_id: zrmEventId,
+          event_source_url: window.location.href
+        }),
+        keepalive: true
+      }).catch(function () { });
+    }
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1452662180104631&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Core Technical SEO & Charset -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://zerorupeemarketing.com/">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <title>Zero Rupee Marketing Challenge</title>
+  <!-- Primary SEO Metadata -->
+  <title>Zero Rupee Marketing Challenge | 3-Day Live Growth Program by Sakthivel Pannerselvam</title>
   <meta name="description"
-    content="Kaasu Selavu Pannama Marketing Panna Mudiyuma? Learn how to attract attention, generate leads and convert them into customers using the Zero Rupee Marketing framework – 3-Day Live Zero Ruppee Marketing Challenge.">
-  <link rel="icon" href="data:,">
+    content="Learn the Zero Rupee Marketing framework with Sakthivel Pannerselvam. 3-Day Live Challenge to attract leads and grow your business with zero ad spend.">
+  <meta name="author" content="Sakthivel Pannerselvam">
 
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zerorupeemarketing.com/">
+  <meta property="og:site_name" content="Zero Rupee Marketing">
+  <meta property="og:title" content="Zero Rupee Marketing Challenge | 3-Day Live Growth Program">
+  <meta property="og:description"
+    content="Learn how to attract attention, generate qualified leads, and scale your business with zero ad spend using the Zero Rupee Marketing framework.">
+  <meta property="og:image" content="https://zerorupeemarketing.com/ZRM%20New%20LP%20Assets/Rectangle%204.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://zerorupeemarketing.com/">
+  <meta name="twitter:title" content="Zero Rupee Marketing Challenge | 3-Day Live Growth Program">
+  <meta name="twitter:description"
+    content="Learn how to attract attention, generate qualified leads, and scale your business with zero ad spend using the Zero Rupee Marketing framework.">
+  <meta name="twitter:image" content="https://zerorupeemarketing.com/ZRM%20New%20LP%20Assets/Rectangle%204.webp">
+
+  <!-- Favicon (Updated from empty data URI) -->
+  <link rel="icon" type="image/png" href="ZRM%20New%20LP%20Assets/Layer%201%202.png">
+
+  <!-- Resource Preloads (PRESERVED) -->
   <link rel="preload" href="fonts/Nexa-Book.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/Nexa-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp" as="image" type="image/webp"
     imagesrcset="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp 480w, ZRM%20New%20LP%20Assets/Rectangle%204.webp 964w"
     imagesizes="(max-width: 900px) calc(100vw - 32px), 680px" fetchpriority="high">
 
-  <!-- Scroll / parallax layer: styles in motion.css, GSAP animations in motion.js -->
+  <!-- Structured Data JSON-LD Knowledge Graph (Organization, Person, Course, FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://zerorupeemarketing.com/#organization",
+        "name": "Zero Rupee Marketing",
+        "alternateName": "ZRM",
+        "url": "https://zerorupeemarketing.com/",
+        "logo": "https://zerorupeemarketing.com/ZRM%20New%20LP%20Assets/Layer%201%202.png",
+        "founder": {
+          "@type": "Person",
+          "@id": "https://sakthivelpannerselvam.com/#person",
+          "name": "Sakthivel Pannerselvam",
+          "jobTitle": "Growth Marketer & Author",
+          "url": "https://sakthivelpannerselvam.com/",
+          "sameAs": [
+            "https://sakthivelpannerselvam.com/",
+            "https://www.instagram.com/sakthivelpannerselvam/",
+            "https://www.linkedin.com/in/sakthivelpannerselvam/"
+          ]
+        },
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Tamil Business Tribe",
+          "url": "https://zerorupeemarketing.com/"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-8015139542",
+          "contactType": "customer service",
+          "email": "helpdesk@tamilbusinesstribe.com",
+          "availableLanguage": ["Tamil", "English"]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://zerorupeemarketing.com/#website",
+        "url": "https://zerorupeemarketing.com/",
+        "name": "Zero Rupee Marketing",
+        "description": "Zero-ad-spend customer acquisition and organic business growth framework.",
+        "publisher": {
+          "@id": "https://zerorupeemarketing.com/#organization"
+        }
+      },
+      {
+        "@type": "Course",
+        "@id": "https://zerorupeemarketing.com/#course",
+        "name": "3-Day Live Zero Rupee Marketing Challenge",
+        "description": "A 3-day practical live implementation workshop teaching entrepreneurs how to attract attention, generate qualified leads, and convert customers using the Zero Rupee Marketing framework with zero ad spend.",
+        "provider": {
+          "@id": "https://zerorupeemarketing.com/#organization"
+        },
+        "instructor": {
+          "@type": "Person",
+          "@id": "https://sakthivelpannerselvam.com/#person",
+          "name": "Sakthivel Pannerselvam",
+          "url": "https://sakthivelpannerselvam.com/"
+        },
+        "educationalCredentialAwarded": "Certificate of Completion",
+        "hasCourseInstance": {
+          "@type": "CourseInstance",
+          "courseMode": "Online",
+          "courseWorkload": "PT4H30M",
+          "offers": {
+            "@type": "Offer",
+            "price": "499",
+            "priceCurrency": "INR",
+            "url": "https://zerorupeemarketing.com/payment.html",
+            "availability": "https://schema.org/InStock",
+            "validFrom": "2026-10-01"
+          }
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://zerorupeemarketing.com/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the Zero Rupee Marketing Challenge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Zero Rupee Marketing Challenge is a 3-day live online growth workshop mentored by Sakthivel Pannerselvam. It teaches business owners how to attract qualified attention, generate leads, and convert customers using organic marketing and zero ad spend."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are the timings for the workshop?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The workshop runs live across 3 days from 07:00 AM to 08:30 AM IST on Zoom. A scheduled replay is available on the same evening from 07:00 PM to 08:30 PM IST."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Will I get a recording of the session?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No recordings are provided. The workshop is focused on real-time live implementation, with one replay available on the evening of each session day."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this suitable for small business owners?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The Zero Rupee Marketing framework is specifically engineered for bootstrapped entrepreneurs, small business owners, service providers, and creators seeking sustainable customer acquisition without ad budgets."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who is the mentor for the Zero Rupee Marketing Challenge?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The program is designed and mentored by Sakthivel Pannerselvam, entrepreneur, author, guerrilla marketer, and founder of Tamil Business Tribe."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there any refund available?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, there is no refund available for the challenge registration."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "I made the payment but didn't get any email or WhatsApp update?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Please reach our support desk at +91 80151 39542 or email helpdesk@tamilbusinesstribe.com with your payment transaction details and our team will assist you immediately."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Motion & Hero Intro Guard (PRESERVED) -->
   <script>
-    // Hide hero intro elements until motion.js animates them in – desktop with a
-    // mouse only (phones show the hero straight away: faster first paint / LCP).
-    // Skipped for reduced motion; removed after 2.5s if scripts fail to load.
+    // Enable motion enhancements on desktop with a fine pointer
     if (window.matchMedia("(min-width: 1024px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)").matches) {
       document.documentElement.classList.add("motion-ready");
-      setTimeout(function () {
-        if (!window.__zrmMotion) document.documentElement.classList.remove("motion-ready");
-      }, 2500);
     }
   </script>
 
@@ -74,6 +282,13 @@
       font-display: swap;
     }
 
+    /* Fallback specifically for Indian Rupee symbol (₹ / U+20B9) missing in Nexa font */
+    @font-face {
+      font-family: "Nexa";
+      src: local("Segoe UI"), local("Roboto"), local("Noto Sans"), local("-apple-system"), local("system-ui"), local("Arial Unicode MS");
+      unicode-range: U+20B9;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -108,10 +323,17 @@
     body {
       width: 100%;
       min-height: 100%;
-      font-family: "Nexa", Arial, Helvetica, sans-serif;
+      font-family: "Nexa", "Segoe UI", Roboto, -apple-system, BlinkMacSystemFont, system-ui, Arial, sans-serif;
       background: var(--bg);
       color: #ffffff;
       -webkit-font-smoothing: antialiased;
+    }
+
+    .rupee {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
+      font-weight: inherit;
+      display: inline-block;
+      line-height: inherit;
     }
 
     body {
@@ -129,7 +351,7 @@
       text-decoration: none;
     }
 
-    /* Common wrapper – gives every section the same side padding */
+    /* Common wrapper - gives every section the same side padding */
     .container {
       width: 100%;
       max-width: calc(var(--max) + var(--gutter) * 2);
@@ -271,7 +493,7 @@
       object-fit: cover;
     }
 
-    /* main video – replaces the image once Play is pressed */
+    /* main video - replaces the image once Play is pressed */
     .video-box video {
       position: absolute;
       inset: 0;
@@ -373,7 +595,7 @@
       font-weight: 500;
     }
 
-    /* Hero pricing CTA – dark pill; on hover it turns red and the
+    /* Hero pricing CTA - dark pill; on hover it turns red and the
    white circle slides from the left edge to the right edge */
     .cta {
       --cta-ease: cubic-bezier(.22, 1, .36, 1);
@@ -599,7 +821,7 @@
    TESTIMONIAL GRID
 ========================= */
 
-    /* carousel track – shows --per-view cards and scrolls continuously (JS) */
+    /* carousel track - shows --per-view cards and scrolls continuously (JS) */
     .testimonial-grid {
       position: relative;
       --per-view: 4;
@@ -793,7 +1015,7 @@
         height: 38px;
       }
 
-      /* mobile: photo on top, text below – same for every card */
+      /* mobile: photo on top, text below - same for every card */
       .testimonial {
         flex-direction: column;
         align-items: flex-start;
@@ -836,7 +1058,7 @@
     }
 
     /* =========================
-   SECTION 2 – 3 DAYS / 3 SKILLS
+   SECTION 2 - 3 DAYS / 3 SKILLS
 ========================= */
 
     .skills {
@@ -996,7 +1218,7 @@
       object-fit: cover;
     }
 
-    /* Day 2 gallery – horizontal scroll-snap slides, whole diagram visible */
+    /* Day 2 gallery - horizontal scroll-snap slides, whole diagram visible */
     .day-gallery {
       position: relative;
       background: #fff;
@@ -1023,6 +1245,7 @@
       padding-bottom: 22px;
       scroll-snap-align: start;
       background: #fff;
+      overflow: hidden;
     }
 
     .day-gallery .day-slide img {
@@ -1030,6 +1253,7 @@
       height: 0;
       min-height: 0;
       object-fit: contain;
+      filter: blur(3px);
     }
 
     .day-slide-title {
@@ -1102,7 +1326,7 @@
     }
 
     /* =========================
-   SECTION 3 – TOOLS / PARTICIPANTS / WHY ATTEND
+   SECTION 3 - TOOLS / PARTICIPANTS / WHY ATTEND
 ========================= */
 
     .tools {
@@ -1191,6 +1415,12 @@
       background: #000;
     }
 
+    .participants-video video::-webkit-media-controls-overflow-button,
+    .participants-video video::-webkit-media-controls-overflow-menu-list,
+    .participants-video video::-internal-media-controls-overflow-button {
+      display: none !important;
+    }
+
     .participants-video.is-playing {
       cursor: default;
     }
@@ -1252,7 +1482,7 @@
       box-shadow: 0 18px 32px -12px rgba(242, 209, 0, 0.85);
     }
 
-    /* bottom ticker – full width, seamless loop */
+    /* bottom ticker - full width, seamless loop */
     .ticker-wrap {
       margin-top: clamp(32px, 4vw, 48px);
       padding: 14px 0;
@@ -1341,7 +1571,7 @@
     }
 
     /* =========================
-   SECTION 4 – IMPACT / FAQ / FINAL CTA / FOOTER
+   SECTION 4 - IMPACT / FAQ / FINAL CTA / FOOTER
 ========================= */
 
     .impact {
@@ -1349,7 +1579,7 @@
       background: var(--bg);
     }
 
-    /* video testimonial cards – horizontal slider */
+    /* video testimonial cards - horizontal slider */
     .impact-grid {
       --per-view: 4;
       --gap: clamp(12px, 1.6vw, 20px);
@@ -1634,7 +1864,7 @@
       }
     }
 
-    /* Folded cover screen (≈ 280px – 360px wide) */
+    /* Folded cover screen (≈ 280px - 360px wide) */
     @media (max-width: 360px) {
       :root {
         --gutter: 12px;
@@ -1791,7 +2021,7 @@
     /* Very narrow cover screens (original Galaxy Fold = 280px) */
     @media (max-width: 300px) {
 
-      /* no room for the sliding circle – colour change + shine only */
+      /* no room for the sliding circle - colour change + shine only */
       .cta .arrow {
         display: none;
       }
@@ -1818,7 +2048,7 @@
 
     @media (max-width: 767px) {
 
-      /* the header only holds the logo – hide it so no empty space is left */
+      /* the header only holds the logo - hide it so no empty space is left */
       .header {
         display: none;
       }
@@ -1865,13 +2095,14 @@
         transition: none;
       }
     }
-  
+
     /* =========================
    MOBILE: one spacing scale for every section
    24px section padding (48px between sections), 48px between big blocks,
    24px title → content, 20px for arrows / pills under content
 ========================= */
     @media (max-width: 767px) {
+
       .success,
       .skills,
       .tools,
@@ -1890,8 +2121,8 @@
       }
 
       /* the hidden middle CTAs used to give these blocks their space */
-      .tools .join-wrap[data-mid-cta] + *,
-      .impact .join-wrap[data-mid-cta] + * {
+      .tools .join-wrap[data-mid-cta]+*,
+      .impact .join-wrap[data-mid-cta]+* {
         margin-top: 48px;
       }
 
@@ -1900,40 +2131,16 @@
         margin-top: 48px;
       }
     }
-  
-    /* =========================
-   SUCCESS STORIES: prev / next arrows on the left and right of the cards,
-   vertically centred on them (same buttons, only their position changes)
-========================= */
-    .success .container {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr);
-    }
-
-    .success .success-title { grid-row: 1; }
-    .success .testimonial-grid { grid-row: 2; grid-column: 1; }
-    .success .bottom-pill { grid-row: 3; }
-
-    .success .carousel-controls {
-      grid-row: 2;
-      grid-column: 1;
-      align-self: center;
-      justify-content: space-between;
-      margin: 0;
-      position: relative;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .success .carousel-btn {
-      pointer-events: auto;
-    }
   </style>
   <link rel="stylesheet" href="motion.css">
   <link rel="stylesheet" href="ambient.css">
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHBJZ23Z" height="0" width="0"
+      style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <div class="page">
 
@@ -1989,7 +2196,7 @@
                 <img class="detail-icon" src="ZRM New LP Assets/calendar 1.webp" alt="">
                 <div class="detail-text">
                   <strong>Zoom Live Call</strong>
-                  <span data-cv="zrm_online_date">OCT 16 2026 – OCT 18 2026</span>
+                  <span data-cv="zrm_online_date">OCT 16 2026 - OCT 18 2026</span>
                 </div>
               </li>
 
@@ -2019,7 +2226,7 @@
             </ul>
 
             <a class="cta" href="payment.html">
-              <span class="cta-label">₹499 | 3 DAYS | LIVE ON ZOOM</span>
+              <span class="cta-label"><span class="rupee">&#8377;</span>499 | 3 DAYS | LIVE ON ZOOM</span>
               <span class="arrow">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M4 12h14" />
@@ -2041,7 +2248,7 @@
       <div class="container">
 
         <h2 class="success-title">
-          Success Stories of <span class="yellow">TBT’s Mentorship Program.</span>
+          Success Stories of <span class="yellow">TBT's Mentorship Program.</span>
         </h2>
 
         <div class="testimonial-grid" aria-roledescription="carousel" aria-label="Success stories" tabindex="0">
@@ -2113,7 +2320,7 @@
             <img class="t-photo" src="ZRM New LP Assets/testimonials/oviya.webp" alt="Oviya" loading="lazy">
             <div class="t-info">
               <p class="t-name">Oviya, Founder</p>
-              <p class="t-company">Oviya’s Meraki, Chennai</p>
+              <p class="t-company">Oviya's Meraki, Chennai</p>
               <p class="t-result"><strong>₹20 Lakhs</strong> in<br>just <strong>9 months!</strong></p>
             </div>
           </div>
@@ -2171,7 +2378,7 @@
   </div>
 
 
-  <!-- SECTION 2 – 3 DAYS / 3 SKILLS -->
+  <!-- SECTION 2 - 3 DAYS / 3 SKILLS -->
   <section class="skills">
     <div class="container">
 
@@ -2182,17 +2389,17 @@
 
       <div class="skill-row">
         <div class="skill-box">
-          <h3><span class="yellow">Day 1</span> – Content Creation</h3>
+          <h3><span class="yellow">Day 1</span> - Content Creation</h3>
           <p>Create content that gets attention.</p>
         </div>
 
         <div class="skill-box">
-          <h3><span class="yellow">Day 2</span> – Generate Revenue</h3>
+          <h3><span class="yellow">Day 2</span> - Generate Revenue</h3>
           <p>Turn attention into leads and customers.</p>
         </div>
 
         <div class="skill-box">
-          <h3><span class="yellow">Day 3</span> – Scale Your Business</h3>
+          <h3><span class="yellow">Day 3</span> - Scale Your Business</h3>
           <p>Build systems that help you grow.</p>
         </div>
       </div>
@@ -2207,7 +2414,7 @@
         <article class="day-card">
           <div class="day-content">
             <h3 class="day-title">
-              <span class="yellow">Day 1</span> – Social Media la Video Panna Yosichikute Irukingala..?
+              <span class="yellow">Day 1</span> - Social Media la Video Panna Yosichikute Irukingala..?
             </h3>
             <p class="day-subtitle">Learn from Day 1 of ZRM</p>
 
@@ -2226,7 +2433,7 @@
           <div class="day-image">
             <!-- Day 1 video: muted loop, only downloads/plays while the card is near the screen -->
             <video data-src="ZRM%20New%20LP%20Assets/Day%201.mp4" poster="ZRM%20New%20LP%20Assets/Mask%20group.webp"
-              muted loop playsinline preload="none" aria-label="Day 1 – Content creation"></video>
+              muted loop playsinline preload="none" aria-label="Day 1 - Content creation"></video>
           </div>
         </article>
 
@@ -2234,7 +2441,7 @@
         <article class="day-card">
           <div class="day-content">
             <h3 class="day-title">
-              <span class="yellow">Day 2</span> – Build Your Money Making Machine While Sleeping
+              <span class="yellow">Day 2</span> - Build Your Money Making Machine While Sleeping
             </h3>
             <p class="day-subtitle">Learn from Day 2 of ZRM</p>
 
@@ -2251,24 +2458,25 @@
                 aria-hidden="true">→</span></a>
           </div>
 
-          <!-- Day 2 – three funnel examples, swipe / dots to change -->
+          <!-- Day 2 - three funnel examples, swipe / dots to change -->
           <div class="day-image day-gallery">
             <div class="day-slides" aria-label="Day 2 funnel examples" tabindex="0">
               <figure class="day-slide">
                 <figcaption class="day-slide-title">Sales funnel of skincare</figcaption>
                 <img src="ZRM%20New%20LP%20Assets/day%202%20img%201-1120.webp"
-                    srcset="ZRM%20New%20LP%20Assets/day%202%20img%201-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%201-1120.webp 1120w"
-                    sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Sales funnel of skincare" loading="lazy">
+                  srcset="ZRM%20New%20LP%20Assets/day%202%20img%201-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%201-1120.webp 1120w"
+                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Sales funnel of skincare" loading="lazy">
               </figure>
               <figure class="day-slide">
                 <img src="ZRM%20New%20LP%20Assets/day%202%20img%202-1120.webp"
-                    srcset="ZRM%20New%20LP%20Assets/day%202%20img%202-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%202-1120.webp 1120w"
-                    sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Live shopping commerce funnel" loading="lazy">
+                  srcset="ZRM%20New%20LP%20Assets/day%202%20img%202-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%202-1120.webp 1120w"
+                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Live shopping commerce funnel"
+                  loading="lazy">
               </figure>
               <figure class="day-slide">
                 <img src="ZRM%20New%20LP%20Assets/day%202%20img%203-1120.webp"
-                    srcset="ZRM%20New%20LP%20Assets/day%202%20img%203-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%203-1120.webp 1120w"
-                    sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="High ticket funnel" loading="lazy">
+                  srcset="ZRM%20New%20LP%20Assets/day%202%20img%203-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%203-1120.webp 1120w"
+                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="High ticket funnel" loading="lazy">
               </figure>
             </div>
             <div class="day-dots"></div>
@@ -2279,7 +2487,7 @@
         <article class="day-card">
           <div class="day-content">
             <h3 class="day-title">
-              <span class="yellow">Day 3</span> – Scale Your Business
+              <span class="yellow">Day 3</span> - Scale Your Business
             </h3>
             <p class="day-subtitle">Learn from Day 3 of ZRM</p>
 
@@ -2298,7 +2506,7 @@
           <div class="day-image">
             <img src="ZRM%20New%20LP%20Assets/day%203%20img-1120.webp"
               srcset="ZRM%20New%20LP%20Assets/day%203%20img-560.webp 560w, ZRM%20New%20LP%20Assets/day%203%20img-1120.webp 1120w"
-              sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 3 – Empty stall to 100's of cameras"
+              sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 3 - Empty stall to 100's of cameras"
               loading="lazy">
           </div>
         </article>
@@ -2309,12 +2517,12 @@
   </section>
 
 
-  <!-- SECTION 3 – TOOLS / PARTICIPANTS / WHY ATTEND -->
+  <!-- SECTION 3 - TOOLS / PARTICIPANTS / WHY ATTEND -->
   <section class="tools" id="tools">
     <div class="container">
 
       <!-- TOOLS -->
-      <h2 class="section-title">Tools You’ll Get Introduced to in <span class="yellow">ZRM Workshop</span></h2>
+      <h2 class="section-title">Tools You'll Get Introduced to in <span class="yellow">ZRM Workshop</span></h2>
 
       <div class="tools-grid">
         <div class="tool-card">
@@ -2399,9 +2607,9 @@
       <!-- WHY ATTEND -->
       <div class="why-card">
         <h2 class="section-title">Why Attend <span class="yellow">ZRM Live?</span></h2>
-        <p class="why-lead">You won’t just learn marketing. You’ll create it for your business – live.</p>
+        <p class="why-lead">You won't just learn marketing. You'll create it for your business - live.</p>
         <p class="why-text">
-          During the workshop, you’ll create content, build your marketing system and implement
+          During the workshop, you'll create content, build your marketing system and implement
           strategies designed to generate leads and revenue.
         </p>
         <a class="btn btn-yellow" href="payment.html" data-mid-cta>Start Your ZRM Journey <span class="btn-arrow"
@@ -2414,23 +2622,23 @@
     <div class="ticker-wrap">
       <div class="ticker">
         <div class="ticker-group">
-          <span class="ticker-item">Madrasi Weaves, Salem – <strong>₹1 Crore</strong></span>
-          <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai – <strong>₹50 Lakhs</strong></span>
-          <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram – <strong>₹30 Lakhs</strong></span>
-          <span class="ticker-item">CoachX – <strong>50,000+ Entrepreneurs</strong></span>
+          <span class="ticker-item">Madrasi Weaves, Salem - <strong>₹1 Crore</strong></span>
+          <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai - <strong>₹50 Lakhs</strong></span>
+          <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram - <strong>₹30 Lakhs</strong></span>
+          <span class="ticker-item">CoachX - <strong>50,000+ Entrepreneurs</strong></span>
         </div>
         <div class="ticker-group" aria-hidden="true">
-          <span class="ticker-item">Madrasi Weaves, Salem – <strong>₹1 Crore</strong></span>
-          <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai – <strong>₹50 Lakhs</strong></span>
-          <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram – <strong>₹30 Lakhs</strong></span>
-          <span class="ticker-item">CoachX – <strong>50,000+ Entrepreneurs</strong></span>
+          <span class="ticker-item">Madrasi Weaves, Salem - <strong>₹1 Crore</strong></span>
+          <span class="ticker-item">Nisha, The Needles &amp; Thread, Madurai - <strong>₹50 Lakhs</strong></span>
+          <span class="ticker-item">Maxlin Deena, Alna Apparels, Villupuram - <strong>₹30 Lakhs</strong></span>
+          <span class="ticker-item">CoachX - <strong>50,000+ Entrepreneurs</strong></span>
         </div>
       </div>
     </div>
   </section>
 
 
-  <!-- SECTION 4 – IMPACT / FAQ / FINAL CTA -->
+  <!-- SECTION 4 - IMPACT / FAQ / FINAL CTA -->
   <section class="impact">
     <div class="container">
 
@@ -2545,7 +2753,7 @@
         <div class="faq-list">
           <details class="faq-item">
             <summary>01. What are the timings for the workshop?</summary>
-            <p class="faq-answer">The workshop runs live on <span data-cv="zrm_online_date">OCT 16 2026 – OCT 18
+            <p class="faq-answer">The workshop runs live on <span data-cv="zrm_online_date">OCT 16 2026 - OCT 18
                 2026</span>, from <span data-cv="02_zrm_online_time">07:00 AM to 08:30 AM</span>. A replay is available
               from <span data-cv="zrm_replay">07:00 PM to 08:30 PM</span> on the same day.</p>
           </details>
@@ -2557,7 +2765,7 @@
 
           <details class="faq-item">
             <summary>03. Will I get a recording of the session?</summary>
-            <p class="faq-answer">No. There are no recordings – only one replay (<span data-cv="zrm_replay"></span>) on
+            <p class="faq-answer">No. There are no recordings - only one replay (<span data-cv="zrm_replay"></span>) on
               the same day.</p>
           </details>
 
@@ -2568,9 +2776,9 @@
           </details>
 
           <details class="faq-item">
-            <summary>05. I’m running a small business. Is it a right course for me?</summary>
-            <p class="faq-answer">Yes. You’ll create content, build your marketing system and implement strategies for
-              your own business – live, during the workshop.</p>
+            <summary>05. I'm running a small business. Is it a right course for me?</summary>
+            <p class="faq-answer">Yes. You'll create content, build your marketing system and implement strategies for
+              your own business - live, during the workshop.</p>
           </details>
 
           <details class="faq-item">
@@ -2579,10 +2787,10 @@
           </details>
 
           <details class="faq-item">
-            <summary>07. I made the payment but didn’t get any email/whatsapp</summary>
+            <summary>07. I made the payment but didn't get any email/whatsapp</summary>
             <p class="faq-answer">Please reach us at <a href="tel:+918015139542">+91 80151 39542</a> or <a
                 href="mailto:helpdesk@tamilbusinesstribe.com">helpdesk@tamilbusinesstribe.com</a> with your payment
-              details and we’ll help you right away.</p>
+              details and we'll help you right away.</p>
           </details>
         </div>
       </div>
@@ -2591,7 +2799,7 @@
       <div class="final-cta">
         <div class="final-cta-bg" aria-hidden="true"></div>
         <h2 class="section-title">3 Days. <span class="yellow">One Marketing System.</span></h2>
-        <p class="why-lead">Only Live Practical Implementation. No Recordings. – with the ZRM community</p>
+        <p class="why-lead">Only Live Practical Implementation. No Recordings. - with the ZRM community</p>
         <a class="btn btn-yellow" href="payment.html">Start Your ZRM Journey <span class="btn-arrow"
             aria-hidden="true">→</span></a>
         <p class="cta-note">No Recordings. Only One Replay. Just Live Implementation.</p>
@@ -2609,8 +2817,8 @@
   <!-- Mobile sticky CTA: same label + destination as the hero CTA; shown only
      after the hero has scrolled away and hidden again at the final CTA -->
   <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
-    <a class="btn" href="payment.html" tabindex="-1">₹499 | 3 DAYS | LIVE ON ZOOM <span class="btn-arrow"
-        aria-hidden="true">→</span></a>
+    <a class="btn" href="payment.html" tabindex="-1"><span class="rupee">&#8377;</span>499 | 3 DAYS | LIVE ON ZOOM <span
+        class="btn-arrow" aria-hidden="true">→</span></a>
   </div>
   <script>
     (function () {
@@ -2659,7 +2867,7 @@
         v.setAttribute("poster", v.getAttribute("data-poster"));
       });
 
-      /* Impact video slider – poster images, video streams only on Play,
+      /* Impact video slider - poster images, video streams only on Play,
          one video plays at a time */
       (function () {
         var grid = document.querySelector(".impact-grid");
@@ -2688,6 +2896,9 @@
             video.src = video.dataset.src;
           }
           video.controls = true;
+          video.setAttribute("controlslist", "nodownload noplaybackrate noremoteplayback");
+          video.disablePictureInPicture = true;
+          video.setAttribute("disablepictureinpicture", "");
           card.classList.add("is-playing");
           var attempt = video.play();
           if (attempt && attempt.catch) attempt.catch(function () { });
@@ -2735,7 +2946,7 @@
         });
       })();
 
-      /* Day 2 gallery – dots follow the swipe position and jump to a slide */
+      /* Day 2 gallery - dots follow the swipe position and jump to a slide */
       (function () {
         document.querySelectorAll(".day-gallery").forEach(function (gallery) {
           var track = gallery.querySelector(".day-slides");
@@ -2771,7 +2982,7 @@
         });
       })();
 
-      /* Day 1 card – looping video, loaded and played only while it is in view */
+      /* Day 1 card - looping video, loaded and played only while it is in view */
       (function () {
         var video = document.querySelector(".day-image video[data-src]");
         if (!video) return;
@@ -2790,7 +3001,7 @@
         }, { rootMargin: "200px 0px" }).observe(video);
       })();
 
-      /* Participants section – main video autoplays (muted, looping) while the
+      /* Participants section - main video autoplays (muted, looping) while the
          section is on screen; controls let the viewer unmute. Nothing downloads
          until the section comes near the screen. */
       (function () {
@@ -2807,6 +3018,10 @@
             video.muted = true;
             video.loop = true;
             video.controls = true;
+            // no ⋮ menu: remove download, speed, cast and picture-in-picture items
+            video.setAttribute("controlslist", "nodownload noplaybackrate noremoteplayback");
+            video.disablePictureInPicture = true;
+            video.setAttribute("disablepictureinpicture", "");
             video.playsInline = true;
             video.setAttribute("muted", "");
             video.setAttribute("playsinline", "");
@@ -2841,7 +3056,7 @@
         });
       })();
 
-      /* Hero – main video plays (with sound) in place of the image on Play;
+      /* Hero - main video plays (with sound) in place of the image on Play;
          nothing downloads until then */
       (function () {
         var box = document.querySelector(".hero .video-box[data-video]");
@@ -2875,7 +3090,7 @@
         });
       })();
 
-      /* Success stories carousel – continuous auto scroll */
+      /* Success stories carousel - continuous auto scroll */
       (function () {
         var track = document.querySelector(".testimonial-grid");
         if (!track) return;
@@ -3020,46 +3235,19 @@
 
   <script src="zrm-values.js" defer></script>
 
-  <!-- Enhancements load after the first paint so they never delay the page:
-     page widgets (sliders, carousel, video posters) and the motion layer
-     (ambient background, GSAP + ScrollTrigger, Lenis – self-hosted in /vendor).
-     Desktop with a mouse loads them straight away for the hero entrance. -->
+  <script src="ambient.js" defer></script>
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="motion.js" defer></script>
   <script>
-    (function () {
-      var started = false;
-      function run() {
-        if (started) return;
-        started = true;
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function () {
         if (window.__zrmInit) window.__zrmInit();
-        ["ambient.js", "vendor/gsap.min.js", "vendor/ScrollTrigger.min.js", "vendor/lenis.min.js", "motion.js"].forEach(function (src) {
-          var s = document.createElement("script");
-          s.src = src;
-          s.async = false; // keep execution order
-          document.body.appendChild(s);
-        });
-      }
-      // after the next two frames (the first paint has happened), when idle
-      function idle() {
-        requestAnimationFrame(function () {
-          requestAnimationFrame(function () {
-            if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 1500 });
-            else setTimeout(run, 200);
-          });
-        });
-      }
-
-      if (document.documentElement.classList.contains("motion-ready")) {
-        // hero is hidden for its entrance → start as soon as the DOM is parsed
-        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
-        else run();
-      } else if (document.readyState === "complete") {
-        idle();
-      } else {
-        window.addEventListener("load", idle);
-      }
-      // safety: never wait more than 4s
-      setTimeout(run, 4000);
-    })();
+      });
+    } else {
+      if (window.__zrmInit) window.__zrmInit();
+    }
   </script>
 </body>
 

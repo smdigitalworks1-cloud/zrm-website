@@ -4,7 +4,7 @@
   Any element with data-cv="key"      gets its text replaced with the value.
   Any link    with data-cv-href="key" gets its href replaced with the value.
 
-  1. The fallback values below are applied straight away (text only – the
+  1. The fallback values below are applied straight away (text only - the
      WhatsApp group link has no fallback, it must come from GHL).
   2. Then the live GoHighLevel custom values are loaded from /api/zrm-values
      (Vercel function, see api/zrm-values.js) and replace them. Change the
@@ -16,7 +16,7 @@
 */
 (function () {
   var FALLBACK = {
-    zrm_online_date: "OCT 16 2026 – OCT 18 2026",
+    zrm_online_date: "OCT 16 2026 - OCT 18 2026",
     "02_zrm_online_time": "07:00 AM to 08:30 AM",
     zrm_replay: "07:00 PM to 08:30 PM"
   };

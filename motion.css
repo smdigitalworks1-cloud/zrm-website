@@ -30,30 +30,22 @@ html.lenis body {
 }
 
 /* ---------------------------------------------------------
-   HERO INTRO – hidden until motion.js plays the entrance
-   (class is only set when motion is allowed; see <head>)
+   HERO INTRO – background atmosphere starts subtle
+   (text is never hidden in CSS, avoiding blank reload gaps)
 --------------------------------------------------------- */
-.motion-ready .hero-atmos,
-.motion-ready .hero .top-label,
-.motion-ready .hero-title,
-.motion-ready .hero-subtitle,
-.motion-ready .hero .event-details {
+.motion-ready .hero-atmos {
   opacity: 0;
 }
 
-/* word-by-word reveal: each word slides up inside its own mask */
+/* word-by-word reveal: each word smoothly glides with hardware acceleration */
 .w {
   display: inline-block;
-  overflow: hidden;
   vertical-align: top;
-  /* keep descenders (g, y, p) inside the mask */
-  padding-bottom: .1em;
-  margin-bottom: -.1em;
 }
 
 .wi {
   display: inline-block;
-  will-change: transform;
+  will-change: transform, opacity;
 }
 
 /* ---------------------------------------------------------

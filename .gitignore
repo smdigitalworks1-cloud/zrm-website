@@ -6,3 +6,8 @@ section *.png
 .env.local
 .env.*.local
 .vercel
+
+# Hostinger: GHL token + cached values live only on the server
+zrm-config.php
+meta-config.php
+.zrm-cache.json
