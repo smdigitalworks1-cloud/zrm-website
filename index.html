@@ -2,70 +2,51 @@
 <html lang="en">
 
 <head>
-  <!-- Google Tag Manager + Meta Pixel + Conversions API
-       Same tags / IDs / events as before, but the third-party scripts are only
-       downloaded on the visitor's first interaction (scroll, wheel, tap, click,
-       key press or mouse move), so they don't slow the first paint.
-       fbq() calls made before that are queued and sent once Pixel loads. -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KHBJZ23Z');</script>
+  <!-- End Google Tag Manager -->
 
-    // Meta Pixel stub (queue only – fbevents.js is loaded later)
-    !function (f) {
-      if (f.fbq) return; var n = f.fbq = function () {
-        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+  <!-- Meta Pixel Code + Conversions API -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
       };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
-    }(window);
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1452662180104631');
 
     var zrmEventId = 'zrm_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
     fbq('track', 'PageView', {}, { eventID: zrmEventId });
 
-    (function () {
-      var events = ["scroll", "wheel", "pointerdown", "touchstart", "keydown", "mousemove"];
-      var loaded = false;
-
-      function addScript(src) {
-        var s = document.createElement("script");
-        s.async = true;
-        s.src = src;
-        document.head.appendChild(s);
-      }
-
-      function loadTracking() {
-        if (loaded) return;
-        loaded = true;
-        events.forEach(function (e) { window.removeEventListener(e, loadTracking, { passive: true }); });
-
-        // Google Tag Manager (GA4 + Clarity are configured inside GTM)
-        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        addScript("https://www.googletagmanager.com/gtm.js?id=GTM-KHBJZ23Z");
-
-        // Meta Pixel library – sends the queued init + PageView
-        addScript("https://connect.facebook.net/en_US/fbevents.js");
-
-        // Conversions API (server side, same event id for deduplication)
-        if (window.fetch) {
-          fetch('/api/meta-capi', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              event_name: 'PageView',
-              event_id: zrmEventId,
-              event_source_url: window.location.href
-            }),
-            keepalive: true
-          }).catch(function () { });
-        }
-      }
-
-      events.forEach(function (e) { window.addEventListener(e, loadTracking, { passive: true }); });
-    })();
+    if (window.fetch) {
+      fetch('/api/meta-capi', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          event_name: 'PageView',
+          event_id: zrmEventId,
+          event_source_url: window.location.href
+        }),
+        keepalive: true
+      }).catch(function () { });
+    }
   </script>
   <noscript><img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1452662180104631&ev=PageView&noscript=1" /></noscript>
-  <!-- End Meta Pixel Code -->
+  <!-- End Google Tag Manager & Meta Pixel Code -->
 
   <!-- Core Technical SEO & Charset -->
   <meta charset="UTF-8">
@@ -1548,6 +1529,7 @@
     .ticker {
       display: flex;
       width: max-content;
+      will-change: transform;
       animation: tickerMove 40s linear infinite;
     }
 
@@ -2186,7 +2168,7 @@
         margin-top: 48px;
       }
     }
-  
+
     /* =========================
    VIDEO TESTIMONIALS: prev / next arrows on the left and right of the
    cards, vertically centred on them, on every screen size (no arrow row
@@ -2225,8 +2207,12 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="motion.css">
-  <link rel="stylesheet" href="ambient.css">
+  <link rel="preload" href="motion.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="ambient.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="motion.css">
+    <link rel="stylesheet" href="ambient.css">
+  </noscript>
 </head>
 
 <body>
@@ -2244,7 +2230,7 @@
     <!-- HEADER -->
     <header class="header">
       <div class="container">
-        <img class="logo" src="ZRM New LP Assets/Layer 1 2.webp" alt="Tamil Business Tribe">
+        <img class="logo" src="ZRM New LP Assets/Layer 1 2.webp" alt="Tamil Business Tribe" width="229" height="62">
       </div>
     </header>
 
@@ -2286,7 +2272,7 @@
 
             <ul class="detail-list">
               <li class="detail-item">
-                <img class="detail-icon" src="ZRM New LP Assets/calendar 1.webp" alt="">
+                <img class="detail-icon" src="ZRM New LP Assets/calendar 1.webp" alt="" width="54" height="54">
                 <div class="detail-text">
                   <strong>Zoom Live Call</strong>
                   <span data-cv="zrm_online_date">OCT 16 2026 - OCT 18 2026</span>
@@ -2294,7 +2280,7 @@
               </li>
 
               <li class="detail-item">
-                <img class="detail-icon" src="ZRM New LP Assets/on-time 1.webp" alt="">
+                <img class="detail-icon" src="ZRM New LP Assets/on-time 1.webp" alt="" width="54" height="54">
                 <div class="detail-text">
                   <strong>Timing Starts at</strong>
                   <span><time data-cv="02_zrm_online_time">07:00 AM to 08:30 AM</time> (Only Live)</span>
@@ -2302,7 +2288,7 @@
               </li>
 
               <li class="detail-item">
-                <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 1.webp" alt="">
+                <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 1.webp" alt="" width="54" height="54">
                 <div class="detail-text">
                   <strong>Replay Time Starts at</strong>
                   <span data-cv="zrm_replay">07:00 PM to 08:30 PM</span>
@@ -2310,7 +2296,7 @@
               </li>
 
               <li class="detail-item">
-                <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 2.webp" alt="">
+                <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 2.webp" alt="" width="54" height="54">
                 <div class="detail-text">
                   <strong>Will be Held in</strong>
                   <span>Zoom Live Session (No Recording)</span>
@@ -2346,7 +2332,8 @@
 
         <div class="testimonial-grid" aria-roledescription="carousel" aria-label="Success stories" tabindex="0">
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/maxlin.webp" alt="Maxlin Deena" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/maxlin.webp" alt="Maxlin Deena" loading="lazy"
+              width="95" height="135">
             <div class="t-info">
               <p class="t-name">Maxlin Deena, Founder</p>
               <p class="t-company">Alna Apparels, Villupuram</p>
@@ -2354,7 +2341,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/rajesh.webp" alt="Dr. Rajesh Kanna" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/rajesh.webp" alt="Dr. Rajesh Kanna" loading="lazy"
+              width="95" height="135">
             <div class="t-info">
               <p class="t-name">Dr. Rajesh Kanna, Founder</p>
               <p class="t-company">Friends Physio, Coimbatore</p>
@@ -2362,7 +2350,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/nisha.webp" alt="Nisha" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/nisha.webp" alt="Nisha" loading="lazy" width="95"
+              height="135">
             <div class="t-info">
               <p class="t-name">Nisha, Founder</p>
               <p class="t-company">The Needles &amp; Thread, Madurai</p>
@@ -2370,7 +2359,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/sharanya.webp" alt="Sharanya" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/sharanya.webp" alt="Sharanya" loading="lazy"
+              width="95" height="135">
             <div class="t-info">
               <p class="t-name">Sharanya, Founder</p>
               <p class="t-company">Vishara Skincare, Chennai</p>
@@ -2378,7 +2368,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/anusha.webp" alt="Anusha" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/anusha.webp" alt="Anusha" loading="lazy" width="95"
+              height="135">
             <div class="t-info">
               <p class="t-name">Anusha, Founder</p>
               <p class="t-company">Glorious Minds, Chennai</p>
@@ -2386,7 +2377,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/rajkamal.webp" alt="Rajkamal" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/rajkamal.webp" alt="Rajkamal" loading="lazy"
+              width="95" height="135">
             <div class="t-info">
               <p class="t-name">Rajkamal, Founder</p>
               <p class="t-company">Skillx Nation, Madurai</p>
@@ -2394,7 +2386,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/hari.webp" alt="Hari Karthik" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/hari.webp" alt="Hari Karthik" loading="lazy"
+              width="95" height="135">
             <div class="t-info">
               <p class="t-name">Hari Karthik, Founder</p>
               <p class="t-company">Madrassi Weaves, Salem</p>
@@ -2402,7 +2395,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/muthu.webp" alt="Muthu Kishore" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/muthu.webp" alt="Muthu Kishore" loading="lazy"
+              width="95" height="135">
             <div class="t-info">
               <p class="t-name">Muthu Kishore, Founder</p>
               <p class="t-company">Passive Way Store, Coimbatore</p>
@@ -2410,7 +2404,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/oviya.webp" alt="Oviya" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/oviya.webp" alt="Oviya" loading="lazy" width="95"
+              height="135">
             <div class="t-info">
               <p class="t-name">Oviya, Founder</p>
               <p class="t-company">Oviya's Meraki, Chennai</p>
@@ -2418,7 +2413,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/sharon.webp" alt="Sharon" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/sharon.webp" alt="Sharon" loading="lazy" width="95"
+              height="135">
             <div class="t-info">
               <p class="t-name">Sharon, Founder</p>
               <p class="t-company">Dan Ella, Chennai</p>
@@ -2427,7 +2423,7 @@
           </div>
           <div class="testimonial">
             <img class="t-photo" src="ZRM New LP Assets/testimonials/navaneeth.webp" alt="Navaneeth Krishnan"
-              loading="lazy">
+              loading="lazy" width="95" height="135">
             <div class="t-info">
               <p class="t-name">Navaneeth Krishnan, Founder</p>
               <p class="t-company">Flying Hornbill, Chennai</p>
@@ -2435,7 +2431,8 @@
             </div>
           </div>
           <div class="testimonial">
-            <img class="t-photo" src="ZRM New LP Assets/testimonials/annamalai.webp" alt="Annamalai" loading="lazy">
+            <img class="t-photo" src="ZRM New LP Assets/testimonials/annamalai.webp" alt="Annamalai" loading="lazy"
+              width="95" height="135">
             <div class="t-info">
               <p class="t-name">Annamalai, Founder</p>
               <p class="t-company">Dream Zone, Chennai</p>
@@ -2525,8 +2522,9 @@
 
           <div class="day-image">
             <!-- Day 1 video: muted loop, only downloads/plays while the card is near the screen -->
-            <video data-src="ZRM%20New%20LP%20Assets/Day%201.mp4" poster="ZRM%20New%20LP%20Assets/Mask%20group.webp"
-              muted loop playsinline preload="none" aria-label="Day 1 - Content creation"></video>
+            <video data-src="ZRM%20New%20LP%20Assets/Day1.mp4" poster="ZRM%20New%20LP%20Assets/Mask%20group-480w.webp"
+              width="881" height="520" muted loop playsinline preload="none"
+              aria-label="Day 1 - Content creation"></video>
           </div>
         </article>
 
@@ -2558,18 +2556,20 @@
                 <figcaption class="day-slide-title">Sales funnel of skincare</figcaption>
                 <img src="ZRM%20New%20LP%20Assets/day%202%20img%201-1120.webp"
                   srcset="ZRM%20New%20LP%20Assets/day%202%20img%201-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%201-1120.webp 1120w"
-                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Sales funnel of skincare" loading="lazy">
+                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Sales funnel of skincare" loading="lazy"
+                  width="1120" height="1329">
               </figure>
               <figure class="day-slide">
                 <img src="ZRM%20New%20LP%20Assets/day%202%20img%202-1120.webp"
                   srcset="ZRM%20New%20LP%20Assets/day%202%20img%202-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%202-1120.webp 1120w"
                   sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Live shopping commerce funnel"
-                  loading="lazy">
+                  loading="lazy" width="1120" height="595">
               </figure>
               <figure class="day-slide">
                 <img src="ZRM%20New%20LP%20Assets/day%202%20img%203-1120.webp"
                   srcset="ZRM%20New%20LP%20Assets/day%202%20img%203-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%203-1120.webp 1120w"
-                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="High ticket funnel" loading="lazy">
+                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="High ticket funnel" loading="lazy"
+                  width="1120" height="644">
               </figure>
             </div>
             <div class="day-dots"></div>
@@ -2600,7 +2600,7 @@
             <img src="ZRM%20New%20LP%20Assets/day%203%20img-1120.webp"
               srcset="ZRM%20New%20LP%20Assets/day%203%20img-560.webp 560w, ZRM%20New%20LP%20Assets/day%203%20img-1120.webp 1120w"
               sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 3 - Empty stall to 100's of cameras"
-              loading="lazy">
+              loading="lazy" width="1120" height="630">
           </div>
         </article>
 
@@ -2619,51 +2619,63 @@
 
       <div class="tools-grid">
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 84.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 84.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">Answer the Public</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 76.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 76.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">Canva</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 83.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 83.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">Unit Economics</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 77.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 77.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">ChatGPT</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 78.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 78.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">VN Editor</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 80.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 80.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">Notebook LM</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 74.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 74.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">Gemini</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 73.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 73.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">Storybeat Edit</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 79.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 79.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">InShot</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 81.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 81.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">HeyGen</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 82.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 82.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">Meta Edits</div>
         </div>
         <div class="tool-card">
-          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 75.webp" alt="" loading="lazy">
+          <img class="tool-logo" src="ZRM New LP Assets/Rectangle 75.webp" alt="" loading="lazy" width="105"
+            height="105">
           <div class="tool-name">Capcut</div>
         </div>
       </div>
@@ -2676,10 +2688,11 @@
       <h2 class="section-title">Listen to What <span class="yellow">Our Participants</span> are Saying</h2>
 
       <div class="participants-video" role="button" aria-label="Play participants video" tabindex="0"
-        data-video="ZRM%20New%20LP%20Assets/Main%20video.mp4">
+        data-video="ZRM%20New%20LP%20Assets/Day%204%20full%20video.mp4">
         <img src="ZRM New LP Assets/Rectangle 85.webp"
           srcset="ZRM%20New%20LP%20Assets/Rectangle%2085-800w.webp 800w, ZRM%20New%20LP%20Assets/Rectangle%2085.webp 1680w"
-          sizes="(max-width: 1240px) calc(100vw - 32px), 1200px" alt="Our participants on WhatsApp" loading="lazy">
+          sizes="(max-width: 1240px) calc(100vw - 32px), 1200px" alt="Our participants on WhatsApp" loading="lazy"
+          width="1680" height="676">
         <div class="video-overlay">
           <div class="play-button"></div>
         </div>
@@ -2740,102 +2753,102 @@
          and a video only streams after its Play button is clicked. -->
       <!-- wraps the video slider + its arrows so the arrows can sit beside the cards -->
       <div class="impact-carousel">
-      <div class="impact-grid" aria-label="Participant video testimonials">
-        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 1">
-          <div class="impact-media">
-            <video data-poster="ZRM New LP Assets/impact/video-1.webp"
-              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6a3a77fe7249909712059c15.mp4"
-              preload="none" playsinline></video>
-            <div class="play-button"></div>
+        <div class="impact-grid" aria-label="Participant video testimonials">
+          <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 1">
+            <div class="impact-media">
+              <video data-poster="ZRM New LP Assets/impact/video-1.webp"
+                data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6a3a77fe7249909712059c15.mp4"
+                preload="none" playsinline></video>
+              <div class="play-button"></div>
+            </div>
           </div>
+
+          <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 2">
+            <div class="impact-media">
+              <video data-poster="ZRM New LP Assets/impact/video-2.webp"
+                data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699022b4008498585063be69.mp4"
+                preload="none" playsinline></video>
+              <div class="play-button"></div>
+            </div>
+          </div>
+
+          <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 3">
+            <div class="impact-media">
+              <video data-poster="ZRM New LP Assets/impact/video-3.webp"
+                data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/69902263c08665d643c777c5.mp4"
+                preload="none" playsinline></video>
+              <div class="play-button"></div>
+            </div>
+          </div>
+
+          <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 4">
+            <div class="impact-media">
+              <video data-poster="ZRM New LP Assets/impact/video-4.webp"
+                data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020eb772de92f78f66414.mp4"
+                preload="none" playsinline></video>
+              <div class="play-button"></div>
+            </div>
+          </div>
+
+          <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 5">
+            <div class="impact-media">
+              <video data-poster="ZRM New LP Assets/impact/video-5.webp"
+                data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020bc24813c82726dc9f5.mp4"
+                preload="none" playsinline></video>
+              <div class="play-button"></div>
+            </div>
+          </div>
+
+          <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 6">
+            <div class="impact-media">
+              <video data-poster="ZRM New LP Assets/impact/video-7.webp"
+                data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691eb00b88e1e651a0a797f7.mp4"
+                preload="none" playsinline></video>
+              <div class="play-button"></div>
+            </div>
+          </div>
+
+          <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 7">
+            <div class="impact-media">
+              <video data-poster="ZRM New LP Assets/impact/video-9.webp"
+                data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912eaa2ee923201bed8ff6a.mp4"
+                preload="none" playsinline></video>
+              <div class="play-button"></div>
+            </div>
+          </div>
+
+          <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 8">
+            <div class="impact-media">
+              <video data-poster="ZRM New LP Assets/impact/video-10.webp"
+                data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912ea3610d693d2dde2b679.mp4"
+                preload="none" playsinline></video>
+              <div class="play-button"></div>
+            </div>
+          </div>
+
+          <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 9">
+            <div class="impact-media">
+              <video data-poster="ZRM New LP Assets/impact/video-11.webp"
+                data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912e9d496d06ad4d26441b1.mp4"
+                preload="none" playsinline></video>
+              <div class="play-button"></div>
+            </div>
+          </div>
+
         </div>
 
-        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 2">
-          <div class="impact-media">
-            <video data-poster="ZRM New LP Assets/impact/video-2.webp"
-              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699022b4008498585063be69.mp4"
-              preload="none" playsinline></video>
-            <div class="play-button"></div>
-          </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" type="button" data-impact-prev aria-label="Previous videos">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 6l-6 6 6 6" />
+            </svg>
+          </button>
+          <button class="carousel-btn" type="button" data-impact-next aria-label="Next videos">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" />
+            </svg>
+          </button>
         </div>
-
-        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 3">
-          <div class="impact-media">
-            <video data-poster="ZRM New LP Assets/impact/video-3.webp"
-              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/69902263c08665d643c777c5.mp4"
-              preload="none" playsinline></video>
-            <div class="play-button"></div>
-          </div>
-        </div>
-
-        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 4">
-          <div class="impact-media">
-            <video data-poster="ZRM New LP Assets/impact/video-4.webp"
-              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020eb772de92f78f66414.mp4"
-              preload="none" playsinline></video>
-            <div class="play-button"></div>
-          </div>
-        </div>
-
-        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 5">
-          <div class="impact-media">
-            <video data-poster="ZRM New LP Assets/impact/video-5.webp"
-              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/699020bc24813c82726dc9f5.mp4"
-              preload="none" playsinline></video>
-            <div class="play-button"></div>
-          </div>
-        </div>
-
-        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 6">
-          <div class="impact-media">
-            <video data-poster="ZRM New LP Assets/impact/video-7.webp"
-              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/691eb00b88e1e651a0a797f7.mp4"
-              preload="none" playsinline></video>
-            <div class="play-button"></div>
-          </div>
-        </div>
-
-        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 7">
-          <div class="impact-media">
-            <video data-poster="ZRM New LP Assets/impact/video-9.webp"
-              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912eaa2ee923201bed8ff6a.mp4"
-              preload="none" playsinline></video>
-            <div class="play-button"></div>
-          </div>
-        </div>
-
-        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 8">
-          <div class="impact-media">
-            <video data-poster="ZRM New LP Assets/impact/video-10.webp"
-              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912ea3610d693d2dde2b679.mp4"
-              preload="none" playsinline></video>
-            <div class="play-button"></div>
-          </div>
-        </div>
-
-        <div class="impact-card" role="button" tabindex="0" aria-label="Play testimonial video 9">
-          <div class="impact-media">
-            <video data-poster="ZRM New LP Assets/impact/video-11.webp"
-              data-src="https://assets.cdn.filesafe.space/C9TfEvEykLH89tDBNnhr/media/6912e9d496d06ad4d26441b1.mp4"
-              preload="none" playsinline></video>
-            <div class="play-button"></div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="carousel-controls">
-        <button class="carousel-btn" type="button" data-impact-prev aria-label="Previous videos">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15 6l-6 6 6 6" />
-          </svg>
-        </button>
-        <button class="carousel-btn" type="button" data-impact-next aria-label="Next videos">
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 6l6 6-6 6" />
-          </svg>
-        </button>
-      </div>
       </div>
 
       <div class="join-wrap" data-mid-cta>
@@ -2958,10 +2971,23 @@
     /* Page widgets, started after the first paint (see loader below). */
     window.__zrmInit = function () {
 
-      // video posters are only fetched now, not during the initial page load
-      document.querySelectorAll("video[data-poster]").forEach(function (v) {
-        v.setAttribute("poster", v.getAttribute("data-poster"));
-      });
+      // video posters are fetched only when the impact grid approaches the viewport
+      var impactGrid = document.querySelector(".impact-grid");
+      if (impactGrid && "IntersectionObserver" in window) {
+        var posterObserver = new IntersectionObserver(function (entries, observer) {
+          if (entries[0].isIntersecting) {
+            document.querySelectorAll("video[data-poster]").forEach(function (v) {
+              v.setAttribute("poster", v.getAttribute("data-poster"));
+            });
+            observer.disconnect();
+          }
+        }, { rootMargin: "400px 0px" });
+        posterObserver.observe(impactGrid);
+      } else {
+        document.querySelectorAll("video[data-poster]").forEach(function (v) {
+          v.setAttribute("poster", v.getAttribute("data-poster"));
+        });
+      }
 
       /* Impact video slider - poster images, video streams only on Play,
          one video plays at a time */
@@ -3186,7 +3212,7 @@
         });
       })();
 
-      /* Success stories carousel - continuous auto scroll */
+      /* Success stories carousel - viewport-gated auto scroll */
       (function () {
         var track = document.querySelector(".testimonial-grid");
         if (!track) return;
@@ -3198,14 +3224,18 @@
         var SPEED = 40;            // pixels per second
         var NUDGE_TIME = 450;      // ms for the arrow-button slide
 
-        // duplicate the cards once so the loop has no visible end
         var originals = Array.prototype.slice.call(track.children);
-        originals.forEach(function (card) {
-          var copy = card.cloneNode(true);
-          copy.setAttribute("aria-hidden", "true");
-          copy.querySelectorAll("img").forEach(function (img) { img.alt = ""; });
-          track.appendChild(copy);
-        });
+        var duplicated = false;
+        function ensureDuplicate() {
+          if (duplicated) return;
+          duplicated = true;
+          originals.forEach(function (card) {
+            var copy = card.cloneNode(true);
+            copy.setAttribute("aria-hidden", "true");
+            copy.querySelectorAll("img").forEach(function (img) { img.alt = ""; });
+            track.appendChild(copy);
+          });
+        }
 
         var pos = 0;
         var lastTime = null;
@@ -3213,8 +3243,9 @@
         var touchPause = false;
         var focusPause = false;
         var nudging = false;
-        var visible = true;
+        var visible = false;
         var touchTimer;
+        var rafId = null;
 
         // width of one full set of cards
         function loopWidth() {
@@ -3237,21 +3268,36 @@
             !nudging && visible && !document.hidden;
         }
 
+        function startTick() {
+          if (rafId !== null) return;
+          ensureDuplicate();
+          lastTime = null;
+          rafId = requestAnimationFrame(tick);
+        }
+
+        function stopTick() {
+          if (rafId !== null) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+        }
+
         function tick(time) {
+          rafId = null;
+          if (!running()) return;
           if (lastTime === null) lastTime = time;
           var dt = Math.min((time - lastTime) / 1000, 0.1);
           lastTime = time;
 
-          if (running()) {
-            pos = wrap(pos + SPEED * dt);
-            track.scrollLeft = pos;
-          }
-          requestAnimationFrame(tick);
+          pos = wrap(pos + SPEED * dt);
+          track.scrollLeft = pos;
+          rafId = requestAnimationFrame(tick);
         }
 
         // slide one card left/right with easing, then continue auto scroll
         function nudge(dir) {
           if (nudging) return;
+          ensureDuplicate();
           nudging = true;
 
           var w = loopWidth();
@@ -3274,13 +3320,14 @@
               pos = wrap(to);
               track.scrollLeft = pos;
               nudging = false;
+              if (running()) startTick();
             }
           }
           requestAnimationFrame(frame);
         }
 
-        prevBtn.addEventListener("click", function () { nudge(-1); });
-        nextBtn.addEventListener("click", function () { nudge(1); });
+        if (prevBtn) prevBtn.addEventListener("click", function () { nudge(-1); });
+        if (nextBtn) nextBtn.addEventListener("click", function () { nudge(1); });
 
         track.addEventListener("keydown", function (e) {
           if (e.key === "ArrowRight") { e.preventDefault(); nudge(1); }
@@ -3296,26 +3343,33 @@
         }, { passive: true });
 
         // pause while the visitor is interacting
-        track.addEventListener("mouseenter", function () { hoverPause = true; });
-        track.addEventListener("mouseleave", function () { hoverPause = false; pos = track.scrollLeft; });
-        track.addEventListener("focusin", function () { focusPause = true; });
-        track.addEventListener("focusout", function () { focusPause = false; });
+        track.addEventListener("mouseenter", function () { hoverPause = true; stopTick(); });
+        track.addEventListener("mouseleave", function () { hoverPause = false; pos = track.scrollLeft; if (visible) startTick(); });
+        track.addEventListener("focusin", function () { focusPause = true; stopTick(); });
+        track.addEventListener("focusout", function () { focusPause = false; if (visible) startTick(); });
         track.addEventListener("touchstart", function () {
           clearTimeout(touchTimer);
           touchPause = true;
+          stopTick();
         }, { passive: true });
         track.addEventListener("touchend", function () {
           touchTimer = setTimeout(function () {
             pos = track.scrollLeft;
             touchPause = false;
+            if (visible) startTick();
           }, 2000);
         }, { passive: true });
 
-        // only move while the section is on screen
+        // only run animation while the section is in viewport
         if ("IntersectionObserver" in window) {
           new IntersectionObserver(function (entries) {
             visible = entries[0].isIntersecting;
-          }).observe(track);
+            if (visible) {
+              startTick();
+            } else {
+              stopTick();
+            }
+          }, { threshold: 0.05 }).observe(track);
         }
 
         // card widths change with screen size
@@ -3323,72 +3377,25 @@
           pos = wrap(track.scrollLeft);
           track.scrollLeft = pos;
         });
-
-        requestAnimationFrame(tick);
       })();
     };
   </script>
 
   <script src="zrm-values.js" defer></script>
 
-  <!-- Enhancements load after the first paint so they never delay the page:
-     page widgets (sliders, carousel, video posters) and the motion layer
-     (ambient background, GSAP + ScrollTrigger, Lenis – self-hosted in /vendor).
-     Desktop with a mouse loads them straight away for the hero entrance. -->
+  <script src="ambient.js" defer></script>
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script src="motion.js" defer></script>
   <script>
-    (function () {
-      var started = false;
-      function run() {
-        if (started) return;
-        started = true;
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", function () {
         if (window.__zrmInit) window.__zrmInit();
-        ["ambient.js", "vendor/gsap.min.js", "vendor/ScrollTrigger.min.js", "vendor/lenis.min.js", "motion.js"].forEach(function (src) {
-          var s = document.createElement("script");
-          s.src = src;
-          s.async = false; // keep execution order
-          document.body.appendChild(s);
-        });
-      }
-      // once the first content (hero) has actually been painted, when idle –
-      // two animation frames alone can fire before the first contentful paint
-      function whenIdle() {
-        if ("requestIdleCallback" in window) requestIdleCallback(run, { timeout: 1500 });
-        else setTimeout(run, 200);
-      }
-      function idle() {
-        var painted = false;
-        try {
-          painted = performance.getEntriesByName("first-contentful-paint").length > 0;
-        } catch (e) { painted = true; }
-        if (painted || !("PerformanceObserver" in window)) {
-          requestAnimationFrame(function () { requestAnimationFrame(whenIdle); });
-          return;
-        }
-        try {
-          var po = new PerformanceObserver(function (list) {
-            if (list.getEntriesByName("first-contentful-paint").length) {
-              po.disconnect();
-              requestAnimationFrame(function () { requestAnimationFrame(whenIdle); });
-            }
-          });
-          po.observe({ type: "paint", buffered: true });
-        } catch (e) {
-          requestAnimationFrame(function () { requestAnimationFrame(whenIdle); });
-        }
-      }
-
-      if (document.documentElement.classList.contains("motion-ready")) {
-        // desktop hero entrance → start as soon as the DOM is parsed
-        if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
-        else run();
-      } else if (document.readyState === "complete") {
-        idle();
-      } else {
-        window.addEventListener("load", idle);
-      }
-      // safety: never wait more than 4s
-      setTimeout(run, 4000);
-    })();
+      });
+    } else {
+      if (window.__zrmInit) window.__zrmInit();
+    }
   </script>
 </body>
 

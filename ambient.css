@@ -204,12 +204,6 @@
 
 /* participants – glow behind the screenshot + a slow light
    travelling around its edge */
-@property --amb-angle {
-  syntax: "<angle>";
-  inherits: false;
-  initial-value: 0deg;
-}
-
 .pv-wrap {
   position: relative;
   isolation: isolate;
@@ -230,17 +224,19 @@
   inset: -3px;
   z-index: -1;
   border-radius: clamp(14px, 1.6vw, 20px);
-  background: conic-gradient(from var(--amb-angle),
+  background: conic-gradient(from 0deg,
     transparent 0deg, transparent 250deg,
     rgba(232, 255, 0, .45) 300deg, rgba(255, 23, 56, .5) 330deg, transparent 360deg);
   filter: blur(10px);
   opacity: .7;
   pointer-events: none;
+  will-change: transform;
   animation: amb-spin 14s linear infinite;
 }
 
 @keyframes amb-spin {
-  to { --amb-angle: 360deg; }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
 }
 
 /* final CTA – gentle light sweep */

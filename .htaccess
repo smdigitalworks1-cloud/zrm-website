@@ -6,6 +6,10 @@ AddCharset UTF-8 .html .css .js .php .json
 
 RewriteEngine On
 
+# Allow static files directly
+RewriteRule ^robots\.txt$ - [L]
+RewriteRule ^sitemap\.xml$ - [L]
+
 # /api/zrm-values → zrm-values.php (server-only file; the GHL token lives in
 # zrm-config.php next to it, which is never served)
 RewriteRule ^api/zrm-values/?$ zrm-values.php [L,QSA]
@@ -23,9 +27,12 @@ RewriteRule ^api/[^/]+\.js$ - [F,L]
 RewriteRule ^_backup[^/]*(/|$) - [F,L]
 Options -Indexes
 
-# same cache headers as vercel.json
+# Cache headers for static assets
 <IfModule mod_headers.c>
-  <FilesMatch "\.(webp|png|jpg|jpeg|svg|woff2|ttf)$">
+  <FilesMatch "\.(webp|png|jpg|jpeg|svg|woff2|ttf|css|js)$">
     Header set Cache-Control "public, max-age=2592000, stale-while-revalidate=86400"
+  </FilesMatch>
+  <FilesMatch "^(robots\.txt|sitemap\.xml)$">
+    Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
 </IfModule>
