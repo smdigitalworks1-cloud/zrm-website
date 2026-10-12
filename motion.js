@@ -219,6 +219,7 @@
   // every .amb-layer drifts at its own speed while its section passes,
   // so the background slowly moves behind the (still) content
   function ambientScroll(k) {
+    if (k < 0.5) return; // phones: the drift is ~1px there – not worth ~10 scrub triggers
     all(".amb-layer[data-speed]").forEach(function (layer) { later(function () {
       var host = layer.closest(".amb").parentNode;
       var y = parseFloat(layer.dataset.speed) * k;
@@ -479,7 +480,7 @@
 
     // "tool orbit": every card drifts vertically at its own pace (via --orbit)
     var orbit = [20, -15, 10];
-    cards.forEach(function (card, i) { later(function () {
+    if (k >= 0.5) cards.forEach(function (card, i) { later(function () {
       var v = orbit[i % orbit.length] * Math.max(k, 0.5);
       gsap.fromTo(card, { "--orbit": -v + "px" }, {
         "--orbit": v + "px", ease: "none",
