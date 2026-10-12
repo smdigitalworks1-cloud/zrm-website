@@ -614,25 +614,34 @@
       font-weight: 500;
     }
 
-    /* Hero pricing CTA - dark pill; on hover it turns red and the
-   white circle slides from the left edge to the right edge */
+    /* Hero pricing CTA – dark glass pill with a white circle on the left.
+   Hover: the pill turns red, the circle glides to the right edge, the label
+   glides the same way (always centred in the free space), a light sweep
+   follows and the arrow gives a small nudge when the circle lands.
+   Everything moves with transform/opacity only – no layout per frame. */
     .cta {
       --cta-ease: cubic-bezier(.22, 1, .36, 1);
+      --cta-in: 700ms;
+      --cta-out: 560ms;
       --cta-circle: 46px;
       --cta-inset: 4px;
       --cta-gap: 14px;
+      /* pill height stays the same as before */
+      --cta-h: calc(var(--cta-circle) + var(--cta-inset) * 2);
+      /* the circle is 4px taller than the pill → overlaps its edges by 2px */
+      --cta-dot: calc(var(--cta-h) + 4px);
+      /* label offset from the pill centre: half the space the circle takes */
+      --cta-shift: calc((var(--cta-dot) - 2px) / 2);
 
       position: relative;
       isolation: isolate;
-      overflow: hidden;
+      container-type: inline-size;
       display: flex;
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: calc(var(--cta-circle) + var(--cta-inset) * 2);
-      /* room for the circle on the left; swapped to the right on hover */
-      padding-left: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
-      padding-right: var(--cta-gap);
+      height: var(--cta-h);
+      padding: 0 var(--cta-gap);
       border-radius: 999px;
       background: linear-gradient(135deg, #25282d 0%, #181b20 55%, #202329 100%);
       color: #ffffff;
@@ -644,10 +653,8 @@
         inset 0 -1px 0 rgba(0, 0, 0, .45),
         0 8px 24px rgba(0, 0, 0, .25);
       transition:
-        background 650ms var(--cta-ease),
-        box-shadow 650ms var(--cta-ease),
-        transform 650ms var(--cta-ease),
-        padding 700ms var(--cta-ease);
+        box-shadow var(--cta-out) var(--cta-ease),
+        transform var(--cta-out) var(--cta-ease);
     }
 
     /* red layer fades in (gradients can't be transitioned directly) */
@@ -659,31 +666,33 @@
       border-radius: inherit;
       background: linear-gradient(115deg, #e9151d 0%, var(--red) 48%, #f51b24 100%);
       opacity: 0;
-      transition: opacity 650ms var(--cta-ease);
+      transition: opacity var(--cta-out) var(--cta-ease);
     }
 
     .cta .arrow {
       position: absolute;
       z-index: 2;
       top: 50%;
-      left: var(--cta-inset);
-      width: var(--cta-circle);
-      height: var(--cta-circle);
-      transform: translateY(-50%);
+      left: -2px;
+      width: var(--cta-dot);
+      height: var(--cta-dot);
+      margin-top: calc(var(--cta-dot) / -2);
       display: flex;
       align-items: center;
       justify-content: center;
       border-radius: 50%;
       background: #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, .18);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, .22);
+      transform: translateX(0);
       transition:
-        left 700ms var(--cta-ease),
-        box-shadow 700ms var(--cta-ease);
+        transform var(--cta-out) var(--cta-ease),
+        box-shadow var(--cta-out) var(--cta-ease);
+      will-change: transform;
     }
 
     .cta .arrow svg {
-      width: 45%;
-      height: 45%;
+      width: 42%;
+      height: 42%;
       fill: none;
       stroke: var(--red);
       stroke-width: 2.4;
@@ -695,72 +704,88 @@
       position: relative;
       z-index: 1;
       line-height: 1;
-      transition: letter-spacing 650ms var(--cta-ease);
+      transform: translateX(var(--cta-shift));
+      transition: transform var(--cta-out) var(--cta-ease);
     }
 
-    /* light sweep */
+    /* the light sweep is clipped to the pill by its own layer, so the
+       circle may overlap the pill edges */
     .cta .cta-shine {
       position: absolute;
       z-index: 0;
+      inset: 0;
+      border-radius: inherit;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .cta .cta-shine::before {
+      content: "";
+      position: absolute;
       top: -100%;
       left: -45%;
       width: 28%;
       height: 300%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .18), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .2), transparent);
       transform: rotate(18deg) translateX(-220%);
       opacity: 0;
-      pointer-events: none;
     }
 
     /* hover only on real pointers (no sticky hover on touch);
-   keyboard focus gets the same state */
+       keyboard focus gets the same state */
     @media (hover: hover) {
-      .cta:hover::before {
-        opacity: 1;
-      }
-
       .cta:hover {
         transform: scale(1.018);
-        padding-left: var(--cta-gap);
-        padding-right: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
         box-shadow:
           inset 0 1px 0 rgba(255, 255, 255, .18),
-          0 12px 34px rgba(255, 32, 40, .28),
-          0 0 28px rgba(255, 32, 40, .13);
+          0 14px 36px rgba(255, 32, 40, .32),
+          0 0 30px rgba(255, 32, 40, .16);
+        transition-duration: var(--cta-in);
+      }
+
+      .cta:hover::before {
+        opacity: 1;
+        transition-duration: var(--cta-in);
       }
 
       .cta:hover .arrow {
-        left: calc(100% - var(--cta-circle) - var(--cta-inset));
-        box-shadow: 0 5px 16px rgba(0, 0, 0, .2), 0 0 18px rgba(255, 255, 255, .16);
-      }
-
-      .cta:hover .arrow svg {
-        animation: ctaArrowPush 700ms var(--cta-ease);
+        /* right edge: pill width (content + both gaps) − circle + its 2px overlap on each side */
+        transform: translateX(calc(100cqw + var(--cta-gap) * 2 - var(--cta-dot) + 4px));
+        box-shadow: 0 6px 18px rgba(0, 0, 0, .22), 0 0 20px rgba(255, 255, 255, .22);
+        transition-duration: var(--cta-in);
       }
 
       .cta:hover .cta-label {
-        letter-spacing: 0.07em;
+        transform: translateX(calc(var(--cta-shift) * -1));
+        transition-duration: var(--cta-in);
       }
 
-      .cta:hover .cta-shine {
-        opacity: 1;
-        animation: ctaShine 900ms var(--cta-ease) forwards;
+      /* small push when the circle lands on the right */
+      .cta:hover .arrow svg {
+        animation: ctaArrowNudge 460ms var(--cta-ease) 520ms;
       }
+
+      /* light sweep starts just after the circle starts moving */
+      .cta:hover .cta-shine::before {
+        animation: ctaShine 950ms var(--cta-ease) 140ms forwards;
+      }
+    }
+
+    .cta:focus-visible {
+      outline: 2px solid #ffffff;
+      outline-offset: 3px;
     }
 
     .cta:focus-visible::before {
       opacity: 1;
     }
 
-    .cta:focus-visible {
-      outline: 2px solid #ffffff;
-      outline-offset: 3px;
-      padding-left: var(--cta-gap);
-      padding-right: calc(var(--cta-circle) + var(--cta-inset) + var(--cta-gap));
+    .cta:focus-visible .arrow {
+      transform: translateX(calc(100cqw + var(--cta-gap) * 2 - var(--cta-dot) + 4px));
     }
 
-    .cta:focus-visible .arrow {
-      left: calc(100% - var(--cta-circle) - var(--cta-inset));
+    .cta:focus-visible .cta-label {
+      transform: translateX(calc(var(--cta-shift) * -1));
     }
 
     /* touch: quick red feedback while pressed */
@@ -771,13 +796,17 @@
       }
     }
 
-    @keyframes ctaArrowPush {
+    @keyframes ctaArrowNudge {
       0% {
-        transform: translateX(-2px);
+        transform: translateX(0);
       }
 
-      55% {
-        transform: translateX(2px);
+      40% {
+        transform: translateX(3px);
+      }
+
+      70% {
+        transform: translateX(-1px);
       }
 
       100% {
@@ -788,10 +817,12 @@
     @keyframes ctaShine {
       0% {
         transform: rotate(18deg) translateX(-220%);
+        opacity: 1;
       }
 
       100% {
         transform: rotate(18deg) translateX(520%);
+        opacity: 1;
       }
     }
 
@@ -805,7 +836,7 @@
       }
 
       .cta .arrow svg,
-      .cta .cta-shine {
+      .cta .cta-shine::before {
         animation: none !important;
       }
 
@@ -2045,11 +2076,15 @@
         display: none;
       }
 
-      .cta,
-      .cta:hover,
-      .cta:focus-visible {
+      .cta {
         padding-left: 12px;
         padding-right: 12px;
+      }
+
+      .cta .cta-label,
+      .cta:hover .cta-label,
+      .cta:focus-visible .cta-label {
+        transform: none;
       }
 
       .hero-title {

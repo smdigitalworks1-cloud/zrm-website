@@ -83,28 +83,6 @@ html.lenis body {
   translate: var(--mx, 0px) var(--my, 0px);
 }
 
-.cta .cta-label {
-  translate: var(--ix, 0px) 0;
-}
-
-.cta {
-  transition:
-    background 400ms var(--cta-ease),
-    box-shadow 400ms var(--cta-ease),
-    transform 350ms var(--cta-ease),
-    padding 450ms var(--cta-ease);
-}
-
-.cta::before {
-  transition: opacity 400ms var(--cta-ease);
-}
-
-.cta .arrow {
-  transition:
-    left 450ms var(--cta-ease),
-    box-shadow 400ms var(--cta-ease);
-}
-
 .btn {
   position: relative;
   isolation: isolate;
@@ -136,10 +114,6 @@ html.lenis body {
 }
 
 @media (hover: hover) {
-  .cta:hover {
-    transform: translateY(-2px) scale(1.02);
-  }
-
   .btn:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow:
