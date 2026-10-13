@@ -1447,14 +1447,138 @@
       background: #000;
     }
 
-    .participants-video video::-webkit-media-controls-overflow-button,
-    .participants-video video::-webkit-media-controls-overflow-menu-list,
-    .participants-video video::-internal-media-controls-overflow-button,
-    .participants-video video::-webkit-media-controls-fullscreen-button,
-    .participants-video video::-webkit-media-controls-mute-button,
-    .participants-video video::-webkit-media-controls-volume-slider,
-    .participants-video video::-webkit-media-controls-volume-control-container {
-      display: none !important;
+    /* Custom video controls (Participants video) - Play/Pause + Progress bar, no mute, no fullscreen */
+    .custom-video-controls {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 20px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.88) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+      z-index: 5;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .participants-video.is-playing .custom-video-controls {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .participants-video.is-playing.controls-hidden .custom-video-controls {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cv-play-btn {
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.15s ease, background 0.15s ease;
+      padding: 0;
+    }
+
+    .cv-play-btn:hover {
+      background: rgba(255, 255, 255, 0.32);
+      transform: scale(1.08);
+    }
+
+    .cv-progress-wrap {
+      flex: 1;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+      touch-action: none;
+    }
+
+    .cv-progress-bar {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 4px;
+      position: relative;
+      overflow: visible;
+      transition: height 0.15s ease;
+    }
+
+    .cv-progress-wrap:hover .cv-progress-bar,
+    .cv-progress-wrap.is-dragging .cv-progress-bar {
+      height: 8px;
+    }
+
+    .cv-progress-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 0%;
+      background: var(--red, #ff1738);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+
+    .cv-progress-thumb {
+      position: absolute;
+      top: 50%;
+      left: 0%;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.6);
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.15s ease;
+      pointer-events: none;
+    }
+
+    .cv-progress-wrap:hover .cv-progress-thumb,
+    .cv-progress-wrap.is-dragging .cv-progress-thumb {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .cv-time {
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.95);
+      font-variant-numeric: tabular-nums;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+      user-select: none;
+    }
+
+    @media (max-width: 640px) {
+      .custom-video-controls {
+        padding: 10px 12px;
+        gap: 10px;
+      }
+
+      .cv-play-btn {
+        width: 34px;
+        height: 34px;
+      }
+
+      .cv-play-btn svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .cv-time {
+        font-size: 11px;
+      }
     }
 
     .participants-video.is-playing {
@@ -2845,7 +2969,8 @@
 
           <details class="faq-item">
             <summary>03. Will I get a recording of the session?</summary>
-            <p class="faq-answer">No. There are no recordings - only one replay (<span data-cv="zrm_replay">07:00 PM to 08:30 PM (Day 3 No Replay)</span>) on
+            <p class="faq-answer">No. There are no recordings - only one replay (<span data-cv="zrm_replay">07:00 PM to
+                08:30 PM (Day 3 No Replay)</span>) on
               the same day.</p>
           </details>
 
@@ -3096,37 +3221,170 @@
         });
       })();
 
-      /* Participants section - main video autoplays (muted, looping) while the
-         section is on screen; controls let the viewer unmute. Nothing downloads
-         until the section comes near the screen. */
+      /* Participants section - custom controls (play/pause and timeline only; no mute, no fullscreen) */
       (function () {
         var box = document.querySelector(".participants-video[data-video]");
         if (!box) return;
         var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         var video = null;
         var userPaused = false;
+        var playBtn = null;
+        var playIcon = null;
+        var pauseIcon = null;
+        var progressWrap = null;
+        var progressFill = null;
+        var progressThumb = null;
+        var timeDisplay = null;
+        var dragging = false;
+        var hideTimer = null;
+
+        function formatTime(s) {
+          if (isNaN(s) || s === Infinity) return "0:00";
+          var m = Math.floor(s / 60);
+          var sec = Math.floor(s % 60);
+          return m + ":" + (sec < 10 ? "0" : "") + sec;
+        }
+
+        function createControls() {
+          var wrap = document.createElement("div");
+          wrap.className = "custom-video-controls";
+          wrap.setAttribute("aria-label", "Video controls");
+          wrap.innerHTML =
+            '<button type="button" class="cv-play-btn" aria-label="Play/Pause">' +
+            '<svg class="cv-icon-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' +
+            '<svg class="cv-icon-pause" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>' +
+            '</button>' +
+            '<div class="cv-progress-wrap" role="slider" aria-label="Seek timeline" tabindex="0">' +
+            '<div class="cv-progress-bar">' +
+            '<div class="cv-progress-fill"></div>' +
+            '<div class="cv-progress-thumb"></div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="cv-time">0:00 / 0:00</div>';
+
+          playBtn = wrap.querySelector(".cv-play-btn");
+          playIcon = wrap.querySelector(".cv-icon-play");
+          pauseIcon = wrap.querySelector(".cv-icon-pause");
+          progressWrap = wrap.querySelector(".cv-progress-wrap");
+          progressFill = wrap.querySelector(".cv-progress-fill");
+          progressThumb = wrap.querySelector(".cv-progress-thumb");
+          timeDisplay = wrap.querySelector(".cv-time");
+
+          function updatePlayState() {
+            if (video.paused) {
+              playIcon.style.display = "";
+              pauseIcon.style.display = "none";
+              box.classList.remove("controls-hidden");
+            } else {
+              playIcon.style.display = "none";
+              pauseIcon.style.display = "";
+            }
+          }
+
+          playBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            if (video.paused) {
+              userPaused = false;
+              video.muted = false;
+              video.play();
+            } else {
+              userPaused = true;
+              video.pause();
+            }
+          });
+
+          function seek(e) {
+            var rect = progressWrap.getBoundingClientRect();
+            var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            var pos = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+            if (video.duration) video.currentTime = pos * video.duration;
+            progressFill.style.width = (pos * 100) + "%";
+            progressThumb.style.left = (pos * 100) + "%";
+          }
+
+          progressWrap.addEventListener("pointerdown", function (e) {
+            e.stopPropagation();
+            dragging = true;
+            progressWrap.classList.add("is-dragging");
+            progressWrap.setPointerCapture(e.pointerId);
+            seek(e);
+          });
+          progressWrap.addEventListener("pointermove", function (e) {
+            if (dragging) seek(e);
+          });
+          function endDrag(e) {
+            if (dragging) {
+              dragging = false;
+              progressWrap.classList.remove("is-dragging");
+              try { progressWrap.releasePointerCapture(e.pointerId); } catch (_) { }
+            }
+          }
+          progressWrap.addEventListener("pointerup", endDrag);
+          progressWrap.addEventListener("pointercancel", endDrag);
+
+          video.addEventListener("play", updatePlayState);
+          video.addEventListener("pause", updatePlayState);
+
+          video.addEventListener("timeupdate", function () {
+            if (!dragging && video.duration) {
+              var pct = (video.currentTime / video.duration) * 100;
+              progressFill.style.width = pct + "%";
+              progressThumb.style.left = pct + "%";
+              timeDisplay.textContent = formatTime(video.currentTime) + " / " + formatTime(video.duration);
+            }
+          });
+
+          video.addEventListener("loadedmetadata", function () {
+            timeDisplay.textContent = formatTime(video.currentTime) + " / " + formatTime(video.duration);
+          });
+
+          function showControls() {
+            box.classList.remove("controls-hidden");
+            clearTimeout(hideTimer);
+            if (!video.paused) {
+              hideTimer = setTimeout(function () {
+                if (!video.paused && !dragging) box.classList.add("controls-hidden");
+              }, 2500);
+            }
+          }
+
+          box.addEventListener("mousemove", showControls);
+          box.addEventListener("touchstart", showControls, { passive: true });
+          box.addEventListener("mouseleave", function () {
+            if (!video.paused && !dragging) box.classList.add("controls-hidden");
+          });
+
+          return wrap;
+        }
 
         function start(fromClick) {
           if (!video) {
             video = document.createElement("video");
             video.src = box.getAttribute("data-video");
-            video.muted = true;
+            video.muted = fromClick ? false : true;
             video.loop = true;
-            video.controls = true;
-            // no ⋮ menu & no fullscreen: remove download, speed, cast, picture-in-picture and fullscreen items
-            video.setAttribute("controlslist", "nodownload noplaybackrate noremoteplayback nofullscreen");
-            video.disablePictureInPicture = true;
-            video.setAttribute("disablepictureinpicture", "");
+            video.controls = false; // native controls completely OFF
             video.playsInline = true;
-            video.setAttribute("muted", "");
             video.setAttribute("playsinline", "");
-            video.addEventListener("pause", function () { if (inView) userPaused = true; });
-            video.addEventListener("play", function () { userPaused = false; });
+            if (video.muted) video.setAttribute("muted", "");
+            video.addEventListener("click", function (e) {
+              e.stopPropagation();
+              if (video.paused) {
+                userPaused = false;
+                video.muted = false;
+                video.play();
+              } else {
+                userPaused = true;
+                video.pause();
+              }
+            });
             box.appendChild(video);
+            box.appendChild(createControls());
             box.classList.add("is-playing");
             box.removeAttribute("role");
             box.removeAttribute("tabindex");
           }
+          if (fromClick) video.muted = false;
           if (userPaused && !fromClick) return;
           var p = video.play();
           if (p && p.catch) p.catch(function () { });
@@ -3141,7 +3399,6 @@
           }, { threshold: 0.25 }).observe(box);
         }
 
-        // reduced motion (or no observer): plays on click / Enter / Space as before
         box.addEventListener("click", function () { if (!video) start(true); });
         box.addEventListener("keydown", function (e) {
           if (!video && (e.key === "Enter" || e.key === " ")) {
