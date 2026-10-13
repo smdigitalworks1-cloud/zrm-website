@@ -18,7 +18,7 @@
   var FALLBACK = {
     zrm_online_date: "OCT 16 2026 - OCT 18 2026",
     "02_zrm_online_time": "07:00 AM to 08:30 AM",
-    zrm_replay: "07:00 PM to 08:30 PM"
+    zrm_replay: "07:00 PM to 08:30 PM (Day 3 No Replay)"
   };
 
   // a link value is used only if it parses as a real https:// URL

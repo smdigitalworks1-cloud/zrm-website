@@ -123,7 +123,7 @@
 
     tl.fromTo(".hero-atmos", { opacity: 0 }, { opacity: 1, duration: 0.9, ease: "power2.out" }, 0)
       // 2 · main visual is visible from the first paint; subtle settle
-      .fromTo(".hero .video-box img", { scale: 1.05 }, { scale: 1, duration: 1.1, ease: "power2.out" }, 0.05)
+      .fromTo(".hero .video-box video, .hero .video-box img", { scale: 1.05 }, { scale: 1, duration: 1.1, ease: "power2.out" }, 0.05)
       // 3 · heading, word by word smooth fade & float up
       .fromTo(".hero .top-label", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 }, 0.1)
       .fromTo(titleWords, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: 0.65, stagger: 0.035, ease: "power2.out" }, 0.15)
@@ -173,7 +173,7 @@
 
     var layers = [
       { el: ".hero-atmos-band", x: 4, y: 3 },        // background 1×
-      { el: ".hero .video-box img", x: 8, y: 6 },    // image 2×
+      { el: ".hero .video-box video, .hero .video-box img", x: 8, y: 6 },    // image/video 2×
       { el: ".hero-title", x: 2, y: 1.5 }            // foreground 0.5×
     ].map(function (l) {
       var node = document.querySelector(l.el);

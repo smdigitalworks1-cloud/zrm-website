@@ -484,7 +484,7 @@
       border-radius: clamp(12px, 1.4vw, 18px);
       border: 1px solid var(--border);
       box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.7), 0 0 80px -20px rgba(255, 23, 56, 0.25);
-      cursor: pointer;
+      cursor: default;
     }
 
     .video-box img {
@@ -1449,7 +1449,11 @@
 
     .participants-video video::-webkit-media-controls-overflow-button,
     .participants-video video::-webkit-media-controls-overflow-menu-list,
-    .participants-video video::-internal-media-controls-overflow-button {
+    .participants-video video::-internal-media-controls-overflow-button,
+    .participants-video video::-webkit-media-controls-fullscreen-button,
+    .participants-video video::-webkit-media-controls-mute-button,
+    .participants-video video::-webkit-media-controls-volume-slider,
+    .participants-video video::-webkit-media-controls-volume-control-container {
       display: none !important;
     }
 
@@ -2256,15 +2260,10 @@
         <div class="hero-content">
 
           <!-- VIDEO -->
-          <div class="video-box" role="button" aria-label="Play video" tabindex="0"
-            data-video="ZRM%20New%20LP%20Assets/Zrm%20main%20video.mp4">
-            <img src="ZRM New LP Assets/Rectangle 4.webp"
-              srcset="ZRM%20New%20LP%20Assets/Rectangle%204-480w.webp 480w, ZRM%20New%20LP%20Assets/Rectangle%204.webp 964w"
-              sizes="(max-width: 900px) calc(100vw - 32px), 680px" width="964" height="542" fetchpriority="high"
-              alt="Zero Rupee Marketing Challenge">
-            <div class="video-overlay">
-              <div class="play-button"></div>
-            </div>
+          <div class="video-box">
+            <video src="ZRM%20New%20LP%20Assets/Zrm%20main%20video.mp4" controls playsinline
+              controlslist="nodownload noplaybackrate noremoteplayback" disablepictureinpicture preload="metadata"
+              width="964" height="542" aria-label="Zero Rupee Marketing Challenge video"></video>
           </div>
 
           <!-- DETAILS -->
@@ -2291,7 +2290,7 @@
                 <img class="detail-icon" src="ZRM New LP Assets/cdassfaf 1.webp" alt="" width="54" height="54">
                 <div class="detail-text">
                   <strong>Replay Time Starts at</strong>
-                  <span data-cv="zrm_replay">07:00 PM to 08:30 PM</span>
+                  <span data-cv="zrm_replay">07:00 PM to 08:30 PM (Day 3 No Replay)</span>
                 </div>
               </li>
 
@@ -2549,30 +2548,11 @@
                 aria-hidden="true">→</span></a>
           </div>
 
-          <!-- Day 2 - three funnel examples, swipe / dots to change -->
-          <div class="day-image day-gallery">
-            <div class="day-slides" aria-label="Day 2 funnel examples" tabindex="0">
-              <figure class="day-slide">
-                <figcaption class="day-slide-title">Sales funnel of skincare</figcaption>
-                <img src="ZRM%20New%20LP%20Assets/day%202%20img%201-1120.webp"
-                  srcset="ZRM%20New%20LP%20Assets/day%202%20img%201-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%201-1120.webp 1120w"
-                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Sales funnel of skincare" loading="lazy"
-                  width="1120" height="1329">
-              </figure>
-              <figure class="day-slide">
-                <img src="ZRM%20New%20LP%20Assets/day%202%20img%202-1120.webp"
-                  srcset="ZRM%20New%20LP%20Assets/day%202%20img%202-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%202-1120.webp 1120w"
-                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Live shopping commerce funnel"
-                  loading="lazy" width="1120" height="595">
-              </figure>
-              <figure class="day-slide">
-                <img src="ZRM%20New%20LP%20Assets/day%202%20img%203-1120.webp"
-                  srcset="ZRM%20New%20LP%20Assets/day%202%20img%203-560.webp 560w, ZRM%20New%20LP%20Assets/day%202%20img%203-1120.webp 1120w"
-                  sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="High ticket funnel" loading="lazy"
-                  width="1120" height="644">
-              </figure>
-            </div>
-            <div class="day-dots"></div>
+          <!-- Day 2 video: muted loop, only downloads/plays while the card is near the screen -->
+          <div class="day-image">
+            <video data-src="ZRM%20New%20LP%20Assets/Funnels%20day2.mp4"
+              poster="ZRM%20New%20LP%20Assets/day%202%20img%201-560.webp" width="881" height="520" muted loop
+              playsinline preload="none" aria-label="Day 2 - Funnels"></video>
           </div>
         </article>
 
@@ -2599,8 +2579,8 @@
           <div class="day-image">
             <img src="ZRM%20New%20LP%20Assets/day%203%20img.jpeg"
               srcset="ZRM%20New%20LP%20Assets/day%203%20img-560.jpeg 560w, ZRM%20New%20LP%20Assets/day%203%20img-1120.jpeg 1120w"
-              sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 3 - Scale Your Business"
-              loading="lazy" width="1120" height="630">
+              sizes="(max-width: 900px) calc(100vw - 32px), 560px" alt="Day 3 - Scale Your Business" loading="lazy"
+              width="1120" height="630">
           </div>
         </article>
 
@@ -2865,7 +2845,7 @@
 
           <details class="faq-item">
             <summary>03. Will I get a recording of the session?</summary>
-            <p class="faq-answer">No. There are no recordings - only one replay (<span data-cv="zrm_replay"></span>) on
+            <p class="faq-answer">No. There are no recordings - only one replay (<span data-cv="zrm_replay">07:00 PM to 08:30 PM (Day 3 No Replay)</span>) on
               the same day.</p>
           </details>
 
@@ -3095,23 +3075,25 @@
         });
       })();
 
-      /* Day 1 card - looping video, loaded and played only while it is in view */
+      /* Day cards - looping video, loaded and played only while it is in view */
       (function () {
-        var video = document.querySelector(".day-image video[data-src]");
-        if (!video) return;
+        var videos = document.querySelectorAll(".day-image video[data-src]");
+        if (!videos.length) return;
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // poster only
 
-        function play() {
-          if (!video.src) video.src = video.getAttribute("data-src");
-          var p = video.play();
-          if (p && p.catch) p.catch(function () { });
-        }
+        videos.forEach(function (video) {
+          function play() {
+            if (!video.src) video.src = video.getAttribute("data-src");
+            var p = video.play();
+            if (p && p.catch) p.catch(function () { });
+          }
 
-        if (!("IntersectionObserver" in window)) { play(); return; }
-        new IntersectionObserver(function (entries) {
-          if (entries[0].isIntersecting) play();
-          else if (video.src) video.pause();
-        }, { rootMargin: "200px 0px" }).observe(video);
+          if (!("IntersectionObserver" in window)) { play(); return; }
+          new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) play();
+            else if (video.src) video.pause();
+          }, { rootMargin: "200px 0px" }).observe(video);
+        });
       })();
 
       /* Participants section - main video autoplays (muted, looping) while the
@@ -3131,8 +3113,8 @@
             video.muted = true;
             video.loop = true;
             video.controls = true;
-            // no ⋮ menu: remove download, speed, cast and picture-in-picture items
-            video.setAttribute("controlslist", "nodownload noplaybackrate noremoteplayback");
+            // no ⋮ menu & no fullscreen: remove download, speed, cast, picture-in-picture and fullscreen items
+            video.setAttribute("controlslist", "nodownload noplaybackrate noremoteplayback nofullscreen");
             video.disablePictureInPicture = true;
             video.setAttribute("disablepictureinpicture", "");
             video.playsInline = true;
